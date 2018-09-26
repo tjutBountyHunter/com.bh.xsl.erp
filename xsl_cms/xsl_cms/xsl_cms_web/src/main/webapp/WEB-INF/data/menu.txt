@@ -1,0 +1,117 @@
+﻿/*菜单*/
+[
+	{ "id": "1", iconCls: "fa fa-send-o", text: "用户操作", children: [
+        { "id": "1_1", iconCls: "fa fa-desktop", text: "用户展示", url: "user/show" },
+        { "id": "1_2", iconCls: "fa fa-search", text: "用户审核", url: "user/approve" },
+        { "id": "sjygl", iconCls: "fa fa-bullseye", text: "猎人管理",children: [
+                 { "id": "1_3", iconCls: "fa fa-send-o", text: "猎人展示", url: "user/hunter" },
+                 { "id": "1_2_1", iconCls: "fa fa-assistive-listening-systems", text: "猎人标签管理" , url: "hunter/label"},
+         ]},
+         { "id": "sjbgl", iconCls: "fa fa-table", text: "雇主管理",children: [
+                 { "id": "1_4", iconCls: "fa fa-window-restore", text: "雇主展示", url: "user/empolyer"},
+                 { "id": "1_4_1", iconCls: "fa fa-vcard", text: "雇主标签管理", url: "master/label" }
+         ]
+         }
+	    ]
+	},
+    { "id": "xtgl", iconCls: "fa fa-desktop", text: "任务管理", children: [
+        { "id": "xzgl", iconCls: "fa fa-leaf", text: "任务展示", url: "task/show" },
+        { "id": "sjzd", iconCls: "fa fa-book", text: "任务审核", url: "task/approve" },
+        { "id": "djbm", iconCls: "fa fa-barcode", text: "任务分类管理", url: "task/class" },
+        { "id": "xtgn", iconCls: "fa fa-navicon", text: "任务标签管理", url: "task/label" },
+        { "id": "excel", iconCls: "fa fa-file-excel-o", text: "Excel配置", children: [
+                  { "id": "drpz", iconCls: "fa fa-sign-out", text: "导入配置", url: "pages/1.html" },
+                  { "id": "dcpz", iconCls: "fa fa-sign-out", text: "导出配置", url: "pages/1.html" }
+            ]
+        }
+        /* 一些操作，回来后序添加
+                ,
+                { "id": "sjgl", iconCls: "fa fa-database", text: "数据管理", children: [
+                        { "id": "sjklj", iconCls: "fa fa-plug", text: "数据库连接", url: "pages/1.html" },
+                        { "id": "sjbgl", iconCls: "fa fa-table", text: "数据表管理", url: "pages/1.html" },
+                        { "id": "sjygl", iconCls: "fa fa-bullseye", text: "数据源管理", url: "pages/1.html" }
+                    ]
+                },
+                { "id": "xtrz", iconCls: "fa fa-warning", text: "系统日志" },
+                { "id": "sjqxgl", iconCls: "fa fa-briefcase", text: "数据权限管理" }
+        */
+    ]
+    },
+{ "id": "dwzz", iconCls: "fa fa-android",  text: "客户端控件管理", children: [
+         { "id": "gwgl", iconCls: "fa fa-graduation-cap", text: "客户端标签管理", url: "client/label" },
+         { "id": "gsgl", iconCls: "fa fa-sitemap", text: "客户端消息推送", url: "client/message" },
+         { "id": "bmgl", iconCls: "fa fa-th-list", text: "客户端控件名", url: "client/control" },
+         /*
+                后序添加功能
+                 { "id": "gwgl", iconCls: "fa fa-graduation-cap", text: "岗位管理", url: "pages/1.html" },
+                 { "id": "jsgl", iconCls: "fa fa-paw", text: "角色管理", url: "pages/1.html" },
+                 { "id": "yhgl", iconCls: "fa fa-user", text: "用户管理", url: "pages/1.html" }
+        */
+    ]
+},
+{ "id": "bdzx", iconCls: "fa fa-table", text: "日志管理", children: [
+        { "id": "hyda", iconCls: "fa fa-puzzle-piece", text: "Controller日志", url: "log/controller" },
+        { "id": "qjgl", iconCls: "fa fa-list-alt", text: "Service异常日志", url: "log/service" },
+        { "id": "zdybd", iconCls: "fa fa-puzzle-piece", text: "SQL日志", url: "log/SQL" },
+        { "id": "fbbdgn", iconCls: "fa fa-list-alt", text: "程序运行日志", url: "log/program" },
+        /*
+                { "id": "bdfbsl", iconCls: "fa fa-list-alt", text: "表单发布实例", children: [
+                      { "id": "hyda", iconCls: "fa fa-address-card-o", text: "会员档案", url: "pages/1.html" },
+                      { "id": "ddgn", iconCls: "fa fa-address-book", text: "订单功能", url: "pages/1.html" },
+                      { "id": "qjgl", iconCls: "fa fa-user-circle", text: "请假管理", url: "pages/1.html" },
+                      { "id": "csbd", iconCls: "fa fa-bandcamp", text: "测试表单", url: "pages/1.html" }
+                    ]
+                }
+        */
+    ]
+},
+{ "id": "lczx", iconCls: "fa fa-share-alt", text: "用户监控", children: [
+          { "id": "mbgl", iconCls: "fa fa-share-alt", text: "数量变化图表", url: "/monitor/user/count" },
+          { "id": "wdrw", iconCls: "fa fa-file-word-o", text: "活跃度变化图表", url: "/monitor/user/activity" }
+          /*
+                    回来后序添加
+                   ，
+                  { "id": "gzwt", iconCls: "fa fa-coffee", text: "工作委托", url: "pages/1.html" },
+                  { "id": "lcjk", iconCls: "fa fa-eye", text: "流程监控", url: "pages/1.html" },
+                  { "id": "xtlcgl", iconCls: "fa fa-industry", text: "系统流程案例", url: "pages/1.html" }
+            */
+    ]
+},
+{ "id": "bbzx", iconCls: "fa fa-area-chart", text: "任务监控", children: [
+        { "id": "bbgl", iconCls: "fa fa-cogs", text: "任务数量监控", url: "monitor/task/count" },
+        { "id": "bbsl", iconCls: "fa fa-line-chart", text: "任务分类监控" ,url: "monitor/task/class"},
+        { "id": "bbgl2", iconCls: "fa fa-area-chart", text: "任务达成率监控", url: "/monitor/task/success" },
+        { "id": "bbgl3", iconCls: "fa fa-pie-chart", text: "活跃标签使用", url: "/monitor/task/label" }
+        /*,
+        { "id": "bbxq", iconCls: "fa fa-wpforms", text: "性能监控", children: [
+                { "id": "cgbb", iconCls: "fa fa-bar-chart", text: "Server运行状态监控", url: "pages/1.html" },
+                { "id": "sxbb", iconCls: "fa fa-line-chart", text: "内存消耗监控", url: "pages/1.html" },
+                { "id": "ccbb", iconCls: "fa fa-area-chart", text: "数据库访问监控", url: "pages/1.html" },
+                { "id": "szbb", iconCls: "fa fa-pie-chart", text: "Redis访问监控", url: "pages/1.html" }
+            ]
+        }
+        */
+    ]
+},
+{ "id": "ggxx", iconCls: "fa fa-globe", text: "性能监控", children: [
+        { "id": "xwzx", iconCls: "fa fa-bar-chart", text: "Server运行状态监控", url: "monitor/performance/server" },
+        { "id": "khxq1", iconCls: "fa-braille", text: "Redis访问监控", url: "monitor/performance/redis" },
+        { "id": "tzgg", iconCls: "fa fa-volume-up", text: "内存消耗监控", url: "monitor/performance/memory" },
+        { "id": "wjzl", iconCls: "fa fa-jsfiddle", text: "数据库访问监控", url: "monitor/performance/DB" },
+       /*
+        { "id": "rcgl", iconCls: "fa fa-calendar", text: "日程管理", url: "pages/1.html" },
+        { "id": "yjzx", iconCls: "fa fa-send", text: "邮件中心", url: "pages/1.html" },
+        { "id": "dzqz", iconCls: "fa fa-registered", text: "电子签章", url: "pages/1.html" }
+        */
+    ]
+}
+/*,
+{ "id": "ydgl", iconCls: "fa fa-coffee", text: "移动管理", children: [
+        { "id": "wxgl", iconCls: "fa fa-weixin", text: "微信管理", children: [
+                { "id": "qyhsz", iconCls: "fa fa-plug", text: "企业号设置", url: "pages/1.html" }
+            ]
+        }
+    ]
+}
+*/
+]

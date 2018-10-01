@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	   xmlns:context="http://www.springframework.org/schema/context"
+	   xmlns:mvc="http://www.springframework.org/schema/mvc"
+	   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
+	   xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+	http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.0.xsd
+	http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd">
+	<!-- 配置springmvc -->
+	<!-- 1.配置controller扫描器 -->
+	<context:component-scan base-package="xsl.cms.controller" />
+	<!-- 2.注解驱动 -->
+	<mvc:annotation-driven>
+		<mvc:message-converters>
+			<bean
+					class="org.springframework.http.converter.ByteArrayHttpMessageConverter" />
+			<bean class="org.springframework.http.converter.FormHttpMessageConverter" />
+			<bean
+					class="org.springframework.http.converter.xml.SourceHttpMessageConverter" />
+			<bean
+					class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter"/>
+			<bean class="org.springframework.http.converter.StringHttpMessageConverter">
+				<constructor-arg index="0" value="UTF-8" />
+			</bean>
+		</mvc:message-converters>
+	</mvc:annotation-driven>
+	<!--完成日志处理-->
+	<!--进行自定义注解的拦截-->
+	<!--必须定义在springMVC的配置文件中，否则是没有办法生效的-->
+	<aop:aspectj-autoproxy proxy-target-class="true"></aop:aspectj-autoproxy>
+	<!-- 3.视图解析器 -->
+	<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver" >
+		<property name="prefix" value="/WEB-INF/jsp/" />
+		<property name="suffix" value=".jsp" />
+	</bean>
+	<!-- 4.配置资源映射 -->
+	<mvc:resources location="/WEB-INF/css/" mapping="/css/**"/>
+	<mvc:resources location="/WEB-INF/js/" mapping="/js/**"/>
+	<mvc:resources location="/WEB-INF/res/" mapping="/res/**"/>
+	<mvc:resources location="/WEB-INF/data/" mapping="/data/**"/>
+	<mvc:resources location="/WEB-INF/menu/" mapping="/menu/**"/>
+</beans>

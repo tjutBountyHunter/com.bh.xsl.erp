@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd">
+    <!-- 获取消息，配置监听消息 topic类型-->
+
+    <!--&lt;!&ndash; 获取连接ActiveMQ的连接工厂 &ndash;&gt;-->
+    <!--<bean id="targetConnectionFactory" class="org.apache.activemq.ActiveMQConnectionFactory" >-->
+        <!--<property name="brokerURL" value="tcp://localhost:61616" />-->
+    <!--</bean>-->
+
+    <!--&lt;!&ndash; 获取JMS连接工厂 &ndash;&gt;-->
+    <!--<bean id="connectionFactory" class="org.springframework.jms.connection.SingleConnectionFactory">-->
+        <!--<property name="targetConnectionFactory" ref="targetConnectionFactory"/>-->
+    <!--</bean>-->
+
+    <!--&lt;!&ndash; 获取存储地址 &ndash;&gt;-->
+    <!--<bean id="destination" class="org.apache.activemq.command.ActiveMQTopic">-->
+        <!--<constructor-arg value="topic" />-->
+    <!--</bean>-->
+
+    <!--&lt;!&ndash; 配置监听器 &ndash;&gt;-->
+    <!--<bean id="customerLister" class="xsl.cms.jms.Customer" />-->
+
+    <!--&lt;!&ndash; 配置 spring JMS 的模板 &ndash;&gt;-->
+    <!--<bean id="jmsContainer" class="org.springframework.jms.listener.DefaultMessageListenerContainer" >-->
+        <!--<property name="messageListener" ref="customerLister"/>-->
+        <!--<property name="connectionFactory" ref="targetConnectionFactory"/>-->
+        <!--<property name="destination" ref="destination"/>-->
+    <!--</bean>-->
+</beans>

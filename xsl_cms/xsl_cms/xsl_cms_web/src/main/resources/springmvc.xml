@@ -39,4 +39,11 @@
 	<mvc:resources location="/WEB-INF/res/" mapping="/res/**"/>
 	<mvc:resources location="/WEB-INF/data/" mapping="/data/**"/>
 	<mvc:resources location="/WEB-INF/menu/" mapping="/menu/**"/>
+	<!-- 5.拦截器-->
+	<mvc:interceptors>
+		<mvc:interceptor>
+			<mvc:mapping path="/**"/>
+			<bean class="xsl.cms.Interceptor.SsoInterceptor"/>
+		</mvc:interceptor>
+	</mvc:interceptors>
 </beans>

@@ -13,6 +13,8 @@ import xsl.cms.pojo.XslUser;
 import xsl.cms.pojo.common.PageObject;
 import xsl.cms.service.XslUserService;
 
+import java.util.Date;
+
 /**
  *  对user_show.jsp进行操作
  *  @author 王坤
@@ -47,6 +49,11 @@ public class XslUserController {
         XslResult xslResult = null;
         try {
             if(xslUsers != null){
+                /* 补齐数据 */
+                for (XslUser xslUser : xslUsers){
+                    xslUser.setCreatedate(new Date().toString());
+                    xslUser.setUpdatedate(new Date().toString());
+                }
                 /* 添加成功 */
                 if(this.xslUserService.InsertXslUser(xslUsers)){
                     xslResult = XslResult.build(200,"用户添加成功!");

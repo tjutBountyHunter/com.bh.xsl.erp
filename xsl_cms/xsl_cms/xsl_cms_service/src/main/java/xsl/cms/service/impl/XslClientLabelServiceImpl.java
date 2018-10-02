@@ -80,11 +80,9 @@ public class XslClientLabelServiceImpl implements XslClientLabelService {
             for(XslTag xslTag:xslTags){
                 if( xslTag != null ){ //判断不等于null
                     try{
-                        //时间格式
-                        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-                        String date = sdf.format(new Date());
+
                         //设置创建时间
-                        xslTag.setCreatedate(date);
+                        xslTag.setCreatedate(new Date());
                         int n = this.xslTagMapper.insertSelective(xslTag);
                         if( n < 0 ){
                             logger.error(tag + "失败!");

@@ -1,5 +1,7 @@
 package xsl.cms.pojo;
 
+import java.util.Date;
+
 public class XslThrowinglog {
     private Integer id;
 
@@ -9,7 +11,9 @@ public class XslThrowinglog {
 
     private String operationer;
 
-    private String throwingtime;
+    private Date throwingtime;
+
+    private String methodname;
 
     public Integer getId() {
         return id;
@@ -43,11 +47,19 @@ public class XslThrowinglog {
         this.operationer = operationer == null ? null : operationer.trim();
     }
 
-    public String getThrowingtime() {
+    public Date getThrowingtime() {
         return throwingtime;
     }
 
-    public void setThrowingtime(String throwingtime) {
+    public void setThrowingtime(Date throwingtime) {
         this.throwingtime = throwingtime;
+    }
+
+    public String getMethodname() {
+        return methodname;
+    }
+
+    public void setMethodname(String methodname) {
+        this.methodname = methodname == null ? null : methodname.trim();
     }
 }

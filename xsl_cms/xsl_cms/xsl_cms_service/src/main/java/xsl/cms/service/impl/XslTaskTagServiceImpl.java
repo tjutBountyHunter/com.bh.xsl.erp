@@ -91,11 +91,7 @@ public class XslTaskTagServiceImpl implements XslTaskTagService {
                 try{
                     if( xslTaskTag != null ) {
                         //1.标签的添加
-                        //时间格式
-                        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-                        String date = sdf.format(new Date());
-                        //设置创建时间
-                        xslTaskTag.setCreatedate(date);
+                        xslTaskTag.setCreatedate(new Date());
                         int n = this.xslTaskTagMapper.insertSelective(xslTaskTag);
                         if (n < 0) {
                             logger.info(tag + "失败!");

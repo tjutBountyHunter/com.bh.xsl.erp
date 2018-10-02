@@ -120,16 +120,16 @@ public class XslUserServiceImpl implements XslUserService {
                                 state = (byte)(0);
                             }
                             //设置创建时间
-                            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-                            String date = sdf.format(new Date());
-                            if( xslUser.getCreatedate() != null && !xslUser.getCreatedate().isEmpty() )
-                                xslUser.setCreatedate(date);
-                            if ( xslUser.getUpdatedate() != null && !xslUser.getUpdatedate().isEmpty() )
-                                xslUser.setUpdatedate(date);
+                            if( xslUser.getCreatedate() != null ){
+                                xslUser.setCreatedate(new Date());
+                            }
+                            if ( xslUser.getUpdatedate() != null ){
+                                xslUser.setUpdatedate(new Date());
+                            }
                             /* 状态为1正常的时候进行创建猎人和雇主的id */
                             if (state == 1) {
                                 /* 获取已经生成好的雇主和猎人id */
-                                xslUser = getXslUser(xslUser, date);
+                                xslUser = getXslUser(xslUser, new Date());
                             }
                             /* 其他情况直接创建，也没有什么操作 */
                             int n2 = this.xslUserMapper.insertSelective(xslUser);
@@ -162,8 +162,7 @@ public class XslUserServiceImpl implements XslUserService {
             for(XslUser xslUser:xslUsers){
                 try {
                     if( xslUser != null ){//进行null的判断，最少要拥有id，和一个要修改的值
-                        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-                        xslUser.setUpdatedate(sdf.format(new Date()));//设置修改时间
+                        xslUser.setUpdatedate(new Date());//设置修改时间
                         int n = this.xslUserMapper.updateByPrimaryKeySelective(xslUser);
                         /* 一条用户更新失败 */
                         if(n < 0){
@@ -201,7 +200,6 @@ public class XslUserServiceImpl implements XslUserService {
                 try{
                     /* 进行null的判断，最少要拥有id，和一个要修改的值 */
                     if( xslUser != null ){
-                        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
                         /* hunter的逻辑删除 */
                         XslHunter xslHunter = new XslHunter();
                         xslHunter.setId(xslUser.getHunterid());
@@ -237,8 +235,9 @@ public class XslUserServiceImpl implements XslUserService {
                         xslTaskExampleCriteria.andStateIn(byteList);
                         List<XslTask> tasklist = this.xslTaskMapper.selectByExample(xslTaskExample);
                         XslTask[] xslTasks = null;
-                        if( tasklist == null )
+                        if( tasklist == null ){
                             xslTasks =  (XslTask[]) tasklist.toArray();
+                        }
                         XslTaskService xslTaskService = new XslTaskServiceImpl();
                         xslTaskService.deleteXslTask(xslTasks);
                         /* master标签的逻辑删除 */
@@ -250,7 +249,7 @@ public class XslUserServiceImpl implements XslUserService {
                         this.xslMasterTagMapper.updateByExampleSelective(xslMasterTag,xslMasterTagExample);
                         /* xslUser的逻辑删除 */
                         /* 设置修改时间 */
-                        xslUser.setUpdatedate(sdf.format(new Date()));
+                        xslUser.setUpdatedate(new Date());
                         /* -1代表冻结的意思，进行逻辑删除 */
                         xslUser.setState((byte)(-1));
                         int n2 = this.xslUserMapper.updateByPrimaryKeySelective(xslUser);
@@ -297,15 +296,12 @@ public class XslUserServiceImpl implements XslUserService {
             //防止空指针异常
             if( xslUser != null ){
                 Byte state = xslUser.getState();
-                //设置时间格式，并且创建更新时间
-                SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-                String date = sdf.format(new Date());
                 //审核成功
                 if( state == 1 ){
-                    xslUser = getXslUser(xslUser,date);
+                    xslUser = getXslUser(xslUser,new Date());
                 }else{
                     //审核失败
-                    xslUser.setUpdatedate(date);
+                    xslUser.setUpdatedate(new Date());
                 }
                 int n = this.xslUserMapper.updateByPrimaryKeySelective(xslUser);
                 if( n < 0 ) return false;
@@ -343,7 +339,7 @@ public class XslUserServiceImpl implements XslUserService {
      * @param xslUser
      * @return
      */
-    private XslUser getXslUser(XslUser xslUser,String date){
+    private XslUser getXslUser(XslUser xslUser,Date date){
         //生成hunterID
         XslHunter xslHunter = new XslHunter();
         try {

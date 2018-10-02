@@ -1,5 +1,7 @@
 package xsl.cms.pojo;
 
+import java.util.Date;
+
 public class XslHunter {
     private Integer id;
 
@@ -15,7 +17,7 @@ public class XslHunter {
 
     private String descr;
 
-    private String lasttime;
+    private Date lasttime;
 
     private Boolean state;
 
@@ -75,11 +77,11 @@ public class XslHunter {
         this.descr = descr == null ? null : descr.trim();
     }
 
-    public String getLasttime() {
+    public Date getLasttime() {
         return lasttime;
     }
 
-    public void setLasttime(String lasttime) {
+    public void setLasttime(Date lasttime) {
         this.lasttime = lasttime;
     }
 

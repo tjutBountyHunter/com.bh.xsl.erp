@@ -1,5 +1,7 @@
 package xsl.cms.pojo;
 
+import java.util.Date;
+
 public class XslMaster {
     private Integer id;
 
@@ -15,7 +17,7 @@ public class XslMaster {
 
     private String descr;
 
-    private String lastaccdate;
+    private Date lastaccdate;
 
     private Boolean state;
 
@@ -75,11 +77,11 @@ public class XslMaster {
         this.descr = descr == null ? null : descr.trim();
     }
 
-    public String getLastaccdate() {
+    public Date getLastaccdate() {
         return lastaccdate;
     }
 
-    public void setLastaccdate(String lastaccdate) {
+    public void setLastaccdate(Date lastaccdate) {
         this.lastaccdate = lastaccdate;
     }
 

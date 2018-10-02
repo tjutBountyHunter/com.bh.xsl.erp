@@ -1,5 +1,7 @@
 package xsl.cms.pojo;
 
+import java.util.Date;
+
 public class XslTag {
     private Integer id;
 
@@ -7,7 +9,7 @@ public class XslTag {
 
     private Short usenum;
 
-    private String createdate;
+    private Date createdate;
 
     private Boolean state;
 
@@ -35,11 +37,11 @@ public class XslTag {
         this.usenum = usenum;
     }
 
-    public String getCreatedate() {
+    public Date getCreatedate() {
         return createdate;
     }
 
-    public void setCreatedate(String createdate) {
+    public void setCreatedate(Date createdate) {
         this.createdate = createdate;
     }
 

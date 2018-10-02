@@ -1,5 +1,7 @@
 package xsl.cms.pojo;
 
+import java.util.Date;
+
 public class XslMasterTag {
     private Integer id;
 
@@ -7,7 +9,7 @@ public class XslMasterTag {
 
     private Integer tagid;
 
-    private String createdate;
+    private Date createdate;
 
     private Boolean state;
 
@@ -35,11 +37,11 @@ public class XslMasterTag {
         this.tagid = tagid;
     }
 
-    public String getCreatedate() {
+    public Date getCreatedate() {
         return createdate;
     }
 
-    public void setCreatedate(String createdate) {
+    public void setCreatedate(Date createdate) {
         this.createdate = createdate;
     }
 

@@ -1,9 +1,12 @@
 package xsl.cms.pojo;
 
 import java.math.BigDecimal;
+import java.util.Date;
 
 public class XslTask {
     private Integer id;
+
+    private Integer cid;
 
     private String descr;
 
@@ -13,11 +16,13 @@ public class XslTask {
 
     private Byte state;
 
-    private String createdate;
+    private Integer number;
 
-    private String updatedate;
+    private Date createdate;
 
-    private String revokedate;
+    private Date updatedate;
+
+    private Date revokedate;
 
     private Integer tasktype;
 
@@ -27,6 +32,14 @@ public class XslTask {
 
     public void setId(Integer id) {
         this.id = id;
+    }
+
+    public Integer getCid() {
+        return cid;
+    }
+
+    public void setCid(Integer cid) {
+        this.cid = cid;
     }
 
     public String getDescr() {
@@ -61,27 +74,35 @@ public class XslTask {
         this.state = state;
     }
 
-    public String getCreatedate() {
+    public Integer getNumber() {
+        return number;
+    }
+
+    public void setNumber(Integer number) {
+        this.number = number;
+    }
+
+    public Date getCreatedate() {
         return createdate;
     }
 
-    public void setCreatedate(String createdate) {
+    public void setCreatedate(Date createdate) {
         this.createdate = createdate;
     }
 
-    public String getUpdatedate() {
+    public Date getUpdatedate() {
         return updatedate;
     }
 
-    public void setUpdatedate(String updatedate) {
+    public void setUpdatedate(Date updatedate) {
         this.updatedate = updatedate;
     }
 
-    public String getRevokedate() {
+    public Date getRevokedate() {
         return revokedate;
     }
 
-    public void setRevokedate(String revokedate) {
+    public void setRevokedate(Date revokedate) {
         this.revokedate = revokedate;
     }
 

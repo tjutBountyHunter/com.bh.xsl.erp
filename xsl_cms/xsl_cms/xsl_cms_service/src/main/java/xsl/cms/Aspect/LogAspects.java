@@ -80,7 +80,7 @@ public class LogAspects {
             log.setOperation(getControllerInfo(jp));
             log.setOperationer(operationer);
             SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
-            log.setOperationtime(sdf.format(new Date()));
+            log.setOperationtime(new Date());
             //Controller日志进行数据库中的存储
             xslLogMapper.insertSelective(log);
         }catch (Throwable e){
@@ -120,7 +120,7 @@ public class LogAspects {
             //获取方法的名称
             jp.getSignature().getName();
             SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
-            log.setThrowingtime(sdf.format(new Date()));
+            log.setThrowingtime(new Date());
             this.xslThrowinglogMapper.insertSelective(log);
             System.out.println("Service日志操作出现异常！");
             System.out.println(e.getClass().getName());

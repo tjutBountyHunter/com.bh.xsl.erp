@@ -83,11 +83,8 @@ public class XslHunterLabelServiceImpl implements XslHunterLabelService {
                 try{
                     if( xslHunterTag != null ){ //判断不等于null
                         //1.标签记录的插入
-                        //时间格式
-                        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-                        String date = sdf.format(new Date());
                         //设置创建时间
-                        xslHunterTag.setCreatedate(date);
+                        xslHunterTag.setCreatedate(new Date());
                         int n = this.xslHunterTagMapper.insertSelective(xslHunterTag);
                         if( n < 0 ){
                             logger.error("xsl_hunter_Tag 插入失败!");

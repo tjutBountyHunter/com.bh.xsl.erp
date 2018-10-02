@@ -85,11 +85,8 @@ public class XslMasterLabelServiceImpl implements XslMasterLabelService {
                 try {
                     if( xslMasterTag != null ){ //判断不等于null
                         //1.标签添加
-                        //时间格式
-                        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-                        String date = sdf.format(new Date());
                         //设置创建时间
-                        xslMasterTag.setCreatedate(date);
+                        xslMasterTag.setCreatedate(new Date());
                         int n = this.xslMasterTagMapper.insertSelective(xslMasterTag);
                         if( n < 0 ){
                             logger.error("xsl_master_tag 添加失败!");

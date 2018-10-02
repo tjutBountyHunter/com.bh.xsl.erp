@@ -1,5 +1,7 @@
 package xsl.cms.pojo;
 
+import java.util.Date;
+
 public class XslLog {
     private Integer id;
 
@@ -7,7 +9,7 @@ public class XslLog {
 
     private String operation;
 
-    private String operationtime;
+    private Date operationtime;
 
     private String operationer;
 
@@ -35,11 +37,11 @@ public class XslLog {
         this.operation = operation == null ? null : operation.trim();
     }
 
-    public String getOperationtime() {
+    public Date getOperationtime() {
         return operationtime;
     }
 
-    public void setOperationtime(String operationtime) {
+    public void setOperationtime(Date operationtime) {
         this.operationtime = operationtime;
     }
 

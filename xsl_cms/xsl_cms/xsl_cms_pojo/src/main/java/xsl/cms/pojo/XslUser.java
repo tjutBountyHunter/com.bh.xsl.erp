@@ -1,5 +1,7 @@
 package xsl.cms.pojo;
 
+import java.util.Date;
+
 public class XslUser {
     private Integer id;
 
@@ -23,9 +25,9 @@ public class XslUser {
 
     private String signature;
 
-    private String createdate;
+    private Date createdate;
 
-    private String updatedate;
+    private Date updatedate;
 
     public Integer getId() {
         return id;
@@ -115,38 +117,19 @@ public class XslUser {
         this.signature = signature == null ? null : signature.trim();
     }
 
-    public String getCreatedate() {
+    public Date getCreatedate() {
         return createdate;
     }
 
-    public void setCreatedate(String createdate) {
+    public void setCreatedate(Date createdate) {
         this.createdate = createdate;
     }
 
-    public String getUpdatedate() {
+    public Date getUpdatedate() {
         return updatedate;
     }
 
-    public void setUpdatedate(String updatedate) {
+    public void setUpdatedate(Date updatedate) {
         this.updatedate = updatedate;
-    }
-
-    @Override
-    public String toString() {
-        return "XslUser{" +
-                "id=" + id +
-                ", hunterid=" + hunterid +
-                ", masterid=" + masterid +
-                ", schoolinfo=" + schoolinfo +
-                ", name='" + name + '\'' +
-                ", password='" + password + '\'' +
-                ", sex='" + sex + '\'' +
-                ", phone='" + phone + '\'' +
-                ", email='" + email + '\'' +
-                ", state=" + state +
-                ", signature='" + signature + '\'' +
-                ", createdate='" + createdate + '\'' +
-                ", updatedate='" + updatedate + '\'' +
-                '}';
     }
 }

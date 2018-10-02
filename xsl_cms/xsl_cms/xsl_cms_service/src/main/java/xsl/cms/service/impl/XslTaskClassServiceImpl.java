@@ -78,11 +78,8 @@ public class XslTaskClassServiceImpl implements XslTaskClassService {
             for(XslTaskCategory xslTaskCategory:xslTaskCategories){
                 try{
                     if( xslTaskCategory != null ){ //判断不等于null
-                        //时间格式
-                        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-                        String date = sdf.format(new Date());
                         //设置创建时间
-                        xslTaskCategory.setCreatedate(date);
+                        xslTaskCategory.setCreatedate(new Date());
                         int n = this.xslTaskCategoryMapper.insertSelective(xslTaskCategory);
                         if( n < 0 ){
                             logger.error(tag + "失败!");

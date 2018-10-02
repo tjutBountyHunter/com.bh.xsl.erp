@@ -51,8 +51,8 @@ public class XslUserController {
             if(xslUsers != null){
                 /* 补齐数据 */
                 for (XslUser xslUser : xslUsers){
-                    xslUser.setCreatedate(new Date().toString());
-                    xslUser.setUpdatedate(new Date().toString());
+                    xslUser.setCreatedate(new Date());
+                    xslUser.setUpdatedate(new Date());
                 }
                 /* 添加成功 */
                 if(this.xslUserService.InsertXslUser(xslUsers)){

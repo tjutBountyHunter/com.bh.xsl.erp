@@ -1,5 +1,7 @@
 package xsl.cms.pojo;
 
+import java.util.Date;
+
 public class XslTaskCategory {
     private Integer id;
 
@@ -11,11 +13,11 @@ public class XslTaskCategory {
 
     private Integer oknum;
 
+    private Boolean state;
+
     private String failnum;
 
-    private String createdate;
-
-    private Boolean state;
+    private Date createdate;
 
     public Integer getId() {
         return id;
@@ -57,6 +59,14 @@ public class XslTaskCategory {
         this.oknum = oknum;
     }
 
+    public Boolean getState() {
+        return state;
+    }
+
+    public void setState(Boolean state) {
+        this.state = state;
+    }
+
     public String getFailnum() {
         return failnum;
     }
@@ -65,19 +75,11 @@ public class XslTaskCategory {
         this.failnum = failnum == null ? null : failnum.trim();
     }
 
-    public String getCreatedate() {
+    public Date getCreatedate() {
         return createdate;
     }
 
-    public void setCreatedate(String createdate) {
+    public void setCreatedate(Date createdate) {
         this.createdate = createdate;
-    }
-
-    public Boolean getState() {
-        return state;
-    }
-
-    public void setState(Boolean state) {
-        this.state = state;
     }
 }

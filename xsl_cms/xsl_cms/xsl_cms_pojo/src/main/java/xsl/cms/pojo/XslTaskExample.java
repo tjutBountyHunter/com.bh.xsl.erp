@@ -193,6 +193,66 @@ public class XslTaskExample {
             return (Criteria) this;
         }
 
+        public Criteria andCidIsNull() {
+            addCriterion("cid is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andCidIsNotNull() {
+            addCriterion("cid is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andCidEqualTo(Integer value) {
+            addCriterion("cid =", value, "cid");
+            return (Criteria) this;
+        }
+
+        public Criteria andCidNotEqualTo(Integer value) {
+            addCriterion("cid <>", value, "cid");
+            return (Criteria) this;
+        }
+
+        public Criteria andCidGreaterThan(Integer value) {
+            addCriterion("cid >", value, "cid");
+            return (Criteria) this;
+        }
+
+        public Criteria andCidGreaterThanOrEqualTo(Integer value) {
+            addCriterion("cid >=", value, "cid");
+            return (Criteria) this;
+        }
+
+        public Criteria andCidLessThan(Integer value) {
+            addCriterion("cid <", value, "cid");
+            return (Criteria) this;
+        }
+
+        public Criteria andCidLessThanOrEqualTo(Integer value) {
+            addCriterion("cid <=", value, "cid");
+            return (Criteria) this;
+        }
+
+        public Criteria andCidIn(List<Integer> values) {
+            addCriterion("cid in", values, "cid");
+            return (Criteria) this;
+        }
+
+        public Criteria andCidNotIn(List<Integer> values) {
+            addCriterion("cid not in", values, "cid");
+            return (Criteria) this;
+        }
+
+        public Criteria andCidBetween(Integer value1, Integer value2) {
+            addCriterion("cid between", value1, value2, "cid");
+            return (Criteria) this;
+        }
+
+        public Criteria andCidNotBetween(Integer value1, Integer value2) {
+            addCriterion("cid not between", value1, value2, "cid");
+            return (Criteria) this;
+        }
+
         public Criteria andDescrIsNull() {
             addCriterion("descr is null");
             return (Criteria) this;
@@ -443,6 +503,66 @@ public class XslTaskExample {
             return (Criteria) this;
         }
 
+        public Criteria andNumberIsNull() {
+            addCriterion("number is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andNumberIsNotNull() {
+            addCriterion("number is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andNumberEqualTo(Integer value) {
+            addCriterion("number =", value, "number");
+            return (Criteria) this;
+        }
+
+        public Criteria andNumberNotEqualTo(Integer value) {
+            addCriterion("number <>", value, "number");
+            return (Criteria) this;
+        }
+
+        public Criteria andNumberGreaterThan(Integer value) {
+            addCriterion("number >", value, "number");
+            return (Criteria) this;
+        }
+
+        public Criteria andNumberGreaterThanOrEqualTo(Integer value) {
+            addCriterion("number >=", value, "number");
+            return (Criteria) this;
+        }
+
+        public Criteria andNumberLessThan(Integer value) {
+            addCriterion("number <", value, "number");
+            return (Criteria) this;
+        }
+
+        public Criteria andNumberLessThanOrEqualTo(Integer value) {
+            addCriterion("number <=", value, "number");
+            return (Criteria) this;
+        }
+
+        public Criteria andNumberIn(List<Integer> values) {
+            addCriterion("number in", values, "number");
+            return (Criteria) this;
+        }
+
+        public Criteria andNumberNotIn(List<Integer> values) {
+            addCriterion("number not in", values, "number");
+            return (Criteria) this;
+        }
+
+        public Criteria andNumberBetween(Integer value1, Integer value2) {
+            addCriterion("number between", value1, value2, "number");
+            return (Criteria) this;
+        }
+
+        public Criteria andNumberNotBetween(Integer value1, Integer value2) {
+            addCriterion("number not between", value1, value2, "number");
+            return (Criteria) this;
+        }
+
         public Criteria andCreatedateIsNull() {
             addCriterion("createDate is null");
             return (Criteria) this;
@@ -624,62 +744,62 @@ public class XslTaskExample {
         }
 
         public Criteria andTasktypeIsNull() {
-            addCriterion("tasktype is null");
+            addCriterion("taskType is null");
             return (Criteria) this;
         }
 
         public Criteria andTasktypeIsNotNull() {
-            addCriterion("tasktype is not null");
+            addCriterion("taskType is not null");
             return (Criteria) this;
         }
 
         public Criteria andTasktypeEqualTo(Integer value) {
-            addCriterion("tasktype =", value, "tasktype");
+            addCriterion("taskType =", value, "tasktype");
             return (Criteria) this;
         }
 
         public Criteria andTasktypeNotEqualTo(Integer value) {
-            addCriterion("tasktype <>", value, "tasktype");
+            addCriterion("taskType <>", value, "tasktype");
             return (Criteria) this;
         }
 
         public Criteria andTasktypeGreaterThan(Integer value) {
-            addCriterion("tasktype >", value, "tasktype");
+            addCriterion("taskType >", value, "tasktype");
             return (Criteria) this;
         }
 
         public Criteria andTasktypeGreaterThanOrEqualTo(Integer value) {
-            addCriterion("tasktype >=", value, "tasktype");
+            addCriterion("taskType >=", value, "tasktype");
             return (Criteria) this;
         }
 
         public Criteria andTasktypeLessThan(Integer value) {
-            addCriterion("tasktype <", value, "tasktype");
+            addCriterion("taskType <", value, "tasktype");
             return (Criteria) this;
         }
 
         public Criteria andTasktypeLessThanOrEqualTo(Integer value) {
-            addCriterion("tasktype <=", value, "tasktype");
+            addCriterion("taskType <=", value, "tasktype");
             return (Criteria) this;
         }
 
         public Criteria andTasktypeIn(List<Integer> values) {
-            addCriterion("tasktype in", values, "tasktype");
+            addCriterion("taskType in", values, "tasktype");
             return (Criteria) this;
         }
 
         public Criteria andTasktypeNotIn(List<Integer> values) {
-            addCriterion("tasktype not in", values, "tasktype");
+            addCriterion("taskType not in", values, "tasktype");
             return (Criteria) this;
         }
 
         public Criteria andTasktypeBetween(Integer value1, Integer value2) {
-            addCriterion("tasktype between", value1, value2, "tasktype");
+            addCriterion("taskType between", value1, value2, "tasktype");
             return (Criteria) this;
         }
 
         public Criteria andTasktypeNotBetween(Integer value1, Integer value2) {
-            addCriterion("tasktype not between", value1, value2, "tasktype");
+            addCriterion("taskType not between", value1, value2, "tasktype");
             return (Criteria) this;
         }
     }

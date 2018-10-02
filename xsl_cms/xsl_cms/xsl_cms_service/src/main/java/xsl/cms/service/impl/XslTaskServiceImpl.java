@@ -14,6 +14,7 @@ import xsl.cms.pojo.common.PageObject;
 import xsl.cms.service.XslTaskService;
 
 import javax.annotation.Resource;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -91,15 +92,12 @@ public class XslTaskServiceImpl implements XslTaskService {
                         Byte state = xslTask.getState();
                         //只有状态为4的时候才能被创建
                         if( state == null || state == 4 || state == 0 ){
-                            //时间格式
-                            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-                            String date = sdf.format(new Date());
                             //设置创建时间
-                            xslTask.setCreatedate(date);
+                            xslTask.setCreatedate(new Date());
                             //设置修改时间
-                            xslTask.setUpdatedate(date);
+                            xslTask.setUpdatedate(new Date());
                             //设置最后一次接受任务的时间
-                            xslTask.setRevokedate(date);
+                            xslTask.setRevokedate(new Date());
                             int n = this.xslTaskMapper.insertSelective(xslTask);
                             if( n < 0 ){
                                 return false;
@@ -148,8 +146,7 @@ public class XslTaskServiceImpl implements XslTaskService {
             for(XslTask xslTask:xslTasks){
                 try{
                     if( xslTask != null ){//进行null的判断，最少要拥有id，和一个要修改的值
-                        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-                        xslTask.setUpdatedate(sdf.format(new Date()));//设置修改时间
+                        xslTask.setUpdatedate(new Date());//设置修改时间
                         int n = this.xslTaskMapper.updateByPrimaryKeySelective(xslTask);
                         if(n < 0){
                             logger.error(tag + "是失败!");
@@ -198,11 +195,12 @@ public class XslTaskServiceImpl implements XslTaskService {
      * @param xslTask
      * @return
      */
+    @Override
     public boolean delXslTask(XslTask xslTask) {
-        if (xslTask != null) {//进行null的判断，最少要拥有id，和一个要修改的值
-            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        if (xslTask != null) {
+            //进行null的判断，最少要拥有id，和一个要修改的值
             //1.xslUser的逻辑删除
-            xslTask.setUpdatedate(sdf.format(new Date()));//设置修改时间
+            xslTask.setUpdatedate(new Date());//设置修改时间
             xslTask.setState((byte) (-1));//-1代表冻结的意思，进行逻辑删除
             int n = this.xslTaskMapper.updateByPrimaryKeySelective(xslTask);
             if (n < 0) {
@@ -237,8 +235,7 @@ public class XslTaskServiceImpl implements XslTaskService {
         try{
             //防止空指针异常
             if( xslTask != null ){
-                SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-                xslTask.setUpdatedate(sdf.format(new Date()));//设置修改时间
+                xslTask.setUpdatedate(new Date());//设置修改时间
                 int n = this.xslTaskMapper.updateByPrimaryKeySelective(xslTask);
                 if( n < 0 ) {
                     logger.error(tag + "失败!");

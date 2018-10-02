@@ -46,4 +46,6 @@
 			<bean class="xsl.cms.Interceptor.SsoInterceptor"/>
 		</mvc:interceptor>
 	</mvc:interceptors>
+	<!-- 6.加载资源文件 -->
+	<context:property-placeholder location="classpath:resource/res.properties"/>
 </beans>

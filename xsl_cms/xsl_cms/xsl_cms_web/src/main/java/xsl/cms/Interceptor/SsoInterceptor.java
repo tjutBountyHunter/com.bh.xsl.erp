@@ -18,14 +18,17 @@ import javax.servlet.http.HttpServletResponse;
  * @Date: 2018/10/1 16:32
  * @Description:
  */
+
 public class SsoInterceptor implements HandlerInterceptor {
 
-    @Value("${SSO_URL}}")
+    @Value("${SSO_URL}")
     private String SSO_URL;
     @Value("${COOKIE_KEY}")
     private String COOKIE_KEY;
     @Value("${TOKEN_KEY_PREFIX}")
     private String TOKEN_KEY_PREFIX;
+    @Value("${COOKIE_LIFE}")
+    private int COOKIE_LIFE;
 
     @Resource
     private JedisClient jedisClient;
@@ -33,6 +36,13 @@ public class SsoInterceptor implements HandlerInterceptor {
     @Override
     public boolean preHandle(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, Object o) throws Exception {
         String tokenId = "";
+        String tokenKey = httpServletRequest.getParameter("tokenKey");
+        if (tokenKey != null && !"".equals(tokenKey)){
+            Cookie cookie = new Cookie(COOKIE_KEY , tokenKey);
+            cookie.setPath("/");
+            cookie.setMaxAge(COOKIE_LIFE);
+            httpServletResponse.addCookie(cookie);
+        }
         Cookie[] cookies = httpServletRequest.getCookies();
         if (cookies != null && cookies.length > 0){
             for (Cookie cookie : cookies){
@@ -42,9 +52,9 @@ public class SsoInterceptor implements HandlerInterceptor {
                 }
             }
         }
-        if (tokenId != null && tokenId.equals("")){
+        if (tokenId != null && !"".equals(tokenId)){
             String token = jedisClient.get(TOKEN_KEY_PREFIX + tokenId);
-            if (token != null && "".equals(token)){
+            if (token != null && !"".equals(token)){
                 if (JwtUtils.checkJWTSign(token)){
                     return true;
                 }

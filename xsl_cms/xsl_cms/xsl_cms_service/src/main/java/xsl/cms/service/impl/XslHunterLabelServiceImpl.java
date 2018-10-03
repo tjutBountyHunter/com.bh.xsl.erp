@@ -7,6 +7,7 @@ import com.xsl.cms.mapper.XslTagMapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
+import xsl.cms.Utils.DateUtils;
 import xsl.cms.annotation.SystemServiceLog;
 import xsl.cms.pojo.XslHunterTag;
 import xsl.cms.pojo.XslHunterTagExample;
@@ -83,7 +84,7 @@ public class XslHunterLabelServiceImpl implements XslHunterLabelService {
                     if( xslHunterTag != null ){ //判断不等于null
                         //1.标签记录的插入
                         //设置创建时间
-                        xslHunterTag.setCreatedate(new Date());
+                        xslHunterTag.setCreatedate(DateUtils.getDateToString());
                         int n = this.xslHunterTagMapper.insertSelective(xslHunterTag);
                         if( n < 0 ){
                             logger.error("xsl_hunter_Tag 插入失败!");

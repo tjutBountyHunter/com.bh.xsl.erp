@@ -8,6 +8,7 @@ import com.xsl.cms.mapper.XslTaskTagMapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
+import xsl.cms.Utils.DateUtils;
 import xsl.cms.annotation.SystemServiceLog;
 import xsl.cms.pojo.*;
 import xsl.cms.pojo.common.PageObject;
@@ -91,11 +92,12 @@ public class XslTaskServiceImpl implements XslTaskService {
                         //只有状态为4的时候才能被创建
                         if( state == null || state == 4 || state == 0 ){
                             //设置创建时间
-                            xslTask.setCreatedate(new Date());
+                            xslTask.setCreatedate(DateUtils.getDateToString());
                             //设置修改时间
-                            xslTask.setUpdatedate(new Date());
+                            xslTask.setUpdatedate(DateUtils.getDateToString());
                             //设置最后一次接受任务的时间
-                            xslTask.setRevokedate(new Date());
+                            xslTask.setRevokedate(DateUtils.getDateToString());
+                            xslTask.setCid(1);
                             int n = this.xslTaskMapper.insertSelective(xslTask);
                             if( n < 0 ){
                                 return false;
@@ -144,7 +146,7 @@ public class XslTaskServiceImpl implements XslTaskService {
             for(XslTask xslTask:xslTasks){
                 try{
                     if( xslTask != null ){//进行null的判断，最少要拥有id，和一个要修改的值
-                        xslTask.setUpdatedate(new Date());//设置修改时间
+                        xslTask.setUpdatedate(DateUtils.getDateToString());//设置修改时间
                         int n = this.xslTaskMapper.updateByPrimaryKeySelective(xslTask);
                         if(n < 0){
                             logger.error(tag + "是失败!");
@@ -198,7 +200,7 @@ public class XslTaskServiceImpl implements XslTaskService {
         if (xslTask != null) {
             //进行null的判断，最少要拥有id，和一个要修改的值
             //1.xslUser的逻辑删除
-            xslTask.setUpdatedate(new Date());//设置修改时间
+            xslTask.setUpdatedate(DateUtils.getDateToString());//设置修改时间
             xslTask.setState((byte) (-1));//-1代表冻结的意思，进行逻辑删除
             int n = this.xslTaskMapper.updateByPrimaryKeySelective(xslTask);
             if (n < 0) {
@@ -233,7 +235,7 @@ public class XslTaskServiceImpl implements XslTaskService {
         try{
             //防止空指针异常
             if( xslTask != null ){
-                xslTask.setUpdatedate(new Date());//设置修改时间
+                xslTask.setUpdatedate(DateUtils.getDateToString());//设置修改时间
                 int n = this.xslTaskMapper.updateByPrimaryKeySelective(xslTask);
                 if( n < 0 ) {
                     logger.error(tag + "失败!");

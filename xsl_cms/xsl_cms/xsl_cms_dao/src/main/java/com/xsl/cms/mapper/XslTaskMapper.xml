@@ -9,9 +9,9 @@
     <result column="money" property="money" jdbcType="DECIMAL" />
     <result column="state" property="state" jdbcType="TINYINT" />
     <result column="number" property="number" jdbcType="INTEGER" />
-    <result column="createDate" property="createdate" jdbcType="DATE" />
-    <result column="updateDate" property="updatedate" jdbcType="DATE" />
-    <result column="revokeDate" property="revokedate" jdbcType="DATE" />
+    <result column="createDate" property="createdate" javaType="String" jdbcType="DATE" />
+    <result column="updateDate" property="updatedate" javaType="String" jdbcType="DATE" />
+    <result column="revokeDate" property="revokedate" javaType="String" jdbcType="DATE" />
     <result column="taskType" property="tasktype" jdbcType="INTEGER" />
   </resultMap>
   <sql id="Example_Where_Clause" >

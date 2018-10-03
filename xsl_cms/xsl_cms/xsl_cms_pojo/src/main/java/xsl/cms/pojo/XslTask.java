@@ -18,11 +18,11 @@ public class XslTask {
 
     private Integer number;
 
-    private Date createdate;
+    private String createdate;
 
-    private Date updatedate;
+    private String updatedate;
 
-    private Date revokedate;
+    private String revokedate;
 
     private Integer tasktype;
 
@@ -82,27 +82,27 @@ public class XslTask {
         this.number = number;
     }
 
-    public Date getCreatedate() {
+    public String getCreatedate() {
         return createdate;
     }
 
-    public void setCreatedate(Date createdate) {
+    public void setCreatedate(String createdate) {
         this.createdate = createdate;
     }
 
-    public Date getUpdatedate() {
+    public String getUpdatedate() {
         return updatedate;
     }
 
-    public void setUpdatedate(Date updatedate) {
+    public void setUpdatedate(String updatedate) {
         this.updatedate = updatedate;
     }
 
-    public Date getRevokedate() {
+    public String getRevokedate() {
         return revokedate;
     }
 
-    public void setRevokedate(Date revokedate) {
+    public void setRevokedate(String revokedate) {
         this.revokedate = revokedate;
     }
 

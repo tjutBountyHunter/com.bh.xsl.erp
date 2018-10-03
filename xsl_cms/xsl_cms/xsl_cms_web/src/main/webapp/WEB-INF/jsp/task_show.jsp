@@ -45,6 +45,10 @@
         <div type="indexcolumn"></div>
         <div type="checkcolumn"></div>
         <div name="id"  field="id" headerAlign="center" allowSort="true" width="100" >任务ID</div>
+        <div field="cid" width="150" allowSort="true" >任务类别
+            <!-- 添加编辑信息 -->
+            <input property="editor" class="mini-textarea"  style="width:100%;"/>
+        </div>
         <div field="descr" width="150" allowSort="true" >任务描述
             <!-- 添加编辑信息 -->
             <input property="editor" class="mini-textarea"  style="width:100%;"/>

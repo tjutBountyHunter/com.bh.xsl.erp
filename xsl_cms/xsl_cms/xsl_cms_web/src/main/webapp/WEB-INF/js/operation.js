@@ -54,6 +54,7 @@
             dataType:"json",
             success:function(data){
                 mini.alert(data.msg);
+                location.reload(true);
             },
             error : function(errorMsg) {
                 //请求失败时执行该函数
@@ -75,6 +76,7 @@
                 dataType:"json",
                 success:function(data){
                     mini.alert(data.msg);
+                    location.reload(true);
                 },
                 error : function(errorMsg) {
                     //请求失败时执行该函数
@@ -95,6 +97,7 @@
                 dataType:"json",
                 success:function(data){
                     mini.alert(data.msg);
+                    location.reload(true);
                 },
                 error : function(errorMsg) {
                     //请求失败时执行该函数

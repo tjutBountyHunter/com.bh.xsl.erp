@@ -17,7 +17,7 @@ public class XslHunter {
 
     private String descr;
 
-    private Date lasttime;
+    private String lasttime;
 
     private Boolean state;
 
@@ -77,11 +77,11 @@ public class XslHunter {
         this.descr = descr == null ? null : descr.trim();
     }
 
-    public Date getLasttime() {
+    public String getLasttime() {
         return lasttime;
     }
 
-    public void setLasttime(Date lasttime) {
+    public void setLasttime(String lasttime) {
         this.lasttime = lasttime;
     }
 

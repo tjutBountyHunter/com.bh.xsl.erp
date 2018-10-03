@@ -9,7 +9,7 @@ public class XslMasterTag {
 
     private Integer tagid;
 
-    private Date createdate;
+    private String createdate;
 
     private Boolean state;
 
@@ -37,11 +37,11 @@ public class XslMasterTag {
         this.tagid = tagid;
     }
 
-    public Date getCreatedate() {
+    public String getCreatedate() {
         return createdate;
     }
 
-    public void setCreatedate(Date createdate) {
+    public void setCreatedate(String createdate) {
         this.createdate = createdate;
     }
 

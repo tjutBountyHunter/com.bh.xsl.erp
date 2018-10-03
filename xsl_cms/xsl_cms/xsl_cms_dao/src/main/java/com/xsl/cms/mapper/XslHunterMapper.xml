@@ -9,7 +9,7 @@
     <result column="taskFailNum" property="taskfailnum" jdbcType="INTEGER" />
     <result column="credit" property="credit" jdbcType="SMALLINT" />
     <result column="descr" property="descr" jdbcType="VARCHAR" />
-    <result column="lastTime" property="lasttime" jdbcType="DATE" />
+    <result column="lastTime" property="lasttime" javaType="String" jdbcType="DATE" />
     <result column="state" property="state" jdbcType="BIT" />
   </resultMap>
   <sql id="Example_Where_Clause" >

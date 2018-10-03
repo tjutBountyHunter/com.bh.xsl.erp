@@ -75,6 +75,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 </html>
 <script>
 
+
     function activeTab(item) {
         var tabs = mini.get("mainTabs");
         var tab = tabs.getTab(item.id);

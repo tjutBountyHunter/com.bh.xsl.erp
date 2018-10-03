@@ -17,7 +17,7 @@ public class XslMaster {
 
     private String descr;
 
-    private Date lastaccdate;
+    private String lastaccdate;
 
     private Boolean state;
 
@@ -77,11 +77,11 @@ public class XslMaster {
         this.descr = descr == null ? null : descr.trim();
     }
 
-    public Date getLastaccdate() {
+    public String getLastaccdate() {
         return lastaccdate;
     }
 
-    public void setLastaccdate(Date lastaccdate) {
+    public void setLastaccdate(String lastaccdate) {
         this.lastaccdate = lastaccdate;
     }
 

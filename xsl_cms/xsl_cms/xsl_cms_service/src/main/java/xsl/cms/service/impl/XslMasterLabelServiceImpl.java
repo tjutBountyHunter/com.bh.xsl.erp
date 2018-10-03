@@ -7,6 +7,7 @@ import com.xsl.cms.mapper.XslTagMapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
+import xsl.cms.Utils.DateUtils;
 import xsl.cms.annotation.SystemServiceLog;
 import xsl.cms.pojo.XslMasterTag;
 import xsl.cms.pojo.XslMasterTagExample;
@@ -85,7 +86,7 @@ public class XslMasterLabelServiceImpl implements XslMasterLabelService {
                     if( xslMasterTag != null ){ //判断不等于null
                         //1.标签添加
                         //设置创建时间
-                        xslMasterTag.setCreatedate(new Date());
+                        xslMasterTag.setCreatedate(DateUtils.getDateToString());
                         int n = this.xslMasterTagMapper.insertSelective(xslMasterTag);
                         if( n < 0 ){
                             logger.error("xsl_master_tag 添加失败!");

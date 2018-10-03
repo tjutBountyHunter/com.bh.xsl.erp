@@ -1,5 +1,7 @@
 package xsl.cms.Aspect;
 
+import com.xsl.cms.mapper.XslLogMapper;
+import com.xsl.cms.mapper.XslThrowinglogMapper;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.annotation.AfterThrowing;
 import org.aspectj.lang.annotation.Aspect;
@@ -13,8 +15,6 @@ import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 import xsl.cms.annotation.SystemControllerLog;
 import xsl.cms.annotation.SystemServiceLog;
-import xsl.cms.mapper.XslLogMapper;
-import xsl.cms.mapper.XslThrowinglogMapper;
 import xsl.cms.pojo.XslLog;
 import xsl.cms.pojo.XslThrowinglog;
 

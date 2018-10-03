@@ -2,12 +2,12 @@ package xsl.cms.service.impl;
 
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
+import com.xsl.cms.mapper.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import xsl.cms.annotation.SystemServiceLog;
-import xsl.cms.mapper.*;
 import xsl.cms.pojo.*;
 import xsl.cms.pojo.common.PageObject;
 import xsl.cms.service.XslTaskService;
@@ -53,6 +53,9 @@ public class XslUserServiceImpl implements XslUserService {
     /* 雇主标签管理dao */
     @Resource
     private XslMasterTagMapper xslMasterTagMapper;
+
+    @Resource
+    private XslSchoolinfoMapper xslSchoolinfoMapper;
 
     /**
      * 页面数据的查询
@@ -120,20 +123,22 @@ public class XslUserServiceImpl implements XslUserService {
                                 state = (byte)(0);
                             }
                             //设置创建时间
-                            if( xslUser.getCreatedate() != null ){
-                                xslUser.setCreatedate(new Date());
-                            }
-                            if ( xslUser.getUpdatedate() != null ){
-                                xslUser.setUpdatedate(new Date());
-                            }
+                            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+                            String date = sdf.format(new Date());
+                            xslUser.setCreatedate(date);
+                            xslUser.setUpdatedate(date);
                             /* 状态为1正常的时候进行创建猎人和雇主的id */
-                            if (state == 1) {
-                                /* 获取已经生成好的雇主和猎人id */
-                                xslUser = getXslUser(xslUser, new Date());
-                            }
+//                            if (state == 1) {
+//                                /* 获取已经生成好的雇主和猎人id */
+//                                xslUser = getXslUser(xslUser, new Date());
+//                            }
                             /* 其他情况直接创建，也没有什么操作 */
+                            xslUser.setHunterid(setHunterAndGetHunterId(xslUser.getPhone()));
+                            xslUser.setMasterid(setMasterAndGetMasterId(xslUser.getPhone()));
+                            xslUser.setSchoolinfo(setSchoolInfoAndGetSchoolInfo());
                             int n2 = this.xslUserMapper.insertSelective(xslUser);
                             /* 操作不成功 */
+                            System.out.println(n2);
                             if (n2 < 0) {
                                 logger.error("xslUserService 中，该条记录插入失败！");
                             }
@@ -162,7 +167,9 @@ public class XslUserServiceImpl implements XslUserService {
             for(XslUser xslUser:xslUsers){
                 try {
                     if( xslUser != null ){//进行null的判断，最少要拥有id，和一个要修改的值
-                        xslUser.setUpdatedate(new Date());//设置修改时间
+                        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+                        String date = sdf.format(new Date());
+                        xslUser.setUpdatedate(date);//设置修改时间
                         int n = this.xslUserMapper.updateByPrimaryKeySelective(xslUser);
                         /* 一条用户更新失败 */
                         if(n < 0){
@@ -249,7 +256,9 @@ public class XslUserServiceImpl implements XslUserService {
                         this.xslMasterTagMapper.updateByExampleSelective(xslMasterTag,xslMasterTagExample);
                         /* xslUser的逻辑删除 */
                         /* 设置修改时间 */
-                        xslUser.setUpdatedate(new Date());
+                        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+                        String date = sdf.format(new Date());
+                        xslUser.setUpdatedate(date);
                         /* -1代表冻结的意思，进行逻辑删除 */
                         xslUser.setState((byte)(-1));
                         int n2 = this.xslUserMapper.updateByPrimaryKeySelective(xslUser);
@@ -301,10 +310,12 @@ public class XslUserServiceImpl implements XslUserService {
                     xslUser = getXslUser(xslUser,new Date());
                 }else{
                     //审核失败
-                    xslUser.setUpdatedate(new Date());
+                    SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+                    String date = sdf.format(new Date());
+                    xslUser.setUpdatedate(date);
                 }
                 int n = this.xslUserMapper.updateByPrimaryKeySelective(xslUser);
-                if( n < 0 ) return false;
+                if( n < 0 ){return false;}
             }
         }catch (Exception e){
             logger.error("用户审核操作 " + e.getMessage() );
@@ -356,12 +367,83 @@ public class XslUserServiceImpl implements XslUserService {
             //设置masterID
             xslUser.setMasterid(xslMaster.getId());
             //设置修改时间
-            xslUser.setUpdatedate(date);
+            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+            String date1 = sdf.format(new Date());
+            xslUser.setUpdatedate(date1);
         }catch (Exception e){
             logger.error("雇主、猎人账户生成异常  :" + e.getMessage());
             return null;
         }
         return xslUser;
     }
+
+    private XslSchoolinfo mockXslSchoolinfo(){
+        XslSchoolinfo schoolinfo = new XslSchoolinfo();
+        schoolinfo.setSno("20150001");
+        schoolinfo.setMajor("计算机科学与技术");
+        schoolinfo.setCollege("计算机科学与工程学院");
+        schoolinfo.setSchool("天津理工大学");
+        schoolinfo.setStartdate("2015-09");
+        schoolinfo.setDegree((byte)2);
+        schoolinfo.setSchoolhours((byte)4);
+        return schoolinfo;
+    }
+
+    private XslMaster mockXslMaster(String phone){
+        XslMaster xslMaster = new XslMaster();
+        xslMaster.setLevel((short)0);
+        xslMaster.setEmpirical(0);
+        xslMaster.setTaskaccnum(0);
+        xslMaster.setTaskrevokenum(0);
+        xslMaster.setCredit((short)100);
+        xslMaster.setDescr("雇主" + phone);
+        xslMaster.setState(true);
+        xslMaster.setLastaccdate(new Date());
+        return xslMaster;
+    }
+
+    private XslHunter mockXslHunter(String phone){
+        XslHunter xslHunter = new XslHunter();
+        xslHunter.setLevel((short)0);
+        xslHunter.setEmpirical(0);
+        xslHunter.setTaskaccnum(0);
+        xslHunter.setTaskfailnum(0);
+        xslHunter.setCredit((short)100);
+        xslHunter.setDescr("猎人" + phone);
+        xslHunter.setState(true);
+        xslHunter.setLasttime(new Date());
+        return xslHunter;
+    }
+
+    public int setHunterAndGetHunterId(String phone){
+        XslHunter xslHunter = mockXslHunter(phone);
+        xslHunterMapper.insertSelective(xslHunter);
+        XslHunterExample example = new XslHunterExample();
+        XslHunterExample.Criteria criteria = example.createCriteria();
+        criteria.andDescrEqualTo("猎人" + phone);
+        List<XslHunter> xslHunters = xslHunterMapper.selectByExample(example);
+        return xslHunters.get(0).getId();
+    }
+
+    public int setMasterAndGetMasterId(String phone){
+        XslMaster xslMaster = mockXslMaster(phone);
+        xslMasterMapper.insertSelective(xslMaster);
+        XslMasterExample example = new XslMasterExample();
+        XslMasterExample.Criteria criteria = example.createCriteria();
+        criteria.andDescrEqualTo("雇主" + phone);
+        List<XslMaster> xslMasters = xslMasterMapper.selectByExample(example);
+        return xslMasters.get(0).getId();
+    }
+
+    public int setSchoolInfoAndGetSchoolInfo(){
+        XslSchoolinfo schoolinfo = mockXslSchoolinfo();
+        xslSchoolinfoMapper.insertSelective(schoolinfo);
+        XslSchoolinfoExample example = new XslSchoolinfoExample();
+        XslSchoolinfoExample.Criteria criteria = example.createCriteria();
+        criteria.andSnoEqualTo(schoolinfo.getSno());
+        List<XslSchoolinfo> xslSchoolinfos = xslSchoolinfoMapper.selectByExample(example);
+        return xslSchoolinfos.get(0).getId();
+    }
+
 
 }

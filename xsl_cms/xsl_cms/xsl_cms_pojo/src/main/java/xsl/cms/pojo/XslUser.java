@@ -25,9 +25,9 @@ public class XslUser {
 
     private String signature;
 
-    private Date createdate;
+    private String createdate;
 
-    private Date updatedate;
+    private String updatedate;
 
     public Integer getId() {
         return id;
@@ -117,19 +117,19 @@ public class XslUser {
         this.signature = signature == null ? null : signature.trim();
     }
 
-    public Date getCreatedate() {
+    public String getCreatedate() {
         return createdate;
     }
 
-    public void setCreatedate(Date createdate) {
+    public void setCreatedate(String createdate) {
         this.createdate = createdate;
     }
 
-    public Date getUpdatedate() {
+    public String getUpdatedate() {
         return updatedate;
     }
 
-    public void setUpdatedate(Date updatedate) {
+    public void setUpdatedate(String updatedate) {
         this.updatedate = updatedate;
     }
 }

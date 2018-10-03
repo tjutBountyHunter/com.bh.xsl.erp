@@ -1,5 +1,9 @@
 package xsl.cms.controller;
 
+import Utils.RandomUtils;
+import com.xsl.cms.mapper.XslHunterMapper;
+import com.xsl.cms.mapper.XslMasterMapper;
+import com.xsl.cms.mapper.XslSchoolinfoMapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,11 +13,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import xsl.cms.annotation.SystemControllerLog;
 import xsl.cms.commons.XslResult;
-import xsl.cms.pojo.XslUser;
+import xsl.cms.pojo.*;
 import xsl.cms.pojo.common.PageObject;
 import xsl.cms.service.XslUserService;
 
+import javax.annotation.Resource;
 import java.util.Date;
+import java.util.List;
 
 /**
  *  对user_show.jsp进行操作
@@ -27,6 +33,7 @@ public class XslUserController {
 
     @Autowired
     private XslUserService xslUserService;
+
 
     //一定注意pageindex+1这个动作，因为第一页为0
     //@SystemControllerLog(description = "用户查询")
@@ -49,11 +56,6 @@ public class XslUserController {
         XslResult xslResult = null;
         try {
             if(xslUsers != null){
-                /* 补齐数据 */
-                for (XslUser xslUser : xslUsers){
-                    xslUser.setCreatedate(new Date());
-                    xslUser.setUpdatedate(new Date());
-                }
                 /* 添加成功 */
                 if(this.xslUserService.InsertXslUser(xslUsers)){
                     xslResult = XslResult.build(200,"用户添加成功!");
@@ -112,4 +114,7 @@ public class XslUserController {
             return xslResult;
         }
     }
+
+
+
 }

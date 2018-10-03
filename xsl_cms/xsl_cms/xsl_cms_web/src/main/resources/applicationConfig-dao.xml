@@ -21,9 +21,10 @@
 	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean" >
 		<property name="configLocation" value="classpath:mybatis/SqlMapConfig.xml" />
 		<property name="dataSource" ref="dataSource" />
+
 	</bean>
 <!-- 4.配置加载service的的代理对象 -->
 	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer" >
-		<property name="basePackage" value="xsl.cms.mapper" />
+		<property name="basePackage" value="com.xsl.cms.mapper"/>
 	</bean>
 </beans>

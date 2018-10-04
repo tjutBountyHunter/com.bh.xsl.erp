@@ -7,19 +7,26 @@
   Controller日志
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%
+    String path = request.getContextPath();
+    String basePath = request.getScheme() + "://"
+            + request.getServerName() + ":" + request.getServerPort()
+            + path + "/";
+%>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
+    <base href="<%=basePath%>"/>
     <title>Controller 日志</title>
     <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
-    <link href="../css/demo.css" rel="stylesheet" type="text/css" />
-    <script src="../js/boot.js" type="text/javascript"></script>
-    <script src="../js/miniui/locale/en_US.js" type="text/javascript"></script>
-    <script src="../js/ColumnsMenu.js" type="text/javascript"></script>
+    <link href="<%=basePath%>css/demo.css" rel="stylesheet" type="text/css" />
+    <script src="<%=basePath%>js/boot.js" type="text/javascript"></script>
+    <script src="<%=basePath%>js/miniui/locale/en_US.js" type="text/javascript"></script>
+    <script src="<%=basePath%>js/ColumnsMenu.js" type="text/javascript"></script>
 </head>
 <body>
 <div class="mini-fit">
 <div id="datagrid1" class="mini-datagrid" style="height:380px;"
-     url="/log/controller/list" idField="id"
+     url="log/controller/list" idField="id"
      allowResize="true" pageSize="10"
      allowCellEdit="true" allowCellSelect="true" multiSelect="true"
      editNextOnEnterKey="true"  editNextRowCell="true"
@@ -36,6 +43,6 @@
     </div>
 </div>
 </div>
-<script src="../js/operation.js" type="text/javascript"></script>
+<script src="<%=basePath%>js/operation.js" type="text/javascript"></script>
 </body>
 </html>

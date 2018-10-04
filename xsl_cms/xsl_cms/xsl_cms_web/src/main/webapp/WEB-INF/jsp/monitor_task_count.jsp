@@ -7,18 +7,25 @@
   任务数量监控
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%
+    String path = request.getContextPath();
+    String basePath = request.getScheme() + "://"
+            + request.getServerName() + ":" + request.getServerPort()
+            + path + "/";
+%>
 <!DOCTYPE html>
 <html style="height: 100%">
 <head>
+    <base href="<%=basePath%>"/>
     <meta charset="utf-8">
 </head>
 <body>
 <!-- 写一个表格的名字 -->
 <div id="myChart" style="height: 100% ;height:450px;">
 </div>
-<script type="text/javascript" src="../../js/echarts.js">
+<script type="text/javascript" src="<%=basePath%>../js/echarts.js">
 </script>
-<script type="text/javascript" src="../../js/jquery.min.js">
+<script type="text/javascript" src="<%=basePath%>../js/jquery.min.js">
 </script>
 
 <script type="text/javascript">
@@ -163,7 +170,7 @@
 
         //json数据传值，每次过来传输一个值就可以了，因为这是实时监控的
         $.ajax({
-            url:"/monitor/sum",
+            url:"monitor/sum",
             type:"post",
             contentType:"application/json;charset=UTF-8",
             dataType:"json",

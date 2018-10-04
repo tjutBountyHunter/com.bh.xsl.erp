@@ -7,17 +7,24 @@
   任务审计页面
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%
+    String path = request.getContextPath();
+    String basePath = request.getScheme() + "://"
+            + request.getServerName() + ":" + request.getServerPort()
+            + path + "/";
+%>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
+    <base href="<%=basePath%>"/>
     <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
-    <link href="../css/demo.css" rel="stylesheet" type="text/css" />
-    <script src="../js/boot.js" type="text/javascript"></script>
-    <script src="../js/ColumnsMenu.js" type="text/javascript"></script>
+    <link href="<%=basePath%>css/demo.css" rel="stylesheet" type="text/css" />
+    <script src="<%=basePath%>js/boot.js" type="text/javascript"></script>
+    <script src="<%=basePath%>js/ColumnsMenu.js" type="text/javascript"></script>
 
 </head>
 <body >
 <div id="datagrid1" class="mini-datagrid" style="width:100%;height:380px;"
-     url="/task/approve/list"
+     url="task/approve/list"
      idField="id" allowResize="true"
      sizeList="[20,30,50,100]" pageSize="10"
      ondrawcell="draw"
@@ -57,7 +64,7 @@
         var id = row.id;
         //进行ajax数据操作
         $.ajax({
-            url:"/task/approve/approve",
+            url:"task/approve/approve",
             type:"post",
             data:JSON.stringify({id:id,state:0}),
             contentType:"application/json;charset=UTF-8",
@@ -85,7 +92,7 @@
         alert(json);
         //
         $.ajax({
-            url:"/task/approve/approve",
+            url:"task/approve/approve",
             type:"post",
             data:json,
             contentType:"application/json;charset=UTF-8",

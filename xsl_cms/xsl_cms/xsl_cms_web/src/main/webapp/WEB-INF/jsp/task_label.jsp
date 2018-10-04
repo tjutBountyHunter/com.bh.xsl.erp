@@ -6,16 +6,23 @@
   To change this template use File | Settings | File Templates.
   任务标签页面
 --%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page contentType="text/html;charset=UTF-8" pageEncoding="utf-8" language="java" %>
+<%
+    String path = request.getContextPath();
+    String basePath = request.getScheme() + "://"
+            + request.getServerName() + ":" + request.getServerPort()
+            + path + "/";
+%>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
+    <base href="<%=basePath%>"/>
     <title>任务展示 </title>
     <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
-    <link href="../css/demo.css" rel="stylesheet" type="text/css" />
+    <link href="<%=basePath%>css/demo.css" rel="stylesheet" type="text/css" />
 
-    <script src="../js/boot.js" type="text/javascript"></script>
-    <script src="../js/miniui/locale/en_US.js" type="text/javascript"></script>
-    <script src="../js/ColumnsMenu.js" type="text/javascript"></script>
+    <script src="<%=basePath%>js/boot.js" type="text/javascript"></script>
+    <script src="<%=basePath%>js/miniui/locale/en_US.js" type="text/javascript"></script>
+    <script src="<%=basePath%>js/ColumnsMenu.js" type="text/javascript"></script>
 
 </head>
 <body>
@@ -25,9 +32,9 @@
             <tr>
                 <td style="width:100%;">
                     <a class="mini-button" iconCls="icon-add" onclick="addRow()" plain="true" tooltip="增加...">增加</a>
-                    <a class="mini-button" iconCls="icon-remove" onclick="removeRow('/task/tag/delete')" plain="true">删除</a>
+                    <a class="mini-button" iconCls="icon-remove" onclick="removeRow('task/tag/delete')" plain="true">删除</a>
                     <span class="separator"></span>
-                    <a class="mini-button" iconCls="icon-save" onclick="saveData('/task/tag')" plain="true">保存</a>
+                    <a class="mini-button" iconCls="icon-save" onclick="saveData('task/tag')" plain="true">保存</a>
                 </td>
                 <td style="white-space:nowrap;">
                     <input id="key" class="mini-textbox" emptyText="请输入任务标签ID" style="width:150px;" onenter="onKeyEnter"/>
@@ -38,7 +45,7 @@
         </table>
     </div>
 <div id="datagrid1" class="mini-datagrid" style="height:380px;"
-     url="/task/tag/list" idField="id"
+     url="task/tag/list" idField="id"
      allowResize="true" pageSize="10"
      allowCellEdit="true" allowCellSelect="true" multiSelect="true"
      editNextOnEnterKey="true"  editNextRowCell="true"
@@ -67,6 +74,6 @@
     </div>
 </div>
 </div>
-<script src="../js/operation.js" type="text/javascript" ></script>
+<script src="<%=basePath%>js/operation.js" type="text/javascript" ></script>
 </body>
 </html>

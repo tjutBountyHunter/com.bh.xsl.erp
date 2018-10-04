@@ -6,16 +6,23 @@
   To change this template use File | Settings | File Templates.
   雇主管理页面
 --%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page contentType="text/html;charset=UTF-8" pageEncoding="utf-8" language="java" %>
+<%
+    String path = request.getContextPath();
+    String basePath = request.getScheme() + "://"
+            + request.getServerName() + ":" + request.getServerPort()
+            + path + "/";
+%>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
+    <base href="<%=basePath%>"/>
     <title>雇主管理 </title>
     <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
-    <link href="../css/demo.css" rel="stylesheet" type="text/css" />
+    <link href="<%=basePath%>css/demo.css" rel="stylesheet" type="text/css" />
 
-    <script src="../js/boot.js" type="text/javascript"></script>
-    <script src="../js/miniui/locale/en_US.js" type="text/javascript"></script>
-    <script src="../js/ColumnsMenu.js" type="text/javascript"></script>
+    <script src="<%=basePath%>js/boot.js" type="text/javascript"></script>
+    <script src="<%=basePath%>js/miniui/locale/en_US.js" type="text/javascript"></script>
+    <script src="<%=basePath%>js/ColumnsMenu.js" type="text/javascript"></script>
 
 </head>
 <body>
@@ -24,7 +31,7 @@
         <table style="width:100%;">
             <tr>
                 <td style="width:100%;">
-                    <a class="mini-button" iconCls="icon-save" onclick="saveData('/user/master')" plain="true">保存</a>
+                    <a class="mini-button" iconCls="icon-save" onclick="saveData('user/master')" plain="true">保存</a>
                 </td>
                 <td style="white-space:nowrap;">
                     <input id="key" class="mini-textbox" emptyText="请输入雇主ID" style="width:150px;" onenter="onKeyEnter"/>
@@ -35,7 +42,7 @@
         </table>
     </div>
 <div id="datagrid1" class="mini-datagrid" style="height:380px;"
-     url="/user/master/list" idField="id"
+     url="user/master/list" idField="id"
      allowResize="true" pageSize="10"
      allowCellEdit="true" allowCellSelect="true" multiSelect="true"
      editNextOnEnterKey="true"  editNextRowCell="true"
@@ -47,6 +54,7 @@
         <div name="id"  field="id" headerAlign="center" allowSort="true" width="150" >雇主ID
             <input property="editor" class="mini-textbox" style="width:100%;" maxWidth="150" />
         </div>
+        <div name="userName"  field="userName" headerAlign="center" allowSort="true" width="100" >用户名</div>
         <div field="level" width="100" allowSort="true" >等级
             <input property="editor" class="mini-spinner"  minValue="0" maxValue="200" value="25" style="width:100%;"/>
         </div>
@@ -72,6 +80,6 @@
     </div>
 </div>
 </div>
-<script src="../js/operation.js" type="text/javascript"></script>
+<script src="<%=basePath%>js/operation.js" type="text/javascript"></script>
 </body>
 </html>

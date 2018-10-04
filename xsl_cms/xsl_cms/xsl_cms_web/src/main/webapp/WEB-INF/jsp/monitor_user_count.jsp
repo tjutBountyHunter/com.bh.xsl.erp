@@ -6,12 +6,20 @@
   To change this template use File | Settings | File Templates.
   用户数量监控
 --%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page contentType="text/html;charset=UTF-8" pageEncoding="utf-8" language="java" %>
+<%
+    String path = request.getContextPath();
+    String basePath = request.getScheme() + "://"
+            + request.getServerName() + ":" + request.getServerPort()
+            + path + "/";
+%>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<base href="<%=basePath%>"/>
 <div id="myChart" style="height: 100% ;height:450px;">
 </div>
-<script type="text/javascript" src="../../js/echarts.js">
+<script type="text/javascript" src="<%=basePath%>../js/echarts.js">
 </script>
-<script type="text/javascript" src="../../js/jquery.min.js">
+<script type="text/javascript" src="<%=basePath%>../js/jquery.min.js">
 </script>
 <script type="text/javascript">
     // 基于准备好的dom，初始化echarts图表
@@ -111,7 +119,7 @@
         var mount;
         //ajax传值
         $.ajax({
-            url:"/monitor/user/mount",
+            url:"monitor/user/mount",
             type:"post",
             contentType:"application/json;charset=UTF-8",
             dataType:"json",

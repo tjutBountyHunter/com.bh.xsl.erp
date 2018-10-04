@@ -12,6 +12,17 @@
     <result column="lastAccDate" property="lastaccdate" javaType="String" jdbcType="DATE" />
     <result column="state" property="state" jdbcType="BIT" />
   </resultMap>
+  <resultMap id="BaseResultMap2" type="xsl.cms.pojo.MasterReturn" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="level" property="level" jdbcType="SMALLINT" />
+    <result column="empirical" property="empirical" jdbcType="INTEGER" />
+    <result column="taskAccNum" property="taskaccnum" jdbcType="INTEGER" />
+    <result column="taskRevokeNum" property="taskrevokenum" jdbcType="INTEGER" />
+    <result column="credit" property="credit" jdbcType="SMALLINT" />
+    <result column="descr" property="descr" jdbcType="VARCHAR" />
+    <result column="lastAccDate" property="lastaccdate" javaType="String" jdbcType="DATE" />
+    <result column="state" property="state" jdbcType="BIT" />
+  </resultMap>
   <sql id="Example_Where_Clause" >
     <where >
       <foreach collection="oredCriteria" item="criteria" separator="or" >
@@ -73,7 +84,7 @@
   <sql id="Base_Column_List" >
     id, level, empirical, taskAccNum, taskRevokeNum, credit, descr, lastAccDate, state
   </sql>
-  <select id="selectByExample" resultMap="BaseResultMap" parameterType="xsl.cms.pojo.XslMasterExample" >
+  <select id="selectByExample" resultMap="BaseResultMap2" parameterType="xsl.cms.pojo.MasterReturn" >
     select
     <if test="distinct" >
       distinct

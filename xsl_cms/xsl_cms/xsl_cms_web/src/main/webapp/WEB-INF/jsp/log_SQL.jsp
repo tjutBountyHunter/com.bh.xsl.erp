@@ -7,15 +7,22 @@
   SQL日志
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%
+    String path = request.getContextPath();
+    String basePath = request.getScheme() + "://"
+            + request.getServerName() + ":" + request.getServerPort()
+            + path + "/";
+%>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
+    <base href="<%=basePath%>"/>
     <title>任务展示 </title>
     <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
-    <link href="../css/demo.css" rel="stylesheet" type="text/css" />
+    <link href="<%=basePath%>css/demo.css" rel="stylesheet" type="text/css" />
 
-    <script src="../js/boot.js" type="text/javascript"></script>
-    <script src="../js/miniui/locale/en_US.js" type="text/javascript"></script>
-    <script src="../js/ColumnsMenu.js" type="text/javascript"></script>
+    <script src="<%=basePath%>js/boot.js" type="text/javascript"></script>
+    <script src="<%=basePath%>js/miniui/locale/en_US.js" type="text/javascript"></script>
+    <script src="<%=basePath%>js/ColumnsMenu.js" type="text/javascript"></script>
 </head>
 <body>
 <div class="mini-fit">
@@ -24,9 +31,9 @@
             <tr>
                 <td style="width:100%;">
                     <a class="mini-button" iconCls="icon-add" onclick="addRow()" plain="true" tooltip="增加...">增加</a>
-                    <a class="mini-button" iconCls="icon-remove" onclick="removeRow('../../data/taskController')" plain="true">删除</a>
+                    <a class="mini-button" iconCls="icon-remove" onclick="removeRow('<%=basePath%>../data/taskController')" plain="true">删除</a>
                     <span class="separator"></span>
-                    <a class="mini-button" iconCls="icon-save" onclick="saveData('../../data/taskUpdateController')" plain="true">保存</a>
+                    <a class="mini-button" iconCls="icon-save" onclick="saveData('<%=basePath%>../data/taskUpdateController')" plain="true">保存</a>
                 </td>
                 <td style="white-space:nowrap;">
                     <input id="key" class="mini-textbox" emptyText="请输入ID" style="width:150px;" onenter="onKeyEnter"/>
@@ -36,7 +43,7 @@
         </table>
     </div>
 <div id="datagrid1" class="mini-datagrid" style="height:380px;"
-     url="../data/task_show.json" idField="id"
+     url="<%=basePath%>data/task_show.json" idField="id"
      allowResize="true" pageSize="10"
      allowCellEdit="true" allowCellSelect="true" multiSelect="true"
      editNextOnEnterKey="true"  editNextRowCell="true"
@@ -68,12 +75,12 @@
         <!--ComboBox：远程数据,下面javascript的数组就是，因为不用改变，所以没有使用txt文件-->
         <div type="comboboxcolumn" field="country" width="100" headerAlign="center" >国家
             <!-- 因为不能连接国家的库，所以写了一个txt,如需添加其他国籍，手动添加 -->
-            <input property="editor" class="mini-combobox" style="width:100%;" url="../data/countrys.txt" />
+            <input property="editor" class="mini-combobox" style="width:100%;" url="<%=basePath%>data/countrys.txt" />
         </div>
         <div type="checkboxcolumn" field="married" trueValue="1" falseValue="0" width="60" headerAlign="center">婚否</div>
     </div>
 </div>
 </div>
-<script src="../js/operation.js" type="text/javascript"></script>
+<script src="<%=basePath%>js/operation.js" type="text/javascript"></script>
 </body>
 </html>

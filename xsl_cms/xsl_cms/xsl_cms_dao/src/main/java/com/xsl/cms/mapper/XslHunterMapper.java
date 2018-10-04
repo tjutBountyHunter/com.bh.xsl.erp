@@ -2,6 +2,7 @@ package com.xsl.cms.mapper;
 
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
+import xsl.cms.pojo.HunterReturn;
 import xsl.cms.pojo.XslHunter;
 import xsl.cms.pojo.XslHunterExample;
 
@@ -16,7 +17,7 @@ public interface XslHunterMapper {
 
     int insertSelective(XslHunter record);
 
-    List<XslHunter> selectByExample(XslHunterExample example);
+    List<HunterReturn> selectByExample(XslHunterExample example);
 
     XslHunter selectByPrimaryKey(Integer id);
 

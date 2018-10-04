@@ -2,11 +2,13 @@ package xsl.cms.service.impl;
 
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
+import com.xsl.cms.mapper.XslExtendMapper;
 import com.xsl.cms.mapper.XslHunterMapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 import xsl.cms.annotation.SystemServiceLog;
+import xsl.cms.pojo.HunterReturn;
 import xsl.cms.pojo.XslHunter;
 import xsl.cms.pojo.XslHunterExample;
 import xsl.cms.pojo.common.PageObject;
@@ -26,6 +28,8 @@ public class XslHunterServiceImpl implements XslHunterService {
 
     @Resource
     protected XslHunterMapper xslHunterMapper;
+    @Resource
+    private XslExtendMapper xslExtendMapper;
 
     /**
      * 页面数据的查询
@@ -43,6 +47,7 @@ public class XslHunterServiceImpl implements XslHunterService {
         try{
             XslHunterExample example = new XslHunterExample();
             XslHunterExample.Criteria criteria = example.createCriteria();
+            criteria.andStateEqualTo(true);
             //进行判断防止程序崩溃
             if( key != null ){//用户ID
                 criteria.andIdEqualTo(new Integer(key));
@@ -53,9 +58,10 @@ public class XslHunterServiceImpl implements XslHunterService {
             //只显示没有被删除的数据
             criteria.andStateEqualTo(true);
             PageHelper.startPage(page,rows);//进行分页
-            List<XslHunter> list = this.xslHunterMapper.selectByExample(example);
+            List<HunterReturn> list = this.xslHunterMapper.selectByExample(example);
+            setUserNameInHunterReturn(list);
             object.setData(list);
-            PageInfo<XslHunter> info = new PageInfo<XslHunter>(list);//得到分页的信息
+            PageInfo<HunterReturn> info = new PageInfo<HunterReturn>(list);//得到分页的信息
             //得到分页的总数量
             object.setTotal(info.getTotal());
         }catch (Exception e){
@@ -90,5 +96,12 @@ public class XslHunterServiceImpl implements XslHunterService {
             }
         }
         return true;
+    }
+
+    private void setUserNameInHunterReturn(List<HunterReturn> list){
+        for (HunterReturn hunterReturn : list){
+            String name = xslExtendMapper.getUserNameByHunterId(hunterReturn.getId());
+            hunterReturn.setUserName(name);
+        }
     }
 }

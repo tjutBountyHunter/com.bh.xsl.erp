@@ -384,6 +384,15 @@ public class XslUserServiceImpl implements XslUserService {
     }
 
     private XslSchoolinfo mockXslSchoolinfo(){
+        /**
+         *
+         * 功能描述: 模拟生成学校信息
+         *
+         * @param: []
+         * @return: xsl.cms.pojo.XslSchoolinfo
+         * @auther: 11432_000
+         * @date: 2018/10/4 13:37
+         */
         XslSchoolinfo schoolinfo = new XslSchoolinfo();
         schoolinfo.setSno("20150001");
         schoolinfo.setMajor("计算机科学与技术");
@@ -396,8 +405,17 @@ public class XslUserServiceImpl implements XslUserService {
     }
 
     private XslMaster mockXslMaster(String phone){
+        /**
+         *
+         * 功能描述: 模拟生成雇主信息
+         *
+         * @param: [phone]
+         * @return: xsl.cms.pojo.XslMaster
+         * @auther: 11432_000
+         * @date: 2018/10/4 13:38
+         */
         XslMaster xslMaster = new XslMaster();
-        xslMaster.setLevel((short)0);
+        xslMaster.setLevel((short)1);
         xslMaster.setEmpirical(0);
         xslMaster.setTaskaccnum(0);
         xslMaster.setTaskrevokenum(0);
@@ -409,8 +427,17 @@ public class XslUserServiceImpl implements XslUserService {
     }
 
     private XslHunter mockXslHunter(String phone){
+        /**
+         *
+         * 功能描述:模拟生成猎人信息
+         *
+         * @param: [phone]
+         * @return: xsl.cms.pojo.XslHunter
+         * @auther: 11432_000
+         * @date: 2018/10/4 13:38
+         */
         XslHunter xslHunter = new XslHunter();
-        xslHunter.setLevel((short)0);
+        xslHunter.setLevel((short)1);
         xslHunter.setEmpirical(0);
         xslHunter.setTaskaccnum(0);
         xslHunter.setTaskfailnum(0);
@@ -427,7 +454,7 @@ public class XslUserServiceImpl implements XslUserService {
         XslHunterExample example = new XslHunterExample();
         XslHunterExample.Criteria criteria = example.createCriteria();
         criteria.andDescrEqualTo("猎人" + phone);
-        List<XslHunter> xslHunters = xslHunterMapper.selectByExample(example);
+        List<HunterReturn> xslHunters = xslHunterMapper.selectByExample(example);
         return xslHunters.get(0).getId();
     }
 
@@ -437,7 +464,7 @@ public class XslUserServiceImpl implements XslUserService {
         XslMasterExample example = new XslMasterExample();
         XslMasterExample.Criteria criteria = example.createCriteria();
         criteria.andDescrEqualTo("雇主" + phone);
-        List<XslMaster> xslMasters = xslMasterMapper.selectByExample(example);
+        List<MasterReturn> xslMasters = xslMasterMapper.selectByExample(example);
         return xslMasters.get(0).getId();
     }
 

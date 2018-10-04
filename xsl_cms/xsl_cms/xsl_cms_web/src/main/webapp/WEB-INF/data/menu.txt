@@ -80,8 +80,8 @@
 { "id": "bbzx", iconCls: "fa fa-area-chart", text: "任务监控", children: [
         { "id": "bbgl", iconCls: "fa fa-cogs", text: "任务数量监控", url: "monitor/task/count" },
         { "id": "bbsl", iconCls: "fa fa-line-chart", text: "任务分类监控" ,url: "monitor/task/class"},
-        { "id": "bbgl2", iconCls: "fa fa-area-chart", text: "任务达成率监控", url: "/monitor/task/success" },
-        { "id": "bbgl3", iconCls: "fa fa-pie-chart", text: "活跃标签使用", url: "/monitor/task/label" }
+        { "id": "bbgl2", iconCls: "fa fa-area-chart", text: "任务达成率监控", url: "monitor/task/success" },
+        { "id": "bbgl3", iconCls: "fa fa-pie-chart", text: "活跃标签使用", url: "monitor/task/label" }
         /*,
         { "id": "bbxq", iconCls: "fa fa-wpforms", text: "性能监控", children: [
                 { "id": "cgbb", iconCls: "fa fa-bar-chart", text: "Server运行状态监控", url: "pages/1.html" },

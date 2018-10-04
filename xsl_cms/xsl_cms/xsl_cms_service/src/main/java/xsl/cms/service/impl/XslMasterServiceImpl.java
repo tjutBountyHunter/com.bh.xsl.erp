@@ -2,11 +2,13 @@ package xsl.cms.service.impl;
 
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
+import com.xsl.cms.mapper.XslExtendMapper;
 import com.xsl.cms.mapper.XslMasterMapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 import xsl.cms.annotation.SystemServiceLog;
+import xsl.cms.pojo.MasterReturn;
 import xsl.cms.pojo.XslMaster;
 import xsl.cms.pojo.XslMasterExample;
 import xsl.cms.pojo.common.PageObject;
@@ -26,6 +28,8 @@ public class XslMasterServiceImpl implements XslMasterService {
 
     @Resource
     protected XslMasterMapper xslMasterMapper;
+    @Resource
+    private XslExtendMapper xslExtendMapper;
 
     /**
      * 页面数据的查询
@@ -53,9 +57,10 @@ public class XslMasterServiceImpl implements XslMasterService {
             //只显示没有被删除的数据
             criteria.andStateEqualTo(true);
             PageHelper.startPage(page,rows);//进行分页
-            List<XslMaster> list = this.xslMasterMapper.selectByExample(example);
+            List<MasterReturn> list = this.xslMasterMapper.selectByExample(example);
+            setUserNameInMasterReturn(list);
             object.setData(list);
-            PageInfo<XslMaster> info = new PageInfo<XslMaster>(list);//得到分页的信息
+            PageInfo<MasterReturn> info = new PageInfo<MasterReturn>(list);//得到分页的信息
             //得到分页的总数量
             object.setTotal(info.getTotal());
         }catch (Exception e){
@@ -91,5 +96,12 @@ public class XslMasterServiceImpl implements XslMasterService {
             }
         }
         return true;
+    }
+
+    private void setUserNameInMasterReturn(List<MasterReturn> list){
+        for (MasterReturn masterReturn : list){
+            String name = xslExtendMapper.getUserNameByMasterId(masterReturn.getId());
+            masterReturn.setUserName(name);
+        }
     }
 }

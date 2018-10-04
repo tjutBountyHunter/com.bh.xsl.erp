@@ -1,7 +1,9 @@
 <%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
 <%
-String path = request.getContextPath();
-String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
+    String path = request.getContextPath();
+    String basePath = request.getScheme() + "://"
+            + request.getServerName() + ":" + request.getServerPort()
+            + path + "/";
 %>
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
@@ -9,7 +11,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <head>
     <base href="<%=basePath%>">
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>悬赏令-CMS</title>
+    <title>悬赏令后台</title>
     <script src="js/boot.js" type="text/javascript"></script>
     <link href="res/third-party/scrollbar/jquery.mCustomScrollbar.css" rel="stylesheet" type="text/css" />
     <script src="res/third-party/scrollbar/jquery.mCustomScrollbar.concat.min.js" type="text/javascript"></script>
@@ -23,7 +25,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     
 <div class="navbar">
     <div class="navbar-header">
-        <div class="navbar-brand">悬赏令CMS</div>
+        <div class="navbar-brand">悬赏令后台</div>
         <div class="navbar-brand navbar-brand-compact">XSL</div>
     </div>
     <ul class="nav navbar-nav">
@@ -57,7 +59,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         <div id="mainTabs" class="mini-tabs main-tabs" activeIndex="0" style="height:100%;" plain="false"
              buttons="#tabsButtons" arrowPosition="side" >
             <div name="index" iconCls="fa-android" title="控制台">
-                Welcome 悬赏令-CMS主界面 ！
+                Welcome 悬赏令-后台主界面 ！
             </div>
         </div>
         <div id="tabsButtons">
@@ -130,7 +132,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     function updatePasswoed() {
         mini.open({
             targetWindow: window,
-            url: "/update/password",
+            url: "update/password",
             title: "修改密码", width: 300, height: 200,
             onload: function () {
                 var iframe = this.getIFrameEl();

@@ -7,10 +7,16 @@
   用户活跃度监控
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%
+    String path = request.getContextPath();
+    String basePath = request.getScheme() + "://"
+            + request.getServerName() + ":" + request.getServerPort()
+            + path + "/";
+%>
 <!DOCTYPE html>
 <html style="height: 100%">
 <head>
-
+    <base href="<%=basePath%>"/>
     <meta charset="utf-8">
 
 </head>
@@ -20,9 +26,9 @@
 <!-- 写一个表格的名字 -->
 <div id="myChart" style="height: 100% ;height:450px;">
 </div>
-<script type="text/javascript" src="../../js/echarts.js">
+<script type="text/javascript" src="<%=basePath%>../js/echarts.js">
 </script>
-<script type="text/javascript" src="../../js/jquery.min.js">
+<script type="text/javascript" src="<%=basePath%>../js/jquery.min.js">
 </script>
 
 <script type="text/javascript">
@@ -123,7 +129,7 @@
         var mount;
         //ajax传值
         $.ajax({
-            url:"/monitor/user/mount",
+            url:"monitor/user/mount",
             type:"post",
             contentType:"application/json;charset=UTF-8",
             dataType:"json",

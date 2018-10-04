@@ -11,8 +11,7 @@
     <result column="number" property="number" jdbcType="INTEGER" />
     <result column="createDate" property="createdate" javaType="String" jdbcType="DATE" />
     <result column="updateDate" property="updatedate" javaType="String" jdbcType="DATE" />
-    <result column="revokeDate" property="revokedate" javaType="String" jdbcType="DATE" />
-    <result column="taskType" property="tasktype" jdbcType="INTEGER" />
+    <result column="deadline" property="deadline" javaType="String" jdbcType="TIMESTAMP" />
   </resultMap>
   <sql id="Example_Where_Clause" >
     <where >
@@ -73,8 +72,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    id, cid, descr, sendId, money, state, number, createDate, updateDate, revokeDate, 
-    taskType
+    id, cid, descr, sendId, money, state, number, createDate, updateDate, deadline
   </sql>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="xsl.cms.pojo.XslTaskExample" >
     select
@@ -110,11 +108,11 @@
     insert into xsl_task (id, cid, descr, 
       sendId, money, state, 
       number, createDate, updateDate, 
-      revokeDate, taskType)
+      deadline)
     values (#{id,jdbcType=INTEGER}, #{cid,jdbcType=INTEGER}, #{descr,jdbcType=VARCHAR}, 
       #{sendid,jdbcType=INTEGER}, #{money,jdbcType=DECIMAL}, #{state,jdbcType=TINYINT}, 
       #{number,jdbcType=INTEGER}, #{createdate,jdbcType=DATE}, #{updatedate,jdbcType=DATE}, 
-      #{revokedate,jdbcType=DATE}, #{tasktype,jdbcType=INTEGER})
+      #{deadline,jdbcType=TIMESTAMP})
   </insert>
   <insert id="insertSelective" parameterType="xsl.cms.pojo.XslTask" >
     insert into xsl_task
@@ -146,11 +144,8 @@
       <if test="updatedate != null" >
         updateDate,
       </if>
-      <if test="revokedate != null" >
-        revokeDate,
-      </if>
-      <if test="tasktype != null" >
-        taskType,
+      <if test="deadline != null" >
+        deadline,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
@@ -181,11 +176,8 @@
       <if test="updatedate != null" >
         #{updatedate,jdbcType=DATE},
       </if>
-      <if test="revokedate != null" >
-        #{revokedate,jdbcType=DATE},
-      </if>
-      <if test="tasktype != null" >
-        #{tasktype,jdbcType=INTEGER},
+      <if test="deadline != null" >
+        #{deadline,jdbcType=TIMESTAMP},
       </if>
     </trim>
   </insert>
@@ -225,11 +217,8 @@
       <if test="record.updatedate != null" >
         updateDate = #{record.updatedate,jdbcType=DATE},
       </if>
-      <if test="record.revokedate != null" >
-        revokeDate = #{record.revokedate,jdbcType=DATE},
-      </if>
-      <if test="record.tasktype != null" >
-        taskType = #{record.tasktype,jdbcType=INTEGER},
+      <if test="record.deadline != null" >
+        deadline = #{record.deadline,jdbcType=TIMESTAMP},
       </if>
     </set>
     <if test="_parameter != null" >
@@ -247,8 +236,7 @@
       number = #{record.number,jdbcType=INTEGER},
       createDate = #{record.createdate,jdbcType=DATE},
       updateDate = #{record.updatedate,jdbcType=DATE},
-      revokeDate = #{record.revokedate,jdbcType=DATE},
-      taskType = #{record.tasktype,jdbcType=INTEGER}
+      deadline = #{record.deadline,jdbcType=TIMESTAMP}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -280,11 +268,8 @@
       <if test="updatedate != null" >
         updateDate = #{updatedate,jdbcType=DATE},
       </if>
-      <if test="revokedate != null" >
-        revokeDate = #{revokedate,jdbcType=DATE},
-      </if>
-      <if test="tasktype != null" >
-        taskType = #{tasktype,jdbcType=INTEGER},
+      <if test="deadline != null" >
+        deadline = #{deadline,jdbcType=TIMESTAMP},
       </if>
     </set>
     where id = #{id,jdbcType=INTEGER}
@@ -299,8 +284,7 @@
       number = #{number,jdbcType=INTEGER},
       createDate = #{createdate,jdbcType=DATE},
       updateDate = #{updatedate,jdbcType=DATE},
-      revokeDate = #{revokedate,jdbcType=DATE},
-      taskType = #{tasktype,jdbcType=INTEGER}
+      deadline = #{deadline,jdbcType=TIMESTAMP}
     where id = #{id,jdbcType=INTEGER}
   </update>
 </mapper>

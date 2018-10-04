@@ -683,123 +683,63 @@ public class XslTaskExample {
             return (Criteria) this;
         }
 
-        public Criteria andRevokedateIsNull() {
-            addCriterion("revokeDate is null");
+        public Criteria andDeadlineIsNull() {
+            addCriterion("deadline is null");
             return (Criteria) this;
         }
 
-        public Criteria andRevokedateIsNotNull() {
-            addCriterion("revokeDate is not null");
+        public Criteria andDeadlineIsNotNull() {
+            addCriterion("deadline is not null");
             return (Criteria) this;
         }
 
-        public Criteria andRevokedateEqualTo(Date value) {
-            addCriterionForJDBCDate("revokeDate =", value, "revokedate");
+        public Criteria andDeadlineEqualTo(Date value) {
+            addCriterion("deadline =", value, "deadline");
             return (Criteria) this;
         }
 
-        public Criteria andRevokedateNotEqualTo(Date value) {
-            addCriterionForJDBCDate("revokeDate <>", value, "revokedate");
+        public Criteria andDeadlineNotEqualTo(Date value) {
+            addCriterion("deadline <>", value, "deadline");
             return (Criteria) this;
         }
 
-        public Criteria andRevokedateGreaterThan(Date value) {
-            addCriterionForJDBCDate("revokeDate >", value, "revokedate");
+        public Criteria andDeadlineGreaterThan(Date value) {
+            addCriterion("deadline >", value, "deadline");
             return (Criteria) this;
         }
 
-        public Criteria andRevokedateGreaterThanOrEqualTo(Date value) {
-            addCriterionForJDBCDate("revokeDate >=", value, "revokedate");
+        public Criteria andDeadlineGreaterThanOrEqualTo(Date value) {
+            addCriterion("deadline >=", value, "deadline");
             return (Criteria) this;
         }
 
-        public Criteria andRevokedateLessThan(Date value) {
-            addCriterionForJDBCDate("revokeDate <", value, "revokedate");
+        public Criteria andDeadlineLessThan(Date value) {
+            addCriterion("deadline <", value, "deadline");
             return (Criteria) this;
         }
 
-        public Criteria andRevokedateLessThanOrEqualTo(Date value) {
-            addCriterionForJDBCDate("revokeDate <=", value, "revokedate");
+        public Criteria andDeadlineLessThanOrEqualTo(Date value) {
+            addCriterion("deadline <=", value, "deadline");
             return (Criteria) this;
         }
 
-        public Criteria andRevokedateIn(List<Date> values) {
-            addCriterionForJDBCDate("revokeDate in", values, "revokedate");
+        public Criteria andDeadlineIn(List<Date> values) {
+            addCriterion("deadline in", values, "deadline");
             return (Criteria) this;
         }
 
-        public Criteria andRevokedateNotIn(List<Date> values) {
-            addCriterionForJDBCDate("revokeDate not in", values, "revokedate");
+        public Criteria andDeadlineNotIn(List<Date> values) {
+            addCriterion("deadline not in", values, "deadline");
             return (Criteria) this;
         }
 
-        public Criteria andRevokedateBetween(Date value1, Date value2) {
-            addCriterionForJDBCDate("revokeDate between", value1, value2, "revokedate");
+        public Criteria andDeadlineBetween(Date value1, Date value2) {
+            addCriterion("deadline between", value1, value2, "deadline");
             return (Criteria) this;
         }
 
-        public Criteria andRevokedateNotBetween(Date value1, Date value2) {
-            addCriterionForJDBCDate("revokeDate not between", value1, value2, "revokedate");
-            return (Criteria) this;
-        }
-
-        public Criteria andTasktypeIsNull() {
-            addCriterion("taskType is null");
-            return (Criteria) this;
-        }
-
-        public Criteria andTasktypeIsNotNull() {
-            addCriterion("taskType is not null");
-            return (Criteria) this;
-        }
-
-        public Criteria andTasktypeEqualTo(Integer value) {
-            addCriterion("taskType =", value, "tasktype");
-            return (Criteria) this;
-        }
-
-        public Criteria andTasktypeNotEqualTo(Integer value) {
-            addCriterion("taskType <>", value, "tasktype");
-            return (Criteria) this;
-        }
-
-        public Criteria andTasktypeGreaterThan(Integer value) {
-            addCriterion("taskType >", value, "tasktype");
-            return (Criteria) this;
-        }
-
-        public Criteria andTasktypeGreaterThanOrEqualTo(Integer value) {
-            addCriterion("taskType >=", value, "tasktype");
-            return (Criteria) this;
-        }
-
-        public Criteria andTasktypeLessThan(Integer value) {
-            addCriterion("taskType <", value, "tasktype");
-            return (Criteria) this;
-        }
-
-        public Criteria andTasktypeLessThanOrEqualTo(Integer value) {
-            addCriterion("taskType <=", value, "tasktype");
-            return (Criteria) this;
-        }
-
-        public Criteria andTasktypeIn(List<Integer> values) {
-            addCriterion("taskType in", values, "tasktype");
-            return (Criteria) this;
-        }
-
-        public Criteria andTasktypeNotIn(List<Integer> values) {
-            addCriterion("taskType not in", values, "tasktype");
-            return (Criteria) this;
-        }
-
-        public Criteria andTasktypeBetween(Integer value1, Integer value2) {
-            addCriterion("taskType between", value1, value2, "tasktype");
-            return (Criteria) this;
-        }
-
-        public Criteria andTasktypeNotBetween(Integer value1, Integer value2) {
-            addCriterion("taskType not between", value1, value2, "tasktype");
+        public Criteria andDeadlineNotBetween(Date value1, Date value2) {
+            addCriterion("deadline not between", value1, value2, "deadline");
             return (Criteria) this;
         }
     }

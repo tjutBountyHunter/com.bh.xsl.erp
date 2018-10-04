@@ -16,7 +16,6 @@ import xsl.cms.service.XslTaskService;
 
 import javax.annotation.Resource;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 /**
@@ -96,19 +95,19 @@ public class XslTaskServiceImpl implements XslTaskService {
                             //设置修改时间
                             xslTask.setUpdatedate(DateUtils.getDateToString());
                             //设置最后一次接受任务的时间
-                            xslTask.setRevokedate(DateUtils.getDateToString());
+//                            xslTask.setRevokedate(DateUtils.getDateToString());
                             xslTask.setCid(1);
                             int n = this.xslTaskMapper.insertSelective(xslTask);
                             if( n < 0 ){
                                 return false;
                             }
                             //如果是待接收的话，在任务类型进行数量的++
-                            Integer tasktype = xslTask.getTasktype();
-                            if( !(tasktype == null || tasktype == -1) ){
+//                            Integer tasktype = xslTask.getTasktype();
+                            if(true){
                                 //1.获取任务的类型id
                                 XslTaskCategoryExample example = new XslTaskCategoryExample();
                                 XslTaskCategoryExample.Criteria criteria = example.createCriteria();
-                                criteria.andIdEqualTo(xslTask.getTasktype());
+//                                criteria.andIdEqualTo(xslTask.getTasktype());
                                 List<XslTaskCategory> list = xslTaskCategoryMapper.selectByExample(example);
                                 //看看有没有这个任务类型，如果有就++
                                 if( list.size() > 0 ){

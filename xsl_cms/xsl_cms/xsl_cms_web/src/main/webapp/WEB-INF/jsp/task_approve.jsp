@@ -37,7 +37,6 @@
         <div field="money" width="100"  headerAlign="center" align="center" allowSort="true">赏金</div>
         <div name="createdate" field="createdate" headerAlign="center" align="center" width="100" allowSort="true" dateFormat="yyyy-MM-dd">创建日期</div>
         <div name="approve" field="approve" width="120" headerAlign="center" align="center"  allowSort="true" >审核</div>
-
     </div>
 </div>
 

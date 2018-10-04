@@ -31,9 +31,9 @@
             <tr>
                 <td style="width:100%;">
                     <a class="mini-button" iconCls="icon-add" onclick="addRow()" plain="true" tooltip="增加...">增加</a>
-                    <a class="mini-button" iconCls="icon-remove" onclick="removeRow('<%=basePath%>../data/taskController')" plain="true">删除</a>
+                    <a class="mini-button" iconCls="icon-remove" onclick="removeRow('<%=basePath%>data/taskController')" plain="true">删除</a>
                     <span class="separator"></span>
-                    <a class="mini-button" iconCls="icon-save" onclick="saveData('<%=basePath%>../data/taskUpdateController')" plain="true">保存</a>
+                    <a class="mini-button" iconCls="icon-save" onclick="saveData('<%=basePath%>data/taskUpdateController')" plain="true">保存</a>
                 </td>
                 <td style="white-space:nowrap;">
                     <input id="key" class="mini-textbox" emptyText="请输入消息ID" style="width:150px;" onenter="onKeyEnter"/>

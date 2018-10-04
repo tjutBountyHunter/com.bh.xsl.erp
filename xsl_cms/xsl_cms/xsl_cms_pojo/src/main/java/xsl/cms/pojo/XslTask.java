@@ -22,9 +22,7 @@ public class XslTask {
 
     private String updatedate;
 
-    private String revokedate;
-
-    private Integer tasktype;
+    private String deadline;
 
     public Integer getId() {
         return id;
@@ -98,19 +96,11 @@ public class XslTask {
         this.updatedate = updatedate;
     }
 
-    public String getRevokedate() {
-        return revokedate;
+    public String getDeadline() {
+        return deadline;
     }
 
-    public void setRevokedate(String revokedate) {
-        this.revokedate = revokedate;
-    }
-
-    public Integer getTasktype() {
-        return tasktype;
-    }
-
-    public void setTasktype(Integer tasktype) {
-        this.tasktype = tasktype;
+    public void setDeadline(String deadline) {
+        this.deadline = deadline;
     }
 }

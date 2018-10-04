@@ -18,7 +18,7 @@
     <base href="<%=basePath%>"/>
     <title>猎人标签页面</title>
     <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
-    <link href="../css/demo.css" rel="stylesheet" type="text/css" />
+    <link href="css/demo.css" rel="stylesheet" type="text/css" />
 
     <script src="<%=basePath%>js/boot.js" type="text/javascript"></script>
     <script src="<%=basePath%>js/miniui/locale/en_US.js" type="text/javascript"></script>

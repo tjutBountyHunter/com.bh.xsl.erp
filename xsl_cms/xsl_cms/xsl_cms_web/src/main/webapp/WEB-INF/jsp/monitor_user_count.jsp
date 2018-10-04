@@ -17,9 +17,9 @@
 <base href="<%=basePath%>"/>
 <div id="myChart" style="height: 100% ;height:450px;">
 </div>
-<script type="text/javascript" src="<%=basePath%>../js/echarts.js">
+<script type="text/javascript" src="<%=basePath%>js/echarts.js">
 </script>
-<script type="text/javascript" src="<%=basePath%>../js/jquery.min.js">
+<script type="text/javascript" src="<%=basePath%>js/jquery.min.js">
 </script>
 <script type="text/javascript">
     // 基于准备好的dom，初始化echarts图表

@@ -174,7 +174,7 @@ public class XslTaskClassServiceImpl implements XslTaskClassService {
                 XslTaskExample example = new XslTaskExample();
                 XslTaskExample.Criteria criteria = example.createCriteria();
                 //设置任务id
-                criteria.andTasktypeEqualTo(xslTaskCategoryId);
+//                criteria.andTasktypeEqualTo(xslTaskCategoryId);
                 //只修改没有审核，正在完成，正在待接的任务
                 List<Byte> stateList = new ArrayList<>();
                 //待接收
@@ -188,7 +188,7 @@ public class XslTaskClassServiceImpl implements XslTaskClassService {
                 criteria.andStateIn(stateList);
                 //要更新的内容
                 XslTask xslTask = new XslTask();
-                xslTask.setTasktype(xslTaskCategoryId);
+//                xslTask.setTasktype(xslTaskCategoryId);
                 xslTaskMapper.updateByExampleSelective(xslTask,example);
                 return true;
             }

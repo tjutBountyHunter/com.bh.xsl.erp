@@ -52,6 +52,7 @@ public class SsoInterceptor implements HandlerInterceptor {
         tokenKey = CookieUtils.getCookieValue(httpServletRequest, TOKEN_KEY);
         if (tokenKey != null && !"".equals(tokenKey)){
             if (checkToken(tokenKey)){
+                setCookie(httpServletResponse , TOKEN_KEY ,tokenKey);
                 return true;
             }
         }
@@ -118,9 +119,18 @@ public class SsoInterceptor implements HandlerInterceptor {
         String token = jedisClient.get(TOKEN_KEY_PREFIX + tokenId);
         if (token != null && !"".equals(token)){
             if (JwtUtils.checkJWTSign(token)){
-               flag = true;
+                jedisClient.expire(TOKEN_KEY_PREFIX + tokenId , COOKIE_LIFE);
+                flag = true;
             }
         }
         return flag;
+    }
+
+    private void setCookie(HttpServletResponse response ,String name , String value){
+        Cookie cookie = new Cookie(name , value);
+        cookie.setDomain("47.93.230.61");
+        cookie.setPath("/");
+        cookie.setMaxAge(COOKIE_LIFE);
+        response.addCookie(cookie);
     }
 }

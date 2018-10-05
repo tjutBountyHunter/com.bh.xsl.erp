@@ -56,7 +56,7 @@
     </div>
 
     <div class="main">
-        <div id="mainTabs" class="mini-tabs main-tabs" activeIndex="0" style="height:100%;" plain="false"
+        <div id="mainTabs" class="mini-tabs main-tabs" activeIndex="0" style="height:100%;" plain="false"main
              buttons="#tabsButtons" arrowPosition="side" >
             <div name="index" iconCls="fa-android" title="控制台">
                 Welcome 悬赏令-后台主界面 ！
@@ -81,7 +81,11 @@
     function activeTab(item) {
         var tabs = mini.get("mainTabs");
         var tab = tabs.getTab(item.id);
-        if (!tab) {
+        if (tab){
+            tab = tabs.removeTab(tab);
+            tab = tabs.getTab(item.id);
+        }
+        if(!tab){
             tab = { name: item.id, title: item.text, url: item.url, iconCls: item.iconCls, showCloseButton: true };
             tab = tabs.addTab(tab);
         }

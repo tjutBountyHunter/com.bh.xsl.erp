@@ -7,6 +7,7 @@ import Utils.JwtUtils;
 import com.xsl.JWTpojo;
 import com.xsl.Result;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.web.HttpRequestHandler;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
 import xsl.cms.pojo.XslManager;
@@ -29,45 +30,45 @@ public class SsoInterceptor implements HandlerInterceptor {
 
     @Value("${SSO_URL}")
     private String SSO_URL;
-    @Value("${COOKIE_KEY}")
-    private String COOKIE_KEY;
+    @Value("${TOKEN_KEY}")
+    private String TOKEN_KEY;
     @Value("${TOKEN_KEY_PREFIX}")
     private String TOKEN_KEY_PREFIX;
     @Value("${COOKIE_LIFE}")
     private int COOKIE_LIFE;
     @Value("${ID_COOKIE_KEY}")
     private String ID_COOKIE_KEY;
+    @Value("${XSL_MANAGER_INFO_KEY}")
+    private String XSL_MANAGER_INFO_KEY;
+    @Value("${TOKEN_KEY_ID}")
+    private String TOKEN_KEY_ID;
 
     @Resource
     private JedisClient jedisClient;
 
     @Override
     public boolean preHandle(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, Object o) throws Exception {
-        String tokenId = "";
-        String tokenKey = httpServletRequest.getParameter("tokenKey");
+        String tokenKey = "";
+        tokenKey = CookieUtils.getCookieValue(httpServletRequest, TOKEN_KEY);
         if (tokenKey != null && !"".equals(tokenKey)){
-            Cookie cookie = new Cookie(COOKIE_KEY , tokenKey);
-            cookie.setPath("/");
-            cookie.setMaxAge(COOKIE_LIFE);
-            httpServletResponse.addCookie(cookie);
-        }
-        Cookie cookie = CookieUtils.getCookieByName(httpServletRequest, COOKIE_KEY);
-        if (cookie != null){
-            tokenId = cookie.getValue();
-        }
-        if (tokenId != null && !"".equals(tokenId)){
-            String token = jedisClient.get(TOKEN_KEY_PREFIX + tokenId);
-            if (token != null && !"".equals(token)){
-                if (JwtUtils.checkJWTSign(token)){
-                    setIdInCookie(httpServletResponse , token);
-                    return true;
-                }
+            if (checkToken(tokenKey)){
+                return true;
             }
         }
-        Cookie cookieWithId = CookieUtils.getCookieByName(httpServletRequest, ID_COOKIE_KEY);
+        tokenKey = CookieUtils.getCookieValue(httpServletRequest ,TOKEN_KEY_ID);
+        if (tokenKey != null && !"".equals(tokenKey)){
+            if (checkToken(tokenKey)){
+                CookieUtils.setCookie(httpServletRequest ,httpServletResponse ,TOKEN_KEY ,tokenKey);
+                String token = jedisClient.get(TOKEN_KEY_PREFIX + tokenKey);
+                setIdInCookie(httpServletRequest,httpServletResponse,token);
+                return true;
+            }
+        }
+        String managerId = CookieUtils.getCookieValue(httpServletRequest, ID_COOKIE_KEY);
         StringBuffer returnURL = httpServletRequest.getRequestURL();
-        if (cookieWithId != null){
-            httpServletResponse.sendRedirect(SSO_URL + "?returnUrl=" + returnURL + "&id=" + cookieWithId.getValue());
+        if (managerId != null){
+            httpServletResponse.sendRedirect(SSO_URL + "?returnUrl=" + returnURL + "&id=" + managerId);
+            return false;
         }
         httpServletResponse.sendRedirect(SSO_URL + "?returnUrl=" + returnURL);
         return false;
@@ -83,15 +84,43 @@ public class SsoInterceptor implements HandlerInterceptor {
 
     }
 
-    private void setIdInCookie(HttpServletResponse response ,String token){
+    private void setIdInCookie(HttpServletRequest request ,HttpServletResponse response , String token){
+        /**
+         *
+         * 功能描述: 将已登录的用户id存入cookie。
+         *
+         * @param: [request, response, token]
+         * @return: void
+         * @auther: 11432_000
+         * @date: 2018/10/4 19:53
+         */
         Result payload = JwtUtils.getPayloadByToken(token);
         JWTpojo data = (JWTpojo) payload.getData();
         Map<String, Object> extend = data.getExtend();
         String managerInfoKey = extend.get("managerInfoKey").toString();
-        String managerInfo = jedisClient.get(managerInfoKey);
+        String managerInfo = jedisClient.get(XSL_MANAGER_INFO_KEY + managerInfoKey);
         XslManager xslManager = JsonUtils.jsonToPojo(managerInfo, XslManager.class);
-        Cookie cookie = new Cookie(ID_COOKIE_KEY,xslManager.getId().toString());
-        cookie.setPath("/");
-        response.addCookie(cookie);
+        CookieUtils.setCookie(request ,response ,ID_COOKIE_KEY,xslManager.getId().toString());
+    }
+
+
+    private boolean checkToken(String tokenId){
+        /**
+         *
+         * 功能描述: 检查tokenKey是否合法。
+         *
+         * @param:
+         * @return: boolean
+         * @auther: 11432_000
+         * @date: 2018/10/4 19:53
+         */
+        boolean flag = false;
+        String token = jedisClient.get(TOKEN_KEY_PREFIX + tokenId);
+        if (token != null && !"".equals(token)){
+            if (JwtUtils.checkJWTSign(token)){
+               flag = true;
+            }
+        }
+        return flag;
     }
 }

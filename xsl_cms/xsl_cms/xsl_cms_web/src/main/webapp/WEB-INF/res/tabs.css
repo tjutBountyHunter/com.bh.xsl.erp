@@ -33,7 +33,7 @@
 .mini-tabs-body,
 .mini-tab-text
 {
-    font-family:Î¢ÈíÑÅºÚ;
+    font-family:Î¢ï¿½ï¿½ï¿½Åºï¿½;
     font-size:13px;     
 }
 
@@ -66,11 +66,11 @@
     display:none;
 }
 .mini-tab-close, .mini-tab-close-hover, .mini-tab-close:hover {
-    margin-top:3px;
-    background: url(images/tabs_icons.png) no-repeat -34px -2px;
+    margin-top:8px;
+    background: url(images/close.gif) no-repeat;
     vertical-align:top;
     position:relative;
-    left:2px;
+    left:4px;
 }
 .mini-tab-close:hover
 {

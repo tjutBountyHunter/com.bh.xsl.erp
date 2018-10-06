@@ -52,7 +52,6 @@ public class SsoInterceptor implements HandlerInterceptor {
         tokenKey = CookieUtils.getCookieValue(httpServletRequest, TOKEN_KEY);
         if (tokenKey != null && !"".equals(tokenKey)){
             if (checkToken(tokenKey)){
-                setCookie(httpServletResponse , TOKEN_KEY ,tokenKey);
                 return true;
             }
         }
@@ -132,5 +131,25 @@ public class SsoInterceptor implements HandlerInterceptor {
         cookie.setPath("/");
         cookie.setMaxAge(COOKIE_LIFE);
         response.addCookie(cookie);
+    }
+    private XslManager getManagerInfo(HttpServletRequest httpServletRequest ,JedisClient jedisClient){
+        /**
+         *
+         * 功能描述: 获取已登录的用户信息。
+         *
+         * @param: [httpServletRequest, jedisClient]
+         * @return: xsl.cms.pojo.XslManager
+         * @auther: 11432_000
+         * @date: 2018/10/6 10:07
+         */
+        String tokenKey = CookieUtils.getCookieValue(httpServletRequest, TOKEN_KEY);
+        String token = jedisClient.get(TOKEN_KEY_PREFIX + tokenKey);
+        Result payloadByToken = JwtUtils.getPayloadByToken(token);
+        JWTpojo jwTpojo =(JWTpojo) payloadByToken.getData();
+        Map<String, Object> extend = jwTpojo.getExtend();
+        String managerInfoKey = extend.get("managerInfoKey").toString();
+        String managerInfo = jedisClient.get(XSL_MANAGER_INFO_KEY + managerInfoKey);
+        XslManager xslManager = JsonUtils.jsonToPojo(managerInfo, XslManager.class);
+        return xslManager;
     }
 }

@@ -70,7 +70,7 @@
                     type: ['line', 'bar']
                 },
                 dataView: {readOnly: false},
-                //restore: {},         还原
+                // restore: {},         //还原
                 saveAsImage: {}     //保存
             }
         },
@@ -98,7 +98,8 @@
                 type: 'value',
                 scale: true,
                 name: '数量/人',
-                boundaryGap: [0, '70%']  //Y 一直处于y轴的70%
+                boundaryGap: [0 , '65%'],  //Y 一直处于y轴的70%
+                min:0
             },
             {
                 type: 'value',
@@ -186,7 +187,7 @@
         option.xAxis[0].data.push(axisData);
 
         myChart.setOption(option);
-    }, 1100);
+    }, 2000);
     ;
     if (option && typeof option === "object") {
         myChart.setOption(option, true);

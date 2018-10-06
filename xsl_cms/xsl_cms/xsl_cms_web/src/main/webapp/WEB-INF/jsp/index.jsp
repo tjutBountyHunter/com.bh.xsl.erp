@@ -21,6 +21,20 @@
     <link href="res/tabs.css" rel="stylesheet" type="text/css" />
     <link href="res/frame.css" rel="stylesheet" type="text/css" />
     <link href="res/index.css" rel="stylesheet" type="text/css" />
+      <style type="text/css">
+          #masterPage{
+              background-image: url("http://47.93.200.190/images/xslerp.jpg");
+              background-repeat:no-repeat;
+              background-size:100% 100%;
+              -moz-background-size:100% 100%;
+              width: 100%;
+              height: 100%;
+              text-align: center;
+              line-height: 550px;
+              font-size: 60px;
+              font-family: "楷体";
+          }
+      </style>
   <body>
     
 <div class="navbar">
@@ -30,19 +44,19 @@
     </div>
     <ul class="nav navbar-nav">
         <li><a id="toggle"><span class="fa fa-bars" ></span></a></li>
-        <li class="icontop"><a href="#"><i class="fa fa-hand-pointer-o"></i><span >系统演示</span></a></li>
-        <%--<li class="icontop"><a href="#"><i class="fa fa-puzzle-piece"></i><span >登录信息</span></a></li>--%>
-        <li class="icontop"><a href="#"><i class="fa fa-sort-amount-asc"></i><span >人力资源</span></a></li>
-        <li class="icontop"><a href="#"><i class="fa  fa-cog"></i><span >系统设置</span></a></li>
+        <%--<li class="icontop"><a href="#"><i class="fa fa-hand-pointer-o"></i><span >系统演示</span></a></li>--%>
+        <%--&lt;%&ndash;<li class="icontop"><a href="#"><i class="fa fa-puzzle-piece"></i><span >登录信息</span></a></li>&ndash;%&gt;--%>
+        <%--<li class="icontop"><a href="#"><i class="fa fa-sort-amount-asc"></i><span >人力资源</span></a></li>--%>
+        <%--<li class="icontop"><a href="#"><i class="fa  fa-cog"></i><span >系统设置</span></a></li>--%>
     </ul>
     <ul class="nav navbar-nav navbar-right">
         <li class="dropdown">
             <a class="dropdown-toggle userinfo">
-                <img class="user-img" src="res/images/user.jpg" />管理员资料<i class="fa fa-angle-down"></i>
+                <img class="user-img" src="res/images/user.jpg" />管理员：${managerName}<i class="fa fa-angle-down"></i>
             </a>
             <ul class="dropdown-menu pull-right">
-                <li ><a onclick="updatePasswoed()"><i class="fa fa-eye "></i> 修改密码</a></li>
-                <li><a href="#"><i class="fa fa-user"></i> 退出登录</a></li>
+                <%--<li ><a onclick="updatePasswoed()"><i class="fa fa-eye "></i> 修改密码</a></li>--%>
+                <li><a href="manager/logout"><i class="fa fa-user"></i> 退出登录</a></li>
             </ul>
         </li>
     </ul>
@@ -58,8 +72,10 @@
     <div class="main">
         <div id="mainTabs" class="mini-tabs main-tabs" activeIndex="0" style="height:100%;" plain="false"main
              buttons="#tabsButtons" arrowPosition="side" >
-            <div name="index" iconCls="fa-android" title="控制台">
-                Welcome 悬赏令-后台主界面 ！
+            <div  name="index" iconCls="fa-android" title="控制台">
+                <div id="masterPage">
+                    Welcome 悬赏令-后台主界面 ！
+                </div>
             </div>
         </div>
         <div id="tabsButtons">
@@ -76,7 +92,6 @@
 </body>
 </html>
 <script>
-
 
     function activeTab(item) {
         var tabs = mini.get("mainTabs");
@@ -102,6 +117,7 @@
                 }
             }
         });
+
 
         $(".sidebar").mCustomScrollbar({ autoHideScrollbar: true });
 
@@ -148,6 +164,9 @@
             }
         });
     }
+
+    //退出登录
+
 
 </script>
 

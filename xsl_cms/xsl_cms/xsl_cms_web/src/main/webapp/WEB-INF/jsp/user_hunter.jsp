@@ -51,7 +51,7 @@
     <div property="columns">
         <div type="indexcolumn"></div>
         <div type="checkcolumn"></div>
-        <div name="id"  field="id" headerAlign="center" allowSort="true" width="150" >猎人ID
+        <div name="id"  field="id" headerAlign="center" allowSort="true" width="50" >猎人ID
             <input property="editor" class="mini-textbox" style="width:100%;" maxWidth="150" />
         </div>
         <div name="userName"  field="userName" headerAlign="center" allowSort="true" width="100" >用户名</div>
@@ -70,7 +70,7 @@
         <div field="credit" width="120" headerAlign="center" allowSort="true">信誉
             <input property="editor" class="mini-textbox" style="width:200px;" minWidth="200" minHeight="50"/>
         </div>
-        <div field="descr" width="120" headerAlign="center" allowSort="true">描述
+        <div field="descr" width="200" headerAlign="center" allowSort="true">描述
             <input property="editor" class="mini-textarea" style="width:200px;" minWidth="200" minHeight="50"/>
         </div>
         <div name="lasttime" field="lasttime" width="100" allowSort="true" dateFormat="yyyy-MM-dd">最近活动时间

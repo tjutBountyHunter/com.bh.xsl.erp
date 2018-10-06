@@ -8,12 +8,15 @@ import com.xsl.Result;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
+import xsl.cms.pojo.XslManager;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
 import java.net.URL;
 import java.net.URLConnection;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.Map;
 import java.util.UUID;
 
 /**
@@ -26,8 +29,6 @@ import java.util.UUID;
 public class JwtUtils {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(JwtUtils.class);
-    @Resource
-    private JedisClient jedisClient;
 
     /** jwt 密匙，不要轻易更改*/
     private static final String SECRET = "jfiskaiifdhgailbghailfgahgfkdyvd";
@@ -36,8 +37,10 @@ public class JwtUtils {
     /** 成功码 */
     private static final int SUCCESS = 100;
     /** token key*/
-    @Value("${TOKEN_KEY_PREFIX}")
-    private String TOKEN_KEY_PREFIX;
+    private static String TOKEN_KEY_PREFIX = "TOKEN_KEY:";
+    private static String TOKEN_KEY = "manager_token";
+    private static String XSL_MANAGER_INFO_KEY = "MANAGER:";
+
 
     public static boolean checkJWTSign(String token) {
         /**
@@ -116,5 +119,26 @@ public class JwtUtils {
 
         }
         return new Date();
+    }
+
+    public static XslManager getManagerInfo(HttpServletRequest httpServletRequest ,JedisClient jedisClient){
+        /**
+         *
+         * 功能描述: 获取已登录的用户信息。
+         *
+         * @param: [httpServletRequest, jedisClient]
+         * @return: xsl.cms.pojo.XslManager
+         * @auther: 11432_000
+         * @date: 2018/10/6 10:07
+         */
+        String tokenKey = CookieUtils.getCookieValue(httpServletRequest, TOKEN_KEY);
+        String token = jedisClient.get(TOKEN_KEY_PREFIX + tokenKey);
+        Result payloadByToken = JwtUtils.getPayloadByToken(token);
+        JWTpojo jwTpojo =(JWTpojo) payloadByToken.getData();
+        Map<String, Object> extend = jwTpojo.getExtend();
+        String managerInfoKey = extend.get("managerInfoKey").toString();
+        String managerInfo = jedisClient.get(XSL_MANAGER_INFO_KEY + managerInfoKey);
+        XslManager xslManager = JsonUtils.jsonToPojo(managerInfo, XslManager.class);
+        return xslManager;
     }
 }

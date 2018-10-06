@@ -81,7 +81,7 @@
             <!-- 添加编辑信息 -->
             <input property="editor" class="mini-datepicker" style="width:100%;"/>
         </div>
-        <div name="revokedate" field="revokedate" width="100" allowSort="true" dateFormat="yyyy-MM-dd">末任务时间
+        <div name="deadline" field="deadline" width="100" allowSort="true" dateFormat="yyyy-MM-dd HH:mm:ss">末任务时间
             <!-- 添加编辑信息 -->
             <input property="editor" class="mini-datepicker" style="width:100%;"/>
         </div>

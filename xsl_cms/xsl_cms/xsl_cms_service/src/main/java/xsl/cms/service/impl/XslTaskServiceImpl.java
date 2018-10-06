@@ -59,6 +59,7 @@ public class XslTaskServiceImpl implements XslTaskService {
             }
             PageHelper.startPage(page,rows);//进行分页
             List<XslTask> list = this.xslTaskMapper.selectByExample(example);
+            DateUtils.setDateInPojo(list);
             object.setData(list);
             PageInfo<XslTask> info = new PageInfo<XslTask>(list);//得到分页的信息
             //得到分页的总数量
@@ -95,7 +96,7 @@ public class XslTaskServiceImpl implements XslTaskService {
                             //设置修改时间
                             xslTask.setUpdatedate(DateUtils.getDateToString());
                             //设置最后一次接受任务的时间
-//                            xslTask.setRevokedate(DateUtils.getDateToString());
+                            xslTask.setDeadline(DateUtils.getDateTimeToString());
                             xslTask.setCid(1);
                             int n = this.xslTaskMapper.insertSelective(xslTask);
                             if( n < 0 ){
@@ -145,7 +146,7 @@ public class XslTaskServiceImpl implements XslTaskService {
             for(XslTask xslTask:xslTasks){
                 try{
                     if( xslTask != null ){//进行null的判断，最少要拥有id，和一个要修改的值
-                        xslTask.setUpdatedate(DateUtils.getDateToString());//设置修改时间
+                        xslTask.setUpdatedate(DateUtils.getDateTimeToString());//设置修改时间
                         int n = this.xslTaskMapper.updateByPrimaryKeySelective(xslTask);
                         if(n < 0){
                             logger.error(tag + "是失败!");

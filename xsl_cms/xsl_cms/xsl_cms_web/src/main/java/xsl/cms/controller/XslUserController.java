@@ -1,9 +1,5 @@
 package xsl.cms.controller;
 
-import Utils.RandomUtils;
-import com.xsl.cms.mapper.XslHunterMapper;
-import com.xsl.cms.mapper.XslMasterMapper;
-import com.xsl.cms.mapper.XslSchoolinfoMapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,10 +12,6 @@ import xsl.cms.commons.XslResult;
 import xsl.cms.pojo.*;
 import xsl.cms.pojo.common.PageObject;
 import xsl.cms.service.XslUserService;
-
-import javax.annotation.Resource;
-import java.util.Date;
-import java.util.List;
 
 /**
  *  对user_show.jsp进行操作

@@ -57,10 +57,6 @@
                 <!-- 添加编辑信息 -->
                 <input property="editor" class="mini-textbox" style="width:100%;" minWidth="200"/>
             </div>
-            <div name="password" field="password" width="100" allowSort="true" >密码
-                <!-- 添加编辑信息 -->
-                <input property="editor" class="mini-textbox" style="width:100%;" minWidth="200"/>
-            </div>
             <!--ComboBox：本地数据-->
             <div type="comboboxcolumn" autoShowPopup="true" name="sex" field="sex" width="100" allowSort="true"
                  align="center" headerAlign="center">性别

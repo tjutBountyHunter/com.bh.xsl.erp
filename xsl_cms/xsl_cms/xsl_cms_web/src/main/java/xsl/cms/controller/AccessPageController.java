@@ -2,11 +2,19 @@ package xsl.cms.controller;
 /**
  * 页面访问控制
  */
+import Utils.JedisClient;
+import Utils.JwtUtils;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import xsl.cms.pojo.XslManager;
+
+import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
 
 @Controller
 public class AccessPageController {
+    @Resource
+    private JedisClient jedisClient;
 
     /**
      * 主页面访问
@@ -14,7 +22,9 @@ public class AccessPageController {
      * @return index.jsp
      */
     @RequestMapping("/")
-    public String accessIndex() {
+    public String accessIndex(HttpServletRequest request) {
+        XslManager managerInfo = JwtUtils.getManagerInfo(request, jedisClient);
+        request.setAttribute("managerName" ,managerInfo.getManagerName());
         return "index";
     }
 

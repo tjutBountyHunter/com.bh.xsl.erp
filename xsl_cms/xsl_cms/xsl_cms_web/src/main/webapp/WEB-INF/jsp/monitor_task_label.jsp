@@ -23,7 +23,7 @@
 <!-- 写一个表格的名字 -->
 <div id="myChart" style="height: 100% ;height:450px;">
 </div>
-<script type="text/javascript" src="<%=basePath%>js/echarts.js">
+<script type="text/javascript" src="<%=basePath%>js/echarts.min.js">
 </script>
 <script type="text/javascript" src="<%=basePath%>js/jquery.min.js">
 </script>
@@ -60,7 +60,7 @@
         //数量的更新
         myChart.setOption({
             legend: {
-                left:"10%",
+                left:"5%",
                 icon:"pin",
                 orient: 'vertical', // 纵向
                 selected: {
@@ -86,7 +86,9 @@
                 {
                     name: '标签使用情况',
                     type: 'pie',
-                    radius: '60%',   //半径，改变图的大小
+                    radius: '80%',   //半径，改变图的大小
+                    minAngle:5,
+                    center: ['50%', '50%'],
                     data:data.sort(function (a, b) { return a.value - b.value; }), //进行排序从小到大
                     roseType: 'angle',
                     itemStyle: {

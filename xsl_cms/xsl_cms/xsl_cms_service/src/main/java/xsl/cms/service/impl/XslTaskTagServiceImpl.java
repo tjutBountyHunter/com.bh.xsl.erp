@@ -9,6 +9,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 import xsl.cms.annotation.SystemServiceLog;
 import xsl.cms.pojo.XslTag;
+import xsl.cms.pojo.XslTagExample;
 import xsl.cms.pojo.XslTaskTag;
 import xsl.cms.pojo.XslTaskTagExample;
 import xsl.cms.pojo.common.PageObject;
@@ -45,21 +46,18 @@ public class XslTaskTagServiceImpl implements XslTaskTagService {
     public PageObject SelectTaskTagAll(Integer page, Integer rows,Integer key,Integer key1 ) {
         String tag = "任务标签查询";
         try{
-            XslTaskTagExample example = new XslTaskTagExample();
-            XslTaskTagExample.Criteria criteria = example.createCriteria();
+            XslTagExample example = new XslTagExample();
+            XslTagExample.Criteria criteria = example.createCriteria();
             //进行判断防止程序崩溃
-            if( key != null ){//任务ID
-                criteria.andIdEqualTo(key);
-            }
             if( key1 != null){//任务状态
-                criteria.andTagidEqualTo(key1);
+                criteria.andStateEqualTo(true);
             }
             PageHelper.startPage(page,rows);//进行分页
-            List<XslTaskTag> list = this.xslTaskTagMapper.selectByExample(example);
+            List<XslTag> list = xslTagMapper.selectByExample(example);
             if( list != null ){
                 PageObject object = new PageObject();
                 object.setData(list);
-                PageInfo<XslTaskTag> info = new PageInfo<XslTaskTag>(list);//得到分页的信息
+                PageInfo<XslTag> info = new PageInfo<XslTag>(list);//得到分页的信息
                 //得到分页的总数量
                 object.setTotal(info.getTotal());
                 return object;

@@ -9,6 +9,7 @@ import com.xsl.cms.mapper.XslTaskTagMapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
+import xsl.cms.Utils.DateUtils;
 import xsl.cms.annotation.SystemServiceLog;
 import xsl.cms.pojo.*;
 import xsl.cms.pojo.common.MonitorNode;
@@ -81,7 +82,7 @@ public class XslClientLabelServiceImpl implements XslClientLabelService {
                     try{
 
                         //设置创建时间
-                        xslTag.setCreatedate(new Date());
+                        xslTag.setCreatedate(DateUtils.getDateToString());
                         int n = this.xslTagMapper.insertSelective(xslTag);
                         if( n < 0 ){
                             logger.error(tag + "失败!");

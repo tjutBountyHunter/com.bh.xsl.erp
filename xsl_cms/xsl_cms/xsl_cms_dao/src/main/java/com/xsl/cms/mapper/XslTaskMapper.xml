@@ -4,6 +4,7 @@
   <resultMap id="BaseResultMap" type="xsl.cms.pojo.XslTask" >
     <id column="id" property="id" jdbcType="INTEGER" />
     <result column="cid" property="cid" jdbcType="INTEGER" />
+    <result column="taskId" property="taskid" jdbcType="VARCHAR" />
     <result column="descr" property="descr" jdbcType="VARCHAR" />
     <result column="sendId" property="sendid" jdbcType="INTEGER" />
     <result column="money" property="money" jdbcType="DECIMAL" />
@@ -72,7 +73,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    id, cid, descr, sendId, money, state, number, createDate, updateDate, deadline
+    id, cid, taskId, descr, sendId, money, state, number, createDate, updateDate, deadline
   </sql>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="xsl.cms.pojo.XslTaskExample" >
     select
@@ -105,14 +106,14 @@
     </if>
   </delete>
   <insert id="insert" parameterType="xsl.cms.pojo.XslTask" >
-    insert into xsl_task (id, cid, descr, 
-      sendId, money, state, 
-      number, createDate, updateDate, 
-      deadline)
-    values (#{id,jdbcType=INTEGER}, #{cid,jdbcType=INTEGER}, #{descr,jdbcType=VARCHAR}, 
-      #{sendid,jdbcType=INTEGER}, #{money,jdbcType=DECIMAL}, #{state,jdbcType=TINYINT}, 
-      #{number,jdbcType=INTEGER}, #{createdate,jdbcType=DATE}, #{updatedate,jdbcType=DATE}, 
-      #{deadline,jdbcType=TIMESTAMP})
+    insert into xsl_task (id, cid, taskId, 
+      descr, sendId, money, 
+      state, number, createDate, 
+      updateDate, deadline)
+    values (#{id,jdbcType=INTEGER}, #{cid,jdbcType=INTEGER}, #{taskid,jdbcType=VARCHAR}, 
+      #{descr,jdbcType=VARCHAR}, #{sendid,jdbcType=INTEGER}, #{money,jdbcType=DECIMAL}, 
+      #{state,jdbcType=TINYINT}, #{number,jdbcType=INTEGER}, #{createdate,jdbcType=DATE}, 
+      #{updatedate,jdbcType=DATE}, #{deadline,jdbcType=TIMESTAMP})
   </insert>
   <insert id="insertSelective" parameterType="xsl.cms.pojo.XslTask" >
     insert into xsl_task
@@ -122,6 +123,9 @@
       </if>
       <if test="cid != null" >
         cid,
+      </if>
+      <if test="taskid != null" >
+        taskId,
       </if>
       <if test="descr != null" >
         descr,
@@ -154,6 +158,9 @@
       </if>
       <if test="cid != null" >
         #{cid,jdbcType=INTEGER},
+      </if>
+      <if test="taskid != null" >
+        #{taskid,jdbcType=VARCHAR},
       </if>
       <if test="descr != null" >
         #{descr,jdbcType=VARCHAR},
@@ -196,6 +203,9 @@
       <if test="record.cid != null" >
         cid = #{record.cid,jdbcType=INTEGER},
       </if>
+      <if test="record.taskid != null" >
+        taskId = #{record.taskid,jdbcType=VARCHAR},
+      </if>
       <if test="record.descr != null" >
         descr = #{record.descr,jdbcType=VARCHAR},
       </if>
@@ -229,6 +239,7 @@
     update xsl_task
     set id = #{record.id,jdbcType=INTEGER},
       cid = #{record.cid,jdbcType=INTEGER},
+      taskId = #{record.taskid,jdbcType=VARCHAR},
       descr = #{record.descr,jdbcType=VARCHAR},
       sendId = #{record.sendid,jdbcType=INTEGER},
       money = #{record.money,jdbcType=DECIMAL},
@@ -246,6 +257,9 @@
     <set >
       <if test="cid != null" >
         cid = #{cid,jdbcType=INTEGER},
+      </if>
+      <if test="taskid != null" >
+        taskId = #{taskid,jdbcType=VARCHAR},
       </if>
       <if test="descr != null" >
         descr = #{descr,jdbcType=VARCHAR},
@@ -277,6 +291,7 @@
   <update id="updateByPrimaryKey" parameterType="xsl.cms.pojo.XslTask" >
     update xsl_task
     set cid = #{cid,jdbcType=INTEGER},
+      taskId = #{taskid,jdbcType=VARCHAR},
       descr = #{descr,jdbcType=VARCHAR},
       sendId = #{sendid,jdbcType=INTEGER},
       money = #{money,jdbcType=DECIMAL},

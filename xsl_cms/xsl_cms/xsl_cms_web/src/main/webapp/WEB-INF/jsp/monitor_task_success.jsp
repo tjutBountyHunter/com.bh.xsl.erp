@@ -23,7 +23,7 @@
 <!-- 写一个表格的名字 -->
 <div id="myChart" style="height: 100% ;height:450px;">
 </div>
-<script type="text/javascript" src="<%=basePath%>js/echarts.js">
+<script type="text/javascript" src="<%=basePath%>js/echarts.min.js">
 </script>
 <script type="text/javascript" src="<%=basePath%>js/jquery.min.js">
 </script>
@@ -86,7 +86,7 @@
                 {
                     name: '每类任务的数量',
                     type: 'pie',
-                    radius: '60%',   //半径，改变图的大小
+                    radius: '70%',   //半径，改变图的大小
                     data:data.sort(function (a, b) { return a.value - b.value; }), //进行排序从小到大
                     roseType: 'angle',
                     itemStyle: {

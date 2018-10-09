@@ -253,6 +253,76 @@ public class XslTaskExample {
             return (Criteria) this;
         }
 
+        public Criteria andTaskidIsNull() {
+            addCriterion("taskId is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andTaskidIsNotNull() {
+            addCriterion("taskId is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andTaskidEqualTo(String value) {
+            addCriterion("taskId =", value, "taskid");
+            return (Criteria) this;
+        }
+
+        public Criteria andTaskidNotEqualTo(String value) {
+            addCriterion("taskId <>", value, "taskid");
+            return (Criteria) this;
+        }
+
+        public Criteria andTaskidGreaterThan(String value) {
+            addCriterion("taskId >", value, "taskid");
+            return (Criteria) this;
+        }
+
+        public Criteria andTaskidGreaterThanOrEqualTo(String value) {
+            addCriterion("taskId >=", value, "taskid");
+            return (Criteria) this;
+        }
+
+        public Criteria andTaskidLessThan(String value) {
+            addCriterion("taskId <", value, "taskid");
+            return (Criteria) this;
+        }
+
+        public Criteria andTaskidLessThanOrEqualTo(String value) {
+            addCriterion("taskId <=", value, "taskid");
+            return (Criteria) this;
+        }
+
+        public Criteria andTaskidLike(String value) {
+            addCriterion("taskId like", value, "taskid");
+            return (Criteria) this;
+        }
+
+        public Criteria andTaskidNotLike(String value) {
+            addCriterion("taskId not like", value, "taskid");
+            return (Criteria) this;
+        }
+
+        public Criteria andTaskidIn(List<String> values) {
+            addCriterion("taskId in", values, "taskid");
+            return (Criteria) this;
+        }
+
+        public Criteria andTaskidNotIn(List<String> values) {
+            addCriterion("taskId not in", values, "taskid");
+            return (Criteria) this;
+        }
+
+        public Criteria andTaskidBetween(String value1, String value2) {
+            addCriterion("taskId between", value1, value2, "taskid");
+            return (Criteria) this;
+        }
+
+        public Criteria andTaskidNotBetween(String value1, String value2) {
+            addCriterion("taskId not between", value1, value2, "taskid");
+            return (Criteria) this;
+        }
+
         public Criteria andDescrIsNull() {
             addCriterion("descr is null");
             return (Criteria) this;

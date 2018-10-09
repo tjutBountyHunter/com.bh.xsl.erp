@@ -21,14 +21,13 @@
 </head>
 <body>
 <!-- 写一个表格的名字 -->
-<div id="myChart" style="height: 100% ;height:450px;">
-</div>
-<script type="text/javascript" src="<%=basePath%>js/echarts.js">
+<div id="myChart" style="height: 100% ;height:450px;"></div>
+<script type="text/javascript" src="<%=basePath%>js/echarts.min.js">
 </script>
 <script type="text/javascript" src="<%=basePath%>js/jquery.min.js">
 </script>
-
 <script type="text/javascript">
+
     // 基于准备好的dom，初始化echarts图表
     var myChart = echarts.init(document.getElementById('myChart'));
 

@@ -23,7 +23,7 @@
 <!-- 写一个表格的名字 -->
 <div id="myChart" style="height: 100% ;height:450px;">
 </div>
-<script type="text/javascript" src="<%=basePath%>js/echarts.js">
+<script type="text/javascript" src="<%=basePath%>js/echarts.min.js">
 </script>
 <script type="text/javascript" src="<%=basePath%>js/jquery.min.js">
 </script>

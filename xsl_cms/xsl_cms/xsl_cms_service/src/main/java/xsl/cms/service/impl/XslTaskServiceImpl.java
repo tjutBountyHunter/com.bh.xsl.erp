@@ -2,6 +2,7 @@ package xsl.cms.service.impl;
 
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
+import com.xsl.cms.mapper.XslMasterMapper;
 import com.xsl.cms.mapper.XslTaskCategoryMapper;
 import com.xsl.cms.mapper.XslTaskMapper;
 import com.xsl.cms.mapper.XslTaskTagMapper;
@@ -17,6 +18,7 @@ import xsl.cms.service.XslTaskService;
 import javax.annotation.Resource;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 /**
  *  xsl_user页面的服务层
@@ -33,6 +35,8 @@ public class XslTaskServiceImpl implements XslTaskService {
     private XslTaskCategoryMapper xslTaskCategoryMapper;
     @Resource
     private XslTaskTagMapper xslTaskTagMapper;
+    @Resource
+    private XslMasterMapper xslMasterMapper;
 
     /**
      * 页面数据的查询
@@ -91,13 +95,7 @@ public class XslTaskServiceImpl implements XslTaskService {
                         Byte state = xslTask.getState();
                         //只有状态为4的时候才能被创建
                         if( state == null || state == 4 || state == 0 ){
-                            //设置创建时间
-                            xslTask.setCreatedate(DateUtils.getDateToString());
-                            //设置修改时间
-                            xslTask.setUpdatedate(DateUtils.getDateToString());
-                            //设置最后一次接受任务的时间
-                            xslTask.setDeadline(DateUtils.getDateTimeToString());
-                            xslTask.setCid(1);
+                            xslTask = setXslTask(xslTask);
                             int n = this.xslTaskMapper.insertSelective(xslTask);
                             if( n < 0 ){
                                 return false;
@@ -326,5 +324,22 @@ public class XslTaskServiceImpl implements XslTaskService {
         criteria.andStateIn(states);
         int n = this.xslTaskMapper.countByExample(example);
         return n;
+    }
+
+    private XslTask setXslTask(XslTask xslTask){
+        //设置创建时间
+        xslTask.setCreatedate(DateUtils.getDateToString());
+        //设置修改时间
+        xslTask.setUpdatedate(DateUtils.getDateToString());
+        //设置最后一次接受任务的时间
+        xslTask.setDeadline(DateUtils.getDateTimeToString());
+        //设置taskId
+        String uuid = UUID.randomUUID().toString();
+        xslTask.setTaskid(uuid);
+        //master任务数加一
+        XslMaster xslMaster = xslMasterMapper.selectByPrimaryKey(xslTask.getSendid());
+        xslMaster.setTaskaccnum(xslMaster.getTaskaccnum() + 1);
+        xslMasterMapper.updateByPrimaryKeySelective(xslMaster);
+        return xslTask;
     }
 }

@@ -37,11 +37,13 @@
         */
     ]
     },
+
 { "id": "dwzz", iconCls: "fa fa-android",  text: "客户端控件管理", children: [
+/*
          { "id": "gwgl", iconCls: "fa fa-graduation-cap", text: "客户端标签管理", url: "client/label" },
          { "id": "gsgl", iconCls: "fa fa-sitemap", text: "客户端消息推送", url: "client/message" },
          { "id": "bmgl", iconCls: "fa fa-th-list", text: "客户端控件名", url: "client/control" },
-         /*
+
                 后序添加功能
                  { "id": "gwgl", iconCls: "fa fa-graduation-cap", text: "岗位管理", url: "pages/1.html" },
                  { "id": "jsgl", iconCls: "fa fa-paw", text: "角色管理", url: "pages/1.html" },

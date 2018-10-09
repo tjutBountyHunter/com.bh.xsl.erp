@@ -37,7 +37,6 @@
                     <a class="mini-button" iconCls="icon-save" onclick="saveData('task/tag')" plain="true">保存</a>
                 </td>
                 <td style="white-space:nowrap;">
-                    <input id="key" class="mini-textbox" emptyText="请输入任务标签ID" style="width:150px;" onenter="onKeyEnter"/>
                     <input id="key1" class="mini-textbox" emptyText="请输入标签ID" style="width:150px;" onenter="onKeyEnter"/>
                     <a class="mini-button" onclick="search()">查询</a>
                 </td>
@@ -54,15 +53,12 @@
     <div property="columns">
         <div type="indexcolumn"></div>
         <div type="checkcolumn"></div>
-        <div name="id"  field="id" headerAlign="center" allowSort="true" width="100" >任务标签ID</div>
-        <div field="taskid" width="120" headerAlign="center" allowSort="true">任务ID
+        <div name="id"  field="id" headerAlign="center" allowSort="true" width="100" >标签ID</div>
+        <div name="name" field="name" width="120" headerAlign="center" allowSort="true">标签描述
             <!-- 添加编辑信息 -->
             <input property="editor" class="mini-spinner" style="width:100%;" />
         </div>
-        <div field="tagid" width="120" headerAlign="center" allowSort="true">标签ID
-            <!-- 添加编辑信息 -->
-            <input property="editor" class="mini-spinner" style="width:100%;" />
-        </div>
+        <div name="usenum"  field="usenum" headerAlign="center" allowSort="true" width="100" >使用次数</div>
         <div field="state" width="120" headerAlign="center" allowSort="true">状态
             <!-- 添加编辑信息 -->
             <input property="editor" class="mini-spinner" style="width:100%;" />

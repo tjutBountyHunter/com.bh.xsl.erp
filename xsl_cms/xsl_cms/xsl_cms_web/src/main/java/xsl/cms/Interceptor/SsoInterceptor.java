@@ -40,8 +40,6 @@ public class SsoInterceptor implements HandlerInterceptor {
     private String ID_COOKIE_KEY;
     @Value("${XSL_MANAGER_INFO_KEY}")
     private String XSL_MANAGER_INFO_KEY;
-    @Value("${TOKEN_KEY_ID}")
-    private String TOKEN_KEY_ID;
 
     @Resource
     private JedisClient jedisClient;
@@ -52,13 +50,6 @@ public class SsoInterceptor implements HandlerInterceptor {
         tokenKey = CookieUtils.getCookieValue(httpServletRequest, TOKEN_KEY);
         if (tokenKey != null && !"".equals(tokenKey)){
             if (checkToken(tokenKey)){
-                return true;
-            }
-        }
-        tokenKey = CookieUtils.getCookieValue(httpServletRequest ,TOKEN_KEY_ID);
-        if (tokenKey != null && !"".equals(tokenKey)){
-            if (checkToken(tokenKey)){
-                CookieUtils.setCookie(httpServletRequest ,httpServletResponse ,TOKEN_KEY ,tokenKey);
                 String token = jedisClient.get(TOKEN_KEY_PREFIX + tokenKey);
                 setIdInCookie(httpServletRequest,httpServletResponse,token);
                 return true;
@@ -100,7 +91,7 @@ public class SsoInterceptor implements HandlerInterceptor {
         String managerInfoKey = extend.get("managerInfoKey").toString();
         String managerInfo = jedisClient.get(XSL_MANAGER_INFO_KEY + managerInfoKey);
         XslManager xslManager = JsonUtils.jsonToPojo(managerInfo, XslManager.class);
-        CookieUtils.setCookie(request ,response ,ID_COOKIE_KEY,xslManager.getId().toString());
+        setCookie(response ,ID_COOKIE_KEY,xslManager.getId().toString());
     }
 
 
@@ -126,6 +117,7 @@ public class SsoInterceptor implements HandlerInterceptor {
 
     private void setCookie(HttpServletResponse response ,String name , String value){
         Cookie cookie = new Cookie(name , value);
+        //47.93.230.61
         cookie.setDomain("47.93.230.61");
         cookie.setPath("/");
         cookie.setMaxAge(COOKIE_LIFE);

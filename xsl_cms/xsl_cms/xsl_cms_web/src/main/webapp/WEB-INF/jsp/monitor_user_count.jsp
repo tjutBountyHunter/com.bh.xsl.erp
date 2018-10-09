@@ -19,8 +19,16 @@
 </div>
 <script type="text/javascript" src="<%=basePath%>js/echarts.js">
 </script>
-<script type="text/javascript" src="<%=basePath%>js/jquery.min.js">
+<script type="text/javascript" src="<%=basePath%>js/echarts.js"/>
+
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        document.write("<scr"+"ipt src=\"<%=basePath%>js/echarts.js\"></sc"+"ript>")
+    })
 </script>
+
+
 <script type="text/javascript">
     // 基于准备好的dom，初始化echarts图表
     var myChart = echarts.init(document.getElementById('myChart'));

@@ -60,7 +60,7 @@
         <div field="empirical" width="100" allowSort="true" >经验值
             <input property="editor" class="mini-spinner"  minValue="0" maxValue="200" value="25" style="width:100%;"/>
         </div>
-        <div field="taskaccnum" width="120" headerAlign="center" allowSort="true">任务达成数
+        <div field="taskaccnum" width="120" headerAlign="center" allowSort="true">任务发布数
             <input property="editor" class="mini-spinner" style="width:200px;" minWidth="200" minHeight="50"/>
         </div>
         <div field="taskrevokenum" width="120" headerAlign="center" allowSort="true">任务撤回数

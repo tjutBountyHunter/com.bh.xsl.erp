@@ -8,6 +8,8 @@ public class XslTask {
 
     private Integer cid;
 
+    private String taskid;
+
     private String descr;
 
     private Integer sendid;
@@ -38,6 +40,14 @@ public class XslTask {
 
     public void setCid(Integer cid) {
         this.cid = cid;
+    }
+
+    public String getTaskid() {
+        return taskid;
+    }
+
+    public void setTaskid(String taskid) {
+        this.taskid = taskid == null ? null : taskid.trim();
     }
 
     public String getDescr() {

@@ -42,6 +42,7 @@ public class ManagerLoginController {
 
     private void setCookie(HttpServletResponse response ,String name , String value){
         Cookie cookie = new Cookie(name , value);
+        //47.93.230.61
         cookie.setDomain("47.93.230.61");
         cookie.setPath("/");
         cookie.setMaxAge(0);

@@ -29,6 +29,7 @@
               -moz-background-size:100% 100%;
               width: 100%;
               height: 100%;
+              color: #fae624;
               text-align: center;
               line-height: 550px;
               font-size: 60px;
@@ -74,7 +75,6 @@
              buttons="#tabsButtons" arrowPosition="side" >
             <div  name="index" iconCls="fa-android" title="控制台">
                 <div id="masterPage">
-                    Welcome 悬赏令-后台主界面 ！
                 </div>
             </div>
         </div>

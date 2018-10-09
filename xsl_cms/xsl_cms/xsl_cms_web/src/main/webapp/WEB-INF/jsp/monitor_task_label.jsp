@@ -87,10 +87,10 @@
                     name: '标签使用情况',
                     type: 'pie',
                     radius: '80%',   //半径，改变图的大小
-                    minAngle:5,
+                    minAngle:3,
                     center: ['50%', '50%'],
                     data:data.sort(function (a, b) { return a.value - b.value; }), //进行排序从小到大
-                    roseType: 'angle',
+                    // roseType: 'angle',
                     itemStyle: {
                         normal: {
                             shadowBlur: 200,

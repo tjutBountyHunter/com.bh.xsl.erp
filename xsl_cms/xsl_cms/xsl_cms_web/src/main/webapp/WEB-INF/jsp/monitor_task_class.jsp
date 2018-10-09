@@ -88,7 +88,7 @@
                     type: 'pie',
                     radius: '60%',   //半径，改变图的大小
                     data:data.sort(function (a, b) { return a.value - b.value; }), //进行排序从小到大
-                    roseType: 'angle',
+                    // roseType: 'angle',
                     itemStyle: {
                         normal: {
                             shadowBlur: 200,

@@ -13,6 +13,7 @@ import javax.jms.TextMessage;
  */
 @Component
 public class Customer implements MessageListener {
+    @Override
     public void onMessage(Message message) {
         TextMessage textMessage = (TextMessage) message;
         try {

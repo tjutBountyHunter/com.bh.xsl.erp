@@ -1,7 +1,7 @@
 package xsl.cms.controller;
 
 import Utils.CookieUtils;
-import Utils.JedisClient;
+import xsl.cms.commons.JedisClient;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -44,6 +44,7 @@ public class ManagerLoginController {
         Cookie cookie = new Cookie(name , value);
         //47.93.230.61
         cookie.setDomain("47.93.230.61");
+//        cookie.setDomain("localhost");
         cookie.setPath("/");
         cookie.setMaxAge(0);
         response.addCookie(cookie);

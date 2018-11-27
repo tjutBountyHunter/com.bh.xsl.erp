@@ -29,8 +29,8 @@
         <!--<property name="timeBetweenEvictionRunsMillis" value="30000"/>-->
     </bean>
     <bean id="jedisPool" class="redis.clients.jedis.JedisPool">
-        <constructor-arg name="host" value="39.108.211.37"></constructor-arg>
-        <constructor-arg name="port" value="6379"></constructor-arg>
+        <constructor-arg name="host" value="47.107.239.212"></constructor-arg>
+        <constructor-arg name="port" value="8379"></constructor-arg>
         <constructor-arg name="poolConfig" ref="jedisPoolConfig"/>
     </bean>
 </beans>

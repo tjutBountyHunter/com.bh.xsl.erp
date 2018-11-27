@@ -2,6 +2,7 @@ package Utils;
 
 import redis.clients.jedis.Jedis;
 import redis.clients.jedis.JedisPool;
+import xsl.cms.commons.JedisClient;
 
 import java.util.List;
 
@@ -112,5 +113,18 @@ public class JedisClientPool implements JedisClient {
 		jedis.close();
 		return result;
 	}
+
+//	public String setnx(String key, String value) throws Exception {
+//		Jedis jedis = jedisPool.getResource();
+//		String respones;
+//		try {
+//			respones = jedis.set(key, value, "nx", "ex", 1000);
+//		}catch (Exception e){
+//			throw new Exception("sjskljskls");
+//		}
+//
+//		return  respones;
+//
+//	}
 
 }

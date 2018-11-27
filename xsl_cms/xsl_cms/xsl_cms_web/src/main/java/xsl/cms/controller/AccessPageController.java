@@ -2,7 +2,7 @@ package xsl.cms.controller;
 /**
  * 页面访问控制
  */
-import Utils.JedisClient;
+import xsl.cms.commons.JedisClient;
 import Utils.JwtUtils;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;

@@ -43,6 +43,10 @@
     <commons-fileupload.version>1.3.1</commons-fileupload.version>
     <jedis.version>2.7.2</jedis.version>
     <solrj.version>4.10.3</solrj.version>
+    <dubbo.version>2.5.3</dubbo.version>
+    <zookeeper.version>3.4.7</zookeeper.version>
+    <zkclient.version>0.1</zkclient.version>
+    <activemq.version>5.8.0</activemq.version>
   </properties>
 
 
@@ -224,6 +228,28 @@
         <groupId>org.apache.solr</groupId>
         <artifactId>solr-solrj</artifactId>
         <version>${solrj.version}</version>
+      </dependency>
+      <!-- dubbo相关 -->
+      <dependency>
+        <groupId>com.alibaba</groupId>
+        <artifactId>dubbo</artifactId>
+        <version>${dubbo.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.apache.zookeeper</groupId>
+        <artifactId>zookeeper</artifactId>
+        <version>${zookeeper.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>com.github.sgroschupf</groupId>
+        <artifactId>zkclient</artifactId>
+        <version>${zkclient.version}</version>
+      </dependency>
+      <!--mq相关-->
+      <dependency>
+        <groupId>org.apache.activemq</groupId>
+        <artifactId>activemq-all</artifactId>
+        <version>${activemq.version}</version>
       </dependency>
     </dependencies>
   </dependencyManagement>

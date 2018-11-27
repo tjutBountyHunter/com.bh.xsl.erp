@@ -1,6 +1,7 @@
 package Utils;
 
 import redis.clients.jedis.JedisCluster;
+import xsl.cms.commons.JedisClient;
 
 import java.util.List;
 

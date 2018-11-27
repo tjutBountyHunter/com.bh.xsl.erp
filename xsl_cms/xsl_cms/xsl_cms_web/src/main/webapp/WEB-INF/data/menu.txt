@@ -106,6 +106,12 @@
         { "id": "dzqz", iconCls: "fa fa-registered", text: "电子签章", url: "pages/1.html" }
         */
     ]
+},
+{ "id": "zjls", iconCls: "fa fa-globe", text: "资金流水监控", children: [
+        { "id": "zdls", iconCls: "fa fa-bar-chart", text: "资金流水监控", url: "monitor/bill" },
+        { "id": "lrzd", iconCls: "fa fa-bar-chart", text: "资金流入账单", url: "bill/inputBill" },
+        { "id": "lczd", iconCls: "fa fa-bar-chart", text: "资金流出账单", url: "bill/outputBill" }
+    ]
 }
 /*,
 { "id": "ydgl", iconCls: "fa fa-coffee", text: "移动管理", children: [

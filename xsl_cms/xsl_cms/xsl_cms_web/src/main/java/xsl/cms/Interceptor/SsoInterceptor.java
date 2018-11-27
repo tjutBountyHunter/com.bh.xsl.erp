@@ -1,13 +1,12 @@
 package xsl.cms.Interceptor;
 
 import Utils.CookieUtils;
-import Utils.JedisClient;
+import xsl.cms.commons.JedisClient;
 import Utils.JsonUtils;
 import Utils.JwtUtils;
 import com.xsl.JWTpojo;
 import com.xsl.Result;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.web.HttpRequestHandler;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
 import xsl.cms.pojo.XslManager;
@@ -119,6 +118,7 @@ public class SsoInterceptor implements HandlerInterceptor {
         Cookie cookie = new Cookie(name , value);
         //47.93.230.61
         cookie.setDomain("47.93.230.61");
+//        cookie.setDomain("localhost");
         cookie.setPath("/");
         cookie.setMaxAge(COOKIE_LIFE);
         response.addCookie(cookie);

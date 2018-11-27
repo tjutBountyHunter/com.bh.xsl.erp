@@ -1,23 +1,21 @@
 package Utils;
 
-import com.nimbusds.jose.*;
-import com.nimbusds.jose.crypto.MACSigner;
+import com.nimbusds.jose.JWSObject;
+import com.nimbusds.jose.JWSVerifier;
+import com.nimbusds.jose.Payload;
 import com.nimbusds.jose.crypto.MACVerifier;
 import com.xsl.JWTpojo;
 import com.xsl.Result;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Value;
+import xsl.cms.commons.JedisClient;
 import xsl.cms.pojo.XslManager;
 
-import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import java.net.URL;
 import java.net.URLConnection;
-import java.util.Calendar;
 import java.util.Date;
 import java.util.Map;
-import java.util.UUID;
 
 /**
  * 说明：
@@ -121,7 +119,7 @@ public class JwtUtils {
         return new Date();
     }
 
-    public static XslManager getManagerInfo(HttpServletRequest httpServletRequest ,JedisClient jedisClient){
+    public static XslManager getManagerInfo(HttpServletRequest httpServletRequest , JedisClient jedisClient){
         /**
          *
          * 功能描述: 获取已登录的用户信息。

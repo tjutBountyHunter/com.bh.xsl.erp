@@ -6,20 +6,20 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="xsl_cms_commons" />
-        <module name="xsl_cms_dao" />
-        <module name="xsl_cms_pojo" />
-        <module name="xsl_cms_service" />
-        <module name="xsl_cms_web" />
+        <module name="xsl_erp_commons" />
+        <module name="xsl_erp_dao" />
+        <module name="xsl_erp_pojo" />
+        <module name="xsl_erp_service" />
+        <module name="xsl_erp_web" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="com.bh.xsl.erp" target="1.8" />
-      <module name="xsl_cms_commons" target="1.8" />
-      <module name="xsl_cms_dao" target="1.8" />
-      <module name="xsl_cms_pojo" target="1.8" />
-      <module name="xsl_cms_service" target="1.8" />
-      <module name="xsl_cms_web" target="1.8" />
+      <module name="xsl_erp_commons" target="1.8" />
+      <module name="xsl_erp_dao" target="1.8" />
+      <module name="xsl_erp_pojo" target="1.8" />
+      <module name="xsl_erp_service" target="1.8" />
+      <module name="xsl_erp_web" target="1.8" />
     </bytecodeTargetLevel>
   </component>
 </project>

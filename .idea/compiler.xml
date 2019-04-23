@@ -13,5 +13,13 @@
         <module name="xsl_cms_web" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="com.bh.xsl.erp" target="1.8" />
+      <module name="xsl_cms_commons" target="1.8" />
+      <module name="xsl_cms_dao" target="1.8" />
+      <module name="xsl_cms_pojo" target="1.8" />
+      <module name="xsl_cms_service" target="1.8" />
+      <module name="xsl_cms_web" target="1.8" />
+    </bytecodeTargetLevel>
   </component>
 </project>

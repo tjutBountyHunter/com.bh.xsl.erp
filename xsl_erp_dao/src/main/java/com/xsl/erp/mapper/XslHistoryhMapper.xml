@@ -5,7 +5,7 @@
     <id column="id" property="id" jdbcType="INTEGER" />
     <result column="userId" property="userid" jdbcType="INTEGER" />
     <result column="hunterId" property="hunterid" jdbcType="INTEGER" />
-    <result column="taskId" property="taskid" jdbcType="INTEGER" />
+    <result column="taskId" property="taskid" jdbcType="VARCHAR" />
     <result column="createDate" property="createdate" jdbcType="DATE" />
   </resultMap>
   <sql id="Example_Where_Clause" >
@@ -103,7 +103,7 @@
     insert into xsl_historyh (id, userId, hunterId, 
       taskId, createDate)
     values (#{id,jdbcType=INTEGER}, #{userid,jdbcType=INTEGER}, #{hunterid,jdbcType=INTEGER}, 
-      #{taskid,jdbcType=INTEGER}, #{createdate,jdbcType=DATE})
+      #{taskid,jdbcType=VARCHAR}, #{createdate,jdbcType=DATE})
   </insert>
   <insert id="insertSelective" parameterType="xsl.erp.pojo.XslHistoryh" >
     insert into xsl_historyh
@@ -135,7 +135,7 @@
         #{hunterid,jdbcType=INTEGER},
       </if>
       <if test="taskid != null" >
-        #{taskid,jdbcType=INTEGER},
+        #{taskid,jdbcType=VARCHAR},
       </if>
       <if test="createdate != null" >
         #{createdate,jdbcType=DATE},
@@ -161,7 +161,7 @@
         hunterId = #{record.hunterid,jdbcType=INTEGER},
       </if>
       <if test="record.taskid != null" >
-        taskId = #{record.taskid,jdbcType=INTEGER},
+        taskId = #{record.taskid,jdbcType=VARCHAR},
       </if>
       <if test="record.createdate != null" >
         createDate = #{record.createdate,jdbcType=DATE},
@@ -176,7 +176,7 @@
     set id = #{record.id,jdbcType=INTEGER},
       userId = #{record.userid,jdbcType=INTEGER},
       hunterId = #{record.hunterid,jdbcType=INTEGER},
-      taskId = #{record.taskid,jdbcType=INTEGER},
+      taskId = #{record.taskid,jdbcType=VARCHAR},
       createDate = #{record.createdate,jdbcType=DATE}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
@@ -192,7 +192,7 @@
         hunterId = #{hunterid,jdbcType=INTEGER},
       </if>
       <if test="taskid != null" >
-        taskId = #{taskid,jdbcType=INTEGER},
+        taskId = #{taskid,jdbcType=VARCHAR},
       </if>
       <if test="createdate != null" >
         createDate = #{createdate,jdbcType=DATE},
@@ -204,7 +204,7 @@
     update xsl_historyh
     set userId = #{userid,jdbcType=INTEGER},
       hunterId = #{hunterid,jdbcType=INTEGER},
-      taskId = #{taskid,jdbcType=INTEGER},
+      taskId = #{taskid,jdbcType=VARCHAR},
       createDate = #{createdate,jdbcType=DATE}
     where id = #{id,jdbcType=INTEGER}
   </update>

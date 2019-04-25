@@ -3,9 +3,10 @@
 <mapper namespace="com.xsl.erp.mapper.XslUserMapper" >
   <resultMap id="BaseResultMap" type="xsl.erp.pojo.XslUser" >
     <id column="id" property="id" jdbcType="INTEGER" />
-    <result column="hunterId" property="hunterid" jdbcType="INTEGER" />
-    <result column="masterId" property="masterid" jdbcType="INTEGER" />
-    <result column="schoolInfo" property="schoolinfo" jdbcType="INTEGER" />
+    <result column="userId" property="userid" jdbcType="VARCHAR" />
+    <result column="hunterId" property="hunterid" jdbcType="VARCHAR" />
+    <result column="masterId" property="masterid" jdbcType="VARCHAR" />
+    <result column="schoolInfo" property="schoolinfo" jdbcType="VARCHAR" />
     <result column="name" property="name" jdbcType="VARCHAR" />
     <result column="password" property="password" jdbcType="VARCHAR" />
     <result column="sex" property="sex" jdbcType="VARCHAR" />
@@ -13,8 +14,8 @@
     <result column="email" property="email" jdbcType="VARCHAR" />
     <result column="state" property="state" jdbcType="TINYINT" />
     <result column="signature" property="signature" jdbcType="VARCHAR" />
-    <result column="createDate" property="createdate" javaType="String" jdbcType="DATE" />
-    <result column="updateDate" property="updatedate" javaType="String" jdbcType="DATE" />
+    <result column="createDate" property="createdate" jdbcType="DATE" />
+    <result column="updateDate" property="updatedate" jdbcType="DATE" />
   </resultMap>
   <sql id="Example_Where_Clause" >
     <where >
@@ -75,8 +76,8 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    id, hunterId, masterId, schoolInfo, name, password, sex, phone, email, state, signature, 
-    createDate, updateDate
+    id, userId, hunterId, masterId, schoolInfo, name, password, sex, phone, email, state, 
+    signature, createDate, updateDate
   </sql>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="xsl.erp.pojo.XslUserExample" >
     select
@@ -109,22 +110,25 @@
     </if>
   </delete>
   <insert id="insert" parameterType="xsl.erp.pojo.XslUser" >
-    insert into xsl_user (id, hunterId, masterId, 
-      schoolInfo, name, password, 
-      sex, phone, email, 
-      state, signature, createDate, 
-      updateDate)
-    values (#{id,jdbcType=INTEGER}, #{hunterid,jdbcType=INTEGER}, #{masterid,jdbcType=INTEGER}, 
-      #{schoolinfo,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, 
-      #{sex,jdbcType=VARCHAR}, #{phone,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR}, 
-      #{state,jdbcType=TINYINT}, #{signature,jdbcType=VARCHAR}, #{createdate,jdbcType=DATE}, 
-      #{updatedate,jdbcType=DATE})
+    insert into xsl_user (id, userId, hunterId, 
+      masterId, schoolInfo, name, 
+      password, sex, phone, 
+      email, state, signature, 
+      createDate, updateDate)
+    values (#{id,jdbcType=INTEGER}, #{userid,jdbcType=VARCHAR}, #{hunterid,jdbcType=VARCHAR}, 
+      #{masterid,jdbcType=VARCHAR}, #{schoolinfo,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, 
+      #{password,jdbcType=VARCHAR}, #{sex,jdbcType=VARCHAR}, #{phone,jdbcType=VARCHAR}, 
+      #{email,jdbcType=VARCHAR}, #{state,jdbcType=TINYINT}, #{signature,jdbcType=VARCHAR}, 
+      #{createdate,jdbcType=DATE}, #{updatedate,jdbcType=DATE})
   </insert>
   <insert id="insertSelective" parameterType="xsl.erp.pojo.XslUser" >
     insert into xsl_user
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="id != null" >
         id,
+      </if>
+      <if test="userid != null" >
+        userId,
       </if>
       <if test="hunterid != null" >
         hunterId,
@@ -167,14 +171,17 @@
       <if test="id != null" >
         #{id,jdbcType=INTEGER},
       </if>
+      <if test="userid != null" >
+        #{userid,jdbcType=VARCHAR},
+      </if>
       <if test="hunterid != null" >
-        #{hunterid,jdbcType=INTEGER},
+        #{hunterid,jdbcType=VARCHAR},
       </if>
       <if test="masterid != null" >
-        #{masterid,jdbcType=INTEGER},
+        #{masterid,jdbcType=VARCHAR},
       </if>
       <if test="schoolinfo != null" >
-        #{schoolinfo,jdbcType=INTEGER},
+        #{schoolinfo,jdbcType=VARCHAR},
       </if>
       <if test="name != null" >
         #{name,jdbcType=VARCHAR},
@@ -217,14 +224,17 @@
       <if test="record.id != null" >
         id = #{record.id,jdbcType=INTEGER},
       </if>
+      <if test="record.userid != null" >
+        userId = #{record.userid,jdbcType=VARCHAR},
+      </if>
       <if test="record.hunterid != null" >
-        hunterId = #{record.hunterid,jdbcType=INTEGER},
+        hunterId = #{record.hunterid,jdbcType=VARCHAR},
       </if>
       <if test="record.masterid != null" >
-        masterId = #{record.masterid,jdbcType=INTEGER},
+        masterId = #{record.masterid,jdbcType=VARCHAR},
       </if>
       <if test="record.schoolinfo != null" >
-        schoolInfo = #{record.schoolinfo,jdbcType=INTEGER},
+        schoolInfo = #{record.schoolinfo,jdbcType=VARCHAR},
       </if>
       <if test="record.name != null" >
         name = #{record.name,jdbcType=VARCHAR},
@@ -261,9 +271,10 @@
   <update id="updateByExample" parameterType="map" >
     update xsl_user
     set id = #{record.id,jdbcType=INTEGER},
-      hunterId = #{record.hunterid,jdbcType=INTEGER},
-      masterId = #{record.masterid,jdbcType=INTEGER},
-      schoolInfo = #{record.schoolinfo,jdbcType=INTEGER},
+      userId = #{record.userid,jdbcType=VARCHAR},
+      hunterId = #{record.hunterid,jdbcType=VARCHAR},
+      masterId = #{record.masterid,jdbcType=VARCHAR},
+      schoolInfo = #{record.schoolinfo,jdbcType=VARCHAR},
       name = #{record.name,jdbcType=VARCHAR},
       password = #{record.password,jdbcType=VARCHAR},
       sex = #{record.sex,jdbcType=VARCHAR},
@@ -280,14 +291,17 @@
   <update id="updateByPrimaryKeySelective" parameterType="xsl.erp.pojo.XslUser" >
     update xsl_user
     <set >
+      <if test="userid != null" >
+        userId = #{userid,jdbcType=VARCHAR},
+      </if>
       <if test="hunterid != null" >
-        hunterId = #{hunterid,jdbcType=INTEGER},
+        hunterId = #{hunterid,jdbcType=VARCHAR},
       </if>
       <if test="masterid != null" >
-        masterId = #{masterid,jdbcType=INTEGER},
+        masterId = #{masterid,jdbcType=VARCHAR},
       </if>
       <if test="schoolinfo != null" >
-        schoolInfo = #{schoolinfo,jdbcType=INTEGER},
+        schoolInfo = #{schoolinfo,jdbcType=VARCHAR},
       </if>
       <if test="name != null" >
         name = #{name,jdbcType=VARCHAR},
@@ -321,9 +335,10 @@
   </update>
   <update id="updateByPrimaryKey" parameterType="xsl.erp.pojo.XslUser" >
     update xsl_user
-    set hunterId = #{hunterid,jdbcType=INTEGER},
-      masterId = #{masterid,jdbcType=INTEGER},
-      schoolInfo = #{schoolinfo,jdbcType=INTEGER},
+    set userId = #{userid,jdbcType=VARCHAR},
+      hunterId = #{hunterid,jdbcType=VARCHAR},
+      masterId = #{masterid,jdbcType=VARCHAR},
+      schoolInfo = #{schoolinfo,jdbcType=VARCHAR},
       name = #{name,jdbcType=VARCHAR},
       password = #{password,jdbcType=VARCHAR},
       sex = #{sex,jdbcType=VARCHAR},

@@ -3,8 +3,8 @@
 <mapper namespace="com.xsl.erp.mapper.XslCollecthMapper" >
   <resultMap id="BaseResultMap" type="xsl.erp.pojo.XslCollecth" >
     <id column="id" property="id" jdbcType="INTEGER" />
-    <result column="userId" property="userid" jdbcType="INTEGER" />
-    <result column="hunterId" property="hunterid" jdbcType="INTEGER" />
+    <result column="userId" property="userid" jdbcType="VARCHAR" />
+    <result column="hunterId" property="hunterid" jdbcType="VARCHAR" />
     <result column="collectDate" property="collectdate" jdbcType="DATE" />
   </resultMap>
   <sql id="Example_Where_Clause" >
@@ -101,7 +101,7 @@
   <insert id="insert" parameterType="xsl.erp.pojo.XslCollecth" >
     insert into xsl_collecth (id, userId, hunterId, 
       collectDate)
-    values (#{id,jdbcType=INTEGER}, #{userid,jdbcType=INTEGER}, #{hunterid,jdbcType=INTEGER}, 
+    values (#{id,jdbcType=INTEGER}, #{userid,jdbcType=VARCHAR}, #{hunterid,jdbcType=VARCHAR}, 
       #{collectdate,jdbcType=DATE})
   </insert>
   <insert id="insertSelective" parameterType="xsl.erp.pojo.XslCollecth" >
@@ -125,10 +125,10 @@
         #{id,jdbcType=INTEGER},
       </if>
       <if test="userid != null" >
-        #{userid,jdbcType=INTEGER},
+        #{userid,jdbcType=VARCHAR},
       </if>
       <if test="hunterid != null" >
-        #{hunterid,jdbcType=INTEGER},
+        #{hunterid,jdbcType=VARCHAR},
       </if>
       <if test="collectdate != null" >
         #{collectdate,jdbcType=DATE},
@@ -148,10 +148,10 @@
         id = #{record.id,jdbcType=INTEGER},
       </if>
       <if test="record.userid != null" >
-        userId = #{record.userid,jdbcType=INTEGER},
+        userId = #{record.userid,jdbcType=VARCHAR},
       </if>
       <if test="record.hunterid != null" >
-        hunterId = #{record.hunterid,jdbcType=INTEGER},
+        hunterId = #{record.hunterid,jdbcType=VARCHAR},
       </if>
       <if test="record.collectdate != null" >
         collectDate = #{record.collectdate,jdbcType=DATE},
@@ -164,8 +164,8 @@
   <update id="updateByExample" parameterType="map" >
     update xsl_collecth
     set id = #{record.id,jdbcType=INTEGER},
-      userId = #{record.userid,jdbcType=INTEGER},
-      hunterId = #{record.hunterid,jdbcType=INTEGER},
+      userId = #{record.userid,jdbcType=VARCHAR},
+      hunterId = #{record.hunterid,jdbcType=VARCHAR},
       collectDate = #{record.collectdate,jdbcType=DATE}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
@@ -175,10 +175,10 @@
     update xsl_collecth
     <set >
       <if test="userid != null" >
-        userId = #{userid,jdbcType=INTEGER},
+        userId = #{userid,jdbcType=VARCHAR},
       </if>
       <if test="hunterid != null" >
-        hunterId = #{hunterid,jdbcType=INTEGER},
+        hunterId = #{hunterid,jdbcType=VARCHAR},
       </if>
       <if test="collectdate != null" >
         collectDate = #{collectdate,jdbcType=DATE},
@@ -188,8 +188,8 @@
   </update>
   <update id="updateByPrimaryKey" parameterType="xsl.erp.pojo.XslCollecth" >
     update xsl_collecth
-    set userId = #{userid,jdbcType=INTEGER},
-      hunterId = #{hunterid,jdbcType=INTEGER},
+    set userId = #{userid,jdbcType=VARCHAR},
+      hunterId = #{hunterid,jdbcType=VARCHAR},
       collectDate = #{collectdate,jdbcType=DATE}
     where id = #{id,jdbcType=INTEGER}
   </update>

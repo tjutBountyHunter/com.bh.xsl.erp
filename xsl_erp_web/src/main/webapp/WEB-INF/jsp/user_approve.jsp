@@ -30,11 +30,17 @@
      ondrawcell="draw">
     <div property="columns">
         <div type="indexcolumn"></div>
-        <div field="id" width="120" headerAlign="center" align="center" allowSort="true">ID</div>
         <div field="name" width="120" headerAlign="center" align="center"  allowSort="true">昵称</div>
         <div field="phone" width="100" headerAlign="center" align="center" headerAlign="center">电话</div>
         <div field="email" align="center" headerAlign="center" width="100" allowSort="true">邮箱</div>
-        <div name="createdate" field="createdate" width="100" align="center" headerAlign="center" allowSort="true" dateFormat="yyyy-MM-dd">申请日期</div>
+        <div field="sex" align="center" headerAlign="center" width="100" allowSort="true">性别</div>
+        <div field="sno" align="center" headerAlign="center" width="100" allowSort="true">学号</div>
+        <div field="major" align="center" headerAlign="center" width="100" allowSort="true">专业</div>
+        <div field="college" align="center" headerAlign="center" width="100" allowSort="true">学院</div>
+        <div field="school" align="center" headerAlign="center" width="100" allowSort="true">学校</div>
+        <div field="startdate" align="center" headerAlign="center" width="100" allowSort="true">入学日期</div>
+        <div field="degree" align="center" headerAlign="center" width="100" allowSort="true">学位</div>
+        <div field="schoolhours" align="center" headerAlign="center" width="100" allowSort="true">在校时长</div>
         <div name="approve" field="approve" width="120" headerAlign="center"  allowSort="true" align="center" >审核</div>
     </div>
 </div>

@@ -3,8 +3,8 @@
 <mapper namespace="com.xsl.erp.mapper.XslHunterLevelPrivilegeMapper" >
   <resultMap id="BaseResultMap" type="xsl.erp.pojo.XslHunterLevelPrivilege" >
     <id column="id" property="id" jdbcType="INTEGER" />
-    <result column="hunterLevelId" property="hunterlevelid" jdbcType="INTEGER" />
-    <result column="privilegeId" property="privilegeid" jdbcType="INTEGER" />
+    <result column="hunterLevelId" property="hunterlevelid" jdbcType="VARCHAR" />
+    <result column="privilegeId" property="privilegeid" jdbcType="VARCHAR" />
     <result column="createDate" property="createdate" jdbcType="DATE" />
   </resultMap>
   <sql id="Example_Where_Clause" >
@@ -101,7 +101,7 @@
   <insert id="insert" parameterType="xsl.erp.pojo.XslHunterLevelPrivilege" >
     insert into xsl_hunter_level_privilege (id, hunterLevelId, privilegeId, 
       createDate)
-    values (#{id,jdbcType=INTEGER}, #{hunterlevelid,jdbcType=INTEGER}, #{privilegeid,jdbcType=INTEGER}, 
+    values (#{id,jdbcType=INTEGER}, #{hunterlevelid,jdbcType=VARCHAR}, #{privilegeid,jdbcType=VARCHAR}, 
       #{createdate,jdbcType=DATE})
   </insert>
   <insert id="insertSelective" parameterType="xsl.erp.pojo.XslHunterLevelPrivilege" >
@@ -125,10 +125,10 @@
         #{id,jdbcType=INTEGER},
       </if>
       <if test="hunterlevelid != null" >
-        #{hunterlevelid,jdbcType=INTEGER},
+        #{hunterlevelid,jdbcType=VARCHAR},
       </if>
       <if test="privilegeid != null" >
-        #{privilegeid,jdbcType=INTEGER},
+        #{privilegeid,jdbcType=VARCHAR},
       </if>
       <if test="createdate != null" >
         #{createdate,jdbcType=DATE},
@@ -148,10 +148,10 @@
         id = #{record.id,jdbcType=INTEGER},
       </if>
       <if test="record.hunterlevelid != null" >
-        hunterLevelId = #{record.hunterlevelid,jdbcType=INTEGER},
+        hunterLevelId = #{record.hunterlevelid,jdbcType=VARCHAR},
       </if>
       <if test="record.privilegeid != null" >
-        privilegeId = #{record.privilegeid,jdbcType=INTEGER},
+        privilegeId = #{record.privilegeid,jdbcType=VARCHAR},
       </if>
       <if test="record.createdate != null" >
         createDate = #{record.createdate,jdbcType=DATE},
@@ -164,8 +164,8 @@
   <update id="updateByExample" parameterType="map" >
     update xsl_hunter_level_privilege
     set id = #{record.id,jdbcType=INTEGER},
-      hunterLevelId = #{record.hunterlevelid,jdbcType=INTEGER},
-      privilegeId = #{record.privilegeid,jdbcType=INTEGER},
+      hunterLevelId = #{record.hunterlevelid,jdbcType=VARCHAR},
+      privilegeId = #{record.privilegeid,jdbcType=VARCHAR},
       createDate = #{record.createdate,jdbcType=DATE}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
@@ -175,10 +175,10 @@
     update xsl_hunter_level_privilege
     <set >
       <if test="hunterlevelid != null" >
-        hunterLevelId = #{hunterlevelid,jdbcType=INTEGER},
+        hunterLevelId = #{hunterlevelid,jdbcType=VARCHAR},
       </if>
       <if test="privilegeid != null" >
-        privilegeId = #{privilegeid,jdbcType=INTEGER},
+        privilegeId = #{privilegeid,jdbcType=VARCHAR},
       </if>
       <if test="createdate != null" >
         createDate = #{createdate,jdbcType=DATE},
@@ -188,8 +188,8 @@
   </update>
   <update id="updateByPrimaryKey" parameterType="xsl.erp.pojo.XslHunterLevelPrivilege" >
     update xsl_hunter_level_privilege
-    set hunterLevelId = #{hunterlevelid,jdbcType=INTEGER},
-      privilegeId = #{privilegeid,jdbcType=INTEGER},
+    set hunterLevelId = #{hunterlevelid,jdbcType=VARCHAR},
+      privilegeId = #{privilegeid,jdbcType=VARCHAR},
       createDate = #{createdate,jdbcType=DATE}
     where id = #{id,jdbcType=INTEGER}
   </update>

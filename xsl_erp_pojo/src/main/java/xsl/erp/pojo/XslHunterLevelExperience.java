@@ -5,7 +5,7 @@ import java.util.Date;
 public class XslHunterLevelExperience {
     private Integer id;
 
-    private Integer hunterlevelid;
+    private String hunterlevelid;
 
     private Short level;
 
@@ -23,12 +23,12 @@ public class XslHunterLevelExperience {
         this.id = id;
     }
 
-    public Integer getHunterlevelid() {
+    public String getHunterlevelid() {
         return hunterlevelid;
     }
 
-    public void setHunterlevelid(Integer hunterlevelid) {
-        this.hunterlevelid = hunterlevelid;
+    public void setHunterlevelid(String hunterlevelid) {
+        this.hunterlevelid = hunterlevelid == null ? null : hunterlevelid.trim();
     }
 
     public Short getLevel() {

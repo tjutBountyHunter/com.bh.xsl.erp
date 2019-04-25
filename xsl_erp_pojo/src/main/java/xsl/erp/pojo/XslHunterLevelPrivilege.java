@@ -5,9 +5,9 @@ import java.util.Date;
 public class XslHunterLevelPrivilege {
     private Integer id;
 
-    private Integer hunterlevelid;
+    private String hunterlevelid;
 
-    private Integer privilegeid;
+    private String privilegeid;
 
     private Date createdate;
 
@@ -19,20 +19,20 @@ public class XslHunterLevelPrivilege {
         this.id = id;
     }
 
-    public Integer getHunterlevelid() {
+    public String getHunterlevelid() {
         return hunterlevelid;
     }
 
-    public void setHunterlevelid(Integer hunterlevelid) {
-        this.hunterlevelid = hunterlevelid;
+    public void setHunterlevelid(String hunterlevelid) {
+        this.hunterlevelid = hunterlevelid == null ? null : hunterlevelid.trim();
     }
 
-    public Integer getPrivilegeid() {
+    public String getPrivilegeid() {
         return privilegeid;
     }
 
-    public void setPrivilegeid(Integer privilegeid) {
-        this.privilegeid = privilegeid;
+    public void setPrivilegeid(String privilegeid) {
+        this.privilegeid = privilegeid == null ? null : privilegeid.trim();
     }
 
     public Date getCreatedate() {

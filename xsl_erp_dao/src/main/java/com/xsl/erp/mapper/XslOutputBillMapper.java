@@ -1,10 +1,9 @@
 package com.xsl.erp.mapper;
 
+import java.util.List;
 import org.apache.ibatis.annotations.Param;
 import xsl.erp.pojo.XslOutputBill;
 import xsl.erp.pojo.XslOutputBillExample;
-
-import java.util.List;
 
 public interface XslOutputBillMapper {
     int countByExample(XslOutputBillExample example);

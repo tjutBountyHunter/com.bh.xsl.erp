@@ -3,7 +3,7 @@
 <mapper namespace="com.xsl.erp.mapper.XslFileMapper" >
   <resultMap id="BaseResultMap" type="xsl.erp.pojo.XslFile" >
     <id column="id" property="id" jdbcType="INTEGER" />
-    <result column="userId" property="userid" jdbcType="INTEGER" />
+    <result column="fileId" property="fileid" jdbcType="VARCHAR" />
     <result column="url" property="url" jdbcType="VARCHAR" />
     <result column="descr" property="descr" jdbcType="VARCHAR" />
     <result column="createDate" property="createdate" jdbcType="DATE" />
@@ -68,7 +68,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    id, userId, url, descr, createDate, updateDate
+    id, fileId, url, descr, createDate, updateDate
   </sql>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="xsl.erp.pojo.XslFileExample" >
     select
@@ -101,10 +101,10 @@
     </if>
   </delete>
   <insert id="insert" parameterType="xsl.erp.pojo.XslFile" >
-    insert into xsl_file (id, userId, url, 
+    insert into xsl_file (id, fileId, url, 
       descr, createDate, updateDate
       )
-    values (#{id,jdbcType=INTEGER}, #{userid,jdbcType=INTEGER}, #{url,jdbcType=VARCHAR}, 
+    values (#{id,jdbcType=INTEGER}, #{fileid,jdbcType=VARCHAR}, #{url,jdbcType=VARCHAR}, 
       #{descr,jdbcType=VARCHAR}, #{createdate,jdbcType=DATE}, #{updatedate,jdbcType=DATE}
       )
   </insert>
@@ -114,8 +114,8 @@
       <if test="id != null" >
         id,
       </if>
-      <if test="userid != null" >
-        userId,
+      <if test="fileid != null" >
+        fileId,
       </if>
       <if test="url != null" >
         url,
@@ -134,8 +134,8 @@
       <if test="id != null" >
         #{id,jdbcType=INTEGER},
       </if>
-      <if test="userid != null" >
-        #{userid,jdbcType=INTEGER},
+      <if test="fileid != null" >
+        #{fileid,jdbcType=VARCHAR},
       </if>
       <if test="url != null" >
         #{url,jdbcType=VARCHAR},
@@ -163,8 +163,8 @@
       <if test="record.id != null" >
         id = #{record.id,jdbcType=INTEGER},
       </if>
-      <if test="record.userid != null" >
-        userId = #{record.userid,jdbcType=INTEGER},
+      <if test="record.fileid != null" >
+        fileId = #{record.fileid,jdbcType=VARCHAR},
       </if>
       <if test="record.url != null" >
         url = #{record.url,jdbcType=VARCHAR},
@@ -186,7 +186,7 @@
   <update id="updateByExample" parameterType="map" >
     update xsl_file
     set id = #{record.id,jdbcType=INTEGER},
-      userId = #{record.userid,jdbcType=INTEGER},
+      fileId = #{record.fileid,jdbcType=VARCHAR},
       url = #{record.url,jdbcType=VARCHAR},
       descr = #{record.descr,jdbcType=VARCHAR},
       createDate = #{record.createdate,jdbcType=DATE},
@@ -198,8 +198,8 @@
   <update id="updateByPrimaryKeySelective" parameterType="xsl.erp.pojo.XslFile" >
     update xsl_file
     <set >
-      <if test="userid != null" >
-        userId = #{userid,jdbcType=INTEGER},
+      <if test="fileid != null" >
+        fileId = #{fileid,jdbcType=VARCHAR},
       </if>
       <if test="url != null" >
         url = #{url,jdbcType=VARCHAR},
@@ -218,7 +218,7 @@
   </update>
   <update id="updateByPrimaryKey" parameterType="xsl.erp.pojo.XslFile" >
     update xsl_file
-    set userId = #{userid,jdbcType=INTEGER},
+    set fileId = #{fileid,jdbcType=VARCHAR},
       url = #{url,jdbcType=VARCHAR},
       descr = #{descr,jdbcType=VARCHAR},
       createDate = #{createdate,jdbcType=DATE},

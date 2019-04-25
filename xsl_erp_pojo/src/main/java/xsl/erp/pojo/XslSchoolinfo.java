@@ -3,6 +3,8 @@ package xsl.erp.pojo;
 public class XslSchoolinfo {
     private Integer id;
 
+    private String schoolid;
+
     private String sno;
 
     private String major;
@@ -23,6 +25,14 @@ public class XslSchoolinfo {
 
     public void setId(Integer id) {
         this.id = id;
+    }
+
+    public String getSchoolid() {
+        return schoolid;
+    }
+
+    public void setSchoolid(String schoolid) {
+        this.schoolid = schoolid == null ? null : schoolid.trim();
     }
 
     public String getSno() {

@@ -6,13 +6,13 @@
     <result column="cid" property="cid" jdbcType="INTEGER" />
     <result column="taskId" property="taskid" jdbcType="VARCHAR" />
     <result column="descr" property="descr" jdbcType="VARCHAR" />
-    <result column="sendId" property="sendid" jdbcType="INTEGER" />
+    <result column="sendId" property="sendid" jdbcType="VARCHAR" />
     <result column="money" property="money" jdbcType="DECIMAL" />
     <result column="state" property="state" jdbcType="TINYINT" />
     <result column="number" property="number" jdbcType="INTEGER" />
-    <result column="createDate" property="createdate" javaType="String" jdbcType="DATE" />
-    <result column="updateDate" property="updatedate" javaType="String" jdbcType="DATE" />
-    <result column="deadline" property="deadline" javaType="String" jdbcType="TIMESTAMP" />
+    <result column="createDate" property="createdate" jdbcType="DATE" />
+    <result column="updateDate" property="updatedate" jdbcType="DATE" />
+    <result column="deadline" property="deadline" jdbcType="DATE" />
   </resultMap>
   <sql id="Example_Where_Clause" >
     <where >
@@ -111,9 +111,9 @@
       state, number, createDate, 
       updateDate, deadline)
     values (#{id,jdbcType=INTEGER}, #{cid,jdbcType=INTEGER}, #{taskid,jdbcType=VARCHAR}, 
-      #{descr,jdbcType=VARCHAR}, #{sendid,jdbcType=INTEGER}, #{money,jdbcType=DECIMAL}, 
+      #{descr,jdbcType=VARCHAR}, #{sendid,jdbcType=VARCHAR}, #{money,jdbcType=DECIMAL}, 
       #{state,jdbcType=TINYINT}, #{number,jdbcType=INTEGER}, #{createdate,jdbcType=DATE}, 
-      #{updatedate,jdbcType=DATE}, #{deadline,jdbcType=TIMESTAMP})
+      #{updatedate,jdbcType=DATE}, #{deadline,jdbcType=DATE})
   </insert>
   <insert id="insertSelective" parameterType="xsl.erp.pojo.XslTask" >
     insert into xsl_task
@@ -166,7 +166,7 @@
         #{descr,jdbcType=VARCHAR},
       </if>
       <if test="sendid != null" >
-        #{sendid,jdbcType=INTEGER},
+        #{sendid,jdbcType=VARCHAR},
       </if>
       <if test="money != null" >
         #{money,jdbcType=DECIMAL},
@@ -184,7 +184,7 @@
         #{updatedate,jdbcType=DATE},
       </if>
       <if test="deadline != null" >
-        #{deadline,jdbcType=TIMESTAMP},
+        #{deadline,jdbcType=DATE},
       </if>
     </trim>
   </insert>
@@ -210,7 +210,7 @@
         descr = #{record.descr,jdbcType=VARCHAR},
       </if>
       <if test="record.sendid != null" >
-        sendId = #{record.sendid,jdbcType=INTEGER},
+        sendId = #{record.sendid,jdbcType=VARCHAR},
       </if>
       <if test="record.money != null" >
         money = #{record.money,jdbcType=DECIMAL},
@@ -228,7 +228,7 @@
         updateDate = #{record.updatedate,jdbcType=DATE},
       </if>
       <if test="record.deadline != null" >
-        deadline = #{record.deadline,jdbcType=TIMESTAMP},
+        deadline = #{record.deadline,jdbcType=DATE},
       </if>
     </set>
     <if test="_parameter != null" >
@@ -241,13 +241,13 @@
       cid = #{record.cid,jdbcType=INTEGER},
       taskId = #{record.taskid,jdbcType=VARCHAR},
       descr = #{record.descr,jdbcType=VARCHAR},
-      sendId = #{record.sendid,jdbcType=INTEGER},
+      sendId = #{record.sendid,jdbcType=VARCHAR},
       money = #{record.money,jdbcType=DECIMAL},
       state = #{record.state,jdbcType=TINYINT},
       number = #{record.number,jdbcType=INTEGER},
       createDate = #{record.createdate,jdbcType=DATE},
       updateDate = #{record.updatedate,jdbcType=DATE},
-      deadline = #{record.deadline,jdbcType=TIMESTAMP}
+      deadline = #{record.deadline,jdbcType=DATE}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -265,7 +265,7 @@
         descr = #{descr,jdbcType=VARCHAR},
       </if>
       <if test="sendid != null" >
-        sendId = #{sendid,jdbcType=INTEGER},
+        sendId = #{sendid,jdbcType=VARCHAR},
       </if>
       <if test="money != null" >
         money = #{money,jdbcType=DECIMAL},
@@ -283,7 +283,7 @@
         updateDate = #{updatedate,jdbcType=DATE},
       </if>
       <if test="deadline != null" >
-        deadline = #{deadline,jdbcType=TIMESTAMP},
+        deadline = #{deadline,jdbcType=DATE},
       </if>
     </set>
     where id = #{id,jdbcType=INTEGER}
@@ -293,13 +293,13 @@
     set cid = #{cid,jdbcType=INTEGER},
       taskId = #{taskid,jdbcType=VARCHAR},
       descr = #{descr,jdbcType=VARCHAR},
-      sendId = #{sendid,jdbcType=INTEGER},
+      sendId = #{sendid,jdbcType=VARCHAR},
       money = #{money,jdbcType=DECIMAL},
       state = #{state,jdbcType=TINYINT},
       number = #{number,jdbcType=INTEGER},
       createDate = #{createdate,jdbcType=DATE},
       updateDate = #{updatedate,jdbcType=DATE},
-      deadline = #{deadline,jdbcType=TIMESTAMP}
+      deadline = #{deadline,jdbcType=DATE}
     where id = #{id,jdbcType=INTEGER}
   </update>
 </mapper>

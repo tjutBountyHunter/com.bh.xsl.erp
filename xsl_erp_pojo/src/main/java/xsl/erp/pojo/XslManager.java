@@ -5,6 +5,8 @@ import java.util.Date;
 public class XslManager {
     private Integer id;
 
+    private String managerid;
+
     private String managerName;
 
     private String managerPassword;
@@ -23,6 +25,14 @@ public class XslManager {
 
     public void setId(Integer id) {
         this.id = id;
+    }
+
+    public String getManagerid() {
+        return managerid;
+    }
+
+    public void setManagerid(String managerid) {
+        this.managerid = managerid == null ? null : managerid.trim();
     }
 
     public String getManagerName() {

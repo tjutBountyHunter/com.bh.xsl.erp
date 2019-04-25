@@ -5,9 +5,9 @@ import java.util.Date;
 public class XslTaskTag {
     private Integer id;
 
-    private Integer taskid;
+    private String taskid;
 
-    private Integer tagid;
+    private String tagid;
 
     private Date createdate;
 
@@ -21,20 +21,20 @@ public class XslTaskTag {
         this.id = id;
     }
 
-    public Integer getTaskid() {
+    public String getTaskid() {
         return taskid;
     }
 
-    public void setTaskid(Integer taskid) {
-        this.taskid = taskid;
+    public void setTaskid(String taskid) {
+        this.taskid = taskid == null ? null : taskid.trim();
     }
 
-    public Integer getTagid() {
+    public String getTagid() {
         return tagid;
     }
 
-    public void setTagid(Integer tagid) {
-        this.tagid = tagid;
+    public void setTagid(String tagid) {
+        this.tagid = tagid == null ? null : tagid.trim();
     }
 
     public Date getCreatedate() {

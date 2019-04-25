@@ -202,52 +202,62 @@ public class XslHunterLevelPrivilegeExample {
             return (Criteria) this;
         }
 
-        public Criteria andHunterlevelidEqualTo(Integer value) {
+        public Criteria andHunterlevelidEqualTo(String value) {
             addCriterion("hunterLevelId =", value, "hunterlevelid");
             return (Criteria) this;
         }
 
-        public Criteria andHunterlevelidNotEqualTo(Integer value) {
+        public Criteria andHunterlevelidNotEqualTo(String value) {
             addCriterion("hunterLevelId <>", value, "hunterlevelid");
             return (Criteria) this;
         }
 
-        public Criteria andHunterlevelidGreaterThan(Integer value) {
+        public Criteria andHunterlevelidGreaterThan(String value) {
             addCriterion("hunterLevelId >", value, "hunterlevelid");
             return (Criteria) this;
         }
 
-        public Criteria andHunterlevelidGreaterThanOrEqualTo(Integer value) {
+        public Criteria andHunterlevelidGreaterThanOrEqualTo(String value) {
             addCriterion("hunterLevelId >=", value, "hunterlevelid");
             return (Criteria) this;
         }
 
-        public Criteria andHunterlevelidLessThan(Integer value) {
+        public Criteria andHunterlevelidLessThan(String value) {
             addCriterion("hunterLevelId <", value, "hunterlevelid");
             return (Criteria) this;
         }
 
-        public Criteria andHunterlevelidLessThanOrEqualTo(Integer value) {
+        public Criteria andHunterlevelidLessThanOrEqualTo(String value) {
             addCriterion("hunterLevelId <=", value, "hunterlevelid");
             return (Criteria) this;
         }
 
-        public Criteria andHunterlevelidIn(List<Integer> values) {
+        public Criteria andHunterlevelidLike(String value) {
+            addCriterion("hunterLevelId like", value, "hunterlevelid");
+            return (Criteria) this;
+        }
+
+        public Criteria andHunterlevelidNotLike(String value) {
+            addCriterion("hunterLevelId not like", value, "hunterlevelid");
+            return (Criteria) this;
+        }
+
+        public Criteria andHunterlevelidIn(List<String> values) {
             addCriterion("hunterLevelId in", values, "hunterlevelid");
             return (Criteria) this;
         }
 
-        public Criteria andHunterlevelidNotIn(List<Integer> values) {
+        public Criteria andHunterlevelidNotIn(List<String> values) {
             addCriterion("hunterLevelId not in", values, "hunterlevelid");
             return (Criteria) this;
         }
 
-        public Criteria andHunterlevelidBetween(Integer value1, Integer value2) {
+        public Criteria andHunterlevelidBetween(String value1, String value2) {
             addCriterion("hunterLevelId between", value1, value2, "hunterlevelid");
             return (Criteria) this;
         }
 
-        public Criteria andHunterlevelidNotBetween(Integer value1, Integer value2) {
+        public Criteria andHunterlevelidNotBetween(String value1, String value2) {
             addCriterion("hunterLevelId not between", value1, value2, "hunterlevelid");
             return (Criteria) this;
         }
@@ -262,52 +272,62 @@ public class XslHunterLevelPrivilegeExample {
             return (Criteria) this;
         }
 
-        public Criteria andPrivilegeidEqualTo(Integer value) {
+        public Criteria andPrivilegeidEqualTo(String value) {
             addCriterion("privilegeId =", value, "privilegeid");
             return (Criteria) this;
         }
 
-        public Criteria andPrivilegeidNotEqualTo(Integer value) {
+        public Criteria andPrivilegeidNotEqualTo(String value) {
             addCriterion("privilegeId <>", value, "privilegeid");
             return (Criteria) this;
         }
 
-        public Criteria andPrivilegeidGreaterThan(Integer value) {
+        public Criteria andPrivilegeidGreaterThan(String value) {
             addCriterion("privilegeId >", value, "privilegeid");
             return (Criteria) this;
         }
 
-        public Criteria andPrivilegeidGreaterThanOrEqualTo(Integer value) {
+        public Criteria andPrivilegeidGreaterThanOrEqualTo(String value) {
             addCriterion("privilegeId >=", value, "privilegeid");
             return (Criteria) this;
         }
 
-        public Criteria andPrivilegeidLessThan(Integer value) {
+        public Criteria andPrivilegeidLessThan(String value) {
             addCriterion("privilegeId <", value, "privilegeid");
             return (Criteria) this;
         }
 
-        public Criteria andPrivilegeidLessThanOrEqualTo(Integer value) {
+        public Criteria andPrivilegeidLessThanOrEqualTo(String value) {
             addCriterion("privilegeId <=", value, "privilegeid");
             return (Criteria) this;
         }
 
-        public Criteria andPrivilegeidIn(List<Integer> values) {
+        public Criteria andPrivilegeidLike(String value) {
+            addCriterion("privilegeId like", value, "privilegeid");
+            return (Criteria) this;
+        }
+
+        public Criteria andPrivilegeidNotLike(String value) {
+            addCriterion("privilegeId not like", value, "privilegeid");
+            return (Criteria) this;
+        }
+
+        public Criteria andPrivilegeidIn(List<String> values) {
             addCriterion("privilegeId in", values, "privilegeid");
             return (Criteria) this;
         }
 
-        public Criteria andPrivilegeidNotIn(List<Integer> values) {
+        public Criteria andPrivilegeidNotIn(List<String> values) {
             addCriterion("privilegeId not in", values, "privilegeid");
             return (Criteria) this;
         }
 
-        public Criteria andPrivilegeidBetween(Integer value1, Integer value2) {
+        public Criteria andPrivilegeidBetween(String value1, String value2) {
             addCriterion("privilegeId between", value1, value2, "privilegeid");
             return (Criteria) this;
         }
 
-        public Criteria andPrivilegeidNotBetween(Integer value1, Integer value2) {
+        public Criteria andPrivilegeidNotBetween(String value1, String value2) {
             addCriterion("privilegeId not between", value1, value2, "privilegeid");
             return (Criteria) this;
         }

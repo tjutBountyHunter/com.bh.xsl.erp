@@ -37,8 +37,8 @@
                     <a class="mini-button" iconCls="icon-save" onclick="saveData('user/show')" plain="true">保存</a>
                 </td>
                 <td style="white-space:nowrap;">
-                    <input id="key" class="mini-textbox" emptyText="请输入用户ID" style="width:150px;" onenter="onKeyEnter"/>
-                    <input id="key1" class="mini-combobox" emptyText="请输入用户状态" style="width:150px;" url="<%=basePath%>data/state.txt" onenter="onKeyEnter"/>
+                    <input id="key" class="mini-textbox" emptyText="请输入用户手机号码" style="width:150px;" onenter="onKeyEnter"/>
+                    <input id="key1" class="mini-combobox" emptyText="请选择用户状态" style="width:150px;" url="<%=basePath%>data/state.txt" onenter="onKeyEnter"/>
                     <a class="mini-button" onclick="search()">查询</a>
                 </td>
             </tr>
@@ -58,7 +58,7 @@
                 <input property="editor" class="mini-textbox" style="width:100%;" minWidth="200"/>
             </div>
             <!--ComboBox：本地数据-->
-            <div type="comboboxcolumn" autoShowPopup="true" name="sex" field="sex" width="100" allowSort="true"
+            <div type="comboboxcolumn" autoShowPopup="true" name="sex" field="sex" width="50" allowSort="true"
                  align="center" headerAlign="center">性别
                 <input property="editor" class="mini-combobox" style="width:100%;" data="Genders"/>
             </div>
@@ -79,6 +79,7 @@
                 <!-- 因为不能连接国家的库，所以写了一个txt,如需添加其他国籍，手动添加 -->
                 <input property="editor" class="mini-combobox" style="width:100%;" url="<%=basePath%>data/state.txt"/>
             </div>
+
             <div name="createdate" field="createdate" width="100" allowSort="true" valueType="String" dateFormat="yyyy-MM-dd">创建日期
                 <!-- 添加编辑信息 -->
                 <input property="editor" class="mini-datepicker" style="width:100%;"/>

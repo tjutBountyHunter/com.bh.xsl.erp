@@ -3,8 +3,8 @@
 <mapper namespace="com.xsl.erp.mapper.XslDatetimeMapper" >
   <resultMap id="BaseResultMap" type="xsl.erp.pojo.XslDatetime" >
     <id column="id" property="id" jdbcType="INTEGER" />
-    <result column="hunterId" property="hunterid" jdbcType="INTEGER" />
-    <result column="taskId" property="taskid" jdbcType="INTEGER" />
+    <result column="hunterId" property="hunterid" jdbcType="VARCHAR" />
+    <result column="taskId" property="taskid" jdbcType="VARCHAR" />
     <result column="createDate" property="createdate" jdbcType="DATE" />
   </resultMap>
   <sql id="Example_Where_Clause" >
@@ -101,7 +101,7 @@
   <insert id="insert" parameterType="xsl.erp.pojo.XslDatetime" >
     insert into xsl_datetime (id, hunterId, taskId, 
       createDate)
-    values (#{id,jdbcType=INTEGER}, #{hunterid,jdbcType=INTEGER}, #{taskid,jdbcType=INTEGER}, 
+    values (#{id,jdbcType=INTEGER}, #{hunterid,jdbcType=VARCHAR}, #{taskid,jdbcType=VARCHAR}, 
       #{createdate,jdbcType=DATE})
   </insert>
   <insert id="insertSelective" parameterType="xsl.erp.pojo.XslDatetime" >
@@ -125,10 +125,10 @@
         #{id,jdbcType=INTEGER},
       </if>
       <if test="hunterid != null" >
-        #{hunterid,jdbcType=INTEGER},
+        #{hunterid,jdbcType=VARCHAR},
       </if>
       <if test="taskid != null" >
-        #{taskid,jdbcType=INTEGER},
+        #{taskid,jdbcType=VARCHAR},
       </if>
       <if test="createdate != null" >
         #{createdate,jdbcType=DATE},
@@ -148,10 +148,10 @@
         id = #{record.id,jdbcType=INTEGER},
       </if>
       <if test="record.hunterid != null" >
-        hunterId = #{record.hunterid,jdbcType=INTEGER},
+        hunterId = #{record.hunterid,jdbcType=VARCHAR},
       </if>
       <if test="record.taskid != null" >
-        taskId = #{record.taskid,jdbcType=INTEGER},
+        taskId = #{record.taskid,jdbcType=VARCHAR},
       </if>
       <if test="record.createdate != null" >
         createDate = #{record.createdate,jdbcType=DATE},
@@ -164,8 +164,8 @@
   <update id="updateByExample" parameterType="map" >
     update xsl_datetime
     set id = #{record.id,jdbcType=INTEGER},
-      hunterId = #{record.hunterid,jdbcType=INTEGER},
-      taskId = #{record.taskid,jdbcType=INTEGER},
+      hunterId = #{record.hunterid,jdbcType=VARCHAR},
+      taskId = #{record.taskid,jdbcType=VARCHAR},
       createDate = #{record.createdate,jdbcType=DATE}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
@@ -175,10 +175,10 @@
     update xsl_datetime
     <set >
       <if test="hunterid != null" >
-        hunterId = #{hunterid,jdbcType=INTEGER},
+        hunterId = #{hunterid,jdbcType=VARCHAR},
       </if>
       <if test="taskid != null" >
-        taskId = #{taskid,jdbcType=INTEGER},
+        taskId = #{taskid,jdbcType=VARCHAR},
       </if>
       <if test="createdate != null" >
         createDate = #{createdate,jdbcType=DATE},
@@ -188,8 +188,8 @@
   </update>
   <update id="updateByPrimaryKey" parameterType="xsl.erp.pojo.XslDatetime" >
     update xsl_datetime
-    set hunterId = #{hunterid,jdbcType=INTEGER},
-      taskId = #{taskid,jdbcType=INTEGER},
+    set hunterId = #{hunterid,jdbcType=VARCHAR},
+      taskId = #{taskid,jdbcType=VARCHAR},
       createDate = #{createdate,jdbcType=DATE}
     where id = #{id,jdbcType=INTEGER}
   </update>

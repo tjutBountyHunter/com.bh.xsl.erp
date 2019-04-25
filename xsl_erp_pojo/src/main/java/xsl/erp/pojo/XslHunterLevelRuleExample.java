@@ -202,52 +202,62 @@ public class XslHunterLevelRuleExample {
             return (Criteria) this;
         }
 
-        public Criteria andHunterlevelidEqualTo(Integer value) {
+        public Criteria andHunterlevelidEqualTo(String value) {
             addCriterion("hunterLevelId =", value, "hunterlevelid");
             return (Criteria) this;
         }
 
-        public Criteria andHunterlevelidNotEqualTo(Integer value) {
+        public Criteria andHunterlevelidNotEqualTo(String value) {
             addCriterion("hunterLevelId <>", value, "hunterlevelid");
             return (Criteria) this;
         }
 
-        public Criteria andHunterlevelidGreaterThan(Integer value) {
+        public Criteria andHunterlevelidGreaterThan(String value) {
             addCriterion("hunterLevelId >", value, "hunterlevelid");
             return (Criteria) this;
         }
 
-        public Criteria andHunterlevelidGreaterThanOrEqualTo(Integer value) {
+        public Criteria andHunterlevelidGreaterThanOrEqualTo(String value) {
             addCriterion("hunterLevelId >=", value, "hunterlevelid");
             return (Criteria) this;
         }
 
-        public Criteria andHunterlevelidLessThan(Integer value) {
+        public Criteria andHunterlevelidLessThan(String value) {
             addCriterion("hunterLevelId <", value, "hunterlevelid");
             return (Criteria) this;
         }
 
-        public Criteria andHunterlevelidLessThanOrEqualTo(Integer value) {
+        public Criteria andHunterlevelidLessThanOrEqualTo(String value) {
             addCriterion("hunterLevelId <=", value, "hunterlevelid");
             return (Criteria) this;
         }
 
-        public Criteria andHunterlevelidIn(List<Integer> values) {
+        public Criteria andHunterlevelidLike(String value) {
+            addCriterion("hunterLevelId like", value, "hunterlevelid");
+            return (Criteria) this;
+        }
+
+        public Criteria andHunterlevelidNotLike(String value) {
+            addCriterion("hunterLevelId not like", value, "hunterlevelid");
+            return (Criteria) this;
+        }
+
+        public Criteria andHunterlevelidIn(List<String> values) {
             addCriterion("hunterLevelId in", values, "hunterlevelid");
             return (Criteria) this;
         }
 
-        public Criteria andHunterlevelidNotIn(List<Integer> values) {
+        public Criteria andHunterlevelidNotIn(List<String> values) {
             addCriterion("hunterLevelId not in", values, "hunterlevelid");
             return (Criteria) this;
         }
 
-        public Criteria andHunterlevelidBetween(Integer value1, Integer value2) {
+        public Criteria andHunterlevelidBetween(String value1, String value2) {
             addCriterion("hunterLevelId between", value1, value2, "hunterlevelid");
             return (Criteria) this;
         }
 
-        public Criteria andHunterlevelidNotBetween(Integer value1, Integer value2) {
+        public Criteria andHunterlevelidNotBetween(String value1, String value2) {
             addCriterion("hunterLevelId not between", value1, value2, "hunterlevelid");
             return (Criteria) this;
         }
@@ -262,52 +272,62 @@ public class XslHunterLevelRuleExample {
             return (Criteria) this;
         }
 
-        public Criteria andRuleidEqualTo(Integer value) {
+        public Criteria andRuleidEqualTo(String value) {
             addCriterion("ruleId =", value, "ruleid");
             return (Criteria) this;
         }
 
-        public Criteria andRuleidNotEqualTo(Integer value) {
+        public Criteria andRuleidNotEqualTo(String value) {
             addCriterion("ruleId <>", value, "ruleid");
             return (Criteria) this;
         }
 
-        public Criteria andRuleidGreaterThan(Integer value) {
+        public Criteria andRuleidGreaterThan(String value) {
             addCriterion("ruleId >", value, "ruleid");
             return (Criteria) this;
         }
 
-        public Criteria andRuleidGreaterThanOrEqualTo(Integer value) {
+        public Criteria andRuleidGreaterThanOrEqualTo(String value) {
             addCriterion("ruleId >=", value, "ruleid");
             return (Criteria) this;
         }
 
-        public Criteria andRuleidLessThan(Integer value) {
+        public Criteria andRuleidLessThan(String value) {
             addCriterion("ruleId <", value, "ruleid");
             return (Criteria) this;
         }
 
-        public Criteria andRuleidLessThanOrEqualTo(Integer value) {
+        public Criteria andRuleidLessThanOrEqualTo(String value) {
             addCriterion("ruleId <=", value, "ruleid");
             return (Criteria) this;
         }
 
-        public Criteria andRuleidIn(List<Integer> values) {
+        public Criteria andRuleidLike(String value) {
+            addCriterion("ruleId like", value, "ruleid");
+            return (Criteria) this;
+        }
+
+        public Criteria andRuleidNotLike(String value) {
+            addCriterion("ruleId not like", value, "ruleid");
+            return (Criteria) this;
+        }
+
+        public Criteria andRuleidIn(List<String> values) {
             addCriterion("ruleId in", values, "ruleid");
             return (Criteria) this;
         }
 
-        public Criteria andRuleidNotIn(List<Integer> values) {
+        public Criteria andRuleidNotIn(List<String> values) {
             addCriterion("ruleId not in", values, "ruleid");
             return (Criteria) this;
         }
 
-        public Criteria andRuleidBetween(Integer value1, Integer value2) {
+        public Criteria andRuleidBetween(String value1, String value2) {
             addCriterion("ruleId between", value1, value2, "ruleid");
             return (Criteria) this;
         }
 
-        public Criteria andRuleidNotBetween(Integer value1, Integer value2) {
+        public Criteria andRuleidNotBetween(String value1, String value2) {
             addCriterion("ruleId not between", value1, value2, "ruleid");
             return (Criteria) this;
         }

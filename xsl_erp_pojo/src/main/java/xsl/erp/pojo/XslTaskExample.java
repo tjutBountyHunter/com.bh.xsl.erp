@@ -403,52 +403,62 @@ public class XslTaskExample {
             return (Criteria) this;
         }
 
-        public Criteria andSendidEqualTo(Integer value) {
+        public Criteria andSendidEqualTo(String value) {
             addCriterion("sendId =", value, "sendid");
             return (Criteria) this;
         }
 
-        public Criteria andSendidNotEqualTo(Integer value) {
+        public Criteria andSendidNotEqualTo(String value) {
             addCriterion("sendId <>", value, "sendid");
             return (Criteria) this;
         }
 
-        public Criteria andSendidGreaterThan(Integer value) {
+        public Criteria andSendidGreaterThan(String value) {
             addCriterion("sendId >", value, "sendid");
             return (Criteria) this;
         }
 
-        public Criteria andSendidGreaterThanOrEqualTo(Integer value) {
+        public Criteria andSendidGreaterThanOrEqualTo(String value) {
             addCriterion("sendId >=", value, "sendid");
             return (Criteria) this;
         }
 
-        public Criteria andSendidLessThan(Integer value) {
+        public Criteria andSendidLessThan(String value) {
             addCriterion("sendId <", value, "sendid");
             return (Criteria) this;
         }
 
-        public Criteria andSendidLessThanOrEqualTo(Integer value) {
+        public Criteria andSendidLessThanOrEqualTo(String value) {
             addCriterion("sendId <=", value, "sendid");
             return (Criteria) this;
         }
 
-        public Criteria andSendidIn(List<Integer> values) {
+        public Criteria andSendidLike(String value) {
+            addCriterion("sendId like", value, "sendid");
+            return (Criteria) this;
+        }
+
+        public Criteria andSendidNotLike(String value) {
+            addCriterion("sendId not like", value, "sendid");
+            return (Criteria) this;
+        }
+
+        public Criteria andSendidIn(List<String> values) {
             addCriterion("sendId in", values, "sendid");
             return (Criteria) this;
         }
 
-        public Criteria andSendidNotIn(List<Integer> values) {
+        public Criteria andSendidNotIn(List<String> values) {
             addCriterion("sendId not in", values, "sendid");
             return (Criteria) this;
         }
 
-        public Criteria andSendidBetween(Integer value1, Integer value2) {
+        public Criteria andSendidBetween(String value1, String value2) {
             addCriterion("sendId between", value1, value2, "sendid");
             return (Criteria) this;
         }
 
-        public Criteria andSendidNotBetween(Integer value1, Integer value2) {
+        public Criteria andSendidNotBetween(String value1, String value2) {
             addCriterion("sendId not between", value1, value2, "sendid");
             return (Criteria) this;
         }
@@ -764,52 +774,52 @@ public class XslTaskExample {
         }
 
         public Criteria andDeadlineEqualTo(Date value) {
-            addCriterion("deadline =", value, "deadline");
+            addCriterionForJDBCDate("deadline =", value, "deadline");
             return (Criteria) this;
         }
 
         public Criteria andDeadlineNotEqualTo(Date value) {
-            addCriterion("deadline <>", value, "deadline");
+            addCriterionForJDBCDate("deadline <>", value, "deadline");
             return (Criteria) this;
         }
 
         public Criteria andDeadlineGreaterThan(Date value) {
-            addCriterion("deadline >", value, "deadline");
+            addCriterionForJDBCDate("deadline >", value, "deadline");
             return (Criteria) this;
         }
 
         public Criteria andDeadlineGreaterThanOrEqualTo(Date value) {
-            addCriterion("deadline >=", value, "deadline");
+            addCriterionForJDBCDate("deadline >=", value, "deadline");
             return (Criteria) this;
         }
 
         public Criteria andDeadlineLessThan(Date value) {
-            addCriterion("deadline <", value, "deadline");
+            addCriterionForJDBCDate("deadline <", value, "deadline");
             return (Criteria) this;
         }
 
         public Criteria andDeadlineLessThanOrEqualTo(Date value) {
-            addCriterion("deadline <=", value, "deadline");
+            addCriterionForJDBCDate("deadline <=", value, "deadline");
             return (Criteria) this;
         }
 
         public Criteria andDeadlineIn(List<Date> values) {
-            addCriterion("deadline in", values, "deadline");
+            addCriterionForJDBCDate("deadline in", values, "deadline");
             return (Criteria) this;
         }
 
         public Criteria andDeadlineNotIn(List<Date> values) {
-            addCriterion("deadline not in", values, "deadline");
+            addCriterionForJDBCDate("deadline not in", values, "deadline");
             return (Criteria) this;
         }
 
         public Criteria andDeadlineBetween(Date value1, Date value2) {
-            addCriterion("deadline between", value1, value2, "deadline");
+            addCriterionForJDBCDate("deadline between", value1, value2, "deadline");
             return (Criteria) this;
         }
 
         public Criteria andDeadlineNotBetween(Date value1, Date value2) {
-            addCriterion("deadline not between", value1, value2, "deadline");
+            addCriterionForJDBCDate("deadline not between", value1, value2, "deadline");
             return (Criteria) this;
         }
     }

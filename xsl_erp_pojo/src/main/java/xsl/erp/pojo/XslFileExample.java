@@ -192,63 +192,73 @@ public class XslFileExample {
             return (Criteria) this;
         }
 
-        public Criteria andUseridIsNull() {
-            addCriterion("userId is null");
+        public Criteria andFileidIsNull() {
+            addCriterion("fileId is null");
             return (Criteria) this;
         }
 
-        public Criteria andUseridIsNotNull() {
-            addCriterion("userId is not null");
+        public Criteria andFileidIsNotNull() {
+            addCriterion("fileId is not null");
             return (Criteria) this;
         }
 
-        public Criteria andUseridEqualTo(Integer value) {
-            addCriterion("userId =", value, "userid");
+        public Criteria andFileidEqualTo(String value) {
+            addCriterion("fileId =", value, "fileid");
             return (Criteria) this;
         }
 
-        public Criteria andUseridNotEqualTo(Integer value) {
-            addCriterion("userId <>", value, "userid");
+        public Criteria andFileidNotEqualTo(String value) {
+            addCriterion("fileId <>", value, "fileid");
             return (Criteria) this;
         }
 
-        public Criteria andUseridGreaterThan(Integer value) {
-            addCriterion("userId >", value, "userid");
+        public Criteria andFileidGreaterThan(String value) {
+            addCriterion("fileId >", value, "fileid");
             return (Criteria) this;
         }
 
-        public Criteria andUseridGreaterThanOrEqualTo(Integer value) {
-            addCriterion("userId >=", value, "userid");
+        public Criteria andFileidGreaterThanOrEqualTo(String value) {
+            addCriterion("fileId >=", value, "fileid");
             return (Criteria) this;
         }
 
-        public Criteria andUseridLessThan(Integer value) {
-            addCriterion("userId <", value, "userid");
+        public Criteria andFileidLessThan(String value) {
+            addCriterion("fileId <", value, "fileid");
             return (Criteria) this;
         }
 
-        public Criteria andUseridLessThanOrEqualTo(Integer value) {
-            addCriterion("userId <=", value, "userid");
+        public Criteria andFileidLessThanOrEqualTo(String value) {
+            addCriterion("fileId <=", value, "fileid");
             return (Criteria) this;
         }
 
-        public Criteria andUseridIn(List<Integer> values) {
-            addCriterion("userId in", values, "userid");
+        public Criteria andFileidLike(String value) {
+            addCriterion("fileId like", value, "fileid");
             return (Criteria) this;
         }
 
-        public Criteria andUseridNotIn(List<Integer> values) {
-            addCriterion("userId not in", values, "userid");
+        public Criteria andFileidNotLike(String value) {
+            addCriterion("fileId not like", value, "fileid");
             return (Criteria) this;
         }
 
-        public Criteria andUseridBetween(Integer value1, Integer value2) {
-            addCriterion("userId between", value1, value2, "userid");
+        public Criteria andFileidIn(List<String> values) {
+            addCriterion("fileId in", values, "fileid");
             return (Criteria) this;
         }
 
-        public Criteria andUseridNotBetween(Integer value1, Integer value2) {
-            addCriterion("userId not between", value1, value2, "userid");
+        public Criteria andFileidNotIn(List<String> values) {
+            addCriterion("fileId not in", values, "fileid");
+            return (Criteria) this;
+        }
+
+        public Criteria andFileidBetween(String value1, String value2) {
+            addCriterion("fileId between", value1, value2, "fileid");
+            return (Criteria) this;
+        }
+
+        public Criteria andFileidNotBetween(String value1, String value2) {
+            addCriterion("fileId not between", value1, value2, "fileid");
             return (Criteria) this;
         }
 

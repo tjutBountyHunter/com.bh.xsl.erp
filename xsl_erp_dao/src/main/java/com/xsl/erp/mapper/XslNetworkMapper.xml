@@ -3,8 +3,8 @@
 <mapper namespace="com.xsl.erp.mapper.XslNetworkMapper" >
   <resultMap id="BaseResultMap" type="xsl.erp.pojo.XslNetwork" >
     <id column="id" property="id" jdbcType="INTEGER" />
-    <result column="AId" property="aid" jdbcType="INTEGER" />
-    <result column="BId" property="bid" jdbcType="INTEGER" />
+    <result column="AId" property="aid" jdbcType="VARCHAR" />
+    <result column="BId" property="bid" jdbcType="VARCHAR" />
     <result column="num" property="num" jdbcType="INTEGER" />
     <result column="firstDate" property="firstdate" jdbcType="DATE" />
     <result column="lastDate" property="lastdate" jdbcType="DATE" />
@@ -103,7 +103,7 @@
   <insert id="insert" parameterType="xsl.erp.pojo.XslNetwork" >
     insert into xsl_network (id, AId, BId, 
       num, firstDate, lastDate)
-    values (#{id,jdbcType=INTEGER}, #{aid,jdbcType=INTEGER}, #{bid,jdbcType=INTEGER}, 
+    values (#{id,jdbcType=INTEGER}, #{aid,jdbcType=VARCHAR}, #{bid,jdbcType=VARCHAR}, 
       #{num,jdbcType=INTEGER}, #{firstdate,jdbcType=DATE}, #{lastdate,jdbcType=DATE})
   </insert>
   <insert id="insertSelective" parameterType="xsl.erp.pojo.XslNetwork" >
@@ -133,10 +133,10 @@
         #{id,jdbcType=INTEGER},
       </if>
       <if test="aid != null" >
-        #{aid,jdbcType=INTEGER},
+        #{aid,jdbcType=VARCHAR},
       </if>
       <if test="bid != null" >
-        #{bid,jdbcType=INTEGER},
+        #{bid,jdbcType=VARCHAR},
       </if>
       <if test="num != null" >
         #{num,jdbcType=INTEGER},
@@ -162,10 +162,10 @@
         id = #{record.id,jdbcType=INTEGER},
       </if>
       <if test="record.aid != null" >
-        AId = #{record.aid,jdbcType=INTEGER},
+        AId = #{record.aid,jdbcType=VARCHAR},
       </if>
       <if test="record.bid != null" >
-        BId = #{record.bid,jdbcType=INTEGER},
+        BId = #{record.bid,jdbcType=VARCHAR},
       </if>
       <if test="record.num != null" >
         num = #{record.num,jdbcType=INTEGER},
@@ -184,8 +184,8 @@
   <update id="updateByExample" parameterType="map" >
     update xsl_network
     set id = #{record.id,jdbcType=INTEGER},
-      AId = #{record.aid,jdbcType=INTEGER},
-      BId = #{record.bid,jdbcType=INTEGER},
+      AId = #{record.aid,jdbcType=VARCHAR},
+      BId = #{record.bid,jdbcType=VARCHAR},
       num = #{record.num,jdbcType=INTEGER},
       firstDate = #{record.firstdate,jdbcType=DATE},
       lastDate = #{record.lastdate,jdbcType=DATE}
@@ -197,10 +197,10 @@
     update xsl_network
     <set >
       <if test="aid != null" >
-        AId = #{aid,jdbcType=INTEGER},
+        AId = #{aid,jdbcType=VARCHAR},
       </if>
       <if test="bid != null" >
-        BId = #{bid,jdbcType=INTEGER},
+        BId = #{bid,jdbcType=VARCHAR},
       </if>
       <if test="num != null" >
         num = #{num,jdbcType=INTEGER},
@@ -216,8 +216,8 @@
   </update>
   <update id="updateByPrimaryKey" parameterType="xsl.erp.pojo.XslNetwork" >
     update xsl_network
-    set AId = #{aid,jdbcType=INTEGER},
-      BId = #{bid,jdbcType=INTEGER},
+    set AId = #{aid,jdbcType=VARCHAR},
+      BId = #{bid,jdbcType=VARCHAR},
       num = #{num,jdbcType=INTEGER},
       firstDate = #{firstdate,jdbcType=DATE},
       lastDate = #{lastdate,jdbcType=DATE}

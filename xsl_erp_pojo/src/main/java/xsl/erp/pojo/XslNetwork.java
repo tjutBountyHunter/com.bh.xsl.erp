@@ -5,9 +5,9 @@ import java.util.Date;
 public class XslNetwork {
     private Integer id;
 
-    private Integer aid;
+    private String aid;
 
-    private Integer bid;
+    private String bid;
 
     private Integer num;
 
@@ -23,20 +23,20 @@ public class XslNetwork {
         this.id = id;
     }
 
-    public Integer getAid() {
+    public String getAid() {
         return aid;
     }
 
-    public void setAid(Integer aid) {
-        this.aid = aid;
+    public void setAid(String aid) {
+        this.aid = aid == null ? null : aid.trim();
     }
 
-    public Integer getBid() {
+    public String getBid() {
         return bid;
     }
 
-    public void setBid(Integer bid) {
-        this.bid = bid;
+    public void setBid(String bid) {
+        this.bid = bid == null ? null : bid.trim();
     }
 
     public Integer getNum() {

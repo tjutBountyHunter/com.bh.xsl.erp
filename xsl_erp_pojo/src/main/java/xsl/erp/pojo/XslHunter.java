@@ -5,6 +5,10 @@ import java.util.Date;
 public class XslHunter {
     private Integer id;
 
+    private String hunterid;
+
+    private String userid;
+
     private Short level;
 
     private Integer empirical;
@@ -17,7 +21,7 @@ public class XslHunter {
 
     private String descr;
 
-    private String lasttime;
+    private Date lasttime;
 
     private Boolean state;
 
@@ -27,6 +31,22 @@ public class XslHunter {
 
     public void setId(Integer id) {
         this.id = id;
+    }
+
+    public String getHunterid() {
+        return hunterid;
+    }
+
+    public void setHunterid(String hunterid) {
+        this.hunterid = hunterid == null ? null : hunterid.trim();
+    }
+
+    public String getUserid() {
+        return userid;
+    }
+
+    public void setUserid(String userid) {
+        this.userid = userid == null ? null : userid.trim();
     }
 
     public Short getLevel() {
@@ -77,11 +97,11 @@ public class XslHunter {
         this.descr = descr == null ? null : descr.trim();
     }
 
-    public String getLasttime() {
+    public Date getLasttime() {
         return lasttime;
     }
 
-    public void setLasttime(String lasttime) {
+    public void setLasttime(Date lasttime) {
         this.lasttime = lasttime;
     }
 

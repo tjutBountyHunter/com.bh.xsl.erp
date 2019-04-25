@@ -1,5 +1,7 @@
 package xsl.erp.pojo;
 
+import java.util.Date;
+
 public class XslOutputBill {
     private Integer id;
 
@@ -7,7 +9,7 @@ public class XslOutputBill {
 
     private Double outputMoney;
 
-    private String tradetime;
+    private Date tradetime;
 
     public Integer getId() {
         return id;
@@ -33,11 +35,11 @@ public class XslOutputBill {
         this.outputMoney = outputMoney;
     }
 
-    public String getTradetime() {
+    public Date getTradetime() {
         return tradetime;
     }
 
-    public void setTradetime(String tradetime) {
+    public void setTradetime(Date tradetime) {
         this.tradetime = tradetime;
     }
 }

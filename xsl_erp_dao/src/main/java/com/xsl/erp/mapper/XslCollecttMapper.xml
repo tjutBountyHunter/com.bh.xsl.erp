@@ -3,8 +3,8 @@
 <mapper namespace="com.xsl.erp.mapper.XslCollecttMapper" >
   <resultMap id="BaseResultMap" type="xsl.erp.pojo.XslCollectt" >
     <id column="id" property="id" jdbcType="INTEGER" />
-    <result column="userId" property="userid" jdbcType="INTEGER" />
-    <result column="taskId" property="taskid" jdbcType="INTEGER" />
+    <result column="userId" property="userid" jdbcType="VARCHAR" />
+    <result column="taskId" property="taskid" jdbcType="VARCHAR" />
     <result column="collectDate" property="collectdate" jdbcType="DATE" />
   </resultMap>
   <sql id="Example_Where_Clause" >
@@ -101,7 +101,7 @@
   <insert id="insert" parameterType="xsl.erp.pojo.XslCollectt" >
     insert into xsl_collectt (id, userId, taskId, 
       collectDate)
-    values (#{id,jdbcType=INTEGER}, #{userid,jdbcType=INTEGER}, #{taskid,jdbcType=INTEGER}, 
+    values (#{id,jdbcType=INTEGER}, #{userid,jdbcType=VARCHAR}, #{taskid,jdbcType=VARCHAR}, 
       #{collectdate,jdbcType=DATE})
   </insert>
   <insert id="insertSelective" parameterType="xsl.erp.pojo.XslCollectt" >
@@ -125,10 +125,10 @@
         #{id,jdbcType=INTEGER},
       </if>
       <if test="userid != null" >
-        #{userid,jdbcType=INTEGER},
+        #{userid,jdbcType=VARCHAR},
       </if>
       <if test="taskid != null" >
-        #{taskid,jdbcType=INTEGER},
+        #{taskid,jdbcType=VARCHAR},
       </if>
       <if test="collectdate != null" >
         #{collectdate,jdbcType=DATE},
@@ -148,10 +148,10 @@
         id = #{record.id,jdbcType=INTEGER},
       </if>
       <if test="record.userid != null" >
-        userId = #{record.userid,jdbcType=INTEGER},
+        userId = #{record.userid,jdbcType=VARCHAR},
       </if>
       <if test="record.taskid != null" >
-        taskId = #{record.taskid,jdbcType=INTEGER},
+        taskId = #{record.taskid,jdbcType=VARCHAR},
       </if>
       <if test="record.collectdate != null" >
         collectDate = #{record.collectdate,jdbcType=DATE},
@@ -164,8 +164,8 @@
   <update id="updateByExample" parameterType="map" >
     update xsl_collectt
     set id = #{record.id,jdbcType=INTEGER},
-      userId = #{record.userid,jdbcType=INTEGER},
-      taskId = #{record.taskid,jdbcType=INTEGER},
+      userId = #{record.userid,jdbcType=VARCHAR},
+      taskId = #{record.taskid,jdbcType=VARCHAR},
       collectDate = #{record.collectdate,jdbcType=DATE}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
@@ -175,10 +175,10 @@
     update xsl_collectt
     <set >
       <if test="userid != null" >
-        userId = #{userid,jdbcType=INTEGER},
+        userId = #{userid,jdbcType=VARCHAR},
       </if>
       <if test="taskid != null" >
-        taskId = #{taskid,jdbcType=INTEGER},
+        taskId = #{taskid,jdbcType=VARCHAR},
       </if>
       <if test="collectdate != null" >
         collectDate = #{collectdate,jdbcType=DATE},
@@ -188,8 +188,8 @@
   </update>
   <update id="updateByPrimaryKey" parameterType="xsl.erp.pojo.XslCollectt" >
     update xsl_collectt
-    set userId = #{userid,jdbcType=INTEGER},
-      taskId = #{taskid,jdbcType=INTEGER},
+    set userId = #{userid,jdbcType=VARCHAR},
+      taskId = #{taskid,jdbcType=VARCHAR},
       collectDate = #{collectdate,jdbcType=DATE}
     where id = #{id,jdbcType=INTEGER}
   </update>

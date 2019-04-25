@@ -5,6 +5,10 @@ import java.util.Date;
 public class XslMaster {
     private Integer id;
 
+    private String masterid;
+
+    private String userid;
+
     private Short level;
 
     private Integer empirical;
@@ -17,7 +21,7 @@ public class XslMaster {
 
     private String descr;
 
-    private String lastaccdate;
+    private Date lastaccdate;
 
     private Boolean state;
 
@@ -27,6 +31,22 @@ public class XslMaster {
 
     public void setId(Integer id) {
         this.id = id;
+    }
+
+    public String getMasterid() {
+        return masterid;
+    }
+
+    public void setMasterid(String masterid) {
+        this.masterid = masterid == null ? null : masterid.trim();
+    }
+
+    public String getUserid() {
+        return userid;
+    }
+
+    public void setUserid(String userid) {
+        this.userid = userid == null ? null : userid.trim();
     }
 
     public Short getLevel() {
@@ -77,11 +97,11 @@ public class XslMaster {
         this.descr = descr == null ? null : descr.trim();
     }
 
-    public String getLastaccdate() {
+    public Date getLastaccdate() {
         return lastaccdate;
     }
 
-    public void setLastaccdate(String lastaccdate) {
+    public void setLastaccdate(Date lastaccdate) {
         this.lastaccdate = lastaccdate;
     }
 

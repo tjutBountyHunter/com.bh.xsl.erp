@@ -3,6 +3,7 @@
 <mapper namespace="com.xsl.erp.mapper.XslSchoolinfoMapper" >
   <resultMap id="BaseResultMap" type="xsl.erp.pojo.XslSchoolinfo" >
     <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="schoolId" property="schoolid" jdbcType="VARCHAR" />
     <result column="sno" property="sno" jdbcType="VARCHAR" />
     <result column="major" property="major" jdbcType="VARCHAR" />
     <result column="college" property="college" jdbcType="VARCHAR" />
@@ -70,7 +71,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    id, sno, major, college, school, startDate, degree, schoolHours
+    id, schoolId, sno, major, college, school, startDate, degree, schoolHours
   </sql>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="xsl.erp.pojo.XslSchoolinfoExample" >
     select
@@ -103,18 +104,23 @@
     </if>
   </delete>
   <insert id="insert" parameterType="xsl.erp.pojo.XslSchoolinfo" >
-    insert into xsl_schoolInfo (id, sno, major, 
-      college, school, startDate, 
-      degree, schoolHours)
-    values (#{id,jdbcType=INTEGER}, #{sno,jdbcType=VARCHAR}, #{major,jdbcType=VARCHAR}, 
-      #{college,jdbcType=VARCHAR}, #{school,jdbcType=VARCHAR}, #{startdate,jdbcType=VARCHAR}, 
-      #{degree,jdbcType=TINYINT}, #{schoolhours,jdbcType=TINYINT})
+    insert into xsl_schoolInfo (id, schoolId, sno, 
+      major, college, school, 
+      startDate, degree, schoolHours
+      )
+    values (#{id,jdbcType=INTEGER}, #{schoolid,jdbcType=VARCHAR}, #{sno,jdbcType=VARCHAR}, 
+      #{major,jdbcType=VARCHAR}, #{college,jdbcType=VARCHAR}, #{school,jdbcType=VARCHAR}, 
+      #{startdate,jdbcType=VARCHAR}, #{degree,jdbcType=TINYINT}, #{schoolhours,jdbcType=TINYINT}
+      )
   </insert>
   <insert id="insertSelective" parameterType="xsl.erp.pojo.XslSchoolinfo" >
     insert into xsl_schoolInfo
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="id != null" >
         id,
+      </if>
+      <if test="schoolid != null" >
+        schoolId,
       </if>
       <if test="sno != null" >
         sno,
@@ -141,6 +147,9 @@
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="id != null" >
         #{id,jdbcType=INTEGER},
+      </if>
+      <if test="schoolid != null" >
+        #{schoolid,jdbcType=VARCHAR},
       </if>
       <if test="sno != null" >
         #{sno,jdbcType=VARCHAR},
@@ -177,6 +186,9 @@
       <if test="record.id != null" >
         id = #{record.id,jdbcType=INTEGER},
       </if>
+      <if test="record.schoolid != null" >
+        schoolId = #{record.schoolid,jdbcType=VARCHAR},
+      </if>
       <if test="record.sno != null" >
         sno = #{record.sno,jdbcType=VARCHAR},
       </if>
@@ -206,6 +218,7 @@
   <update id="updateByExample" parameterType="map" >
     update xsl_schoolInfo
     set id = #{record.id,jdbcType=INTEGER},
+      schoolId = #{record.schoolid,jdbcType=VARCHAR},
       sno = #{record.sno,jdbcType=VARCHAR},
       major = #{record.major,jdbcType=VARCHAR},
       college = #{record.college,jdbcType=VARCHAR},
@@ -220,6 +233,9 @@
   <update id="updateByPrimaryKeySelective" parameterType="xsl.erp.pojo.XslSchoolinfo" >
     update xsl_schoolInfo
     <set >
+      <if test="schoolid != null" >
+        schoolId = #{schoolid,jdbcType=VARCHAR},
+      </if>
       <if test="sno != null" >
         sno = #{sno,jdbcType=VARCHAR},
       </if>
@@ -246,7 +262,8 @@
   </update>
   <update id="updateByPrimaryKey" parameterType="xsl.erp.pojo.XslSchoolinfo" >
     update xsl_schoolInfo
-    set sno = #{sno,jdbcType=VARCHAR},
+    set schoolId = #{schoolid,jdbcType=VARCHAR},
+      sno = #{sno,jdbcType=VARCHAR},
       major = #{major,jdbcType=VARCHAR},
       college = #{college,jdbcType=VARCHAR},
       school = #{school,jdbcType=VARCHAR},

@@ -245,7 +245,7 @@ public class XslOutputBillExample {
             return (Criteria) this;
         }
 
-        public Criteria andOutputMoneyEqualTo(Short value) {
+        public Criteria andOutputMoneyEqualTo(Double value) {
             addCriterion("output_money =", value, "outputMoney");
             return (Criteria) this;
         }

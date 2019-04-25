@@ -5,11 +5,13 @@ import java.util.Date;
 public class XslUser {
     private Integer id;
 
-    private Integer hunterid;
+    private String userid;
 
-    private Integer masterid;
+    private String hunterid;
 
-    private Integer schoolinfo;
+    private String masterid;
+
+    private String schoolinfo;
 
     private String name;
 
@@ -25,9 +27,9 @@ public class XslUser {
 
     private String signature;
 
-    private String createdate;
+    private Date createdate;
 
-    private String updatedate;
+    private Date updatedate;
 
     public Integer getId() {
         return id;
@@ -37,28 +39,36 @@ public class XslUser {
         this.id = id;
     }
 
-    public Integer getHunterid() {
+    public String getUserid() {
+        return userid;
+    }
+
+    public void setUserid(String userid) {
+        this.userid = userid == null ? null : userid.trim();
+    }
+
+    public String getHunterid() {
         return hunterid;
     }
 
-    public void setHunterid(Integer hunterid) {
-        this.hunterid = hunterid;
+    public void setHunterid(String hunterid) {
+        this.hunterid = hunterid == null ? null : hunterid.trim();
     }
 
-    public Integer getMasterid() {
+    public String getMasterid() {
         return masterid;
     }
 
-    public void setMasterid(Integer masterid) {
-        this.masterid = masterid;
+    public void setMasterid(String masterid) {
+        this.masterid = masterid == null ? null : masterid.trim();
     }
 
-    public Integer getSchoolinfo() {
+    public String getSchoolinfo() {
         return schoolinfo;
     }
 
-    public void setSchoolinfo(Integer schoolinfo) {
-        this.schoolinfo = schoolinfo;
+    public void setSchoolinfo(String schoolinfo) {
+        this.schoolinfo = schoolinfo == null ? null : schoolinfo.trim();
     }
 
     public String getName() {
@@ -117,19 +127,19 @@ public class XslUser {
         this.signature = signature == null ? null : signature.trim();
     }
 
-    public String getCreatedate() {
+    public Date getCreatedate() {
         return createdate;
     }
 
-    public void setCreatedate(String createdate) {
+    public void setCreatedate(Date createdate) {
         this.createdate = createdate;
     }
 
-    public String getUpdatedate() {
+    public Date getUpdatedate() {
         return updatedate;
     }
 
-    public void setUpdatedate(String updatedate) {
+    public void setUpdatedate(Date updatedate) {
         this.updatedate = updatedate;
     }
 }

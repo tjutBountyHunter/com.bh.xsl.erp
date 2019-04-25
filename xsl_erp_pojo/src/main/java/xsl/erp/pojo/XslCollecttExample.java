@@ -202,52 +202,62 @@ public class XslCollecttExample {
             return (Criteria) this;
         }
 
-        public Criteria andUseridEqualTo(Integer value) {
+        public Criteria andUseridEqualTo(String value) {
             addCriterion("userId =", value, "userid");
             return (Criteria) this;
         }
 
-        public Criteria andUseridNotEqualTo(Integer value) {
+        public Criteria andUseridNotEqualTo(String value) {
             addCriterion("userId <>", value, "userid");
             return (Criteria) this;
         }
 
-        public Criteria andUseridGreaterThan(Integer value) {
+        public Criteria andUseridGreaterThan(String value) {
             addCriterion("userId >", value, "userid");
             return (Criteria) this;
         }
 
-        public Criteria andUseridGreaterThanOrEqualTo(Integer value) {
+        public Criteria andUseridGreaterThanOrEqualTo(String value) {
             addCriterion("userId >=", value, "userid");
             return (Criteria) this;
         }
 
-        public Criteria andUseridLessThan(Integer value) {
+        public Criteria andUseridLessThan(String value) {
             addCriterion("userId <", value, "userid");
             return (Criteria) this;
         }
 
-        public Criteria andUseridLessThanOrEqualTo(Integer value) {
+        public Criteria andUseridLessThanOrEqualTo(String value) {
             addCriterion("userId <=", value, "userid");
             return (Criteria) this;
         }
 
-        public Criteria andUseridIn(List<Integer> values) {
+        public Criteria andUseridLike(String value) {
+            addCriterion("userId like", value, "userid");
+            return (Criteria) this;
+        }
+
+        public Criteria andUseridNotLike(String value) {
+            addCriterion("userId not like", value, "userid");
+            return (Criteria) this;
+        }
+
+        public Criteria andUseridIn(List<String> values) {
             addCriterion("userId in", values, "userid");
             return (Criteria) this;
         }
 
-        public Criteria andUseridNotIn(List<Integer> values) {
+        public Criteria andUseridNotIn(List<String> values) {
             addCriterion("userId not in", values, "userid");
             return (Criteria) this;
         }
 
-        public Criteria andUseridBetween(Integer value1, Integer value2) {
+        public Criteria andUseridBetween(String value1, String value2) {
             addCriterion("userId between", value1, value2, "userid");
             return (Criteria) this;
         }
 
-        public Criteria andUseridNotBetween(Integer value1, Integer value2) {
+        public Criteria andUseridNotBetween(String value1, String value2) {
             addCriterion("userId not between", value1, value2, "userid");
             return (Criteria) this;
         }
@@ -262,52 +272,62 @@ public class XslCollecttExample {
             return (Criteria) this;
         }
 
-        public Criteria andTaskidEqualTo(Integer value) {
+        public Criteria andTaskidEqualTo(String value) {
             addCriterion("taskId =", value, "taskid");
             return (Criteria) this;
         }
 
-        public Criteria andTaskidNotEqualTo(Integer value) {
+        public Criteria andTaskidNotEqualTo(String value) {
             addCriterion("taskId <>", value, "taskid");
             return (Criteria) this;
         }
 
-        public Criteria andTaskidGreaterThan(Integer value) {
+        public Criteria andTaskidGreaterThan(String value) {
             addCriterion("taskId >", value, "taskid");
             return (Criteria) this;
         }
 
-        public Criteria andTaskidGreaterThanOrEqualTo(Integer value) {
+        public Criteria andTaskidGreaterThanOrEqualTo(String value) {
             addCriterion("taskId >=", value, "taskid");
             return (Criteria) this;
         }
 
-        public Criteria andTaskidLessThan(Integer value) {
+        public Criteria andTaskidLessThan(String value) {
             addCriterion("taskId <", value, "taskid");
             return (Criteria) this;
         }
 
-        public Criteria andTaskidLessThanOrEqualTo(Integer value) {
+        public Criteria andTaskidLessThanOrEqualTo(String value) {
             addCriterion("taskId <=", value, "taskid");
             return (Criteria) this;
         }
 
-        public Criteria andTaskidIn(List<Integer> values) {
+        public Criteria andTaskidLike(String value) {
+            addCriterion("taskId like", value, "taskid");
+            return (Criteria) this;
+        }
+
+        public Criteria andTaskidNotLike(String value) {
+            addCriterion("taskId not like", value, "taskid");
+            return (Criteria) this;
+        }
+
+        public Criteria andTaskidIn(List<String> values) {
             addCriterion("taskId in", values, "taskid");
             return (Criteria) this;
         }
 
-        public Criteria andTaskidNotIn(List<Integer> values) {
+        public Criteria andTaskidNotIn(List<String> values) {
             addCriterion("taskId not in", values, "taskid");
             return (Criteria) this;
         }
 
-        public Criteria andTaskidBetween(Integer value1, Integer value2) {
+        public Criteria andTaskidBetween(String value1, String value2) {
             addCriterion("taskId between", value1, value2, "taskid");
             return (Criteria) this;
         }
 
-        public Criteria andTaskidNotBetween(Integer value1, Integer value2) {
+        public Criteria andTaskidNotBetween(String value1, String value2) {
             addCriterion("taskId not between", value1, value2, "taskid");
             return (Criteria) this;
         }

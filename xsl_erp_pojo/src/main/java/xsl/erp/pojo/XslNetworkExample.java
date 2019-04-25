@@ -202,52 +202,62 @@ public class XslNetworkExample {
             return (Criteria) this;
         }
 
-        public Criteria andAidEqualTo(Integer value) {
+        public Criteria andAidEqualTo(String value) {
             addCriterion("AId =", value, "aid");
             return (Criteria) this;
         }
 
-        public Criteria andAidNotEqualTo(Integer value) {
+        public Criteria andAidNotEqualTo(String value) {
             addCriterion("AId <>", value, "aid");
             return (Criteria) this;
         }
 
-        public Criteria andAidGreaterThan(Integer value) {
+        public Criteria andAidGreaterThan(String value) {
             addCriterion("AId >", value, "aid");
             return (Criteria) this;
         }
 
-        public Criteria andAidGreaterThanOrEqualTo(Integer value) {
+        public Criteria andAidGreaterThanOrEqualTo(String value) {
             addCriterion("AId >=", value, "aid");
             return (Criteria) this;
         }
 
-        public Criteria andAidLessThan(Integer value) {
+        public Criteria andAidLessThan(String value) {
             addCriterion("AId <", value, "aid");
             return (Criteria) this;
         }
 
-        public Criteria andAidLessThanOrEqualTo(Integer value) {
+        public Criteria andAidLessThanOrEqualTo(String value) {
             addCriterion("AId <=", value, "aid");
             return (Criteria) this;
         }
 
-        public Criteria andAidIn(List<Integer> values) {
+        public Criteria andAidLike(String value) {
+            addCriterion("AId like", value, "aid");
+            return (Criteria) this;
+        }
+
+        public Criteria andAidNotLike(String value) {
+            addCriterion("AId not like", value, "aid");
+            return (Criteria) this;
+        }
+
+        public Criteria andAidIn(List<String> values) {
             addCriterion("AId in", values, "aid");
             return (Criteria) this;
         }
 
-        public Criteria andAidNotIn(List<Integer> values) {
+        public Criteria andAidNotIn(List<String> values) {
             addCriterion("AId not in", values, "aid");
             return (Criteria) this;
         }
 
-        public Criteria andAidBetween(Integer value1, Integer value2) {
+        public Criteria andAidBetween(String value1, String value2) {
             addCriterion("AId between", value1, value2, "aid");
             return (Criteria) this;
         }
 
-        public Criteria andAidNotBetween(Integer value1, Integer value2) {
+        public Criteria andAidNotBetween(String value1, String value2) {
             addCriterion("AId not between", value1, value2, "aid");
             return (Criteria) this;
         }
@@ -262,52 +272,62 @@ public class XslNetworkExample {
             return (Criteria) this;
         }
 
-        public Criteria andBidEqualTo(Integer value) {
+        public Criteria andBidEqualTo(String value) {
             addCriterion("BId =", value, "bid");
             return (Criteria) this;
         }
 
-        public Criteria andBidNotEqualTo(Integer value) {
+        public Criteria andBidNotEqualTo(String value) {
             addCriterion("BId <>", value, "bid");
             return (Criteria) this;
         }
 
-        public Criteria andBidGreaterThan(Integer value) {
+        public Criteria andBidGreaterThan(String value) {
             addCriterion("BId >", value, "bid");
             return (Criteria) this;
         }
 
-        public Criteria andBidGreaterThanOrEqualTo(Integer value) {
+        public Criteria andBidGreaterThanOrEqualTo(String value) {
             addCriterion("BId >=", value, "bid");
             return (Criteria) this;
         }
 
-        public Criteria andBidLessThan(Integer value) {
+        public Criteria andBidLessThan(String value) {
             addCriterion("BId <", value, "bid");
             return (Criteria) this;
         }
 
-        public Criteria andBidLessThanOrEqualTo(Integer value) {
+        public Criteria andBidLessThanOrEqualTo(String value) {
             addCriterion("BId <=", value, "bid");
             return (Criteria) this;
         }
 
-        public Criteria andBidIn(List<Integer> values) {
+        public Criteria andBidLike(String value) {
+            addCriterion("BId like", value, "bid");
+            return (Criteria) this;
+        }
+
+        public Criteria andBidNotLike(String value) {
+            addCriterion("BId not like", value, "bid");
+            return (Criteria) this;
+        }
+
+        public Criteria andBidIn(List<String> values) {
             addCriterion("BId in", values, "bid");
             return (Criteria) this;
         }
 
-        public Criteria andBidNotIn(List<Integer> values) {
+        public Criteria andBidNotIn(List<String> values) {
             addCriterion("BId not in", values, "bid");
             return (Criteria) this;
         }
 
-        public Criteria andBidBetween(Integer value1, Integer value2) {
+        public Criteria andBidBetween(String value1, String value2) {
             addCriterion("BId between", value1, value2, "bid");
             return (Criteria) this;
         }
 
-        public Criteria andBidNotBetween(Integer value1, Integer value2) {
+        public Criteria andBidNotBetween(String value1, String value2) {
             addCriterion("BId not between", value1, value2, "bid");
             return (Criteria) this;
         }

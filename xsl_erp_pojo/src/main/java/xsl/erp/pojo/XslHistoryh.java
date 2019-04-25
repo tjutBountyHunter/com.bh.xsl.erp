@@ -9,7 +9,7 @@ public class XslHistoryh {
 
     private Integer hunterid;
 
-    private Integer taskid;
+    private String taskid;
 
     private Date createdate;
 
@@ -37,12 +37,12 @@ public class XslHistoryh {
         this.hunterid = hunterid;
     }
 
-    public Integer getTaskid() {
+    public String getTaskid() {
         return taskid;
     }
 
-    public void setTaskid(Integer taskid) {
-        this.taskid = taskid;
+    public void setTaskid(String taskid) {
+        this.taskid = taskid == null ? null : taskid.trim();
     }
 
     public Date getCreatedate() {

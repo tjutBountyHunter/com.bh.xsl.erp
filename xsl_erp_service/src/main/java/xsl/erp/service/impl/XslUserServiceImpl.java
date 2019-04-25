@@ -5,8 +5,11 @@ import com.github.pagehelper.PageInfo;
 import com.xsl.erp.mapper.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.util.StringUtils;
+import vo.UserApproveRes;
 import xsl.erp.Utils.DateUtils;
 import xsl.erp.annotation.SystemServiceLog;
 import xsl.erp.pojo.*;
@@ -19,6 +22,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.UUID;
 
 /**
  *  xsl_user页面的服务层
@@ -63,40 +67,43 @@ public class XslUserServiceImpl implements XslUserService {
      *
      * @param page 分页查询页数
      * @param rows 分页查询行数
-     * @param key 用户ID
-     * @param key1 用户状态
+     * @param phone 用户ID
+     * @param state 用户状态
      * @return 返回一个数据的列表包含data和total
      */
     @Override
     @SystemServiceLog(description = "用户查询Service")
-    public PageObject SelectUserAll(Integer page, Integer rows,Integer key,Byte key1 ) {
+    public PageObject selectUserAll(Integer page, Integer rows, String phone, Byte state) {
         XslUserExample example = new XslUserExample();
-        PageObject object = new PageObject();
+        PageObject result = new PageObject();
         try{
             XslUserExample.Criteria criteria = example.createCriteria();
             /* 进行判断防止程序崩溃，用户ID */
-            if( key != null ){
-                criteria.andIdEqualTo(key);
+            if(!StringUtils.isEmpty(phone)){
+                criteria.andPhoneEqualTo(phone);
             }
-            if( key1 != null){//用户状态
-                criteria.andStateEqualTo(key1);
+
+            if( state != null){//用户状态
+                criteria.andStateEqualTo(state);
             }
+
             criteria.andStateGreaterThan((byte) -3);
 
             /* 进行分页 */
             PageHelper.startPage(page,rows);
-            List<XslUser> list = this.xslUserMapper.selectByExample(example);
-            object.setData(list);
+            List<XslUser> userList = this.xslUserMapper.selectByExample(example);
+            result.setData(userList);
+
             /* 得到分页的信息 */
-            PageInfo<XslUser> info = new PageInfo<XslUser>(list);
+            PageInfo<XslUser> info = new PageInfo<XslUser>(userList);
             /* 得到分页的总数量 */
-            object.setTotal(info.getTotal());
+            result.setTotal(info.getTotal());
+
         }catch (Exception e){
             logger.error("用户分页查询异常报警！" + e.getMessage());
-            object = null;
-        }finally {
-            return object;
         }
+
+        return result;
     }
 
     /**
@@ -113,45 +120,42 @@ public class XslUserServiceImpl implements XslUserService {
      */
     @Override
     @SystemServiceLog(description = "用户添加Service")
-    public boolean InsertXslUser(XslUser[] xslUsers) {
+    public boolean insertXslUser(List<XslUser> xslUsers) {
             /* 进行添加，查看是否是null */
             /* 判断不等于null */
-            if(xslUsers != null){
-                for(XslUser xslUser:xslUsers){
-                    /* 判断不等于null */
-                    if(xslUser != null){
-                        try {
-                            Byte state = xslUser.getState();
-                            if(state == null){
-                                state = (byte)(0);
-                            }
-                            //设置创建时间
-                            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-                            String date = sdf.format(new Date());
-                            xslUser.setCreatedate(date);
-                            xslUser.setUpdatedate(date);
-                            /* 状态为1正常的时候进行创建猎人和雇主的id */
-//                            if (state == 1) {
-//                                /* 获取已经生成好的雇主和猎人id */
-//                                xslUser = getXslUser(xslUser, new Date());
-//                            }
-                            /* 其他情况直接创建，也没有什么操作 */
-                            xslUser.setHunterid(setHunterAndGetHunterId(xslUser.getPhone()));
-                            xslUser.setMasterid(setMasterAndGetMasterId(xslUser.getPhone()));
-                            xslUser.setSchoolinfo(setSchoolInfoAndGetSchoolInfo());
-                            int n2 = this.xslUserMapper.insertSelective(xslUser);
-                            /* 操作不成功 */
-                            System.out.println(n2);
-                            if (n2 < 0) {
-                                logger.error("xslUserService 中，该条记录插入失败！");
-                            }
-                        }catch (Exception e){
-                            logger.error("User用户删除异常警告" + e.getMessage());
-                            return false;
-                        }
+            if(xslUsers == null || xslUsers.size() < 1){
+                return false;
+            }
+
+            for(XslUser xslUser:xslUsers){
+                try {
+                    xslUser.setUserid(UUID.randomUUID().toString());
+                    Byte state = xslUser.getState();
+                    if(state == null){
+                        xslUser.setState((byte) 0);
                     }
+                    //设置创建时间
+                    xslUser.setCreatedate(new Date());
+                    xslUser.setUpdatedate(new Date());
+
+
+                    /* 其他情况直接创建，也没有什么操作 */
+                    xslUser.setHunterid(setHunterAndGetHunterId(xslUser.getPhone()));
+                    xslUser.setMasterid(setMasterAndGetMasterId(xslUser.getPhone()));
+                    xslUser.setSchoolinfo(setSchoolInfoAndGetSchoolInfo());
+
+                    int n2 = this.xslUserMapper.insertSelective(xslUser);
+
+                    if (n2 < 0) {
+                        logger.error("xslUserService 中，该条记录插入失败:{}", xslUser.getUserid());
+                        return false;
+                    }
+                }catch (Exception e){
+                    logger.error("User用户删除异常警告" + e.getMessage());
+                    return false;
                 }
             }
+
             return true;
     }
 
@@ -165,14 +169,12 @@ public class XslUserServiceImpl implements XslUserService {
      */
     @SystemServiceLog(description = "用户更新Service")
     @Override
-    public boolean UpdateXslUser(XslUser[] xslUsers) {
+    public boolean updateXslUser(List<XslUser> xslUsers) {
         if(xslUsers != null){ //进行null的判断
             for(XslUser xslUser:xslUsers){
                 try {
                     if( xslUser != null ){//进行null的判断，最少要拥有id，和一个要修改的值
-                        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-                        String date = sdf.format(new Date());
-                        xslUser.setUpdatedate(date);//设置修改时间
+                        xslUser.setUpdatedate(new Date());//设置修改时间
                         int n = this.xslUserMapper.updateByPrimaryKeySelective(xslUser);
                         /* 一条用户更新失败 */
                         if(n < 0){
@@ -203,89 +205,89 @@ public class XslUserServiceImpl implements XslUserService {
      */
     @SystemServiceLog(description = "用户删除Service")
     @Override
-    public boolean deleteXslUser(XslUser[] xslUsers) {
+    public boolean deleteXslUser(List<XslUser> xslUsers) {
         /* 进行null的判断 */
-        if(xslUsers != null){
-            for(XslUser xslUser:xslUsers){
-                try{
-                    /* 进行null的判断，最少要拥有id，和一个要修改的值 */
-                    if( xslUser != null ){
-                        /* hunter的逻辑删除 */
-                        XslHunter xslHunter = new XslHunter();
-                        xslHunter.setId(xslUser.getHunterid());
-                        xslHunter.setState(false);
-                        int n = this.xslHunterMapper.updateByPrimaryKeySelective(xslHunter);
-                        /* hunter的接受任务的删除,由于没有任务中没有hunterid属性，所以回来再写 */
+        if(xslUsers == null || xslUsers.size() < 1){
+            return false;
+        }
 
-                        /* hunter的标签的删除 */
-                        XslHunterTagExample example = new XslHunterTagExample();
-                        XslHunterTagExample.Criteria criteria = example.createCriteria();
-                        criteria.andHunteridEqualTo(xslHunter.getId());
-                        XslHunterTag xslHunterTag = new XslHunterTag();
-                        xslHunterTag.setState(false);
-                        /* 这里不用判断，因为有可能没有标签 */
-                        this.xslHunterTagMapper.updateByExampleSelective(xslHunterTag,example);
+        for(XslUser xslUser:xslUsers){
+            try{
+                /* 进行null的判断，最少要拥有id，和一个要修改的值 */
+                if( xslUser != null ){
+                    /* hunter的逻辑删除 */
+                    XslHunter xslHunter = new XslHunter();
+                    xslHunter.setHunterid(xslUser.getHunterid());
+                    xslHunter.setState(false);
+                    int n = xslHunterMapper.updateByHunterIdSelective(xslHunter);
+                    /* hunter的接受任务的删除,由于没有任务中没有hunterid属性，所以回来再写 */
 
-                        /* master的逻辑删除 */
-                        XslMaster xslMaster = new XslMaster();
-                        xslMaster.setId(xslUser.getMasterid());
-                        xslMaster.setState(false);
-                        int n1 = this.xslMasterMapper.updateByPrimaryKeySelective(xslMaster);
+                    /* hunter的标签的删除 */
+                    XslHunterTagExample example = new XslHunterTagExample();
+                    XslHunterTagExample.Criteria criteria = example.createCriteria();
+                    criteria.andHunteridEqualTo(xslHunter.getHunterid());
+                    XslHunterTag xslHunterTag = new XslHunterTag();
+                    xslHunterTag.setState(false);
+                    /* 这里不用判断，因为有可能没有标签 */
+                    xslHunterTagMapper.updateByExampleSelective(xslHunterTag,example);
 
-                        /* 任务极其标签的逻辑删除 */
-                        XslTaskExample xslTaskExample = new XslTaskExample();
-                        XslTaskExample.Criteria xslTaskExampleCriteria =  xslTaskExample.createCriteria();
-                        xslTaskExampleCriteria.andSendidEqualTo(xslMaster.getId());
-                        List<Byte> byteList = new ArrayList<>();
-                        /* 待接收 */
-                        byteList.add((byte)(0));
-                        /* 启动推荐算法待接收 */
-                        byteList.add((byte)(1));
-                        /* 进行中 */
-                        byteList.add((byte)(2));
-                        /* 待审核 */
-                        byteList.add((byte)(4));
-                        xslTaskExampleCriteria.andStateIn(byteList);
-                        List<XslTask> tasklist = this.xslTaskMapper.selectByExample(xslTaskExample);
-                        XslTask[] xslTasks = null;
-                        if( tasklist == null ){
-                            xslTasks =  (XslTask[]) tasklist.toArray();
-                        }
-                        XslTaskService xslTaskService = new XslTaskServiceImpl();
-                        xslTaskService.deleteXslTask(xslTasks);
-                        /* master标签的逻辑删除 */
-                        XslMasterTagExample xslMasterTagExample = new XslMasterTagExample();
-                        XslMasterTagExample.Criteria xslMasterCriteria = xslMasterTagExample.createCriteria();
-                        xslMasterCriteria.andMasteridEqualTo(xslUser.getMasterid());
-                        XslMasterTag xslMasterTag = new XslMasterTag();
-                        xslMasterTag.setState(false);
-                        this.xslMasterTagMapper.updateByExampleSelective(xslMasterTag,xslMasterTagExample);
-                        /* xslUser的逻辑删除 */
-                        /* 设置修改时间 */
-                        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-                        String date = sdf.format(new Date());
-                        xslUser.setUpdatedate(date);
-                        /* -1代表冻结的意思，进行逻辑删除 */
-                        xslUser.setState((byte)(-3));
-                        int n2 = this.xslUserMapper.updateByPrimaryKeySelective(xslUser);
-                        if(n < 0 && n1 < 0 && n2 < 0){
-                            logger.error("用户删除失败！");
-                        }
+                    /* master的逻辑删除 */
+                    XslMaster xslMaster = new XslMaster();
+                    xslMaster.setMasterid(xslUser.getMasterid());
+                    xslMaster.setState(false);
+                    int n1 = xslMasterMapper.updateByMasterIdSelective(xslMaster);
+
+                    /* 任务极其标签的逻辑删除 */
+                    XslTaskExample xslTaskExample = new XslTaskExample();
+                    XslTaskExample.Criteria xslTaskExampleCriteria =  xslTaskExample.createCriteria();
+                    xslTaskExampleCriteria.andSendidEqualTo(xslMaster.getMasterid());
+                    List<Byte> byteList = new ArrayList<>();
+                    /* 待接收 */
+                    byteList.add((byte)(0));
+                    /* 启动推荐算法待接收 */
+                    byteList.add((byte)(1));
+                    /* 进行中 */
+                    byteList.add((byte)(2));
+                    /* 待审核 */
+                    byteList.add((byte)(4));
+                    xslTaskExampleCriteria.andStateIn(byteList);
+                    List<XslTask> tasklist = xslTaskMapper.selectByExample(xslTaskExample);
+                    XslTask[] xslTasks = null;
+                    if( tasklist == null ){
+                        xslTasks =  (XslTask[]) tasklist.toArray();
                     }
-                }catch (Exception e){
-                    logger.error("用户删除异常报警 " + e.getMessage());
-                    return false;
+                    XslTaskService xslTaskService = new XslTaskServiceImpl();
+                    xslTaskService.deleteXslTask(xslTasks);
+
+                    /* master标签的逻辑删除 */
+                    XslMasterTagExample xslMasterTagExample = new XslMasterTagExample();
+                    XslMasterTagExample.Criteria xslMasterCriteria = xslMasterTagExample.createCriteria();
+                    xslMasterCriteria.andMasteridEqualTo(xslUser.getMasterid());
+                    XslMasterTag xslMasterTag = new XslMasterTag();
+                    xslMasterTag.setState(false);
+                    this.xslMasterTagMapper.updateByExampleSelective(xslMasterTag,xslMasterTagExample);
+                    /* xslUser的逻辑删除 */
+                    /* 设置修改时间 */
+                    xslUser.setUpdatedate(new Date());
+                    /* -1代表冻结的意思，进行逻辑删除 */
+                    xslUser.setState((byte)(-3));
+                    int n2 = this.xslUserMapper.updateByPrimaryKeySelective(xslUser);
+                    if(n < 0 && n1 < 0 && n2 < 0){
+                        logger.error("用户删除失败！");
+                    }
                 }
+            }catch (Exception e){
+                logger.error("用户删除异常报警 " + e.getMessage());
+                return false;
             }
         }
+
         return true;
     }
 
     /**
      * user_approve页面的数据显示，只查询状态为0未审核的用户
      *
-     * @author 王坤
-     * @time 2018-8-12 18:17
      * @param page 分页的页数
      * @param rows 分页的行数
      * @return 返回页面显示的数据的集合
@@ -293,8 +295,31 @@ public class XslUserServiceImpl implements XslUserService {
     @SystemServiceLog(description = "用户审核分页Service")
     @Override
     public PageObject SelectUserApprove(Integer page, Integer rows) {
-        return SelectUserAll(page,rows,null,(byte)(0));//只查询未经过审核的
-    }
+		PageObject pageObject = selectUserAll(page, rows, null, (byte) (0));//只查询未经过审核的
+		List<XslUser> userList = (List<XslUser>) pageObject.getData();
+
+//		userList.stream().map();
+		List<UserApproveRes> userApproveResList = new ArrayList<>(10);
+		for (XslUser xslUser : userList){
+			UserApproveRes userApproveRes = new UserApproveRes();
+			BeanUtils.copyProperties(xslUser, userApproveRes);
+			String schoolId = xslUser.getSchoolinfo();
+			XslSchoolinfoExample xslSchoolinfoExample = new XslSchoolinfoExample();
+			XslSchoolinfoExample.Criteria criteria = xslSchoolinfoExample.createCriteria();
+			criteria.andSchoolidEqualTo(schoolId);
+			List<XslSchoolinfo> xslSchoolinfos = xslSchoolinfoMapper.selectByExample(xslSchoolinfoExample);
+
+			if(xslSchoolinfos != null && xslSchoolinfos.size() > 0){
+				BeanUtils.copyProperties(xslSchoolinfos.get(0), userApproveRes);
+			}
+
+			userApproveResList.add(userApproveRes);
+		}
+
+		pageObject.setData(userApproveResList);
+
+		return pageObject;
+	}
 
     /**
      * user_approve页面的审核操作
@@ -318,7 +343,7 @@ public class XslUserServiceImpl implements XslUserService {
                     //审核失败
                     SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
                     String date = sdf.format(new Date());
-                    xslUser.setUpdatedate(date);
+                    xslUser.setUpdatedate(new Date());
                 }
                 int n = this.xslUserMapper.updateByPrimaryKeySelective(xslUser);
                 if( n < 0 ){return false;}
@@ -361,21 +386,21 @@ public class XslUserServiceImpl implements XslUserService {
         XslHunter xslHunter = new XslHunter();
         try {
             xslHunter.setDescr(" ");//防止注入失败
-            xslHunter.setLasttime(DateUtils.getDateToString());//由于没有0000-00-00所以设置一下时间
+            xslHunter.setLasttime(new Date());//由于没有0000-00-00所以设置一下时间
             this.xslHunterMapper.insertSelective(xslHunter);
             //生成masterID
             XslMaster xslMaster = new XslMaster();
             xslMaster.setDescr(" ");//防止注入失败
-            xslMaster.setLastaccdate(DateUtils.getDateToString());
+            xslMaster.setLastaccdate(new Date());
             this.xslMasterMapper.insertSelective(xslMaster);
             //设置hunterID
-            xslUser.setHunterid(xslHunter.getId());
+            xslUser.setHunterid(xslHunter.getHunterid());
             //设置masterID
-            xslUser.setMasterid(xslMaster.getId());
+            xslUser.setMasterid(xslMaster.getMasterid());
             //设置修改时间
             SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
             String date1 = sdf.format(new Date());
-            xslUser.setUpdatedate(date1);
+            xslUser.setUpdatedate(new Date());
         }catch (Exception e){
             logger.error("雇主、猎人账户生成异常  :" + e.getMessage());
             return null;
@@ -394,6 +419,7 @@ public class XslUserServiceImpl implements XslUserService {
          * @date: 2018/10/4 13:37
          */
         XslSchoolinfo schoolinfo = new XslSchoolinfo();
+        schoolinfo.setSchoolid(UUID.randomUUID().toString());
         schoolinfo.setSno("20150001");
         schoolinfo.setMajor("计算机科学与技术");
         schoolinfo.setCollege("计算机科学与工程学院");
@@ -415,6 +441,7 @@ public class XslUserServiceImpl implements XslUserService {
          * @date: 2018/10/4 13:38
          */
         XslMaster xslMaster = new XslMaster();
+        xslMaster.setMasterid(UUID.randomUUID().toString());
         xslMaster.setLevel((short)1);
         xslMaster.setEmpirical(0);
         xslMaster.setTaskaccnum(0);
@@ -422,7 +449,7 @@ public class XslUserServiceImpl implements XslUserService {
         xslMaster.setCredit((short)100);
         xslMaster.setDescr("雇主" + phone);
         xslMaster.setState(true);
-        xslMaster.setLastaccdate(DateUtils.getDateToString());
+        xslMaster.setLastaccdate(new Date());
         return xslMaster;
     }
 
@@ -437,6 +464,7 @@ public class XslUserServiceImpl implements XslUserService {
          * @date: 2018/10/4 13:38
          */
         XslHunter xslHunter = new XslHunter();
+        xslHunter.setHunterid(UUID.randomUUID().toString());
         xslHunter.setLevel((short)1);
         xslHunter.setEmpirical(0);
         xslHunter.setTaskaccnum(0);
@@ -444,38 +472,35 @@ public class XslUserServiceImpl implements XslUserService {
         xslHunter.setCredit((short)100);
         xslHunter.setDescr("猎人" + phone);
         xslHunter.setState(true);
-        xslHunter.setLasttime(DateUtils.getDateToString());
+        xslHunter.setLasttime(new Date());
         return xslHunter;
     }
 
-    private int setHunterAndGetHunterId(String phone){
+    private String setHunterAndGetHunterId(String phone){
         XslHunter xslHunter = mockXslHunter(phone);
-        xslHunterMapper.insertSelective(xslHunter);
-        XslHunterExample example = new XslHunterExample();
-        XslHunterExample.Criteria criteria = example.createCriteria();
-        criteria.andDescrEqualTo("猎人" + phone);
-        List<HunterReturn> xslHunters = xslHunterMapper.selectByExample(example);
-        return xslHunters.get(0).getId();
+        int i = xslHunterMapper.insertSelective(xslHunter);
+        if(i > 0){
+            return xslHunter.getHunterid();
+        }
+       return "";
     }
 
-    private int setMasterAndGetMasterId(String phone){
+    private String setMasterAndGetMasterId(String phone){
         XslMaster xslMaster = mockXslMaster(phone);
-        xslMasterMapper.insertSelective(xslMaster);
-        XslMasterExample example = new XslMasterExample();
-        XslMasterExample.Criteria criteria = example.createCriteria();
-        criteria.andDescrEqualTo("雇主" + phone);
-        List<MasterReturn> xslMasters = xslMasterMapper.selectByExample(example);
-        return xslMasters.get(0).getId();
+        int i = xslMasterMapper.insertSelective(xslMaster);
+        if(i > 0){
+            return xslMaster.getMasterid();
+        }
+        return "";
     }
 
-    private int setSchoolInfoAndGetSchoolInfo(){
+    private String setSchoolInfoAndGetSchoolInfo(){
         XslSchoolinfo schoolinfo = mockXslSchoolinfo();
-        xslSchoolinfoMapper.insertSelective(schoolinfo);
-        XslSchoolinfoExample example = new XslSchoolinfoExample();
-        XslSchoolinfoExample.Criteria criteria = example.createCriteria();
-        criteria.andSnoEqualTo(schoolinfo.getSno());
-        List<XslSchoolinfo> xslSchoolinfos = xslSchoolinfoMapper.selectByExample(example);
-        return xslSchoolinfos.get(0).getId();
+        int i = xslSchoolinfoMapper.insertSelective(schoolinfo);
+        if(i > 0){
+            return schoolinfo.getSchoolid();
+        }
+        return "";
     }
 
 

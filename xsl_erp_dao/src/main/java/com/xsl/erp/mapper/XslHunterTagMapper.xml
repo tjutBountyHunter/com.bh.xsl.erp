@@ -3,9 +3,9 @@
 <mapper namespace="com.xsl.erp.mapper.XslHunterTagMapper" >
   <resultMap id="BaseResultMap" type="xsl.erp.pojo.XslHunterTag" >
     <id column="id" property="id" jdbcType="INTEGER" />
-    <result column="hunterId" property="hunterid" jdbcType="INTEGER" />
+    <result column="hunterId" property="hunterid" jdbcType="VARCHAR" />
     <result column="tagId" property="tagid" jdbcType="INTEGER" />
-    <result column="createDate" property="createdate" javaType="String" jdbcType="DATE" />
+    <result column="createDate" property="createdate" jdbcType="DATE" />
     <result column="state" property="state" jdbcType="BIT" />
   </resultMap>
   <sql id="Example_Where_Clause" >
@@ -102,7 +102,7 @@
   <insert id="insert" parameterType="xsl.erp.pojo.XslHunterTag" >
     insert into xsl_hunter_tag (id, hunterId, tagId, 
       createDate, state)
-    values (#{id,jdbcType=INTEGER}, #{hunterid,jdbcType=INTEGER}, #{tagid,jdbcType=INTEGER}, 
+    values (#{id,jdbcType=INTEGER}, #{hunterid,jdbcType=VARCHAR}, #{tagid,jdbcType=INTEGER}, 
       #{createdate,jdbcType=DATE}, #{state,jdbcType=BIT})
   </insert>
   <insert id="insertSelective" parameterType="xsl.erp.pojo.XslHunterTag" >
@@ -129,7 +129,7 @@
         #{id,jdbcType=INTEGER},
       </if>
       <if test="hunterid != null" >
-        #{hunterid,jdbcType=INTEGER},
+        #{hunterid,jdbcType=VARCHAR},
       </if>
       <if test="tagid != null" >
         #{tagid,jdbcType=INTEGER},
@@ -155,7 +155,7 @@
         id = #{record.id,jdbcType=INTEGER},
       </if>
       <if test="record.hunterid != null" >
-        hunterId = #{record.hunterid,jdbcType=INTEGER},
+        hunterId = #{record.hunterid,jdbcType=VARCHAR},
       </if>
       <if test="record.tagid != null" >
         tagId = #{record.tagid,jdbcType=INTEGER},
@@ -174,7 +174,7 @@
   <update id="updateByExample" parameterType="map" >
     update xsl_hunter_tag
     set id = #{record.id,jdbcType=INTEGER},
-      hunterId = #{record.hunterid,jdbcType=INTEGER},
+      hunterId = #{record.hunterid,jdbcType=VARCHAR},
       tagId = #{record.tagid,jdbcType=INTEGER},
       createDate = #{record.createdate,jdbcType=DATE},
       state = #{record.state,jdbcType=BIT}
@@ -186,7 +186,7 @@
     update xsl_hunter_tag
     <set >
       <if test="hunterid != null" >
-        hunterId = #{hunterid,jdbcType=INTEGER},
+        hunterId = #{hunterid,jdbcType=VARCHAR},
       </if>
       <if test="tagid != null" >
         tagId = #{tagid,jdbcType=INTEGER},
@@ -202,7 +202,7 @@
   </update>
   <update id="updateByPrimaryKey" parameterType="xsl.erp.pojo.XslHunterTag" >
     update xsl_hunter_tag
-    set hunterId = #{hunterid,jdbcType=INTEGER},
+    set hunterId = #{hunterid,jdbcType=VARCHAR},
       tagId = #{tagid,jdbcType=INTEGER},
       createDate = #{createdate,jdbcType=DATE},
       state = #{state,jdbcType=BIT}

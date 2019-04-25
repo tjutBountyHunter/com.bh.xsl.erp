@@ -13,6 +13,8 @@ import xsl.erp.pojo.*;
 import xsl.erp.pojo.common.PageObject;
 import xsl.erp.service.XslUserService;
 
+import java.util.List;
+
 /**
  *  对user_show.jsp进行操作
  *  @author 王坤
@@ -31,8 +33,8 @@ public class XslUserController {
     //@SystemControllerLog(description = "用户查询")
     @RequestMapping("/list")
     @ResponseBody
-    public PageObject getXslUserInfo(Integer pageIndex, Integer pageSize,Integer key,Byte key1){
-        return this.xslUserService.SelectUserAll(pageIndex + 1,pageSize,key,key1);
+    public PageObject getXslUserInfo(Integer pageIndex, Integer pageSize,String phone,Byte state){
+        return xslUserService.selectUserAll(pageIndex + 1,pageSize, phone, state);
     }
 
     /**
@@ -44,34 +46,36 @@ public class XslUserController {
     @RequestMapping("/add")
     @SystemControllerLog(description = "用户添加")
     @ResponseBody
-    public XslResult insertXslUser(@RequestBody XslUser[] xslUsers){
+    public XslResult insertXslUser(@RequestBody List<XslUser> xslUsers){
         XslResult xslResult = null;
         try {
             if(xslUsers != null){
-                /* 添加成功 */
-                if(this.xslUserService.InsertXslUser(xslUsers)){
-                    xslResult = XslResult.build(200,"用户添加成功!");
-                }else{
-                    xslResult = XslResult.build(200,"用户添加失败!");
+				boolean result = xslUserService.insertXslUser(xslUsers);
+
+				if(result){
+                    return  XslResult.build(200,"用户添加成功!");
                 }
+
+                return XslResult.build(500,"用户添加失败!");
             }
         }catch (Exception e){
             logger.error("用户添加异常报警  :" + e.getMessage());
-            xslResult = XslResult.build(400,"用户添加出现异常!");
-        }finally {
-            return xslResult;
+            xslResult = XslResult.build(500,"用户添加出现异常!");
         }
+
+        return xslResult;
+
     }
 
     @RequestMapping("/update")
     @SystemControllerLog(description = "用户修改")
     @ResponseBody
-    public XslResult updateXslUser(@RequestBody XslUser[] xslUsers){
+    public XslResult updateXslUser(@RequestBody List<XslUser> xslUsers){
         XslResult xslResult = null;
         try {
             if(xslUsers != null){
                 /* 修改成功 */
-                if(this.xslUserService.UpdateXslUser(xslUsers)){
+                if(this.xslUserService.updateXslUser(xslUsers)){
                     xslResult = XslResult.build(200,"用户修改成功!");
                 }else{
                     xslResult = XslResult.build(200,"用户修改失败!");
@@ -88,7 +92,7 @@ public class XslUserController {
     @RequestMapping("/delete")
     @SystemControllerLog(description = "用户删除")
     @ResponseBody
-    public XslResult deleteXslUser(@RequestBody XslUser[] xslUsers){
+    public XslResult deleteXslUser(@RequestBody List<XslUser> xslUsers){
         XslResult xslResult = new XslResult();
         try {
             if(xslUsers != null){

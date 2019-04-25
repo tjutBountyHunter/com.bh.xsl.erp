@@ -3,9 +3,10 @@
 <mapper namespace="com.xsl.erp.mapper.XslTagMapper" >
   <resultMap id="BaseResultMap" type="xsl.erp.pojo.XslTag" >
     <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="tagId" property="tagid" jdbcType="VARCHAR" />
     <result column="name" property="name" jdbcType="VARCHAR" />
     <result column="useNum" property="usenum" jdbcType="SMALLINT" />
-    <result column="createDate" property="createdate" javaType="String" jdbcType="DATE" />
+    <result column="createDate" property="createdate" jdbcType="DATE" />
     <result column="state" property="state" jdbcType="BIT" />
   </resultMap>
   <sql id="Example_Where_Clause" >
@@ -67,7 +68,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    id, name, useNum, createDate, state
+    id, tagId, name, useNum, createDate, state
   </sql>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="xsl.erp.pojo.XslTagExample" >
     select
@@ -100,16 +101,21 @@
     </if>
   </delete>
   <insert id="insert" parameterType="xsl.erp.pojo.XslTag" >
-    insert into xsl_tag (id, name, useNum, 
-      createDate, state)
-    values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{usenum,jdbcType=SMALLINT}, 
-      #{createdate,jdbcType=DATE}, #{state,jdbcType=BIT})
+    insert into xsl_tag (id, tagId, name, 
+      useNum, createDate, state
+      )
+    values (#{id,jdbcType=INTEGER}, #{tagid,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, 
+      #{usenum,jdbcType=SMALLINT}, #{createdate,jdbcType=DATE}, #{state,jdbcType=BIT}
+      )
   </insert>
   <insert id="insertSelective" parameterType="xsl.erp.pojo.XslTag" >
     insert into xsl_tag
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="id != null" >
         id,
+      </if>
+      <if test="tagid != null" >
+        tagId,
       </if>
       <if test="name != null" >
         name,
@@ -127,6 +133,9 @@
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="id != null" >
         #{id,jdbcType=INTEGER},
+      </if>
+      <if test="tagid != null" >
+        #{tagid,jdbcType=VARCHAR},
       </if>
       <if test="name != null" >
         #{name,jdbcType=VARCHAR},
@@ -154,6 +163,9 @@
       <if test="record.id != null" >
         id = #{record.id,jdbcType=INTEGER},
       </if>
+      <if test="record.tagid != null" >
+        tagId = #{record.tagid,jdbcType=VARCHAR},
+      </if>
       <if test="record.name != null" >
         name = #{record.name,jdbcType=VARCHAR},
       </if>
@@ -174,6 +186,7 @@
   <update id="updateByExample" parameterType="map" >
     update xsl_tag
     set id = #{record.id,jdbcType=INTEGER},
+      tagId = #{record.tagid,jdbcType=VARCHAR},
       name = #{record.name,jdbcType=VARCHAR},
       useNum = #{record.usenum,jdbcType=SMALLINT},
       createDate = #{record.createdate,jdbcType=DATE},
@@ -185,6 +198,9 @@
   <update id="updateByPrimaryKeySelective" parameterType="xsl.erp.pojo.XslTag" >
     update xsl_tag
     <set >
+      <if test="tagid != null" >
+        tagId = #{tagid,jdbcType=VARCHAR},
+      </if>
       <if test="name != null" >
         name = #{name,jdbcType=VARCHAR},
       </if>
@@ -202,7 +218,8 @@
   </update>
   <update id="updateByPrimaryKey" parameterType="xsl.erp.pojo.XslTag" >
     update xsl_tag
-    set name = #{name,jdbcType=VARCHAR},
+    set tagId = #{tagid,jdbcType=VARCHAR},
+      name = #{name,jdbcType=VARCHAR},
       useNum = #{usenum,jdbcType=SMALLINT},
       createDate = #{createdate,jdbcType=DATE},
       state = #{state,jdbcType=BIT}

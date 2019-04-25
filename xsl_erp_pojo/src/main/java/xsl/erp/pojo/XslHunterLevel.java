@@ -5,6 +5,8 @@ import java.util.Date;
 public class XslHunterLevel {
     private Integer id;
 
+    private String levelid;
+
     private Short level;
 
     private String name;
@@ -21,6 +23,14 @@ public class XslHunterLevel {
 
     public void setId(Integer id) {
         this.id = id;
+    }
+
+    public String getLevelid() {
+        return levelid;
+    }
+
+    public void setLevelid(String levelid) {
+        this.levelid = levelid == null ? null : levelid.trim();
     }
 
     public Short getLevel() {

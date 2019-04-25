@@ -193,62 +193,72 @@ public class XslHunterLevelExperienceExample {
         }
 
         public Criteria andHunterlevelidIsNull() {
-            addCriterion("hunterlevelid is null");
+            addCriterion("hunterlevelId is null");
             return (Criteria) this;
         }
 
         public Criteria andHunterlevelidIsNotNull() {
-            addCriterion("hunterlevelid is not null");
+            addCriterion("hunterlevelId is not null");
             return (Criteria) this;
         }
 
-        public Criteria andHunterlevelidEqualTo(Integer value) {
-            addCriterion("hunterlevelid =", value, "hunterlevelid");
+        public Criteria andHunterlevelidEqualTo(String value) {
+            addCriterion("hunterlevelId =", value, "hunterlevelid");
             return (Criteria) this;
         }
 
-        public Criteria andHunterlevelidNotEqualTo(Integer value) {
-            addCriterion("hunterlevelid <>", value, "hunterlevelid");
+        public Criteria andHunterlevelidNotEqualTo(String value) {
+            addCriterion("hunterlevelId <>", value, "hunterlevelid");
             return (Criteria) this;
         }
 
-        public Criteria andHunterlevelidGreaterThan(Integer value) {
-            addCriterion("hunterlevelid >", value, "hunterlevelid");
+        public Criteria andHunterlevelidGreaterThan(String value) {
+            addCriterion("hunterlevelId >", value, "hunterlevelid");
             return (Criteria) this;
         }
 
-        public Criteria andHunterlevelidGreaterThanOrEqualTo(Integer value) {
-            addCriterion("hunterlevelid >=", value, "hunterlevelid");
+        public Criteria andHunterlevelidGreaterThanOrEqualTo(String value) {
+            addCriterion("hunterlevelId >=", value, "hunterlevelid");
             return (Criteria) this;
         }
 
-        public Criteria andHunterlevelidLessThan(Integer value) {
-            addCriterion("hunterlevelid <", value, "hunterlevelid");
+        public Criteria andHunterlevelidLessThan(String value) {
+            addCriterion("hunterlevelId <", value, "hunterlevelid");
             return (Criteria) this;
         }
 
-        public Criteria andHunterlevelidLessThanOrEqualTo(Integer value) {
-            addCriterion("hunterlevelid <=", value, "hunterlevelid");
+        public Criteria andHunterlevelidLessThanOrEqualTo(String value) {
+            addCriterion("hunterlevelId <=", value, "hunterlevelid");
             return (Criteria) this;
         }
 
-        public Criteria andHunterlevelidIn(List<Integer> values) {
-            addCriterion("hunterlevelid in", values, "hunterlevelid");
+        public Criteria andHunterlevelidLike(String value) {
+            addCriterion("hunterlevelId like", value, "hunterlevelid");
             return (Criteria) this;
         }
 
-        public Criteria andHunterlevelidNotIn(List<Integer> values) {
-            addCriterion("hunterlevelid not in", values, "hunterlevelid");
+        public Criteria andHunterlevelidNotLike(String value) {
+            addCriterion("hunterlevelId not like", value, "hunterlevelid");
             return (Criteria) this;
         }
 
-        public Criteria andHunterlevelidBetween(Integer value1, Integer value2) {
-            addCriterion("hunterlevelid between", value1, value2, "hunterlevelid");
+        public Criteria andHunterlevelidIn(List<String> values) {
+            addCriterion("hunterlevelId in", values, "hunterlevelid");
             return (Criteria) this;
         }
 
-        public Criteria andHunterlevelidNotBetween(Integer value1, Integer value2) {
-            addCriterion("hunterlevelid not between", value1, value2, "hunterlevelid");
+        public Criteria andHunterlevelidNotIn(List<String> values) {
+            addCriterion("hunterlevelId not in", values, "hunterlevelid");
+            return (Criteria) this;
+        }
+
+        public Criteria andHunterlevelidBetween(String value1, String value2) {
+            addCriterion("hunterlevelId between", value1, value2, "hunterlevelid");
+            return (Criteria) this;
+        }
+
+        public Criteria andHunterlevelidNotBetween(String value1, String value2) {
+            addCriterion("hunterlevelId not between", value1, value2, "hunterlevelid");
             return (Criteria) this;
         }
 

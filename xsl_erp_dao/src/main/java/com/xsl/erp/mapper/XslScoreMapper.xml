@@ -3,7 +3,7 @@
 <mapper namespace="com.xsl.erp.mapper.XslScoreMapper" >
   <resultMap id="BaseResultMap" type="xsl.erp.pojo.XslScore" >
     <id column="id" property="id" jdbcType="INTEGER" />
-    <result column="hunterId" property="hunterid" jdbcType="INTEGER" />
+    <result column="hunterId" property="hunterid" jdbcType="VARCHAR" />
     <result column="score" property="score" jdbcType="SMALLINT" />
     <result column="createDate" property="createdate" jdbcType="DATE" />
   </resultMap>
@@ -101,7 +101,7 @@
   <insert id="insert" parameterType="xsl.erp.pojo.XslScore" >
     insert into xsl_score (id, hunterId, score, 
       createDate)
-    values (#{id,jdbcType=INTEGER}, #{hunterid,jdbcType=INTEGER}, #{score,jdbcType=SMALLINT}, 
+    values (#{id,jdbcType=INTEGER}, #{hunterid,jdbcType=VARCHAR}, #{score,jdbcType=SMALLINT}, 
       #{createdate,jdbcType=DATE})
   </insert>
   <insert id="insertSelective" parameterType="xsl.erp.pojo.XslScore" >
@@ -125,7 +125,7 @@
         #{id,jdbcType=INTEGER},
       </if>
       <if test="hunterid != null" >
-        #{hunterid,jdbcType=INTEGER},
+        #{hunterid,jdbcType=VARCHAR},
       </if>
       <if test="score != null" >
         #{score,jdbcType=SMALLINT},
@@ -148,7 +148,7 @@
         id = #{record.id,jdbcType=INTEGER},
       </if>
       <if test="record.hunterid != null" >
-        hunterId = #{record.hunterid,jdbcType=INTEGER},
+        hunterId = #{record.hunterid,jdbcType=VARCHAR},
       </if>
       <if test="record.score != null" >
         score = #{record.score,jdbcType=SMALLINT},
@@ -164,7 +164,7 @@
   <update id="updateByExample" parameterType="map" >
     update xsl_score
     set id = #{record.id,jdbcType=INTEGER},
-      hunterId = #{record.hunterid,jdbcType=INTEGER},
+      hunterId = #{record.hunterid,jdbcType=VARCHAR},
       score = #{record.score,jdbcType=SMALLINT},
       createDate = #{record.createdate,jdbcType=DATE}
     <if test="_parameter != null" >
@@ -175,7 +175,7 @@
     update xsl_score
     <set >
       <if test="hunterid != null" >
-        hunterId = #{hunterid,jdbcType=INTEGER},
+        hunterId = #{hunterid,jdbcType=VARCHAR},
       </if>
       <if test="score != null" >
         score = #{score,jdbcType=SMALLINT},
@@ -188,7 +188,7 @@
   </update>
   <update id="updateByPrimaryKey" parameterType="xsl.erp.pojo.XslScore" >
     update xsl_score
-    set hunterId = #{hunterid,jdbcType=INTEGER},
+    set hunterId = #{hunterid,jdbcType=VARCHAR},
       score = #{score,jdbcType=SMALLINT},
       createDate = #{createdate,jdbcType=DATE}
     where id = #{id,jdbcType=INTEGER}

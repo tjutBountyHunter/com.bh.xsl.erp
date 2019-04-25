@@ -3,6 +3,7 @@
 <mapper namespace="com.xsl.erp.mapper.XslHunterLevelMapper" >
   <resultMap id="BaseResultMap" type="xsl.erp.pojo.XslHunterLevel" >
     <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="levelId" property="levelid" jdbcType="VARCHAR" />
     <result column="level" property="level" jdbcType="SMALLINT" />
     <result column="name" property="name" jdbcType="VARCHAR" />
     <result column="descr" property="descr" jdbcType="VARCHAR" />
@@ -68,7 +69,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    id, level, name, descr, createDate, updateDate
+    id, levelId, level, name, descr, createDate, updateDate
   </sql>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="xsl.erp.pojo.XslHunterLevelExample" >
     select
@@ -101,18 +102,21 @@
     </if>
   </delete>
   <insert id="insert" parameterType="xsl.erp.pojo.XslHunterLevel" >
-    insert into xsl_hunter_level (id, level, name, 
-      descr, createDate, updateDate
-      )
-    values (#{id,jdbcType=INTEGER}, #{level,jdbcType=SMALLINT}, #{name,jdbcType=VARCHAR}, 
-      #{descr,jdbcType=VARCHAR}, #{createdate,jdbcType=DATE}, #{updatedate,jdbcType=DATE}
-      )
+    insert into xsl_hunter_level (id, levelId, level, 
+      name, descr, createDate, 
+      updateDate)
+    values (#{id,jdbcType=INTEGER}, #{levelid,jdbcType=VARCHAR}, #{level,jdbcType=SMALLINT}, 
+      #{name,jdbcType=VARCHAR}, #{descr,jdbcType=VARCHAR}, #{createdate,jdbcType=DATE}, 
+      #{updatedate,jdbcType=DATE})
   </insert>
   <insert id="insertSelective" parameterType="xsl.erp.pojo.XslHunterLevel" >
     insert into xsl_hunter_level
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="id != null" >
         id,
+      </if>
+      <if test="levelid != null" >
+        levelId,
       </if>
       <if test="level != null" >
         level,
@@ -133,6 +137,9 @@
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="id != null" >
         #{id,jdbcType=INTEGER},
+      </if>
+      <if test="levelid != null" >
+        #{levelid,jdbcType=VARCHAR},
       </if>
       <if test="level != null" >
         #{level,jdbcType=SMALLINT},
@@ -163,6 +170,9 @@
       <if test="record.id != null" >
         id = #{record.id,jdbcType=INTEGER},
       </if>
+      <if test="record.levelid != null" >
+        levelId = #{record.levelid,jdbcType=VARCHAR},
+      </if>
       <if test="record.level != null" >
         level = #{record.level,jdbcType=SMALLINT},
       </if>
@@ -186,6 +196,7 @@
   <update id="updateByExample" parameterType="map" >
     update xsl_hunter_level
     set id = #{record.id,jdbcType=INTEGER},
+      levelId = #{record.levelid,jdbcType=VARCHAR},
       level = #{record.level,jdbcType=SMALLINT},
       name = #{record.name,jdbcType=VARCHAR},
       descr = #{record.descr,jdbcType=VARCHAR},
@@ -198,6 +209,9 @@
   <update id="updateByPrimaryKeySelective" parameterType="xsl.erp.pojo.XslHunterLevel" >
     update xsl_hunter_level
     <set >
+      <if test="levelid != null" >
+        levelId = #{levelid,jdbcType=VARCHAR},
+      </if>
       <if test="level != null" >
         level = #{level,jdbcType=SMALLINT},
       </if>
@@ -218,7 +232,8 @@
   </update>
   <update id="updateByPrimaryKey" parameterType="xsl.erp.pojo.XslHunterLevel" >
     update xsl_hunter_level
-    set level = #{level,jdbcType=SMALLINT},
+    set levelId = #{levelid,jdbcType=VARCHAR},
+      level = #{level,jdbcType=SMALLINT},
       name = #{name,jdbcType=VARCHAR},
       descr = #{descr,jdbcType=VARCHAR},
       createDate = #{createdate,jdbcType=DATE},

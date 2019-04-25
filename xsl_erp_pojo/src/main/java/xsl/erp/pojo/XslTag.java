@@ -5,11 +5,13 @@ import java.util.Date;
 public class XslTag {
     private Integer id;
 
+    private String tagid;
+
     private String name;
 
     private Short usenum;
 
-    private String createdate;
+    private Date createdate;
 
     private Boolean state;
 
@@ -19,6 +21,14 @@ public class XslTag {
 
     public void setId(Integer id) {
         this.id = id;
+    }
+
+    public String getTagid() {
+        return tagid;
+    }
+
+    public void setTagid(String tagid) {
+        this.tagid = tagid == null ? null : tagid.trim();
     }
 
     public String getName() {
@@ -37,11 +47,11 @@ public class XslTag {
         this.usenum = usenum;
     }
 
-    public String getCreatedate() {
+    public Date getCreatedate() {
         return createdate;
     }
 
-    public void setCreatedate(String createdate) {
+    public void setCreatedate(Date createdate) {
         this.createdate = createdate;
     }
 

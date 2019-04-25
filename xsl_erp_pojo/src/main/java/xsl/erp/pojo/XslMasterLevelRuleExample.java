@@ -202,52 +202,62 @@ public class XslMasterLevelRuleExample {
             return (Criteria) this;
         }
 
-        public Criteria andMasterlevelidEqualTo(Integer value) {
+        public Criteria andMasterlevelidEqualTo(String value) {
             addCriterion("masterLevelId =", value, "masterlevelid");
             return (Criteria) this;
         }
 
-        public Criteria andMasterlevelidNotEqualTo(Integer value) {
+        public Criteria andMasterlevelidNotEqualTo(String value) {
             addCriterion("masterLevelId <>", value, "masterlevelid");
             return (Criteria) this;
         }
 
-        public Criteria andMasterlevelidGreaterThan(Integer value) {
+        public Criteria andMasterlevelidGreaterThan(String value) {
             addCriterion("masterLevelId >", value, "masterlevelid");
             return (Criteria) this;
         }
 
-        public Criteria andMasterlevelidGreaterThanOrEqualTo(Integer value) {
+        public Criteria andMasterlevelidGreaterThanOrEqualTo(String value) {
             addCriterion("masterLevelId >=", value, "masterlevelid");
             return (Criteria) this;
         }
 
-        public Criteria andMasterlevelidLessThan(Integer value) {
+        public Criteria andMasterlevelidLessThan(String value) {
             addCriterion("masterLevelId <", value, "masterlevelid");
             return (Criteria) this;
         }
 
-        public Criteria andMasterlevelidLessThanOrEqualTo(Integer value) {
+        public Criteria andMasterlevelidLessThanOrEqualTo(String value) {
             addCriterion("masterLevelId <=", value, "masterlevelid");
             return (Criteria) this;
         }
 
-        public Criteria andMasterlevelidIn(List<Integer> values) {
+        public Criteria andMasterlevelidLike(String value) {
+            addCriterion("masterLevelId like", value, "masterlevelid");
+            return (Criteria) this;
+        }
+
+        public Criteria andMasterlevelidNotLike(String value) {
+            addCriterion("masterLevelId not like", value, "masterlevelid");
+            return (Criteria) this;
+        }
+
+        public Criteria andMasterlevelidIn(List<String> values) {
             addCriterion("masterLevelId in", values, "masterlevelid");
             return (Criteria) this;
         }
 
-        public Criteria andMasterlevelidNotIn(List<Integer> values) {
+        public Criteria andMasterlevelidNotIn(List<String> values) {
             addCriterion("masterLevelId not in", values, "masterlevelid");
             return (Criteria) this;
         }
 
-        public Criteria andMasterlevelidBetween(Integer value1, Integer value2) {
+        public Criteria andMasterlevelidBetween(String value1, String value2) {
             addCriterion("masterLevelId between", value1, value2, "masterlevelid");
             return (Criteria) this;
         }
 
-        public Criteria andMasterlevelidNotBetween(Integer value1, Integer value2) {
+        public Criteria andMasterlevelidNotBetween(String value1, String value2) {
             addCriterion("masterLevelId not between", value1, value2, "masterlevelid");
             return (Criteria) this;
         }
@@ -262,52 +272,62 @@ public class XslMasterLevelRuleExample {
             return (Criteria) this;
         }
 
-        public Criteria andRuleidEqualTo(Integer value) {
+        public Criteria andRuleidEqualTo(String value) {
             addCriterion("ruleId =", value, "ruleid");
             return (Criteria) this;
         }
 
-        public Criteria andRuleidNotEqualTo(Integer value) {
+        public Criteria andRuleidNotEqualTo(String value) {
             addCriterion("ruleId <>", value, "ruleid");
             return (Criteria) this;
         }
 
-        public Criteria andRuleidGreaterThan(Integer value) {
+        public Criteria andRuleidGreaterThan(String value) {
             addCriterion("ruleId >", value, "ruleid");
             return (Criteria) this;
         }
 
-        public Criteria andRuleidGreaterThanOrEqualTo(Integer value) {
+        public Criteria andRuleidGreaterThanOrEqualTo(String value) {
             addCriterion("ruleId >=", value, "ruleid");
             return (Criteria) this;
         }
 
-        public Criteria andRuleidLessThan(Integer value) {
+        public Criteria andRuleidLessThan(String value) {
             addCriterion("ruleId <", value, "ruleid");
             return (Criteria) this;
         }
 
-        public Criteria andRuleidLessThanOrEqualTo(Integer value) {
+        public Criteria andRuleidLessThanOrEqualTo(String value) {
             addCriterion("ruleId <=", value, "ruleid");
             return (Criteria) this;
         }
 
-        public Criteria andRuleidIn(List<Integer> values) {
+        public Criteria andRuleidLike(String value) {
+            addCriterion("ruleId like", value, "ruleid");
+            return (Criteria) this;
+        }
+
+        public Criteria andRuleidNotLike(String value) {
+            addCriterion("ruleId not like", value, "ruleid");
+            return (Criteria) this;
+        }
+
+        public Criteria andRuleidIn(List<String> values) {
             addCriterion("ruleId in", values, "ruleid");
             return (Criteria) this;
         }
 
-        public Criteria andRuleidNotIn(List<Integer> values) {
+        public Criteria andRuleidNotIn(List<String> values) {
             addCriterion("ruleId not in", values, "ruleid");
             return (Criteria) this;
         }
 
-        public Criteria andRuleidBetween(Integer value1, Integer value2) {
+        public Criteria andRuleidBetween(String value1, String value2) {
             addCriterion("ruleId between", value1, value2, "ruleid");
             return (Criteria) this;
         }
 
-        public Criteria andRuleidNotBetween(Integer value1, Integer value2) {
+        public Criteria andRuleidNotBetween(String value1, String value2) {
             addCriterion("ruleId not between", value1, value2, "ruleid");
             return (Criteria) this;
         }

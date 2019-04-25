@@ -3,8 +3,8 @@
 <mapper namespace="com.xsl.erp.mapper.XslMasterLevelRuleMapper" >
   <resultMap id="BaseResultMap" type="xsl.erp.pojo.XslMasterLevelRule" >
     <id column="id" property="id" jdbcType="INTEGER" />
-    <result column="masterLevelId" property="masterlevelid" jdbcType="INTEGER" />
-    <result column="ruleId" property="ruleid" jdbcType="INTEGER" />
+    <result column="masterLevelId" property="masterlevelid" jdbcType="VARCHAR" />
+    <result column="ruleId" property="ruleid" jdbcType="VARCHAR" />
     <result column="createDate" property="createdate" jdbcType="DATE" />
   </resultMap>
   <sql id="Example_Where_Clause" >
@@ -101,7 +101,7 @@
   <insert id="insert" parameterType="xsl.erp.pojo.XslMasterLevelRule" >
     insert into xsl_master_level_rule (id, masterLevelId, ruleId, 
       createDate)
-    values (#{id,jdbcType=INTEGER}, #{masterlevelid,jdbcType=INTEGER}, #{ruleid,jdbcType=INTEGER}, 
+    values (#{id,jdbcType=INTEGER}, #{masterlevelid,jdbcType=VARCHAR}, #{ruleid,jdbcType=VARCHAR}, 
       #{createdate,jdbcType=DATE})
   </insert>
   <insert id="insertSelective" parameterType="xsl.erp.pojo.XslMasterLevelRule" >
@@ -125,10 +125,10 @@
         #{id,jdbcType=INTEGER},
       </if>
       <if test="masterlevelid != null" >
-        #{masterlevelid,jdbcType=INTEGER},
+        #{masterlevelid,jdbcType=VARCHAR},
       </if>
       <if test="ruleid != null" >
-        #{ruleid,jdbcType=INTEGER},
+        #{ruleid,jdbcType=VARCHAR},
       </if>
       <if test="createdate != null" >
         #{createdate,jdbcType=DATE},
@@ -148,10 +148,10 @@
         id = #{record.id,jdbcType=INTEGER},
       </if>
       <if test="record.masterlevelid != null" >
-        masterLevelId = #{record.masterlevelid,jdbcType=INTEGER},
+        masterLevelId = #{record.masterlevelid,jdbcType=VARCHAR},
       </if>
       <if test="record.ruleid != null" >
-        ruleId = #{record.ruleid,jdbcType=INTEGER},
+        ruleId = #{record.ruleid,jdbcType=VARCHAR},
       </if>
       <if test="record.createdate != null" >
         createDate = #{record.createdate,jdbcType=DATE},
@@ -164,8 +164,8 @@
   <update id="updateByExample" parameterType="map" >
     update xsl_master_level_rule
     set id = #{record.id,jdbcType=INTEGER},
-      masterLevelId = #{record.masterlevelid,jdbcType=INTEGER},
-      ruleId = #{record.ruleid,jdbcType=INTEGER},
+      masterLevelId = #{record.masterlevelid,jdbcType=VARCHAR},
+      ruleId = #{record.ruleid,jdbcType=VARCHAR},
       createDate = #{record.createdate,jdbcType=DATE}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
@@ -175,10 +175,10 @@
     update xsl_master_level_rule
     <set >
       <if test="masterlevelid != null" >
-        masterLevelId = #{masterlevelid,jdbcType=INTEGER},
+        masterLevelId = #{masterlevelid,jdbcType=VARCHAR},
       </if>
       <if test="ruleid != null" >
-        ruleId = #{ruleid,jdbcType=INTEGER},
+        ruleId = #{ruleid,jdbcType=VARCHAR},
       </if>
       <if test="createdate != null" >
         createDate = #{createdate,jdbcType=DATE},
@@ -188,8 +188,8 @@
   </update>
   <update id="updateByPrimaryKey" parameterType="xsl.erp.pojo.XslMasterLevelRule" >
     update xsl_master_level_rule
-    set masterLevelId = #{masterlevelid,jdbcType=INTEGER},
-      ruleId = #{ruleid,jdbcType=INTEGER},
+    set masterLevelId = #{masterlevelid,jdbcType=VARCHAR},
+      ruleId = #{ruleid,jdbcType=VARCHAR},
       createDate = #{createdate,jdbcType=DATE}
     where id = #{id,jdbcType=INTEGER}
   </update>

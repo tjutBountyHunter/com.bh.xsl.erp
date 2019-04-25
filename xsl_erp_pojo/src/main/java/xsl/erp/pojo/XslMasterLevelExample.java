@@ -192,6 +192,76 @@ public class XslMasterLevelExample {
             return (Criteria) this;
         }
 
+        public Criteria andLevelidIsNull() {
+            addCriterion("levelId is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andLevelidIsNotNull() {
+            addCriterion("levelId is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andLevelidEqualTo(String value) {
+            addCriterion("levelId =", value, "levelid");
+            return (Criteria) this;
+        }
+
+        public Criteria andLevelidNotEqualTo(String value) {
+            addCriterion("levelId <>", value, "levelid");
+            return (Criteria) this;
+        }
+
+        public Criteria andLevelidGreaterThan(String value) {
+            addCriterion("levelId >", value, "levelid");
+            return (Criteria) this;
+        }
+
+        public Criteria andLevelidGreaterThanOrEqualTo(String value) {
+            addCriterion("levelId >=", value, "levelid");
+            return (Criteria) this;
+        }
+
+        public Criteria andLevelidLessThan(String value) {
+            addCriterion("levelId <", value, "levelid");
+            return (Criteria) this;
+        }
+
+        public Criteria andLevelidLessThanOrEqualTo(String value) {
+            addCriterion("levelId <=", value, "levelid");
+            return (Criteria) this;
+        }
+
+        public Criteria andLevelidLike(String value) {
+            addCriterion("levelId like", value, "levelid");
+            return (Criteria) this;
+        }
+
+        public Criteria andLevelidNotLike(String value) {
+            addCriterion("levelId not like", value, "levelid");
+            return (Criteria) this;
+        }
+
+        public Criteria andLevelidIn(List<String> values) {
+            addCriterion("levelId in", values, "levelid");
+            return (Criteria) this;
+        }
+
+        public Criteria andLevelidNotIn(List<String> values) {
+            addCriterion("levelId not in", values, "levelid");
+            return (Criteria) this;
+        }
+
+        public Criteria andLevelidBetween(String value1, String value2) {
+            addCriterion("levelId between", value1, value2, "levelid");
+            return (Criteria) this;
+        }
+
+        public Criteria andLevelidNotBetween(String value1, String value2) {
+            addCriterion("levelId not between", value1, value2, "levelid");
+            return (Criteria) this;
+        }
+
         public Criteria andLevelIsNull() {
             addCriterion("level is null");
             return (Criteria) this;

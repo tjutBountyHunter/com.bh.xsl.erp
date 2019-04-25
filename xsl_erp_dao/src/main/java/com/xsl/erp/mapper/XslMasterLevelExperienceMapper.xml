@@ -3,7 +3,7 @@
 <mapper namespace="com.xsl.erp.mapper.XslMasterLevelExperienceMapper" >
   <resultMap id="BaseResultMap" type="xsl.erp.pojo.XslMasterLevelExperience" >
     <id column="id" property="id" jdbcType="INTEGER" />
-    <result column="masterlevelid" property="masterlevelid" jdbcType="INTEGER" />
+    <result column="masterlevelid" property="masterlevelid" jdbcType="VARCHAR" />
     <result column="level" property="level" jdbcType="SMALLINT" />
     <result column="experience" property="experience" jdbcType="SMALLINT" />
     <result column="createDate" property="createdate" jdbcType="DATE" />
@@ -104,7 +104,7 @@
     insert into xsl_master_level_experience (id, masterlevelid, level, 
       experience, createDate, updateDate
       )
-    values (#{id,jdbcType=INTEGER}, #{masterlevelid,jdbcType=INTEGER}, #{level,jdbcType=SMALLINT}, 
+    values (#{id,jdbcType=INTEGER}, #{masterlevelid,jdbcType=VARCHAR}, #{level,jdbcType=SMALLINT}, 
       #{experience,jdbcType=SMALLINT}, #{createdate,jdbcType=DATE}, #{updatedate,jdbcType=DATE}
       )
   </insert>
@@ -135,7 +135,7 @@
         #{id,jdbcType=INTEGER},
       </if>
       <if test="masterlevelid != null" >
-        #{masterlevelid,jdbcType=INTEGER},
+        #{masterlevelid,jdbcType=VARCHAR},
       </if>
       <if test="level != null" >
         #{level,jdbcType=SMALLINT},
@@ -164,7 +164,7 @@
         id = #{record.id,jdbcType=INTEGER},
       </if>
       <if test="record.masterlevelid != null" >
-        masterlevelid = #{record.masterlevelid,jdbcType=INTEGER},
+        masterlevelid = #{record.masterlevelid,jdbcType=VARCHAR},
       </if>
       <if test="record.level != null" >
         level = #{record.level,jdbcType=SMALLINT},
@@ -186,7 +186,7 @@
   <update id="updateByExample" parameterType="map" >
     update xsl_master_level_experience
     set id = #{record.id,jdbcType=INTEGER},
-      masterlevelid = #{record.masterlevelid,jdbcType=INTEGER},
+      masterlevelid = #{record.masterlevelid,jdbcType=VARCHAR},
       level = #{record.level,jdbcType=SMALLINT},
       experience = #{record.experience,jdbcType=SMALLINT},
       createDate = #{record.createdate,jdbcType=DATE},
@@ -199,7 +199,7 @@
     update xsl_master_level_experience
     <set >
       <if test="masterlevelid != null" >
-        masterlevelid = #{masterlevelid,jdbcType=INTEGER},
+        masterlevelid = #{masterlevelid,jdbcType=VARCHAR},
       </if>
       <if test="level != null" >
         level = #{level,jdbcType=SMALLINT},
@@ -218,7 +218,7 @@
   </update>
   <update id="updateByPrimaryKey" parameterType="xsl.erp.pojo.XslMasterLevelExperience" >
     update xsl_master_level_experience
-    set masterlevelid = #{masterlevelid,jdbcType=INTEGER},
+    set masterlevelid = #{masterlevelid,jdbcType=VARCHAR},
       level = #{level,jdbcType=SMALLINT},
       experience = #{experience,jdbcType=SMALLINT},
       createDate = #{createdate,jdbcType=DATE},

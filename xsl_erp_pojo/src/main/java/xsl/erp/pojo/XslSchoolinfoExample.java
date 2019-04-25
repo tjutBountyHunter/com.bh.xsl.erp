@@ -164,6 +164,76 @@ public class XslSchoolinfoExample {
             return (Criteria) this;
         }
 
+        public Criteria andSchoolidIsNull() {
+            addCriterion("schoolId is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andSchoolidIsNotNull() {
+            addCriterion("schoolId is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andSchoolidEqualTo(String value) {
+            addCriterion("schoolId =", value, "schoolid");
+            return (Criteria) this;
+        }
+
+        public Criteria andSchoolidNotEqualTo(String value) {
+            addCriterion("schoolId <>", value, "schoolid");
+            return (Criteria) this;
+        }
+
+        public Criteria andSchoolidGreaterThan(String value) {
+            addCriterion("schoolId >", value, "schoolid");
+            return (Criteria) this;
+        }
+
+        public Criteria andSchoolidGreaterThanOrEqualTo(String value) {
+            addCriterion("schoolId >=", value, "schoolid");
+            return (Criteria) this;
+        }
+
+        public Criteria andSchoolidLessThan(String value) {
+            addCriterion("schoolId <", value, "schoolid");
+            return (Criteria) this;
+        }
+
+        public Criteria andSchoolidLessThanOrEqualTo(String value) {
+            addCriterion("schoolId <=", value, "schoolid");
+            return (Criteria) this;
+        }
+
+        public Criteria andSchoolidLike(String value) {
+            addCriterion("schoolId like", value, "schoolid");
+            return (Criteria) this;
+        }
+
+        public Criteria andSchoolidNotLike(String value) {
+            addCriterion("schoolId not like", value, "schoolid");
+            return (Criteria) this;
+        }
+
+        public Criteria andSchoolidIn(List<String> values) {
+            addCriterion("schoolId in", values, "schoolid");
+            return (Criteria) this;
+        }
+
+        public Criteria andSchoolidNotIn(List<String> values) {
+            addCriterion("schoolId not in", values, "schoolid");
+            return (Criteria) this;
+        }
+
+        public Criteria andSchoolidBetween(String value1, String value2) {
+            addCriterion("schoolId between", value1, value2, "schoolid");
+            return (Criteria) this;
+        }
+
+        public Criteria andSchoolidNotBetween(String value1, String value2) {
+            addCriterion("schoolId not between", value1, value2, "schoolid");
+            return (Criteria) this;
+        }
+
         public Criteria andSnoIsNull() {
             addCriterion("sno is null");
             return (Criteria) this;

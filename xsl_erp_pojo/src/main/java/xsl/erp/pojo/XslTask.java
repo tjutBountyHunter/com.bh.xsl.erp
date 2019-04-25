@@ -12,7 +12,7 @@ public class XslTask {
 
     private String descr;
 
-    private Integer sendid;
+    private String sendid;
 
     private BigDecimal money;
 
@@ -20,11 +20,11 @@ public class XslTask {
 
     private Integer number;
 
-    private String createdate;
+    private Date createdate;
 
-    private String updatedate;
+    private Date updatedate;
 
-    private String deadline;
+    private Date deadline;
 
     public Integer getId() {
         return id;
@@ -58,12 +58,12 @@ public class XslTask {
         this.descr = descr == null ? null : descr.trim();
     }
 
-    public Integer getSendid() {
+    public String getSendid() {
         return sendid;
     }
 
-    public void setSendid(Integer sendid) {
-        this.sendid = sendid;
+    public void setSendid(String sendid) {
+        this.sendid = sendid == null ? null : sendid.trim();
     }
 
     public BigDecimal getMoney() {
@@ -90,27 +90,27 @@ public class XslTask {
         this.number = number;
     }
 
-    public String getCreatedate() {
+    public Date getCreatedate() {
         return createdate;
     }
 
-    public void setCreatedate(String createdate) {
+    public void setCreatedate(Date createdate) {
         this.createdate = createdate;
     }
 
-    public String getUpdatedate() {
+    public Date getUpdatedate() {
         return updatedate;
     }
 
-    public void setUpdatedate(String updatedate) {
+    public void setUpdatedate(Date updatedate) {
         this.updatedate = updatedate;
     }
 
-    public String getDeadline() {
+    public Date getDeadline() {
         return deadline;
     }
 
-    public void setDeadline(String deadline) {
+    public void setDeadline(Date deadline) {
         this.deadline = deadline;
     }
 }

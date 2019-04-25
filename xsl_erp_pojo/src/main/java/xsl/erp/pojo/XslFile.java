@@ -5,7 +5,7 @@ import java.util.Date;
 public class XslFile {
     private Integer id;
 
-    private Integer userid;
+    private String fileid;
 
     private String url;
 
@@ -23,12 +23,12 @@ public class XslFile {
         this.id = id;
     }
 
-    public Integer getUserid() {
-        return userid;
+    public String getFileid() {
+        return fileid;
     }
 
-    public void setUserid(Integer userid) {
-        this.userid = userid;
+    public void setFileid(String fileid) {
+        this.fileid = fileid == null ? null : fileid.trim();
     }
 
     public String getUrl() {

@@ -5,7 +5,7 @@ import java.util.Date;
 public class XslMasterLevelExperience {
     private Integer id;
 
-    private Integer masterlevelid;
+    private String masterlevelid;
 
     private Short level;
 
@@ -23,12 +23,12 @@ public class XslMasterLevelExperience {
         this.id = id;
     }
 
-    public Integer getMasterlevelid() {
+    public String getMasterlevelid() {
         return masterlevelid;
     }
 
-    public void setMasterlevelid(Integer masterlevelid) {
-        this.masterlevelid = masterlevelid;
+    public void setMasterlevelid(String masterlevelid) {
+        this.masterlevelid = masterlevelid == null ? null : masterlevelid.trim();
     }
 
     public Short getLevel() {

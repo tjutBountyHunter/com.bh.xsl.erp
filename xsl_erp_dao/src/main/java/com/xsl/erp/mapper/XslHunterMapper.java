@@ -2,7 +2,6 @@ package com.xsl.erp.mapper;
 
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
-import xsl.erp.pojo.HunterReturn;
 import xsl.erp.pojo.XslHunter;
 import xsl.erp.pojo.XslHunterExample;
 
@@ -17,7 +16,7 @@ public interface XslHunterMapper {
 
     int insertSelective(XslHunter record);
 
-    List<HunterReturn> selectByExample(XslHunterExample example);
+    List<XslHunter> selectByExample(XslHunterExample example);
 
     XslHunter selectByPrimaryKey(Integer id);
 
@@ -28,4 +27,6 @@ public interface XslHunterMapper {
     int updateByPrimaryKeySelective(XslHunter record);
 
     int updateByPrimaryKey(XslHunter record);
+
+    int updateByHunterIdSelective(XslHunter record);
 }

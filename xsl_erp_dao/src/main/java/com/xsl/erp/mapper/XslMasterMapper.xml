@@ -3,24 +3,15 @@
 <mapper namespace="com.xsl.erp.mapper.XslMasterMapper" >
   <resultMap id="BaseResultMap" type="xsl.erp.pojo.XslMaster" >
     <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="masterId" property="masterid" jdbcType="VARCHAR" />
+    <result column="userId" property="userid" jdbcType="VARCHAR" />
     <result column="level" property="level" jdbcType="SMALLINT" />
     <result column="empirical" property="empirical" jdbcType="INTEGER" />
     <result column="taskAccNum" property="taskaccnum" jdbcType="INTEGER" />
     <result column="taskRevokeNum" property="taskrevokenum" jdbcType="INTEGER" />
     <result column="credit" property="credit" jdbcType="SMALLINT" />
     <result column="descr" property="descr" jdbcType="VARCHAR" />
-    <result column="lastAccDate" property="lastaccdate" javaType="String" jdbcType="DATE" />
-    <result column="state" property="state" jdbcType="BIT" />
-  </resultMap>
-  <resultMap id="BaseResultMap2" type="xsl.erp.pojo.MasterReturn" >
-    <id column="id" property="id" jdbcType="INTEGER" />
-    <result column="level" property="level" jdbcType="SMALLINT" />
-    <result column="empirical" property="empirical" jdbcType="INTEGER" />
-    <result column="taskAccNum" property="taskaccnum" jdbcType="INTEGER" />
-    <result column="taskRevokeNum" property="taskrevokenum" jdbcType="INTEGER" />
-    <result column="credit" property="credit" jdbcType="SMALLINT" />
-    <result column="descr" property="descr" jdbcType="VARCHAR" />
-    <result column="lastAccDate" property="lastaccdate" javaType="String" jdbcType="DATE" />
+    <result column="lastAccDate" property="lastaccdate" jdbcType="DATE" />
     <result column="state" property="state" jdbcType="BIT" />
   </resultMap>
   <sql id="Example_Where_Clause" >
@@ -82,9 +73,10 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    id, level, empirical, taskAccNum, taskRevokeNum, credit, descr, lastAccDate, state
+    id, masterId, userId, level, empirical, taskAccNum, taskRevokeNum, credit, descr, 
+    lastAccDate, state
   </sql>
-  <select id="selectByExample" resultMap="BaseResultMap2" parameterType="xsl.erp.pojo.MasterReturn" >
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="xsl.erp.pojo.XslMasterExample" >
     select
     <if test="distinct" >
       distinct
@@ -115,18 +107,26 @@
     </if>
   </delete>
   <insert id="insert" parameterType="xsl.erp.pojo.XslMaster" >
-    insert into xsl_master (id, level, empirical, 
-      taskAccNum, taskRevokeNum, credit, 
-      descr, lastAccDate, state)
-    values (#{id,jdbcType=INTEGER}, #{level,jdbcType=SMALLINT}, #{empirical,jdbcType=INTEGER}, 
-      #{taskaccnum,jdbcType=INTEGER}, #{taskrevokenum,jdbcType=INTEGER}, #{credit,jdbcType=SMALLINT}, 
-      #{descr,jdbcType=VARCHAR}, #{lastaccdate,jdbcType=DATE}, #{state,jdbcType=BIT})
+    insert into xsl_master (id, masterId, userId, 
+      level, empirical, taskAccNum, 
+      taskRevokeNum, credit, descr, 
+      lastAccDate, state)
+    values (#{id,jdbcType=INTEGER}, #{masterid,jdbcType=VARCHAR}, #{userid,jdbcType=VARCHAR}, 
+      #{level,jdbcType=SMALLINT}, #{empirical,jdbcType=INTEGER}, #{taskaccnum,jdbcType=INTEGER}, 
+      #{taskrevokenum,jdbcType=INTEGER}, #{credit,jdbcType=SMALLINT}, #{descr,jdbcType=VARCHAR}, 
+      #{lastaccdate,jdbcType=DATE}, #{state,jdbcType=BIT})
   </insert>
   <insert id="insertSelective" parameterType="xsl.erp.pojo.XslMaster" >
     insert into xsl_master
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="id != null" >
         id,
+      </if>
+      <if test="masterid != null" >
+        masterId,
+      </if>
+      <if test="userid != null" >
+        userId,
       </if>
       <if test="level != null" >
         level,
@@ -156,6 +156,12 @@
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="id != null" >
         #{id,jdbcType=INTEGER},
+      </if>
+      <if test="masterid != null" >
+        #{masterid,jdbcType=VARCHAR},
+      </if>
+      <if test="userid != null" >
+        #{userid,jdbcType=VARCHAR},
       </if>
       <if test="level != null" >
         #{level,jdbcType=SMALLINT},
@@ -195,6 +201,12 @@
       <if test="record.id != null" >
         id = #{record.id,jdbcType=INTEGER},
       </if>
+      <if test="record.masterid != null" >
+        masterId = #{record.masterid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.userid != null" >
+        userId = #{record.userid,jdbcType=VARCHAR},
+      </if>
       <if test="record.level != null" >
         level = #{record.level,jdbcType=SMALLINT},
       </if>
@@ -227,6 +239,8 @@
   <update id="updateByExample" parameterType="map" >
     update xsl_master
     set id = #{record.id,jdbcType=INTEGER},
+      masterId = #{record.masterid,jdbcType=VARCHAR},
+      userId = #{record.userid,jdbcType=VARCHAR},
       level = #{record.level,jdbcType=SMALLINT},
       empirical = #{record.empirical,jdbcType=INTEGER},
       taskAccNum = #{record.taskaccnum,jdbcType=INTEGER},
@@ -242,6 +256,12 @@
   <update id="updateByPrimaryKeySelective" parameterType="xsl.erp.pojo.XslMaster" >
     update xsl_master
     <set >
+      <if test="masterid != null" >
+        masterId = #{masterid,jdbcType=VARCHAR},
+      </if>
+      <if test="userid != null" >
+        userId = #{userid,jdbcType=VARCHAR},
+      </if>
       <if test="level != null" >
         level = #{level,jdbcType=SMALLINT},
       </if>
@@ -271,7 +291,9 @@
   </update>
   <update id="updateByPrimaryKey" parameterType="xsl.erp.pojo.XslMaster" >
     update xsl_master
-    set level = #{level,jdbcType=SMALLINT},
+    set masterId = #{masterid,jdbcType=VARCHAR},
+      userId = #{userid,jdbcType=VARCHAR},
+      level = #{level,jdbcType=SMALLINT},
       empirical = #{empirical,jdbcType=INTEGER},
       taskAccNum = #{taskaccnum,jdbcType=INTEGER},
       taskRevokeNum = #{taskrevokenum,jdbcType=INTEGER},
@@ -280,5 +302,38 @@
       lastAccDate = #{lastaccdate,jdbcType=DATE},
       state = #{state,jdbcType=BIT}
     where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByMasterIdSelective" parameterType="xsl.erp.pojo.XslMaster" >
+    update xsl_master
+    <set >
+      <if test="userid != null" >
+        userId = #{userid,jdbcType=VARCHAR},
+      </if>
+      <if test="level != null" >
+        level = #{level,jdbcType=SMALLINT},
+      </if>
+      <if test="empirical != null" >
+        empirical = #{empirical,jdbcType=INTEGER},
+      </if>
+      <if test="taskaccnum != null" >
+        taskAccNum = #{taskaccnum,jdbcType=INTEGER},
+      </if>
+      <if test="taskrevokenum != null" >
+        taskRevokeNum = #{taskrevokenum,jdbcType=INTEGER},
+      </if>
+      <if test="credit != null" >
+        credit = #{credit,jdbcType=SMALLINT},
+      </if>
+      <if test="descr != null" >
+        descr = #{descr,jdbcType=VARCHAR},
+      </if>
+      <if test="lastaccdate != null" >
+        lastAccDate = #{lastaccdate,jdbcType=DATE},
+      </if>
+      <if test="state != null" >
+        state = #{state,jdbcType=BIT},
+      </if>
+    </set>
+    where masterId = #{masterid,jdbcType=INTEGER}
   </update>
 </mapper>

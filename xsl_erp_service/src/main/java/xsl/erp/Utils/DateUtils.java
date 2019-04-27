@@ -50,8 +50,7 @@ public class DateUtils {
 
     public static List<XslTask> setDateInPojo(List<XslTask> list){
         for (XslTask xslTask : list){
-            String time = dateTimeToString(xslTask.getDeadline());
-            xslTask.setDeadline(time);
+            xslTask.setDeadline(new Date());
         }
         return list;
     }

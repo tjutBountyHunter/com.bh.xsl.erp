@@ -34,8 +34,7 @@
                     <a class="mini-button" iconCls="icon-save" onclick="saveData('user/hunter')" plain="true">保存</a>
                 </td>
                 <td style="white-space:nowrap;">
-                    <input id="key" class="mini-textbox" emptyText="请输入猎人ID" style="width:150px;" onenter="onKeyEnter"/>
-                    <input id="key1" class="mini-textbox" emptyText="请输入猎人等级" style="width:150px;" onenter="onKeyEnter"/>
+                    <input id="level" class="mini-textbox" emptyText="请输入猎人等级" style="width:150px;" onenter="onKeyEnter"/>
                     <a class="mini-button" onclick="search()">查询</a>
                 </td>
             </tr>
@@ -51,29 +50,26 @@
     <div property="columns">
         <div type="indexcolumn"></div>
         <div type="checkcolumn"></div>
-        <div name="id"  field="id" headerAlign="center" allowSort="true" width="50" >猎人ID
-            <input property="editor" class="mini-textbox" style="width:100%;" maxWidth="150" />
-        </div>
-        <div name="userName"  field="userName" headerAlign="center" allowSort="true" width="100" >用户名</div>
-        <div field="level" width="100" allowSort="true" >等级
+        <div name="userName"  field="userName" align="center" headerAlign="center" allowSort="true" width="100" >用户名</div>
+        <div field="level"align="center" headerAlign="center" width="100" allowSort="true" >等级
             <input property="editor" class="mini-spinner"  minValue="0" maxValue="200" value="25" style="width:100%;"/>
         </div>
-        <div field="empirical" width="100" allowSort="true" >经验值
+        <div field="empirical" width="100" allowSort="true" align="center" headerAlign="center" >经验值
             <input property="editor" class="mini-spinner"  minValue="0" maxValue="200" value="25" style="width:100%;"/>
         </div>
-        <div field="taskaccnum" width="120" headerAlign="center" allowSort="true">任务达成数
+        <div field="taskaccnum" width="120" align="center" headerAlign="center" allowSort="true">任务达成数
             <input property="editor" class="mini-spinner" style="width:200px;" minWidth="200" minHeight="50"/>
         </div>
-        <div field="taskfailnum" width="120" headerAlign="center" allowSort="true">任务失败数
+        <div field="taskfailnum" width="120" align="center" headerAlign="center" allowSort="true">任务失败数
             <input property="editor" class="mini-spinner" style="width:200px;" minWidth="200" minHeight="50"/>
         </div>
-        <div field="credit" width="120" headerAlign="center" allowSort="true">信誉
+        <div field="credit" width="120" align="center" headerAlign="center" allowSort="true">信誉
             <input property="editor" class="mini-textbox" style="width:200px;" minWidth="200" minHeight="50"/>
         </div>
-        <div field="descr" width="200" headerAlign="center" allowSort="true">描述
+        <div field="descr" width="200" align="center" headerAlign="center" allowSort="true">描述
             <input property="editor" class="mini-textarea" style="width:200px;" minWidth="200" minHeight="50"/>
         </div>
-        <div name="lasttime" field="lasttime" width="100" allowSort="true" dateFormat="yyyy-MM-dd">最近活动时间
+        <div name="lasttime" field="lasttime" align="center" headerAlign="center" width="100" allowSort="true" dateFormat="yyyy-MM-dd">最近活动时间
             <!-- 添加编辑信息 -->
             <input property="editor" class="mini-datepicker" style="width:100%;"/>
         </div>

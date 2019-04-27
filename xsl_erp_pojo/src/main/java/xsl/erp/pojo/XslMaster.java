@@ -1,5 +1,7 @@
 package xsl.erp.pojo;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import java.util.Date;
 
 public class XslMaster {
@@ -96,7 +98,7 @@ public class XslMaster {
     public void setDescr(String descr) {
         this.descr = descr == null ? null : descr.trim();
     }
-
+    @JsonFormat(pattern="yyyy-MM-dd",timezone = "GMT+8")
     public Date getLastaccdate() {
         return lastaccdate;
     }

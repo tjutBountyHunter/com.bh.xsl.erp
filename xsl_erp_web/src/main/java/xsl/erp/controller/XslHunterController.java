@@ -13,9 +13,10 @@ import xsl.erp.pojo.XslHunter;
 import xsl.erp.pojo.common.PageObject;
 import xsl.erp.service.XslHunterService;
 
+import java.util.List;
+
 /**
  *  对user_show.jsp进行操作
- *  @author 王坤
  *  */
 @Controller
 @RequestMapping("/user/hunter")
@@ -30,30 +31,16 @@ public class XslHunterController {
     //@SystemControllerLog( description = "猎人查询" )
     @RequestMapping("/list")
     @ResponseBody
-    public PageObject getXslHunterInfo(Integer pageIndex, Integer pageSize,Integer key,Short key1){
-        return this.xslHunterService.SelectHunterAll(pageIndex+1,pageSize,key,key1);
+    public PageObject getXslHunterInfo(Integer pageIndex, Integer pageSize,Short level){
+        return xslHunterService.selectHunterAll(pageIndex+1,pageSize, level);
     }
 
 
     @SystemControllerLog( description = "猎人更新" )
     @RequestMapping("/update")
     @ResponseBody
-    public XslResult updateXslHunter(@RequestBody XslHunter[] xslHunters){
-        String tag = "猎人更新";
-        XslResult xslResult = null;
-        if(xslHunters != null){
-            try{
-                if( this.xslHunterService.UpdateXslHunter(xslHunters) ){
-                    xslResult = XslResult.build(200,tag + "成功!");
-                }else{
-                    xslResult = XslResult.build(200,tag + "失败!");
-                }
-            }catch (Exception e){
-                logger.error(tag + "异常警报 :" + e.getMessage());
-                xslResult = XslResult.build(400,tag + "异常警报!");
-            }
-        }
-        return xslResult;
+    public XslResult updateXslHunter(@RequestBody List<XslHunter> xslHunters){
+        return xslHunterService.updateXslHunter(xslHunters);
     }
 
 }

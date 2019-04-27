@@ -7,6 +7,6 @@ import xsl.erp.pojo.XslDatetimeExample;
 import java.util.List;
 
 public interface XslExtendMapper {
-    String getUserNameByHunterId(Integer hunterId);
-    String getUserNameByMasterId(Integer masterId);
+    String getUserNameByHunterId(String hunterId);
+    String getUserNameByMasterId(String masterId);
 }

@@ -1,5 +1,7 @@
 package xsl.erp.pojo;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 public class XslSchoolinfo {
     private Integer id;
 
@@ -67,6 +69,7 @@ public class XslSchoolinfo {
         this.school = school == null ? null : school.trim();
     }
 
+    @JsonFormat(pattern="yyyy-MM-dd",timezone = "GMT+8")
     public String getStartdate() {
         return startdate;
     }

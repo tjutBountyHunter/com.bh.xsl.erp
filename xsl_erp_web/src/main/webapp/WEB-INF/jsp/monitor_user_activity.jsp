@@ -94,7 +94,7 @@
             {
                 type: 'value',
                 scale: true,
-                name: '价格',
+                name: '用户数量',
                 boundaryGap: [0, '50%']  //Y 一直处于y轴的一半
             }
         ],

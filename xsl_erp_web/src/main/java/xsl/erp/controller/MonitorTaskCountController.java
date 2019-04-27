@@ -11,7 +11,6 @@ import java.util.ArrayList;
 
 /**
  * 任务监控
- * @author  王坤
  */
 @Controller
 @RequestMapping("/monitor")

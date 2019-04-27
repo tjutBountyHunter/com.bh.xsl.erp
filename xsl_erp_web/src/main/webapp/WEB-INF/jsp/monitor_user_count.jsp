@@ -1,33 +1,35 @@
 <%--
   Created by IntelliJ IDEA.
   User: asus
-  Date: 2018/7/17
-  Time: 13:17
+  Date: 2018/7/18
+  Time: 9:56
   To change this template use File | Settings | File Templates.
-  用户数量监控
+  用户活跃度监控
 --%>
-<%@ page contentType="text/html;charset=UTF-8" pageEncoding="utf-8" language="java" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%
     String path = request.getContextPath();
     String basePath = request.getScheme() + "://"
             + request.getServerName() + ":" + request.getServerPort()
             + path + "/";
 %>
-<html xmlns="http://www.w3.org/1999/xhtml">
-<base href="<%=basePath%>"/>
+<!DOCTYPE html>
+<html style="height: 100%">
+<head>
+    <base href="<%=basePath%>"/>
+    <meta charset="utf-8">
+
+</head>
+
+<body>
+
+<!-- 写一个表格的名字 -->
 <div id="myChart" style="height: 100% ;height:450px;">
 </div>
-<script type="text/javascript" src="<%=basePath%>js/echarts.js">
+<script type="text/javascript" src="<%=basePath%>js/echarts.min.js">
 </script>
-<script type="text/javascript" src="<%=basePath%>js/echarts.js"/>
-
-
-<script type="text/javascript">
-    $(document).ready(function () {
-        document.write("<scr"+"ipt src=\"<%=basePath%>js/echarts.js\"></sc"+"ript>")
-    })
+<script type="text/javascript" src="<%=basePath%>js/jquery.min.js">
 </script>
-
 
 <script type="text/javascript">
     // 基于准备好的dom，初始化echarts图表
@@ -37,83 +39,91 @@
     var option = null;
     option = {
         title: {
-            text: '用户数量变化',
+            text: '用户关系网络图'
         },
-        color: {
-            type: 'linear',
-            x: 0,
-            y: 0,
-            x2: 0,
-            y2: 1,
-            colorStops: [{
-                offset: 0, color: 'red' // 0% 处的颜色
-            }, {
-                offset: 1, color: 'yellow' // 100% 处的颜色
-            }],
-            globalCoord: false // 缺省为 false
-        },
-        tooltip: {
-            trigger: 'axis',
-            axisPointer: {
-                type: 'cross',
+        tooltip: {},
+        animationDurationUpdate: 1500,
+        animationEasingUpdate: 'quinticInOut',
+        series : [
+            {
+                type: 'graph',
+                layout: 'none',
+                symbolSize: 50,
+                roam: true,
                 label: {
-                    backgroundColor: '#283b56'
-                }
-            }
-        },
-        legend: {
-            data:['活跃性变化']
-        },
-        toolbox: {
-            show: true,
-            feature: {
-                dataView: {readOnly: false},
-                restore: {},
-                saveAsImage: {}
-            }
-        },
-        xAxis: [
-            {
-                type: 'category',
-                boundaryGap: true,
-                data: (function (){
-                    var now = new Date();
-                    var res = [];
-                    var len = 10;
-                    while (len--) {
-                        res.unshift(now.toLocaleTimeString().replace(/^\D*/,''));   //时间推进
-                        now = new Date(now - 1000);    //时间差
+                    normal: {
+                        show: true
                     }
-                    return res;
-                })()
-            }
-        ],
-        yAxis: [
-            {
-                type: 'value',
-                scale: true,
-                name: '数量/人',
-                boundaryGap: [0, '50%']  //Y 一直处于y轴的一半
-            }
-        ],
-        series: [     //添加数据
-            {
-                name:'数量变化',
-                type:'line',
-                smooth:true,
-                areaStyle: {
-                    normal: {}
                 },
-                symbol: 'none',
-                data:(function (){
-                    var res = [];
-                    var len = 0;
-                    while (len < 10) {
-                        res.push(0);     //初始数据
-                        len++;
+                edgeSymbol: ['circle', 'arrow'],
+                edgeSymbolSize: [0, 0],
+                edgeLabel: {
+                    normal: {
+                        textStyle: {
+                            fontSize: 10
+                        }
                     }
-                    return res;
-                })()
+                },
+                data: [{
+                    name: '用户Aaaaaaaaa',
+                    x: 300,
+                    y: 300
+                }, {
+                    name: '用户B',
+                    x: 800,
+                    y: 300
+                }, {
+                    name: '用户C',
+                    x: 550,
+                    y: 100
+                }, {
+                    name: '用户D',
+                    x: 550,
+                    y: 500
+                }, {
+                    name: '用户E',
+                    x: 900,
+                    y: 200
+                }],
+                // links: [],
+                links: [{
+                    source: 0,
+                    target: 1,
+                    lineStyle: {
+                        normal: {
+                            width: 5,
+                            curveness: 0.1
+                        }
+                    }
+                }, {
+                    source: 0,
+                    target: 2,
+                    Style: {
+                        normal: { curveness: 0.2 }
+                    }
+                }, {
+                    source: 1,
+                    target: 2
+                }, {
+                    source: 1,
+                    target: 3
+                }, {
+                    source: 0,
+                    target: 3
+                }, {
+                    source: 4,
+                    target: 1
+                }, {
+                    source: 4,
+                    target: 0
+                }],
+                lineStyle: {
+                    normal: {
+                        opacity: 0.9,
+                        width: 2,
+                        curveness: 0.2
+                    }
+                }
             }
         ]
     };
@@ -146,3 +156,6 @@
         myChart.setOption(option, true);
     }
 </script>
+</body>
+
+</html>

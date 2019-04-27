@@ -68,7 +68,7 @@
     ]
 },
 { "id": "lczx", iconCls: "fa fa-share-alt", text: "用户监控", children: [
-          { "id": "mbgl", iconCls: "fa fa-share-alt", text: "数量变化图表", url: "/monitor/user/count" },
+          { "id": "mbgl", iconCls: "fa fa-share-alt", text: "用户关系网络", url: "/monitor/user/count" },
           { "id": "wdrw", iconCls: "fa fa-file-word-o", text: "活跃度变化图表", url: "/monitor/user/activity" }
           /*
                     回来后序添加

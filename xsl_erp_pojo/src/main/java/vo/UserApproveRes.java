@@ -1,6 +1,8 @@
 package vo;
 
 public class UserApproveRes {
+	private String userid;
+
 	private String name;
 
 	private String sex;
@@ -19,9 +21,17 @@ public class UserApproveRes {
 
 	private String startdate;
 
-	private Byte degree;
+	private String degree;
 
 	private Byte schoolhours;
+
+	public String getUserid() {
+		return userid;
+	}
+
+	public void setUserid(String userid) {
+		this.userid = userid;
+	}
 
 	public String getName() {
 		return name;
@@ -95,11 +105,11 @@ public class UserApproveRes {
 		this.startdate = startdate;
 	}
 
-	public Byte getDegree() {
+	public String getDegree() {
 		return degree;
 	}
 
-	public void setDegree(Byte degree) {
+	public void setDegree(String degree) {
 		this.degree = degree;
 	}
 

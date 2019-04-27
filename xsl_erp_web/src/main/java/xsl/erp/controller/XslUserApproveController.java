@@ -15,7 +15,6 @@ import xsl.erp.service.XslUserService;
 /**
  *  对user_approve.jsp进行操作,服务层在user_showService中
  *
- *  @author 王坤
  *  */
 @Controller
 @RequestMapping("/user/approve")
@@ -31,16 +30,15 @@ public class XslUserApproveController {
     @RequestMapping("/list")
     @ResponseBody
     public PageObject getXslUserInfo(Integer pageIndex, Integer pageSize){
-        return this.xslUserService.SelectUserApprove(pageIndex+1,pageSize);
+        return xslUserService.SelectUserApprove(pageIndex+1,pageSize);
     }
 
-    //没有requestBody是不能讲
     @SystemControllerLog( description = "用户审核操作" )
     @RequestMapping("/approve")
     @ResponseBody
     public boolean approve(@RequestBody XslUser xslUser){
         try {
-            return this.xslUserService.approve(xslUser);
+            return xslUserService.approve(xslUser);
         }catch (Exception e){
             logger.error("用户审核异常报警  :" + e.getMessage());
             return false;

@@ -30,16 +30,19 @@
      ondrawcell="draw">
     <div property="columns">
         <div type="indexcolumn"></div>
+        <div field="userid" width="0" headerAlign="center" align="center"  allowSort="false"></div>
         <div field="name" width="120" headerAlign="center" align="center"  allowSort="true">昵称</div>
         <div field="phone" width="100" headerAlign="center" align="center" headerAlign="center">电话</div>
-        <div field="email" align="center" headerAlign="center" width="100" allowSort="true">邮箱</div>
         <div field="sex" align="center" headerAlign="center" width="100" allowSort="true">性别</div>
         <div field="sno" align="center" headerAlign="center" width="100" allowSort="true">学号</div>
         <div field="major" align="center" headerAlign="center" width="100" allowSort="true">专业</div>
         <div field="college" align="center" headerAlign="center" width="100" allowSort="true">学院</div>
         <div field="school" align="center" headerAlign="center" width="100" allowSort="true">学校</div>
         <div field="startdate" align="center" headerAlign="center" width="100" allowSort="true">入学日期</div>
-        <div field="degree" align="center" headerAlign="center" width="100" allowSort="true">学位</div>
+        <div field="degree" align="center" headerAlign="center" width="100" allowSort="true">学位
+            <input property="editor" class="mini-combobox" style="width:100%;" url="<%=basePath%>data/degree.txt"/>
+        </div>
+
         <div field="schoolhours" align="center" headerAlign="center" width="100" allowSort="true">在校时长</div>
         <div name="approve" field="approve" width="120" headerAlign="center"  allowSort="true" align="center" >审核</div>
     </div>
@@ -65,12 +68,12 @@
     //通过审核
     function success(){
         var row = grid.getSelected();
-        var id = row.id;
+        var userid = row.userid;
         //进行ajax数据操作
         $.ajax({
             url:"user/approve/approve",
             type:"post",
-            data:JSON.stringify({id:id,state:1}),
+            data:JSON.stringify({"userid":userid,state:1}),
             contentType:"application/json;charset=UTF-8",
             dataType:"json",
             success:function(data){
@@ -91,8 +94,8 @@
     //未通过审核
     function unsuccess(){
         var row = grid.getSelected();
-        var id = row.id;
-        var json = JSON.stringify({"id":id,"state":"-2"});
+        var userid = row.userid;
+        var json = JSON.stringify({"userid":userid,"state":"-2"});
         //
         $.ajax({
             url:"user/approve/approve",
@@ -114,7 +117,6 @@
             }
         });
     }
-
 </script>
 </body>
 </html>

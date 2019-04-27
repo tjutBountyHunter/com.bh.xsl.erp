@@ -7,6 +7,7 @@ import com.xsl.erp.mapper.XslTaskTagMapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
+import org.springframework.util.StringUtils;
 import xsl.erp.annotation.SystemServiceLog;
 import xsl.erp.pojo.XslTag;
 import xsl.erp.pojo.XslTagExample;
@@ -94,15 +95,16 @@ public class XslTaskTagServiceImpl implements XslTaskTagService {
                             return false;
                         }
                         //2.标签表的数量进行增加
-                        Integer tagId = xslTaskTag.getTagid();
-                        if (tagId != null && tagId != 0) {
+                        String tagId = xslTaskTag.getTagid();
+                        if (!StringUtils.isEmpty(tagId)) {
                             //查看是否有这个id
-                            XslTag xslTag = xslTagMapper.selectByPrimaryKey(tagId);
-                            if (xslTag != null) {
-                                //数目进行++
-                                xslTag.setUsenum((short) (xslTag.getUsenum() + 1));
-                                xslTagMapper.updateByPrimaryKeySelective(xslTag);
-                            }
+                            //TODO
+//                            XslTag xslTag = xslTagMapper.selectByPrimaryKey(tagId);
+//                            if (xslTag != null) {
+//                                //数目进行++
+//                                xslTag.setUsenum((short) (xslTag.getUsenum() + 1));
+//                                xslTagMapper.updateByPrimaryKeySelective(xslTag);
+//                            }
                         }
                     }
                 }catch (Exception e){

@@ -26,7 +26,6 @@ import java.util.UUID;
 
 /**
  *  xsl_user页面的服务层
- *  @author 王坤
  */
 @Service
 @Transactional
@@ -304,14 +303,37 @@ public class XslUserServiceImpl implements XslUserService {
 			UserApproveRes userApproveRes = new UserApproveRes();
 			BeanUtils.copyProperties(xslUser, userApproveRes);
 			String schoolId = xslUser.getSchoolinfo();
-			XslSchoolinfoExample xslSchoolinfoExample = new XslSchoolinfoExample();
-			XslSchoolinfoExample.Criteria criteria = xslSchoolinfoExample.createCriteria();
-			criteria.andSchoolidEqualTo(schoolId);
-			List<XslSchoolinfo> xslSchoolinfos = xslSchoolinfoMapper.selectByExample(xslSchoolinfoExample);
 
-			if(xslSchoolinfos != null && xslSchoolinfos.size() > 0){
-				BeanUtils.copyProperties(xslSchoolinfos.get(0), userApproveRes);
-			}
+
+			if(!StringUtils.isEmpty(schoolId)){
+                XslSchoolinfoExample xslSchoolinfoExample = new XslSchoolinfoExample();
+                XslSchoolinfoExample.Criteria criteria = xslSchoolinfoExample.createCriteria();
+                criteria.andSchoolidEqualTo(schoolId);
+                List<XslSchoolinfo> xslSchoolinfos = xslSchoolinfoMapper.selectByExample(xslSchoolinfoExample);
+                if(xslSchoolinfos != null && xslSchoolinfos.size() > 0){
+                    XslSchoolinfo xslSchoolinfo = xslSchoolinfos.get(0);
+                    BeanUtils.copyProperties(xslSchoolinfo, userApproveRes);
+                    userApproveRes.setStartdate(xslSchoolinfo.getStartdate().substring(0, 11));
+                    Byte degree = xslSchoolinfo.getDegree();
+
+                    if(degree == 2){
+                        userApproveRes.setDegree("本科");
+                    }
+
+                    if(degree == 5){
+                        userApproveRes.setDegree("专科");
+                    }
+
+                    if(degree == 6){
+                        userApproveRes.setDegree("研究生");
+                    }
+
+                    if(degree == 7){
+                        userApproveRes.setDegree("博士");
+                    }
+
+                }
+            }
 
 			userApproveResList.add(userApproveRes);
 		}
@@ -332,27 +354,23 @@ public class XslUserServiceImpl implements XslUserService {
     @SystemServiceLog(description = "用户审核操作Service")
     @Override
     public boolean approve(XslUser xslUser) {
-        try {
-            //防止空指针异常
-            if( xslUser != null ){
-                Byte state = xslUser.getState();
-                //审核成功
-                if( state == 1 ){
-                    xslUser = getXslUser(xslUser,new Date());
-                }else{
-                    //审核失败
-                    SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-                    String date = sdf.format(new Date());
-                    xslUser.setUpdatedate(new Date());
-                }
-                int n = this.xslUserMapper.updateByPrimaryKeySelective(xslUser);
-                if( n < 0 ){return false;}
-            }
-        }catch (Exception e){
-            logger.error("用户审核操作 " + e.getMessage() );
+        //防止空指针异常
+        if( xslUser == null ){
             return false;
         }
-        return true;
+
+        try {
+            xslUser.setUpdatedate(new Date());
+            int n = xslUserMapper.updateByPrimaryKeySelective(xslUser);
+            if(n > 0){
+                return true;
+            }
+
+        }catch (Exception e){
+            logger.error("用户审核操作:{}" + e);
+            throw new RuntimeException(e);
+        }
+        return false;
     }
 
     @SystemServiceLog(description = "用户总数查询Service")

@@ -53,38 +53,36 @@
         <div property="columns">
             <div type="indexcolumn"></div>
             <div id="checked" type="checkcolumn"></div>
-            <div name="name" field="name" width="100" allowSort="true" >昵称
+            <div name="name" field="name" width="100" allowSort="true" align="center" headerAlign="center" >昵称
                 <!-- 添加编辑信息 -->
                 <input property="editor" class="mini-textbox" style="width:100%;" minWidth="200"/>
             </div>
             <!--ComboBox：本地数据-->
-            <div type="comboboxcolumn" autoShowPopup="true" name="sex" field="sex" width="50" allowSort="true"
-                 align="center" headerAlign="center">性别
+            <div type="comboboxcolumn" autoShowPopup="true" name="sex" field="sex" width="20" allowSort="true" align="center" headerAlign="center">性别
                 <input property="editor" class="mini-combobox" style="width:100%;" data="Genders"/>
             </div>
-            <div name="phone" field="phone" width="100" allowSort="true" >电话
+            <div name="phone" field="phone" width="100" allowSort="true" align="center" headerAlign="center">电话
                 <!-- 添加编辑信息 -->
                 <input property="editor" class="mini-textbox" style="width:100%;" minWidth="200"/>
             </div>
-            <div name="email" field="email" width="100" allowSort="true" >邮箱
+            <div name="email" field="email" width="100" allowSort="true" align="center" headerAlign="center">邮箱
                 <!-- 添加编辑信息 -->
-                <input property="editor" class="mini-textbox" style="width:100%;" minWidth="200" />
+                <input property="editor" class="mini-textbox" style="width:100%;" minWidth="200" placeholder="用户未填写" />
             </div>
-            <div field="signature" width="120" headerAlign="center" allowSort="true">个性签名
+            <div field="signature" width="120" headerAlign="center" allowSort="true" align="center" headerAlign="center">个性签名
                 <!-- 添加编辑信息 -->
                 <input property="editor" class="mini-textarea" style="width:200px;" minWidth="200" minHeight="50"/>
             </div>
             <!--ComboBox：远程数据,下面javascript的数组就是，因为不用改变，所以没有使用txt文件-->
-            <div type="comboboxcolumn" field="state" width="100" headerAlign="center">状态
-                <!-- 因为不能连接国家的库，所以写了一个txt,如需添加其他国籍，手动添加 -->
+            <div type="comboboxcolumn" field="state" width="40" headerAlign="center" align="center" headerAlign="center">状态
                 <input property="editor" class="mini-combobox" style="width:100%;" url="<%=basePath%>data/state.txt"/>
             </div>
 
-            <div name="createdate" field="createdate" width="100" allowSort="true" valueType="String" dateFormat="yyyy-MM-dd">创建日期
+            <div name="createdate" field="createdate" width="100" allowSort="true" valueType="String" dateFormat="yyyy-MM-dd" align="center" headerAlign="center">创建日期
                 <!-- 添加编辑信息 -->
                 <input property="editor" class="mini-datepicker" style="width:100%;"/>
             </div>
-            <div name="updatedate" field="updatedate" width="100" allowSort="true" dateFormat="yyyy-MM-dd">更新日期
+            <div name="updatedate" field="updatedate" width="100" allowSort="true" dateFormat="yyyy-MM-dd" align="center" headerAlign="center">更新日期
                 <!-- 添加编辑信息 -->
                 <input property="editor" class="mini-datepicker" style="width:100%;"/>
             </div>

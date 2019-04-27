@@ -1,5 +1,7 @@
 package xsl.erp.pojo;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import java.util.Date;
 
 public class XslUser {
@@ -127,6 +129,8 @@ public class XslUser {
         this.signature = signature == null ? null : signature.trim();
     }
 
+
+    @JsonFormat(pattern="yyyy-MM-dd",timezone = "GMT+8")
     public Date getCreatedate() {
         return createdate;
     }
@@ -135,6 +139,7 @@ public class XslUser {
         this.createdate = createdate;
     }
 
+    @JsonFormat(pattern="yyyy-MM-dd",timezone = "GMT+8")
     public Date getUpdatedate() {
         return updatedate;
     }

@@ -291,9 +291,6 @@
   <update id="updateByPrimaryKeySelective" parameterType="xsl.erp.pojo.XslUser" >
     update xsl_user
     <set >
-      <if test="userid != null" >
-        userId = #{userid,jdbcType=VARCHAR},
-      </if>
       <if test="hunterid != null" >
         hunterId = #{hunterid,jdbcType=VARCHAR},
       </if>
@@ -331,7 +328,7 @@
         updateDate = #{updatedate,jdbcType=DATE},
       </if>
     </set>
-    where id = #{id,jdbcType=INTEGER}
+    where userId = #{userid,jdbcType=INTEGER}
   </update>
   <update id="updateByPrimaryKey" parameterType="xsl.erp.pojo.XslUser" >
     update xsl_user

@@ -361,7 +361,7 @@ public class XslUserServiceImpl implements XslUserService {
 
         try {
             xslUser.setUpdatedate(new Date());
-            int n = xslUserMapper.updateByPrimaryKeySelective(xslUser);
+            int n = xslUserMapper.updateByUserIdSelective(xslUser);
             if(n > 0){
                 return true;
             }

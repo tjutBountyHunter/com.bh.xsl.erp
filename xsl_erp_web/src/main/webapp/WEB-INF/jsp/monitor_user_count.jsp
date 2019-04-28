@@ -35,9 +35,11 @@
     // 基于准备好的dom，初始化echarts图表
     var myChart = echarts.init(document.getElementById('myChart'));
 
-    var app = {};
-    var option = null;
-    option = {
+    var resdata = getData();
+
+    var reslink = getLink();
+
+    var option = {
         title: {
             text: '用户关系网络图'
         },
@@ -64,59 +66,9 @@
                         }
                     }
                 },
-                data: [{
-                    name: '用户Aaaaaaaaa',
-                    x: 300,
-                    y: 300
-                }, {
-                    name: '用户B',
-                    x: 800,
-                    y: 300
-                }, {
-                    name: '用户C',
-                    x: 550,
-                    y: 100
-                }, {
-                    name: '用户D',
-                    x: 550,
-                    y: 500
-                }, {
-                    name: '用户E',
-                    x: 900,
-                    y: 200
-                }],
+                data: getData(),
                 // links: [],
-                links: [{
-                    source: 0,
-                    target: 1,
-                    lineStyle: {
-                        normal: {
-                            width: 5,
-                            curveness: 0.1
-                        }
-                    }
-                }, {
-                    source: 0,
-                    target: 2,
-                    Style: {
-                        normal: { curveness: 0.2 }
-                    }
-                }, {
-                    source: 1,
-                    target: 2
-                }, {
-                    source: 1,
-                    target: 3
-                }, {
-                    source: 0,
-                    target: 3
-                }, {
-                    source: 4,
-                    target: 1
-                }, {
-                    source: 4,
-                    target: 0
-                }],
+                links: getLink(),
                 lineStyle: {
                     normal: {
                         opacity: 0.9,
@@ -128,32 +80,49 @@
         ]
     };
 
-    app.count = 11;
-    setInterval(function (){
-        axisData = (new Date()).toLocaleTimeString().replace(/^\D*/,'');
+    if (option && typeof option === "object") {
+        console.log(JSON.stringify(option));
+        myChart.setOption(option, true);
+    }
 
-        var data0 = option.series[0].data;
-        data0.shift();
-        var mount;
-        //ajax传值
+    function getData() {
+        var rDate = "";
         $.ajax({
-            url:"monitor/user/mount",
+            url:"xsl/user/network/getNode",
             type:"post",
             contentType:"application/json;charset=UTF-8",
+            async: false,
             dataType:"json",
             success:function(data){
-                data0.push(data);  //随着时间推进的数据
+                rDate = data;
+            },
+            error : function(errorMsg) {
+                //请求失败时执行该函数
+                mini.alert(errorMsg.msg);
             }
         });
 
-        option.xAxis[0].data.shift();
-        option.xAxis[0].data.push(axisData);
+        return rDate;
+    }
 
-        myChart.setOption(option);
-    }, 1100);
-    ;
-    if (option && typeof option === "object") {
-        myChart.setOption(option, true);
+    function getLink() {
+        var rDate = "";
+        $.ajax({
+            url:"xsl/user/network/getLink",
+            type:"post",
+            contentType:"application/json;charset=UTF-8",
+            async: false,
+            dataType:"json",
+            success:function(data){
+                rDate = data;
+            },
+            error : function(errorMsg) {
+                //请求失败时执行该函数
+                mini.alert(errorMsg.msg);
+            }
+        });
+
+        return rDate;
     }
 </script>
 </body>

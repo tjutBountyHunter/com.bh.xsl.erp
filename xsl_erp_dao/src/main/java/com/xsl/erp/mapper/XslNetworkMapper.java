@@ -18,6 +18,8 @@ public interface XslNetworkMapper {
 
     List<XslNetwork> selectByExample(XslNetworkExample example);
 
+    List<XslNetwork> selectLimit();
+
     XslNetwork selectByPrimaryKey(Integer id);
 
     int updateByExampleSelective(@Param("record") XslNetwork record, @Param("example") XslNetworkExample example);

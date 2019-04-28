@@ -4,7 +4,9 @@
   <resultMap id="BaseResultMap" type="xsl.erp.pojo.XslNetwork" >
     <id column="id" property="id" jdbcType="INTEGER" />
     <result column="AId" property="aid" jdbcType="VARCHAR" />
+    <result column="APhone" property="aphone" jdbcType="VARCHAR" />
     <result column="BId" property="bid" jdbcType="VARCHAR" />
+    <result column="BPhone" property="bphone" jdbcType="VARCHAR" />
     <result column="num" property="num" jdbcType="INTEGER" />
     <result column="firstDate" property="firstdate" jdbcType="DATE" />
     <result column="lastDate" property="lastdate" jdbcType="DATE" />
@@ -68,7 +70,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    id, AId, BId, num, firstDate, lastDate
+    id, AId, APhone, BId, BPhone, num, firstDate, lastDate
   </sql>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="xsl.erp.pojo.XslNetworkExample" >
     select
@@ -84,6 +86,14 @@
       order by ${orderByClause}
     </if>
   </select>
+    <select id="selectLimit" resultMap="BaseResultMap" >
+        select
+        <include refid="Base_Column_List" />
+        from xsl_network
+        order by num DESC
+        limit 10
+    </select>
+
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
     <include refid="Base_Column_List" />
@@ -101,10 +111,12 @@
     </if>
   </delete>
   <insert id="insert" parameterType="xsl.erp.pojo.XslNetwork" >
-    insert into xsl_network (id, AId, BId, 
-      num, firstDate, lastDate)
-    values (#{id,jdbcType=INTEGER}, #{aid,jdbcType=VARCHAR}, #{bid,jdbcType=VARCHAR}, 
-      #{num,jdbcType=INTEGER}, #{firstdate,jdbcType=DATE}, #{lastdate,jdbcType=DATE})
+    insert into xsl_network (id, AId, APhone, 
+      BId, BPhone, num, firstDate, 
+      lastDate)
+    values (#{id,jdbcType=INTEGER}, #{aid,jdbcType=VARCHAR}, #{aphone,jdbcType=VARCHAR}, 
+      #{bid,jdbcType=VARCHAR}, #{bphone,jdbcType=VARCHAR}, #{num,jdbcType=INTEGER}, #{firstdate,jdbcType=DATE}, 
+      #{lastdate,jdbcType=DATE})
   </insert>
   <insert id="insertSelective" parameterType="xsl.erp.pojo.XslNetwork" >
     insert into xsl_network
@@ -115,8 +127,14 @@
       <if test="aid != null" >
         AId,
       </if>
+      <if test="aphone != null" >
+        APhone,
+      </if>
       <if test="bid != null" >
         BId,
+      </if>
+      <if test="bphone != null" >
+        BPhone,
       </if>
       <if test="num != null" >
         num,
@@ -135,8 +153,14 @@
       <if test="aid != null" >
         #{aid,jdbcType=VARCHAR},
       </if>
+      <if test="aphone != null" >
+        #{aphone,jdbcType=VARCHAR},
+      </if>
       <if test="bid != null" >
         #{bid,jdbcType=VARCHAR},
+      </if>
+      <if test="bphone != null" >
+        #{bphone,jdbcType=VARCHAR},
       </if>
       <if test="num != null" >
         #{num,jdbcType=INTEGER},
@@ -164,8 +188,14 @@
       <if test="record.aid != null" >
         AId = #{record.aid,jdbcType=VARCHAR},
       </if>
+      <if test="record.aphone != null" >
+        APhone = #{record.aphone,jdbcType=VARCHAR},
+      </if>
       <if test="record.bid != null" >
         BId = #{record.bid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.bphone != null" >
+        BPhone = #{record.bphone,jdbcType=VARCHAR},
       </if>
       <if test="record.num != null" >
         num = #{record.num,jdbcType=INTEGER},
@@ -185,7 +215,9 @@
     update xsl_network
     set id = #{record.id,jdbcType=INTEGER},
       AId = #{record.aid,jdbcType=VARCHAR},
+      APhone = #{record.aphone,jdbcType=VARCHAR},
       BId = #{record.bid,jdbcType=VARCHAR},
+      BPhone = #{record.bphone,jdbcType=VARCHAR},
       num = #{record.num,jdbcType=INTEGER},
       firstDate = #{record.firstdate,jdbcType=DATE},
       lastDate = #{record.lastdate,jdbcType=DATE}
@@ -199,8 +231,14 @@
       <if test="aid != null" >
         AId = #{aid,jdbcType=VARCHAR},
       </if>
+      <if test="aphone != null" >
+        APhone = #{aphone,jdbcType=VARCHAR},
+      </if>
       <if test="bid != null" >
         BId = #{bid,jdbcType=VARCHAR},
+      </if>
+      <if test="bphone != null" >
+        BPhone = #{bphone,jdbcType=VARCHAR},
       </if>
       <if test="num != null" >
         num = #{num,jdbcType=INTEGER},
@@ -217,7 +255,9 @@
   <update id="updateByPrimaryKey" parameterType="xsl.erp.pojo.XslNetwork" >
     update xsl_network
     set AId = #{aid,jdbcType=VARCHAR},
+      APhone = #{aphone,jdbcType=VARCHAR},
       BId = #{bid,jdbcType=VARCHAR},
+      BPhone = #{bphone,jdbcType=VARCHAR},
       num = #{num,jdbcType=INTEGER},
       firstDate = #{firstdate,jdbcType=DATE},
       lastDate = #{lastdate,jdbcType=DATE}

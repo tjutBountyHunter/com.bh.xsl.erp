@@ -328,7 +328,7 @@
         updateDate = #{updatedate,jdbcType=DATE},
       </if>
     </set>
-    where userId = #{userid,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
   </update>
   <update id="updateByPrimaryKey" parameterType="xsl.erp.pojo.XslUser" >
     update xsl_user
@@ -346,5 +346,48 @@
       createDate = #{createdate,jdbcType=DATE},
       updateDate = #{updatedate,jdbcType=DATE}
     where id = #{id,jdbcType=INTEGER}
+  </update>
+
+  <update id="updateByUserIdSelective" parameterType="xsl.erp.pojo.XslUser" >
+    update xsl_user
+    <set >
+      <if test="hunterid != null" >
+        hunterId = #{hunterid,jdbcType=VARCHAR},
+      </if>
+      <if test="masterid != null" >
+        masterId = #{masterid,jdbcType=VARCHAR},
+      </if>
+      <if test="schoolinfo != null" >
+        schoolInfo = #{schoolinfo,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null" >
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null" >
+        password = #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="sex != null" >
+        sex = #{sex,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null" >
+        phone = #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null" >
+        email = #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="state != null" >
+        state = #{state,jdbcType=TINYINT},
+      </if>
+      <if test="signature != null" >
+        signature = #{signature,jdbcType=VARCHAR},
+      </if>
+      <if test="createdate != null" >
+        createDate = #{createdate,jdbcType=DATE},
+      </if>
+      <if test="updatedate != null" >
+        updateDate = #{updatedate,jdbcType=DATE},
+      </if>
+    </set>
+    where userId = #{userid,jdbcType=VARCHAR}
   </update>
 </mapper>

@@ -27,4 +27,7 @@ public interface XslUserMapper {
     int updateByPrimaryKeySelective(XslUser record);
 
     int updateByPrimaryKey(XslUser record);
+
+    int updateByUserIdSelective(XslUser record);
+
 }

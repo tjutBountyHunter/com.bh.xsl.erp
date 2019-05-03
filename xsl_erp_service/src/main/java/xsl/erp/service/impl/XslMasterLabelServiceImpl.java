@@ -7,6 +7,7 @@ import com.xsl.erp.mapper.XslTagMapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
+import org.springframework.util.StringUtils;
 import xsl.erp.Utils.DateUtils;
 import xsl.erp.annotation.SystemServiceLog;
 import xsl.erp.pojo.XslMasterTag;
@@ -16,6 +17,7 @@ import xsl.erp.pojo.common.PageObject;
 import xsl.erp.service.XslMasterLabelService;
 
 import javax.annotation.Resource;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -85,22 +87,23 @@ public class XslMasterLabelServiceImpl implements XslMasterLabelService {
                     if( xslMasterTag != null ){ //判断不等于null
                         //1.标签添加
                         //设置创建时间
-                        xslMasterTag.setCreatedate(DateUtils.getDateToString());
+                        xslMasterTag.setCreatedate(new Date());
                         int n = this.xslMasterTagMapper.insertSelective(xslMasterTag);
                         if( n < 0 ){
                             logger.error("xsl_master_tag 添加失败!");
                             return false;
                         }
                         //2.标签表的数量进行增加
-                        Integer tagId = xslMasterTag.getTagid();
-                        if( tagId != null && tagId != 0 ){
+                        String tagId = xslMasterTag.getTagid();
+                        if(!StringUtils.isEmpty(tagId)){
                             //查看是否有这个id
-                            XslTag xslTag  = xslTagMapper.selectByPrimaryKey(tagId);
-                            if( xslTag != null ){
-                                //数目进行++
-                                xslTag.setUsenum((short)(xslTag.getUsenum() + 1));
-                                xslTagMapper.updateByPrimaryKeySelective(xslTag);
-                            }
+                            //TODO
+//                            XslTag xslTag  = xslTagMapper.selectByPrimaryKey(tagId);
+//                            if( xslTag != null ){
+//                                //数目进行++
+//                                xslTag.setUsenum((short)(xslTag.getUsenum() + 1));
+//                                xslTagMapper.updateByPrimaryKeySelective(xslTag);
+//                            }
                         }
                     }
                 }catch (Exception e){

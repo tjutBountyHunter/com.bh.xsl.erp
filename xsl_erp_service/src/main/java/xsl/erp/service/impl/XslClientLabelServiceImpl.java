@@ -18,6 +18,7 @@ import xsl.erp.service.XslClientLabelService;
 
 import javax.annotation.Resource;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -81,7 +82,7 @@ public class XslClientLabelServiceImpl implements XslClientLabelService {
                     try{
 
                         //设置创建时间
-                        xslTag.setCreatedate(DateUtils.getDateToString());
+                        xslTag.setCreatedate(new Date());
                         int n = this.xslTagMapper.insertSelective(xslTag);
                         if( n < 0 ){
                             logger.error(tag + "失败!");
@@ -157,7 +158,8 @@ public class XslClientLabelServiceImpl implements XslClientLabelService {
                         //2.①删除masterr_tag 中 tagId 为 id的元祖  ②状态为没被删除
                         XslMasterTagExample xslMasterTagExample = new XslMasterTagExample();
                         XslMasterTagExample.Criteria xslMasterTagExampleCriteria = xslMasterTagExample.createCriteria();
-                        xslMasterTagExampleCriteria.andMasteridEqualTo(id);
+                        // TODO
+//                        xslMasterTagExampleCriteria.andMasteridEqualTo(id);
                         xslMasterTagExampleCriteria.andStateEqualTo(true);
                         XslMasterTag xslMasterTag = new XslMasterTag();
                         xslMasterTag.setState(false);
@@ -165,7 +167,7 @@ public class XslClientLabelServiceImpl implements XslClientLabelService {
                         //3.删除task_tag 中 tagId 为 id的元祖  ②状态为没被删除
                         XslTaskTagExample xslTaskTagExample = new XslTaskTagExample();
                         XslTaskTagExample.Criteria xslTaskTagExampleCriteria = xslTaskTagExample.createCriteria();
-                        xslTaskTagExampleCriteria.andTagidEqualTo(id);
+//                        xslTaskTagExampleCriteria.andTagidEqualTo(id);
                         xslTaskTagExampleCriteria.andStateEqualTo(true);
                         XslTaskTag xslTaskTag = new XslTaskTag();
                         xslTaskTag.setState(false);

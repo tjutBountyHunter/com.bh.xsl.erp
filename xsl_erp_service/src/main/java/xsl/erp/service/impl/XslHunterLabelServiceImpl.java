@@ -16,6 +16,7 @@ import xsl.erp.pojo.common.PageObject;
 import xsl.erp.service.XslHunterLabelService;
 
 import javax.annotation.Resource;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -83,7 +84,7 @@ public class XslHunterLabelServiceImpl implements XslHunterLabelService {
                     if( xslHunterTag != null ){ //判断不等于null
                         //1.标签记录的插入
                         //设置创建时间
-                        xslHunterTag.setCreatedate(DateUtils.getDateToString());
+                        xslHunterTag.setCreatedate(new Date());
                         int n = this.xslHunterTagMapper.insertSelective(xslHunterTag);
                         if( n < 0 ){
                             logger.error("xsl_hunter_Tag 插入失败!");

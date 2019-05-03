@@ -17,6 +17,7 @@ import xsl.erp.service.XslTaskService;
 
 import javax.annotation.Resource;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.UUID;
 
@@ -144,7 +145,7 @@ public class XslTaskServiceImpl implements XslTaskService {
             for(XslTask xslTask:xslTasks){
                 try{
                     if( xslTask != null ){//进行null的判断，最少要拥有id，和一个要修改的值
-                        xslTask.setUpdatedate(DateUtils.getDateTimeToString());//设置修改时间
+                        xslTask.setUpdatedate(new Date());//设置修改时间
                         int n = this.xslTaskMapper.updateByPrimaryKeySelective(xslTask);
                         if(n < 0){
                             logger.error(tag + "是失败!");
@@ -198,7 +199,7 @@ public class XslTaskServiceImpl implements XslTaskService {
         if (xslTask != null) {
             //进行null的判断，最少要拥有id，和一个要修改的值
             //1.xslUser的逻辑删除
-            xslTask.setUpdatedate(DateUtils.getDateToString());//设置修改时间
+            xslTask.setUpdatedate(new Date());//设置修改时间
             xslTask.setState((byte) (-1));//-1代表冻结的意思，进行逻辑删除
             int n = this.xslTaskMapper.updateByPrimaryKeySelective(xslTask);
             if (n < 0) {
@@ -211,7 +212,7 @@ public class XslTaskServiceImpl implements XslTaskService {
             //进行任务id为此逻辑删除id的任务标签全部删除
             XslTaskTagExample example = new XslTaskTagExample();
             XslTaskTagExample.Criteria criteria = example.createCriteria();
-            criteria.andTaskidEqualTo(xslTask.getId());
+            criteria.andTaskidEqualTo(xslTask.getTaskid());
             int updatecount = this.xslTaskTagMapper.updateByExampleSelective(xslTaskTag, example);
         }
         return true;
@@ -233,7 +234,7 @@ public class XslTaskServiceImpl implements XslTaskService {
         try{
             //防止空指针异常
             if( xslTask != null ){
-                xslTask.setUpdatedate(DateUtils.getDateToString());//设置修改时间
+                xslTask.setUpdatedate(new Date());//设置修改时间
                 int n = this.xslTaskMapper.updateByPrimaryKeySelective(xslTask);
                 if( n < 0 ) {
                     logger.error(tag + "失败!");
@@ -328,16 +329,16 @@ public class XslTaskServiceImpl implements XslTaskService {
 
     private XslTask setXslTask(XslTask xslTask){
         //设置创建时间
-        xslTask.setCreatedate(DateUtils.getDateToString());
+        xslTask.setCreatedate(new Date());
         //设置修改时间
-        xslTask.setUpdatedate(DateUtils.getDateToString());
+        xslTask.setUpdatedate(new Date());
         //设置最后一次接受任务的时间
-        xslTask.setDeadline(DateUtils.getDateTimeToString());
+        xslTask.setDeadline(new Date());
         //设置taskId
         String uuid = UUID.randomUUID().toString();
         xslTask.setTaskid(uuid);
         //master任务数加一
-        XslMaster xslMaster = xslMasterMapper.selectByPrimaryKey(xslTask.getSendid());
+        XslMaster xslMaster = xslMasterMapper.selectByPrimaryKey(xslTask.getId());
         xslMaster.setTaskaccnum(xslMaster.getTaskaccnum() + 1);
         xslMasterMapper.updateByPrimaryKeySelective(xslMaster);
         return xslTask;

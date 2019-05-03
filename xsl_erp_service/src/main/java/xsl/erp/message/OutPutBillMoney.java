@@ -12,6 +12,7 @@ import javax.annotation.Resource;
 import javax.jms.Message;
 import javax.jms.MessageListener;
 import javax.jms.TextMessage;
+import java.util.Date;
 import java.util.UUID;
 
 public class OutPutBillMoney implements MessageListener {
@@ -47,7 +48,7 @@ public class OutPutBillMoney implements MessageListener {
             XslOutputBill outputBill = new XslOutputBill();
             outputBill.setOutputid(UUID.randomUUID().toString());
             outputBill.setOutputMoney(outputMoney);
-            outputBill.setTradetime(DateUtils.getDateTimeToString());
+            outputBill.setTradetime(new Date());
             int i;
             try {
                 i = outputBillMapper.insert(outputBill);

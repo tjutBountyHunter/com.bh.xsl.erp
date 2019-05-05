@@ -7,9 +7,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import vo.PageObject;
 import xsl.erp.annotation.SystemControllerLog;
 import xsl.erp.pojo.XslTask;
-import xsl.erp.pojo.common.PageObject;
 import xsl.erp.service.XslTaskService;
 
 /**
@@ -30,7 +30,7 @@ public class XslTaskApproveController {
     @RequestMapping("/list")
     @ResponseBody
     public PageObject getXslTaskInfo(Integer pageIndex, Integer pageSize){
-        return this.xslTaskService.SelectTaskApprove(pageIndex+1,pageSize);
+        return xslTaskService.SelectTaskApprove(pageIndex+1,pageSize);
     }
 
     //没有requestBody是不能讲

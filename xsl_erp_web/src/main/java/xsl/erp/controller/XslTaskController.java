@@ -6,10 +6,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import vo.PageObject;
 import xsl.erp.annotation.SystemControllerLog;
 import xsl.erp.commons.XslResult;
 import xsl.erp.pojo.XslTask;
-import xsl.erp.pojo.common.PageObject;
 import xsl.erp.service.XslTaskService;
 
 /**
@@ -29,8 +29,8 @@ public class XslTaskController {
     //@SystemControllerLog( description = "任务查询" )
     @RequestMapping("/list")
     @ResponseBody
-    public PageObject getXslTaskInfo(Integer pageIndex, Integer pageSize,Integer key,Byte key1){
-        return this.xslTaskService.SelectTaskAll(pageIndex + 1,pageSize,key,key1);
+    public PageObject getXslTaskInfo(Integer pageIndex, Integer pageSize, Integer key, Byte key1){
+        return xslTaskService.SelectTaskAll(pageIndex + 1,pageSize,key,key1);
     }
 
     /**

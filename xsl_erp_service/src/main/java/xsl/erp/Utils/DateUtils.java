@@ -47,11 +47,4 @@ public class DateUtils {
         }
         return format;
     }
-
-    public static List<XslTask> setDateInPojo(List<XslTask> list){
-        for (XslTask xslTask : list){
-            xslTask.setDeadline(new Date());
-        }
-        return list;
-    }
 }

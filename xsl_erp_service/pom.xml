@@ -24,6 +24,13 @@
             <artifactId>aopalliance</artifactId>
             <version>1.0</version>
         </dependency>
+
+        <!-- 外部系统依赖 -->
+        <dependency>
+            <groupId>com.bh.xsl.task</groupId>
+            <artifactId>xsl_task_export</artifactId>
+        </dependency>
+
     <!-- 依赖与pojo子模块 -->
     <dependency>
         <groupId>com.xsl</groupId>

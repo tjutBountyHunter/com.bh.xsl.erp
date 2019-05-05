@@ -294,7 +294,7 @@ public class XslUserServiceImpl implements XslUserService {
     @SystemServiceLog(description = "用户审核分页Service")
     @Override
     public PageObject SelectUserApprove(Integer page, Integer rows) {
-		PageObject pageObject = selectUserAll(page, rows, null, (byte) (0));//只查询未经过审核的
+		PageObject pageObject = selectUserAll(page, rows, null, (byte) (2));//只查询未经过审核的
 		List<XslUser> userList = (List<XslUser>) pageObject.getData();
 
 //		userList.stream().map();

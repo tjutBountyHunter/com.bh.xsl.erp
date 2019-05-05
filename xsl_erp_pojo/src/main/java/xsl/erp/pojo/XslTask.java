@@ -1,5 +1,7 @@
 package xsl.erp.pojo;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import java.math.BigDecimal;
 import java.util.Date;
 
@@ -92,6 +94,7 @@ public class XslTask {
         this.state = state;
     }
 
+    @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss",timezone = "GMT+8")
     public Date getCreatedate() {
         return createdate;
     }
@@ -100,6 +103,7 @@ public class XslTask {
         this.createdate = createdate;
     }
 
+    @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss",timezone = "GMT+8")
     public Date getUpdatedate() {
         return updatedate;
     }
@@ -108,6 +112,7 @@ public class XslTask {
         this.updatedate = updatedate;
     }
 
+    @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss",timezone = "GMT+8")
     public Date getDeadline() {
         return deadline;
     }

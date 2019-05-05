@@ -95,7 +95,7 @@
     function unsuccess(){
         var row = grid.getSelected();
         var userid = row.userid;
-        var json = JSON.stringify({"userid":userid,"state":"-2"});
+        var json = JSON.stringify({"userid":userid,"state":"0"});
         //
         $.ajax({
             url:"user/approve/approve",

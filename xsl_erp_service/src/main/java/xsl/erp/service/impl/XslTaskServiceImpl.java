@@ -1,7 +1,5 @@
 package xsl.erp.service.impl;
 
-import com.github.pagehelper.PageHelper;
-import com.github.pagehelper.PageInfo;
 import com.xsl.erp.mapper.XslMasterMapper;
 import com.xsl.erp.mapper.XslTaskCategoryMapper;
 import com.xsl.erp.mapper.XslTaskMapper;
@@ -9,10 +7,11 @@ import com.xsl.erp.mapper.XslTaskTagMapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
-import xsl.erp.Utils.DateUtils;
+import resource.ErpTaskInfoResource;
+import vo.ErpTaskInfoReqVo;
+import vo.PageObject;
 import xsl.erp.annotation.SystemServiceLog;
 import xsl.erp.pojo.*;
-import xsl.erp.pojo.common.PageObject;
 import xsl.erp.service.XslTaskService;
 
 import javax.annotation.Resource;
@@ -38,6 +37,8 @@ public class XslTaskServiceImpl implements XslTaskService {
     private XslTaskTagMapper xslTaskTagMapper;
     @Resource
     private XslMasterMapper xslMasterMapper;
+    @Resource
+    private ErpTaskInfoResource taskInfoResource;
 
     /**
      * 页面数据的查询
@@ -49,31 +50,14 @@ public class XslTaskServiceImpl implements XslTaskService {
      */
     @SystemServiceLog(description = "任务分页查询Service")
     @Override
-    public PageObject SelectTaskAll(Integer page, Integer rows,Integer key,Byte key1 ) {
-        String tag = "任务分页查询";
-        PageObject object = new PageObject();
-        try{
-            XslTaskExample example = new XslTaskExample();
-            XslTaskExample.Criteria criteria = example.createCriteria();
-            //进行判断防止程序崩溃
-            if( key != null ){//任务ID
-                criteria.andIdEqualTo(key);
-            }
-            if( key1 != null){//任务状态
-                criteria.andStateEqualTo(key1);
-            }
-            PageHelper.startPage(page,rows);//进行分页
-            List<XslTask> list = this.xslTaskMapper.selectByExample(example);
-            DateUtils.setDateInPojo(list);
-            object.setData(list);
-            PageInfo<XslTask> info = new PageInfo<XslTask>(list);//得到分页的信息
-            //得到分页的总数量
-            object.setTotal(info.getTotal());
-        }catch (Exception e){
-            logger.error(tag + "异常警报 :" + e.getMessage());
-        }finally {
-            return object;
-        }
+    public vo.PageObject SelectTaskAll(Integer page, Integer rows, Integer key, Byte key1 ) {
+        ErpTaskInfoReqVo erpTaskInfoReqVo = new ErpTaskInfoReqVo();
+        erpTaskInfoReqVo.setKey(key);
+        erpTaskInfoReqVo.setPage(page);
+        erpTaskInfoReqVo.setRows(rows);
+        erpTaskInfoReqVo.setKey1(key1);
+        PageObject pageObject = taskInfoResource.SelectTaskAll(erpTaskInfoReqVo);
+        return pageObject;
     }
 
     /**

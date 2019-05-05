@@ -6,7 +6,7 @@ import xsl.erp.pojo.XslHunterLevelExperience;
 import xsl.erp.pojo.XslHunterLevelExperienceExample;
 
 public interface XslHunterLevelExperienceMapper {
-    int countByExample(XslHunterLevelExperienceExample example);
+    long countByExample(XslHunterLevelExperienceExample example);
 
     int deleteByExample(XslHunterLevelExperienceExample example);
 

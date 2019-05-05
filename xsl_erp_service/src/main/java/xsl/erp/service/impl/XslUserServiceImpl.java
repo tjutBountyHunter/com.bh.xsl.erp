@@ -379,7 +379,7 @@ public class XslUserServiceImpl implements XslUserService {
         XslUserExample example = new XslUserExample();
         Integer count = 0;
         try{
-            count  = this.xslUserMapper.countByExample(example);
+            count  = xslUserMapper.countByExample(example);
             if( count == null || count < 0 ){//防止越界和空指针
                 logger.error("用户总数查询越界或者空指针!" );
                 count = 0;

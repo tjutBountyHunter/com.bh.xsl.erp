@@ -6,7 +6,7 @@ import xsl.erp.pojo.XslToken;
 import xsl.erp.pojo.XslTokenExample;
 
 public interface XslTokenMapper {
-    int countByExample(XslTokenExample example);
+    long countByExample(XslTokenExample example);
 
     int deleteByExample(XslTokenExample example);
 

@@ -6,7 +6,7 @@ import xsl.erp.pojo.XslHunterTask;
 import xsl.erp.pojo.XslHunterTaskExample;
 
 public interface XslHunterTaskMapper {
-    int countByExample(XslHunterTaskExample example);
+    long countByExample(XslHunterTaskExample example);
 
     int deleteByExample(XslHunterTaskExample example);
 

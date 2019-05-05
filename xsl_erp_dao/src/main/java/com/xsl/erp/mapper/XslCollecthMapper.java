@@ -6,7 +6,7 @@ import xsl.erp.pojo.XslCollecth;
 import xsl.erp.pojo.XslCollecthExample;
 
 public interface XslCollecthMapper {
-    int countByExample(XslCollecthExample example);
+    long countByExample(XslCollecthExample example);
 
     int deleteByExample(XslCollecthExample example);
 

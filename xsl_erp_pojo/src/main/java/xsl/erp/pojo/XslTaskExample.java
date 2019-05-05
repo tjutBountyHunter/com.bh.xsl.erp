@@ -3,7 +3,6 @@ package xsl.erp.pojo;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.Iterator;
 import java.util.List;
 
 public class XslTaskExample {
@@ -105,32 +104,6 @@ public class XslTaskExample {
                 throw new RuntimeException("Between values for " + property + " cannot be null");
             }
             criteria.add(new Criterion(condition, value1, value2));
-        }
-
-        protected void addCriterionForJDBCDate(String condition, Date value, String property) {
-            if (value == null) {
-                throw new RuntimeException("Value for " + property + " cannot be null");
-            }
-            addCriterion(condition, new java.sql.Date(value.getTime()), property);
-        }
-
-        protected void addCriterionForJDBCDate(String condition, List<Date> values, String property) {
-            if (values == null || values.size() == 0) {
-                throw new RuntimeException("Value list for " + property + " cannot be null or empty");
-            }
-            List<java.sql.Date> dateList = new ArrayList<java.sql.Date>();
-            Iterator<Date> iter = values.iterator();
-            while (iter.hasNext()) {
-                dateList.add(new java.sql.Date(iter.next().getTime()));
-            }
-            addCriterion(condition, dateList, property);
-        }
-
-        protected void addCriterionForJDBCDate(String condition, Date value1, Date value2, String property) {
-            if (value1 == null || value2 == null) {
-                throw new RuntimeException("Between values for " + property + " cannot be null");
-            }
-            addCriterion(condition, new java.sql.Date(value1.getTime()), new java.sql.Date(value2.getTime()), property);
         }
 
         public Criteria andIdIsNull() {
@@ -323,73 +296,203 @@ public class XslTaskExample {
             return (Criteria) this;
         }
 
-        public Criteria andDescrIsNull() {
-            addCriterion("descr is null");
+        public Criteria andTasktitleIsNull() {
+            addCriterion("taskTitle is null");
             return (Criteria) this;
         }
 
-        public Criteria andDescrIsNotNull() {
-            addCriterion("descr is not null");
+        public Criteria andTasktitleIsNotNull() {
+            addCriterion("taskTitle is not null");
             return (Criteria) this;
         }
 
-        public Criteria andDescrEqualTo(String value) {
-            addCriterion("descr =", value, "descr");
+        public Criteria andTasktitleEqualTo(String value) {
+            addCriterion("taskTitle =", value, "tasktitle");
             return (Criteria) this;
         }
 
-        public Criteria andDescrNotEqualTo(String value) {
-            addCriterion("descr <>", value, "descr");
+        public Criteria andTasktitleNotEqualTo(String value) {
+            addCriterion("taskTitle <>", value, "tasktitle");
             return (Criteria) this;
         }
 
-        public Criteria andDescrGreaterThan(String value) {
-            addCriterion("descr >", value, "descr");
+        public Criteria andTasktitleGreaterThan(String value) {
+            addCriterion("taskTitle >", value, "tasktitle");
             return (Criteria) this;
         }
 
-        public Criteria andDescrGreaterThanOrEqualTo(String value) {
-            addCriterion("descr >=", value, "descr");
+        public Criteria andTasktitleGreaterThanOrEqualTo(String value) {
+            addCriterion("taskTitle >=", value, "tasktitle");
             return (Criteria) this;
         }
 
-        public Criteria andDescrLessThan(String value) {
-            addCriterion("descr <", value, "descr");
+        public Criteria andTasktitleLessThan(String value) {
+            addCriterion("taskTitle <", value, "tasktitle");
             return (Criteria) this;
         }
 
-        public Criteria andDescrLessThanOrEqualTo(String value) {
-            addCriterion("descr <=", value, "descr");
+        public Criteria andTasktitleLessThanOrEqualTo(String value) {
+            addCriterion("taskTitle <=", value, "tasktitle");
             return (Criteria) this;
         }
 
-        public Criteria andDescrLike(String value) {
-            addCriterion("descr like", value, "descr");
+        public Criteria andTasktitleLike(String value) {
+            addCriterion("taskTitle like", value, "tasktitle");
             return (Criteria) this;
         }
 
-        public Criteria andDescrNotLike(String value) {
-            addCriterion("descr not like", value, "descr");
+        public Criteria andTasktitleNotLike(String value) {
+            addCriterion("taskTitle not like", value, "tasktitle");
             return (Criteria) this;
         }
 
-        public Criteria andDescrIn(List<String> values) {
-            addCriterion("descr in", values, "descr");
+        public Criteria andTasktitleIn(List<String> values) {
+            addCriterion("taskTitle in", values, "tasktitle");
             return (Criteria) this;
         }
 
-        public Criteria andDescrNotIn(List<String> values) {
-            addCriterion("descr not in", values, "descr");
+        public Criteria andTasktitleNotIn(List<String> values) {
+            addCriterion("taskTitle not in", values, "tasktitle");
             return (Criteria) this;
         }
 
-        public Criteria andDescrBetween(String value1, String value2) {
-            addCriterion("descr between", value1, value2, "descr");
+        public Criteria andTasktitleBetween(String value1, String value2) {
+            addCriterion("taskTitle between", value1, value2, "tasktitle");
             return (Criteria) this;
         }
 
-        public Criteria andDescrNotBetween(String value1, String value2) {
-            addCriterion("descr not between", value1, value2, "descr");
+        public Criteria andTasktitleNotBetween(String value1, String value2) {
+            addCriterion("taskTitle not between", value1, value2, "tasktitle");
+            return (Criteria) this;
+        }
+
+        public Criteria andContentIsNull() {
+            addCriterion("content is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andContentIsNotNull() {
+            addCriterion("content is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andContentEqualTo(String value) {
+            addCriterion("content =", value, "content");
+            return (Criteria) this;
+        }
+
+        public Criteria andContentNotEqualTo(String value) {
+            addCriterion("content <>", value, "content");
+            return (Criteria) this;
+        }
+
+        public Criteria andContentGreaterThan(String value) {
+            addCriterion("content >", value, "content");
+            return (Criteria) this;
+        }
+
+        public Criteria andContentGreaterThanOrEqualTo(String value) {
+            addCriterion("content >=", value, "content");
+            return (Criteria) this;
+        }
+
+        public Criteria andContentLessThan(String value) {
+            addCriterion("content <", value, "content");
+            return (Criteria) this;
+        }
+
+        public Criteria andContentLessThanOrEqualTo(String value) {
+            addCriterion("content <=", value, "content");
+            return (Criteria) this;
+        }
+
+        public Criteria andContentLike(String value) {
+            addCriterion("content like", value, "content");
+            return (Criteria) this;
+        }
+
+        public Criteria andContentNotLike(String value) {
+            addCriterion("content not like", value, "content");
+            return (Criteria) this;
+        }
+
+        public Criteria andContentIn(List<String> values) {
+            addCriterion("content in", values, "content");
+            return (Criteria) this;
+        }
+
+        public Criteria andContentNotIn(List<String> values) {
+            addCriterion("content not in", values, "content");
+            return (Criteria) this;
+        }
+
+        public Criteria andContentBetween(String value1, String value2) {
+            addCriterion("content between", value1, value2, "content");
+            return (Criteria) this;
+        }
+
+        public Criteria andContentNotBetween(String value1, String value2) {
+            addCriterion("content not between", value1, value2, "content");
+            return (Criteria) this;
+        }
+
+        public Criteria andMoneyIsNull() {
+            addCriterion("money is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andMoneyIsNotNull() {
+            addCriterion("money is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andMoneyEqualTo(BigDecimal value) {
+            addCriterion("money =", value, "money");
+            return (Criteria) this;
+        }
+
+        public Criteria andMoneyNotEqualTo(BigDecimal value) {
+            addCriterion("money <>", value, "money");
+            return (Criteria) this;
+        }
+
+        public Criteria andMoneyGreaterThan(BigDecimal value) {
+            addCriterion("money >", value, "money");
+            return (Criteria) this;
+        }
+
+        public Criteria andMoneyGreaterThanOrEqualTo(BigDecimal value) {
+            addCriterion("money >=", value, "money");
+            return (Criteria) this;
+        }
+
+        public Criteria andMoneyLessThan(BigDecimal value) {
+            addCriterion("money <", value, "money");
+            return (Criteria) this;
+        }
+
+        public Criteria andMoneyLessThanOrEqualTo(BigDecimal value) {
+            addCriterion("money <=", value, "money");
+            return (Criteria) this;
+        }
+
+        public Criteria andMoneyIn(List<BigDecimal> values) {
+            addCriterion("money in", values, "money");
+            return (Criteria) this;
+        }
+
+        public Criteria andMoneyNotIn(List<BigDecimal> values) {
+            addCriterion("money not in", values, "money");
+            return (Criteria) this;
+        }
+
+        public Criteria andMoneyBetween(BigDecimal value1, BigDecimal value2) {
+            addCriterion("money between", value1, value2, "money");
+            return (Criteria) this;
+        }
+
+        public Criteria andMoneyNotBetween(BigDecimal value1, BigDecimal value2) {
+            addCriterion("money not between", value1, value2, "money");
             return (Criteria) this;
         }
 
@@ -463,66 +566,6 @@ public class XslTaskExample {
             return (Criteria) this;
         }
 
-        public Criteria andMoneyIsNull() {
-            addCriterion("money is null");
-            return (Criteria) this;
-        }
-
-        public Criteria andMoneyIsNotNull() {
-            addCriterion("money is not null");
-            return (Criteria) this;
-        }
-
-        public Criteria andMoneyEqualTo(BigDecimal value) {
-            addCriterion("money =", value, "money");
-            return (Criteria) this;
-        }
-
-        public Criteria andMoneyNotEqualTo(BigDecimal value) {
-            addCriterion("money <>", value, "money");
-            return (Criteria) this;
-        }
-
-        public Criteria andMoneyGreaterThan(BigDecimal value) {
-            addCriterion("money >", value, "money");
-            return (Criteria) this;
-        }
-
-        public Criteria andMoneyGreaterThanOrEqualTo(BigDecimal value) {
-            addCriterion("money >=", value, "money");
-            return (Criteria) this;
-        }
-
-        public Criteria andMoneyLessThan(BigDecimal value) {
-            addCriterion("money <", value, "money");
-            return (Criteria) this;
-        }
-
-        public Criteria andMoneyLessThanOrEqualTo(BigDecimal value) {
-            addCriterion("money <=", value, "money");
-            return (Criteria) this;
-        }
-
-        public Criteria andMoneyIn(List<BigDecimal> values) {
-            addCriterion("money in", values, "money");
-            return (Criteria) this;
-        }
-
-        public Criteria andMoneyNotIn(List<BigDecimal> values) {
-            addCriterion("money not in", values, "money");
-            return (Criteria) this;
-        }
-
-        public Criteria andMoneyBetween(BigDecimal value1, BigDecimal value2) {
-            addCriterion("money between", value1, value2, "money");
-            return (Criteria) this;
-        }
-
-        public Criteria andMoneyNotBetween(BigDecimal value1, BigDecimal value2) {
-            addCriterion("money not between", value1, value2, "money");
-            return (Criteria) this;
-        }
-
         public Criteria andStateIsNull() {
             addCriterion("state is null");
             return (Criteria) this;
@@ -583,66 +626,6 @@ public class XslTaskExample {
             return (Criteria) this;
         }
 
-        public Criteria andNumberIsNull() {
-            addCriterion("number is null");
-            return (Criteria) this;
-        }
-
-        public Criteria andNumberIsNotNull() {
-            addCriterion("number is not null");
-            return (Criteria) this;
-        }
-
-        public Criteria andNumberEqualTo(Integer value) {
-            addCriterion("number =", value, "number");
-            return (Criteria) this;
-        }
-
-        public Criteria andNumberNotEqualTo(Integer value) {
-            addCriterion("number <>", value, "number");
-            return (Criteria) this;
-        }
-
-        public Criteria andNumberGreaterThan(Integer value) {
-            addCriterion("number >", value, "number");
-            return (Criteria) this;
-        }
-
-        public Criteria andNumberGreaterThanOrEqualTo(Integer value) {
-            addCriterion("number >=", value, "number");
-            return (Criteria) this;
-        }
-
-        public Criteria andNumberLessThan(Integer value) {
-            addCriterion("number <", value, "number");
-            return (Criteria) this;
-        }
-
-        public Criteria andNumberLessThanOrEqualTo(Integer value) {
-            addCriterion("number <=", value, "number");
-            return (Criteria) this;
-        }
-
-        public Criteria andNumberIn(List<Integer> values) {
-            addCriterion("number in", values, "number");
-            return (Criteria) this;
-        }
-
-        public Criteria andNumberNotIn(List<Integer> values) {
-            addCriterion("number not in", values, "number");
-            return (Criteria) this;
-        }
-
-        public Criteria andNumberBetween(Integer value1, Integer value2) {
-            addCriterion("number between", value1, value2, "number");
-            return (Criteria) this;
-        }
-
-        public Criteria andNumberNotBetween(Integer value1, Integer value2) {
-            addCriterion("number not between", value1, value2, "number");
-            return (Criteria) this;
-        }
-
         public Criteria andCreatedateIsNull() {
             addCriterion("createDate is null");
             return (Criteria) this;
@@ -654,52 +637,52 @@ public class XslTaskExample {
         }
 
         public Criteria andCreatedateEqualTo(Date value) {
-            addCriterionForJDBCDate("createDate =", value, "createdate");
+            addCriterion("createDate =", value, "createdate");
             return (Criteria) this;
         }
 
         public Criteria andCreatedateNotEqualTo(Date value) {
-            addCriterionForJDBCDate("createDate <>", value, "createdate");
+            addCriterion("createDate <>", value, "createdate");
             return (Criteria) this;
         }
 
         public Criteria andCreatedateGreaterThan(Date value) {
-            addCriterionForJDBCDate("createDate >", value, "createdate");
+            addCriterion("createDate >", value, "createdate");
             return (Criteria) this;
         }
 
         public Criteria andCreatedateGreaterThanOrEqualTo(Date value) {
-            addCriterionForJDBCDate("createDate >=", value, "createdate");
+            addCriterion("createDate >=", value, "createdate");
             return (Criteria) this;
         }
 
         public Criteria andCreatedateLessThan(Date value) {
-            addCriterionForJDBCDate("createDate <", value, "createdate");
+            addCriterion("createDate <", value, "createdate");
             return (Criteria) this;
         }
 
         public Criteria andCreatedateLessThanOrEqualTo(Date value) {
-            addCriterionForJDBCDate("createDate <=", value, "createdate");
+            addCriterion("createDate <=", value, "createdate");
             return (Criteria) this;
         }
 
         public Criteria andCreatedateIn(List<Date> values) {
-            addCriterionForJDBCDate("createDate in", values, "createdate");
+            addCriterion("createDate in", values, "createdate");
             return (Criteria) this;
         }
 
         public Criteria andCreatedateNotIn(List<Date> values) {
-            addCriterionForJDBCDate("createDate not in", values, "createdate");
+            addCriterion("createDate not in", values, "createdate");
             return (Criteria) this;
         }
 
         public Criteria andCreatedateBetween(Date value1, Date value2) {
-            addCriterionForJDBCDate("createDate between", value1, value2, "createdate");
+            addCriterion("createDate between", value1, value2, "createdate");
             return (Criteria) this;
         }
 
         public Criteria andCreatedateNotBetween(Date value1, Date value2) {
-            addCriterionForJDBCDate("createDate not between", value1, value2, "createdate");
+            addCriterion("createDate not between", value1, value2, "createdate");
             return (Criteria) this;
         }
 
@@ -714,52 +697,52 @@ public class XslTaskExample {
         }
 
         public Criteria andUpdatedateEqualTo(Date value) {
-            addCriterionForJDBCDate("updateDate =", value, "updatedate");
+            addCriterion("updateDate =", value, "updatedate");
             return (Criteria) this;
         }
 
         public Criteria andUpdatedateNotEqualTo(Date value) {
-            addCriterionForJDBCDate("updateDate <>", value, "updatedate");
+            addCriterion("updateDate <>", value, "updatedate");
             return (Criteria) this;
         }
 
         public Criteria andUpdatedateGreaterThan(Date value) {
-            addCriterionForJDBCDate("updateDate >", value, "updatedate");
+            addCriterion("updateDate >", value, "updatedate");
             return (Criteria) this;
         }
 
         public Criteria andUpdatedateGreaterThanOrEqualTo(Date value) {
-            addCriterionForJDBCDate("updateDate >=", value, "updatedate");
+            addCriterion("updateDate >=", value, "updatedate");
             return (Criteria) this;
         }
 
         public Criteria andUpdatedateLessThan(Date value) {
-            addCriterionForJDBCDate("updateDate <", value, "updatedate");
+            addCriterion("updateDate <", value, "updatedate");
             return (Criteria) this;
         }
 
         public Criteria andUpdatedateLessThanOrEqualTo(Date value) {
-            addCriterionForJDBCDate("updateDate <=", value, "updatedate");
+            addCriterion("updateDate <=", value, "updatedate");
             return (Criteria) this;
         }
 
         public Criteria andUpdatedateIn(List<Date> values) {
-            addCriterionForJDBCDate("updateDate in", values, "updatedate");
+            addCriterion("updateDate in", values, "updatedate");
             return (Criteria) this;
         }
 
         public Criteria andUpdatedateNotIn(List<Date> values) {
-            addCriterionForJDBCDate("updateDate not in", values, "updatedate");
+            addCriterion("updateDate not in", values, "updatedate");
             return (Criteria) this;
         }
 
         public Criteria andUpdatedateBetween(Date value1, Date value2) {
-            addCriterionForJDBCDate("updateDate between", value1, value2, "updatedate");
+            addCriterion("updateDate between", value1, value2, "updatedate");
             return (Criteria) this;
         }
 
         public Criteria andUpdatedateNotBetween(Date value1, Date value2) {
-            addCriterionForJDBCDate("updateDate not between", value1, value2, "updatedate");
+            addCriterion("updateDate not between", value1, value2, "updatedate");
             return (Criteria) this;
         }
 
@@ -774,52 +757,122 @@ public class XslTaskExample {
         }
 
         public Criteria andDeadlineEqualTo(Date value) {
-            addCriterionForJDBCDate("deadline =", value, "deadline");
+            addCriterion("deadline =", value, "deadline");
             return (Criteria) this;
         }
 
         public Criteria andDeadlineNotEqualTo(Date value) {
-            addCriterionForJDBCDate("deadline <>", value, "deadline");
+            addCriterion("deadline <>", value, "deadline");
             return (Criteria) this;
         }
 
         public Criteria andDeadlineGreaterThan(Date value) {
-            addCriterionForJDBCDate("deadline >", value, "deadline");
+            addCriterion("deadline >", value, "deadline");
             return (Criteria) this;
         }
 
         public Criteria andDeadlineGreaterThanOrEqualTo(Date value) {
-            addCriterionForJDBCDate("deadline >=", value, "deadline");
+            addCriterion("deadline >=", value, "deadline");
             return (Criteria) this;
         }
 
         public Criteria andDeadlineLessThan(Date value) {
-            addCriterionForJDBCDate("deadline <", value, "deadline");
+            addCriterion("deadline <", value, "deadline");
             return (Criteria) this;
         }
 
         public Criteria andDeadlineLessThanOrEqualTo(Date value) {
-            addCriterionForJDBCDate("deadline <=", value, "deadline");
+            addCriterion("deadline <=", value, "deadline");
             return (Criteria) this;
         }
 
         public Criteria andDeadlineIn(List<Date> values) {
-            addCriterionForJDBCDate("deadline in", values, "deadline");
+            addCriterion("deadline in", values, "deadline");
             return (Criteria) this;
         }
 
         public Criteria andDeadlineNotIn(List<Date> values) {
-            addCriterionForJDBCDate("deadline not in", values, "deadline");
+            addCriterion("deadline not in", values, "deadline");
             return (Criteria) this;
         }
 
         public Criteria andDeadlineBetween(Date value1, Date value2) {
-            addCriterionForJDBCDate("deadline between", value1, value2, "deadline");
+            addCriterion("deadline between", value1, value2, "deadline");
             return (Criteria) this;
         }
 
         public Criteria andDeadlineNotBetween(Date value1, Date value2) {
-            addCriterionForJDBCDate("deadline not between", value1, value2, "deadline");
+            addCriterion("deadline not between", value1, value2, "deadline");
+            return (Criteria) this;
+        }
+
+        public Criteria andSourcetypeIsNull() {
+            addCriterion("sourceType is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andSourcetypeIsNotNull() {
+            addCriterion("sourceType is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andSourcetypeEqualTo(String value) {
+            addCriterion("sourceType =", value, "sourcetype");
+            return (Criteria) this;
+        }
+
+        public Criteria andSourcetypeNotEqualTo(String value) {
+            addCriterion("sourceType <>", value, "sourcetype");
+            return (Criteria) this;
+        }
+
+        public Criteria andSourcetypeGreaterThan(String value) {
+            addCriterion("sourceType >", value, "sourcetype");
+            return (Criteria) this;
+        }
+
+        public Criteria andSourcetypeGreaterThanOrEqualTo(String value) {
+            addCriterion("sourceType >=", value, "sourcetype");
+            return (Criteria) this;
+        }
+
+        public Criteria andSourcetypeLessThan(String value) {
+            addCriterion("sourceType <", value, "sourcetype");
+            return (Criteria) this;
+        }
+
+        public Criteria andSourcetypeLessThanOrEqualTo(String value) {
+            addCriterion("sourceType <=", value, "sourcetype");
+            return (Criteria) this;
+        }
+
+        public Criteria andSourcetypeLike(String value) {
+            addCriterion("sourceType like", value, "sourcetype");
+            return (Criteria) this;
+        }
+
+        public Criteria andSourcetypeNotLike(String value) {
+            addCriterion("sourceType not like", value, "sourcetype");
+            return (Criteria) this;
+        }
+
+        public Criteria andSourcetypeIn(List<String> values) {
+            addCriterion("sourceType in", values, "sourcetype");
+            return (Criteria) this;
+        }
+
+        public Criteria andSourcetypeNotIn(List<String> values) {
+            addCriterion("sourceType not in", values, "sourcetype");
+            return (Criteria) this;
+        }
+
+        public Criteria andSourcetypeBetween(String value1, String value2) {
+            addCriterion("sourceType between", value1, value2, "sourcetype");
+            return (Criteria) this;
+        }
+
+        public Criteria andSourcetypeNotBetween(String value1, String value2) {
+            addCriterion("sourceType not between", value1, value2, "sourcetype");
             return (Criteria) this;
         }
     }

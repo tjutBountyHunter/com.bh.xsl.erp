@@ -6,7 +6,7 @@ import xsl.erp.pojo.XslLog;
 import xsl.erp.pojo.XslLogExample;
 
 public interface XslLogMapper {
-    int countByExample(XslLogExample example);
+    long countByExample(XslLogExample example);
 
     int deleteByExample(XslLogExample example);
 

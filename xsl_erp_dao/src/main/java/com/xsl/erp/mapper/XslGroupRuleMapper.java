@@ -6,7 +6,7 @@ import xsl.erp.pojo.XslGroupRule;
 import xsl.erp.pojo.XslGroupRuleExample;
 
 public interface XslGroupRuleMapper {
-    int countByExample(XslGroupRuleExample example);
+    long countByExample(XslGroupRuleExample example);
 
     int deleteByExample(XslGroupRuleExample example);
 

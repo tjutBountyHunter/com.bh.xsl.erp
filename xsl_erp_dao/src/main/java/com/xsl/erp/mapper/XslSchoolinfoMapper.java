@@ -6,7 +6,7 @@ import xsl.erp.pojo.XslSchoolinfo;
 import xsl.erp.pojo.XslSchoolinfoExample;
 
 public interface XslSchoolinfoMapper {
-    int countByExample(XslSchoolinfoExample example);
+    long countByExample(XslSchoolinfoExample example);
 
     int deleteByExample(XslSchoolinfoExample example);
 

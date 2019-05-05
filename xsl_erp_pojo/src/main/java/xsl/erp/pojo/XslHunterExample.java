@@ -2,7 +2,6 @@ package xsl.erp.pojo;
 
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.Iterator;
 import java.util.List;
 
 public class XslHunterExample {
@@ -104,32 +103,6 @@ public class XslHunterExample {
                 throw new RuntimeException("Between values for " + property + " cannot be null");
             }
             criteria.add(new Criterion(condition, value1, value2));
-        }
-
-        protected void addCriterionForJDBCDate(String condition, Date value, String property) {
-            if (value == null) {
-                throw new RuntimeException("Value for " + property + " cannot be null");
-            }
-            addCriterion(condition, new java.sql.Date(value.getTime()), property);
-        }
-
-        protected void addCriterionForJDBCDate(String condition, List<Date> values, String property) {
-            if (values == null || values.size() == 0) {
-                throw new RuntimeException("Value list for " + property + " cannot be null or empty");
-            }
-            List<java.sql.Date> dateList = new ArrayList<java.sql.Date>();
-            Iterator<Date> iter = values.iterator();
-            while (iter.hasNext()) {
-                dateList.add(new java.sql.Date(iter.next().getTime()));
-            }
-            addCriterion(condition, dateList, property);
-        }
-
-        protected void addCriterionForJDBCDate(String condition, Date value1, Date value2, String property) {
-            if (value1 == null || value2 == null) {
-                throw new RuntimeException("Between values for " + property + " cannot be null");
-            }
-            addCriterion(condition, new java.sql.Date(value1.getTime()), new java.sql.Date(value2.getTime()), property);
         }
 
         public Criteria andIdIsNull() {
@@ -713,52 +686,52 @@ public class XslHunterExample {
         }
 
         public Criteria andLasttimeEqualTo(Date value) {
-            addCriterionForJDBCDate("lastTime =", value, "lasttime");
+            addCriterion("lastTime =", value, "lasttime");
             return (Criteria) this;
         }
 
         public Criteria andLasttimeNotEqualTo(Date value) {
-            addCriterionForJDBCDate("lastTime <>", value, "lasttime");
+            addCriterion("lastTime <>", value, "lasttime");
             return (Criteria) this;
         }
 
         public Criteria andLasttimeGreaterThan(Date value) {
-            addCriterionForJDBCDate("lastTime >", value, "lasttime");
+            addCriterion("lastTime >", value, "lasttime");
             return (Criteria) this;
         }
 
         public Criteria andLasttimeGreaterThanOrEqualTo(Date value) {
-            addCriterionForJDBCDate("lastTime >=", value, "lasttime");
+            addCriterion("lastTime >=", value, "lasttime");
             return (Criteria) this;
         }
 
         public Criteria andLasttimeLessThan(Date value) {
-            addCriterionForJDBCDate("lastTime <", value, "lasttime");
+            addCriterion("lastTime <", value, "lasttime");
             return (Criteria) this;
         }
 
         public Criteria andLasttimeLessThanOrEqualTo(Date value) {
-            addCriterionForJDBCDate("lastTime <=", value, "lasttime");
+            addCriterion("lastTime <=", value, "lasttime");
             return (Criteria) this;
         }
 
         public Criteria andLasttimeIn(List<Date> values) {
-            addCriterionForJDBCDate("lastTime in", values, "lasttime");
+            addCriterion("lastTime in", values, "lasttime");
             return (Criteria) this;
         }
 
         public Criteria andLasttimeNotIn(List<Date> values) {
-            addCriterionForJDBCDate("lastTime not in", values, "lasttime");
+            addCriterion("lastTime not in", values, "lasttime");
             return (Criteria) this;
         }
 
         public Criteria andLasttimeBetween(Date value1, Date value2) {
-            addCriterionForJDBCDate("lastTime between", value1, value2, "lasttime");
+            addCriterion("lastTime between", value1, value2, "lasttime");
             return (Criteria) this;
         }
 
         public Criteria andLasttimeNotBetween(Date value1, Date value2) {
-            addCriterionForJDBCDate("lastTime not between", value1, value2, "lasttime");
+            addCriterion("lastTime not between", value1, value2, "lasttime");
             return (Criteria) this;
         }
 

@@ -150,7 +150,7 @@ public class XslClientLabelServiceImpl implements XslClientLabelService {
                         //1.①删除hunter_tag 中 tagId 为 id的元祖  ②状态为没被删除
                         XslHunterTagExample xslHunterTagExample = new XslHunterTagExample();
                         XslHunterTagExample.Criteria xslHunterTagExampleCriteria =  xslHunterTagExample.createCriteria();
-                        xslHunterTagExampleCriteria.andTagidEqualTo(id);
+//                        xslHunterTagExampleCriteria.andTagidEqualTo(id);
                         xslHunterTagExampleCriteria.andStateEqualTo(true);
                         XslHunterTag xslHunterTag = new XslHunterTag();
                         xslHunterTag.setState(false);

@@ -6,7 +6,7 @@ import xsl.erp.pojo.XslOrder;
 import xsl.erp.pojo.XslOrderExample;
 
 public interface XslOrderMapper {
-    int countByExample(XslOrderExample example);
+    long countByExample(XslOrderExample example);
 
     int deleteByExample(XslOrderExample example);
 

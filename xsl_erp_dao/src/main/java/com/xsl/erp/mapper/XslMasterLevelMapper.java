@@ -6,7 +6,7 @@ import xsl.erp.pojo.XslMasterLevel;
 import xsl.erp.pojo.XslMasterLevelExample;
 
 public interface XslMasterLevelMapper {
-    int countByExample(XslMasterLevelExample example);
+    long countByExample(XslMasterLevelExample example);
 
     int deleteByExample(XslMasterLevelExample example);
 

@@ -6,7 +6,7 @@ import xsl.erp.pojo.XslMatchRank;
 import xsl.erp.pojo.XslMatchRankExample;
 
 public interface XslMatchRankMapper {
-    int countByExample(XslMatchRankExample example);
+    long countByExample(XslMatchRankExample example);
 
     int deleteByExample(XslMatchRankExample example);
 

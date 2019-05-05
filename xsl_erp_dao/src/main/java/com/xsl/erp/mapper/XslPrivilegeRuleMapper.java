@@ -6,7 +6,7 @@ import xsl.erp.pojo.XslPrivilegeRule;
 import xsl.erp.pojo.XslPrivilegeRuleExample;
 
 public interface XslPrivilegeRuleMapper {
-    int countByExample(XslPrivilegeRuleExample example);
+    long countByExample(XslPrivilegeRuleExample example);
 
     int deleteByExample(XslPrivilegeRuleExample example);
 

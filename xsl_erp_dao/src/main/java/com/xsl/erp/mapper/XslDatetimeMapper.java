@@ -6,7 +6,7 @@ import xsl.erp.pojo.XslDatetime;
 import xsl.erp.pojo.XslDatetimeExample;
 
 public interface XslDatetimeMapper {
-    int countByExample(XslDatetimeExample example);
+    long countByExample(XslDatetimeExample example);
 
     int deleteByExample(XslDatetimeExample example);
 

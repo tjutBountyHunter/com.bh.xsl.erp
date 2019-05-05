@@ -6,7 +6,7 @@ import xsl.erp.pojo.XslNetwork;
 import xsl.erp.pojo.XslNetworkExample;
 
 public interface XslNetworkMapper {
-    int countByExample(XslNetworkExample example);
+    long countByExample(XslNetworkExample example);
 
     int deleteByExample(XslNetworkExample example);
 

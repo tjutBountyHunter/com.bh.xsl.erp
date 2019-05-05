@@ -6,7 +6,7 @@ import xsl.erp.pojo.XslTaskTag;
 import xsl.erp.pojo.XslTaskTagExample;
 
 public interface XslTaskTagMapper {
-    int countByExample(XslTaskTagExample example);
+    long countByExample(XslTaskTagExample example);
 
     int deleteByExample(XslTaskTagExample example);
 

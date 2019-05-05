@@ -6,7 +6,7 @@ import xsl.erp.pojo.XslHistoryh;
 import xsl.erp.pojo.XslHistoryhExample;
 
 public interface XslHistoryhMapper {
-    int countByExample(XslHistoryhExample example);
+    long countByExample(XslHistoryhExample example);
 
     int deleteByExample(XslHistoryhExample example);
 

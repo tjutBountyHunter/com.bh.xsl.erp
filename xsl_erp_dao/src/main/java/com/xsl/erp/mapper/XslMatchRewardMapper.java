@@ -6,7 +6,7 @@ import xsl.erp.pojo.XslMatchReward;
 import xsl.erp.pojo.XslMatchRewardExample;
 
 public interface XslMatchRewardMapper {
-    int countByExample(XslMatchRewardExample example);
+    long countByExample(XslMatchRewardExample example);
 
     int deleteByExample(XslMatchRewardExample example);
 

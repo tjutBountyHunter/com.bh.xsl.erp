@@ -6,7 +6,7 @@ import xsl.erp.pojo.XslTaskCategory;
 import xsl.erp.pojo.XslTaskCategoryExample;
 
 public interface XslTaskCategoryMapper {
-    int countByExample(XslTaskCategoryExample example);
+    long countByExample(XslTaskCategoryExample example);
 
     int deleteByExample(XslTaskCategoryExample example);
 

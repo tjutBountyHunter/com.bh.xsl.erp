@@ -6,7 +6,7 @@ import xsl.erp.pojo.XslRule;
 import xsl.erp.pojo.XslRuleExample;
 
 public interface XslRuleMapper {
-    int countByExample(XslRuleExample example);
+    long countByExample(XslRuleExample example);
 
     int deleteByExample(XslRuleExample example);
 

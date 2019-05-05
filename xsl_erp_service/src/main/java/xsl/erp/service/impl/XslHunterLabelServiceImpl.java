@@ -7,11 +7,13 @@ import com.xsl.erp.mapper.XslTagMapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
+import org.springframework.util.StringUtils;
 import xsl.erp.Utils.DateUtils;
 import xsl.erp.annotation.SystemServiceLog;
 import xsl.erp.pojo.XslHunterTag;
 import xsl.erp.pojo.XslHunterTagExample;
 import xsl.erp.pojo.XslTag;
+import xsl.erp.pojo.XslTagExample;
 import xsl.erp.pojo.common.PageObject;
 import xsl.erp.service.XslHunterLabelService;
 
@@ -91,10 +93,13 @@ public class XslHunterLabelServiceImpl implements XslHunterLabelService {
                             return false;
                         }
                         //2.标签表的数量进行增加
-                        Integer tagId = xslHunterTag.getTagid();
-                        if( tagId != null && tagId != 0 ){
+                        String tagId = xslHunterTag.getTagid();
+                        if(!StringUtils.isEmpty(tagId)){
                             //查看是否有这个id
-                            XslTag xslTag  = xslTagMapper.selectByPrimaryKey(tagId);
+                            XslTagExample example = new XslTagExample();
+                            example.createCriteria().andTagidEqualTo(tagId);
+                            List<XslTag> xslTags = xslTagMapper.selectByExample(example);
+                            XslTag xslTag = xslTags.get(0);
                             if( xslTag != null ){
                                 //数目进行++
                                 xslTag.setUsenum((short)(xslTag.getUsenum() + 1));

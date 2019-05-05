@@ -6,7 +6,7 @@ import xsl.erp.pojo.XslOriented;
 import xsl.erp.pojo.XslOrientedExample;
 
 public interface XslOrientedMapper {
-    int countByExample(XslOrientedExample example);
+    long countByExample(XslOrientedExample example);
 
     int deleteByExample(XslOrientedExample example);
 

@@ -6,7 +6,7 @@ import xsl.erp.pojo.XslScore;
 import xsl.erp.pojo.XslScoreExample;
 
 public interface XslScoreMapper {
-    int countByExample(XslScoreExample example);
+    long countByExample(XslScoreExample example);
 
     int deleteByExample(XslScoreExample example);
 

@@ -6,7 +6,7 @@ import xsl.erp.pojo.XslManagerRole;
 import xsl.erp.pojo.XslManagerRoleExample;
 
 public interface XslManagerRoleMapper {
-    int countByExample(XslManagerRoleExample example);
+    long countByExample(XslManagerRoleExample example);
 
     int deleteByExample(XslManagerRoleExample example);
 

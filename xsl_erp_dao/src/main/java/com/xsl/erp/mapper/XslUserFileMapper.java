@@ -6,7 +6,7 @@ import xsl.erp.pojo.XslUserFile;
 import xsl.erp.pojo.XslUserFileExample;
 
 public interface XslUserFileMapper {
-    int countByExample(XslUserFileExample example);
+    long countByExample(XslUserFileExample example);
 
     int deleteByExample(XslUserFileExample example);
 

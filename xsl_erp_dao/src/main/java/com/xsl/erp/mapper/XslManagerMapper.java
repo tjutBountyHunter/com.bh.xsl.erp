@@ -6,7 +6,7 @@ import xsl.erp.pojo.XslManager;
 import xsl.erp.pojo.XslManagerExample;
 
 public interface XslManagerMapper {
-    int countByExample(XslManagerExample example);
+    long countByExample(XslManagerExample example);
 
     int deleteByExample(XslManagerExample example);
 

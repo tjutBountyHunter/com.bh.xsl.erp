@@ -6,7 +6,7 @@ import xsl.erp.pojo.XslOutputBill;
 import xsl.erp.pojo.XslOutputBillExample;
 
 public interface XslOutputBillMapper {
-    int countByExample(XslOutputBillExample example);
+    long countByExample(XslOutputBillExample example);
 
     int deleteByExample(XslOutputBillExample example);
 

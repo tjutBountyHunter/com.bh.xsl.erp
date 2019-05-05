@@ -6,7 +6,7 @@ import xsl.erp.pojo.XslThrowinglog;
 import xsl.erp.pojo.XslThrowinglogExample;
 
 public interface XslThrowinglogMapper {
-    int countByExample(XslThrowinglogExample example);
+    long countByExample(XslThrowinglogExample example);
 
     int deleteByExample(XslThrowinglogExample example);
 

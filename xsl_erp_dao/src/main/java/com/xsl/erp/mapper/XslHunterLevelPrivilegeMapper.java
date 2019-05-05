@@ -6,7 +6,7 @@ import xsl.erp.pojo.XslHunterLevelPrivilege;
 import xsl.erp.pojo.XslHunterLevelPrivilegeExample;
 
 public interface XslHunterLevelPrivilegeMapper {
-    int countByExample(XslHunterLevelPrivilegeExample example);
+    long countByExample(XslHunterLevelPrivilegeExample example);
 
     int deleteByExample(XslHunterLevelPrivilegeExample example);
 

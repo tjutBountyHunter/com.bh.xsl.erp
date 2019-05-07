@@ -14,15 +14,15 @@
     //////////////////////////////////////////////////////
 
     function search() {
-        var key = mini.get("key").getValue();
-        var key1 = mini.get("key1");
+        var id = mini.get("id").getValue();
+        var state = mini.get("state");
         //后台直接接受数据即可，使用Param改名
 
-    if(key1 != null){
-        var key11 = key1.getValue();
-        grid.load({key: key,key1:key11});//重新加载数据，还是在以前的那个url。后台进行条件的查询，条件语句查询
+    if(state != null){
+        var key11 = state.getValue();
+        grid.load({id: id,state:key11});//重新加载数据，还是在以前的那个url。后台进行条件的查询，条件语句查询
     }else{
-        grid.load({key: key});//重新加载数据，还是在以前的那个url。后台进行条件的查询，条件语句查询
+        grid.load({id: id});//重新加载数据，还是在以前的那个url。后台进行条件的查询，条件语句查询
     }
     }
 

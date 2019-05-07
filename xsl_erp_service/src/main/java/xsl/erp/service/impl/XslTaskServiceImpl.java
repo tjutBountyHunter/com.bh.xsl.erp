@@ -52,10 +52,10 @@ public class XslTaskServiceImpl implements XslTaskService {
     @Override
     public vo.PageObject SelectTaskAll(Integer page, Integer rows, Integer key, Byte key1 ) {
         ErpTaskInfoReqVo erpTaskInfoReqVo = new ErpTaskInfoReqVo();
-        erpTaskInfoReqVo.setKey(key);
+        erpTaskInfoReqVo.setId(key);
         erpTaskInfoReqVo.setPage(page);
         erpTaskInfoReqVo.setRows(rows);
-        erpTaskInfoReqVo.setKey1(key1);
+        erpTaskInfoReqVo.setState(key1);
         PageObject pageObject = taskInfoResource.SelectTaskAll(erpTaskInfoReqVo);
         return pageObject;
     }

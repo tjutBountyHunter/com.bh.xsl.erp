@@ -36,8 +36,8 @@
                     <a class="mini-button" iconCls="icon-save" onclick="saveData('task/show')" plain="true">保存</a>
                 </td>
                 <td style="white-space:nowrap;">
-                    <input id="key" class="mini-textbox" emptyText="请输入任务ID" style="width:150px;" onenter="onKeyEnter"/>
-                    <input id="key1" class="mini-combobox" emptyText="请输入任务状态" style="width:150px;" url="<%=basePath%>data/task_state.txt" onenter="onKeyEnter"/>
+                    <input id="id" class="mini-textbox" emptyText="请输入任务ID" style="width:150px;" onenter="onKeyEnter"/>
+                    <input id="state" class="mini-combobox" emptyText="请输入任务状态" style="width:150px;" url="<%=basePath%>data/task_state.txt" onenter="onKeyEnter"/>
                     <a class="mini-button" onclick="search()">查询</a>
                 </td>
             </tr>

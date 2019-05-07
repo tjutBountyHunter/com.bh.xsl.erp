@@ -9,7 +9,9 @@ import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.StringUtils;
+import util.ListUtil;
 import vo.UserApproveRes;
+import vo.UserInfo;
 import xsl.erp.Utils.DateUtils;
 import xsl.erp.annotation.SystemServiceLog;
 import xsl.erp.pojo.*;
@@ -91,8 +93,21 @@ public class XslUserServiceImpl implements XslUserService {
             /* 进行分页 */
             PageHelper.startPage(page,rows);
             List<XslUser> userList = this.xslUserMapper.selectByExample(example);
-            result.setData(userList);
+            List<UserInfo> userInfos = new ArrayList<>();
+            for (XslUser xslUser : userList){
+                UserInfo userInfo = new UserInfo();
+                XslSchoolinfoExample xslSchoolinfoExample = new XslSchoolinfoExample();
+                xslSchoolinfoExample.createCriteria().andSchoolidEqualTo(xslUser.getSchoolinfo());
+                List<XslSchoolinfo> xslSchoolinfos = xslSchoolinfoMapper.selectByExample(xslSchoolinfoExample);
+                if(ListUtil.isNotEmpty(xslSchoolinfos)){
+                    XslSchoolinfo xslSchoolinfo = xslSchoolinfos.get(0);
+                    BeanUtils.copyProperties(xslSchoolinfo, userInfo);
+                }
+                BeanUtils.copyProperties(xslUser, userInfo);
+                userInfos.add(userInfo);
+            }
 
+            result.setData(userInfos);
             /* 得到分页的信息 */
             PageInfo<XslUser> info = new PageInfo<XslUser>(userList);
             /* 得到分页的总数量 */
@@ -295,11 +310,11 @@ public class XslUserServiceImpl implements XslUserService {
     @Override
     public PageObject SelectUserApprove(Integer page, Integer rows) {
 		PageObject pageObject = selectUserAll(page, rows, null, (byte) (2));//只查询未经过审核的
-		List<XslUser> userList = (List<XslUser>) pageObject.getData();
+		List<UserInfo> userList = (List<UserInfo>) pageObject.getData();
 
 //		userList.stream().map();
 		List<UserApproveRes> userApproveResList = new ArrayList<>(10);
-		for (XslUser xslUser : userList){
+		for (UserInfo xslUser : userList){
 			UserApproveRes userApproveRes = new UserApproveRes();
 			BeanUtils.copyProperties(xslUser, userApproveRes);
 			String schoolId = xslUser.getSchoolinfo();
@@ -313,7 +328,6 @@ public class XslUserServiceImpl implements XslUserService {
                 if(xslSchoolinfos != null && xslSchoolinfos.size() > 0){
                     XslSchoolinfo xslSchoolinfo = xslSchoolinfos.get(0);
                     BeanUtils.copyProperties(xslSchoolinfo, userApproveRes);
-                    userApproveRes.setStartdate(xslSchoolinfo.getStartdate().substring(0, 11));
                     Byte degree = xslSchoolinfo.getDegree();
 
                     if(degree == 2){

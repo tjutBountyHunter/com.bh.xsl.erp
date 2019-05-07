@@ -65,14 +65,17 @@
                 <!-- 添加编辑信息 -->
                 <input property="editor" class="mini-textbox" style="width:100%;" minWidth="200"/>
             </div>
-            <div name="email" field="email" width="100" allowSort="true" align="center" headerAlign="center">邮箱
+
+            <div name="sno" field="sno" width="100" allowSort="true" align="center" headerAlign="center">学号
                 <!-- 添加编辑信息 -->
-                <input property="editor" class="mini-textbox" style="width:100%;" minWidth="200" placeholder="用户未填写" />
             </div>
-            <div field="signature" width="120" headerAlign="center" allowSort="true" align="center" headerAlign="center">个性签名
-                <!-- 添加编辑信息 -->
-                <input property="editor" class="mini-textarea" style="width:200px;" minWidth="200" minHeight="50"/>
+
+            <div field="school" width="120" headerAlign="center" allowSort="true" align="center" headerAlign="center">学校
             </div>
+
+            <div field="major" width="120" headerAlign="center" allowSort="true" align="center" headerAlign="center">专业
+            </div>
+
             <!--ComboBox：远程数据,下面javascript的数组就是，因为不用改变，所以没有使用txt文件-->
             <div type="comboboxcolumn" field="state" width="40" headerAlign="center" align="center" headerAlign="center">状态
                 <input property="editor" class="mini-combobox" style="width:100%;" url="<%=basePath%>data/state.txt"/>

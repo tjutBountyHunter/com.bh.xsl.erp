@@ -38,8 +38,14 @@
     ]
     },
 
-{ "id": "dwzz", iconCls: "fa fa-android",  text: "客户端控件管理", children: [
-/*
+    { "id": "xtgl", iconCls: "fa fa-android", text: "客户端通知管理", children: [
+            { "id": "xzgl", iconCls: "fa fa-leaf", text: "推送配置", url: "task/show" },
+            { "id": "sjzd", iconCls: "fa fa-book", text: "通知配置", url: "task/approve" }
+        ]
+    },
+
+/*{ "id": "dwzz", iconCls: "fa fa-android",  text: "客户端控件管理", children: [
+
          { "id": "gwgl", iconCls: "fa fa-graduation-cap", text: "客户端标签管理", url: "client/label" },
          { "id": "gsgl", iconCls: "fa fa-sitemap", text: "客户端消息推送", url: "client/message" },
          { "id": "bmgl", iconCls: "fa fa-th-list", text: "客户端控件名", url: "client/control" },
@@ -48,9 +54,9 @@
                  { "id": "gwgl", iconCls: "fa fa-graduation-cap", text: "岗位管理", url: "pages/1.html" },
                  { "id": "jsgl", iconCls: "fa fa-paw", text: "角色管理", url: "pages/1.html" },
                  { "id": "yhgl", iconCls: "fa fa-user", text: "用户管理", url: "pages/1.html" }
-        */
+
     ]
-},
+}, */
 { "id": "bdzx", iconCls: "fa fa-table", text: "日志管理", children: [
         { "id": "hyda", iconCls: "fa fa-puzzle-piece", text: "Controller日志", url: "log/controller" },
         { "id": "qjgl", iconCls: "fa fa-list-alt", text: "Service异常日志", url: "log/service" },

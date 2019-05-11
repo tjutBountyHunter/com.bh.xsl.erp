@@ -50,13 +50,19 @@ public class XslTaskServiceImpl implements XslTaskService {
      */
     @SystemServiceLog(description = "任务分页查询Service")
     @Override
-    public vo.PageObject SelectTaskAll(Integer page, Integer rows, Integer key, Byte key1 ) {
+    public PageObject SelectTaskAll(Integer page, Integer rows, Integer key, Byte key1 ) {
         ErpTaskInfoReqVo erpTaskInfoReqVo = new ErpTaskInfoReqVo();
         erpTaskInfoReqVo.setId(key);
         erpTaskInfoReqVo.setPage(page);
         erpTaskInfoReqVo.setRows(rows);
         erpTaskInfoReqVo.setState(key1);
-        PageObject pageObject = taskInfoResource.SelectTaskAll(erpTaskInfoReqVo);
+		PageObject pageObject;
+        try {
+			pageObject = taskInfoResource.selectTaskAll(erpTaskInfoReqVo);
+		}catch (Exception e){
+        	throw new RuntimeException();
+		}
+
         return pageObject;
     }
 

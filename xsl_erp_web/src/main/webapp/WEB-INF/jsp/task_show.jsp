@@ -53,16 +53,10 @@
         <div type="checkcolumn"></div>
         <div name="id"  field="id" headerAlign="center" allowSort="true" width="0" >任务ID</div>
         <div field="tasktitle" width="100" allowSort="true" >任务标题
-            <!-- 添加编辑信息 -->
-            <input property="editor" class="mini-textarea"  style="width:100%;"/>
         </div>
         <div field="content" width="150" allowSort="true" >任务描述
-            <!-- 添加编辑信息 -->
-            <input property="editor" class="mini-textarea"  style="width:100%;"/>
         </div>
         <div name="phone" field="phone" width="100" allowSort="true" >任务发送者
-            <!-- 添加编辑信息 -->
-            <input property="editor" class="mini-textbox" style="width:100%;"/>
         </div>
         <div field="money" width="100" headerAlign="center" allowSort="true">赏金
             <!-- 添加编辑信息 -->
@@ -70,21 +64,15 @@
         </div>
         <!--ComboBox：远程数据,下面javascript的数组就是，因为不用改变，所以没有使用txt文件-->
         <div type="comboboxcolumn" field="state" width="100" headerAlign="center">状态
-            <!-- 因为不能连接国家的库，所以写了一个txt,如需添加其他国籍，手动添加 -->
             <input property="editor" class="mini-combobox" style="width:100%;" url="<%=basePath%>data/task_state.txt"/>
         </div>
         <div name="createdate" field="createdate" width="100" allowSort="true" dateFormat="yyyy-MM-dd HH:mm:ss">创建日期
-            <!-- 添加编辑信息 -->
-            <input property="editor" class="mini-datepicker" style="width:100%;"/>
         </div>
         <div name="updatedate" field="updatedate" width="100" allowSort="true" dateFormat="yyyy-MM-dd HH:mm:ss">更新日期
-            <!-- 添加编辑信息 -->
-            <input property="editor" class="mini-datepicker" style="width:100%;"/>
         </div>
         <div name="deadline" field="deadline" width="100" allowSort="true" dateFormat="yyyy-MM-dd HH:mm:ss">末任务时间
-            <!-- 添加编辑信息 -->
-            <input property="editor" class="mini-datepicker" style="width:100%;"/>
         </div>
+        <div name="approve" field="approve" width="30" headerAlign="center" align="center"  allowSort="true" >操作</div>
     </div>
 </div>
 </div>

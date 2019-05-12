@@ -19,6 +19,19 @@
     </properties>
 
     <dependencies>
+
+<!--        <dependency>-->
+<!--            <groupId>com.bh.xsl.user</groupId>-->
+<!--            <artifactId>xsl-user-export</artifactId>-->
+<!--        </dependency>-->
+
+<!--        <dependency>-->
+<!--            <groupId>com.bh.xsl.task</groupId>-->
+<!--            <artifactId>xsl-task-export</artifactId>-->
+<!--        </dependency>-->
+
+
+
         <dependency>
             <groupId>aopalliance</groupId>
             <artifactId>aopalliance</artifactId>
@@ -28,7 +41,7 @@
         <!-- 外部系统依赖 -->
         <dependency>
             <groupId>com.bh.xsl.task</groupId>
-            <artifactId>xsl-task-export</artifactId>
+            <artifactId>xsl_task_export</artifactId>
         </dependency>
 
     <!-- 依赖与pojo子模块 -->

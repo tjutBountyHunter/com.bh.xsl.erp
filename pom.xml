@@ -4,6 +4,17 @@
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
 
+  <repositories>
+    <repository>
+      <id>xsl_repos</id>
+      <name>xsl_interface_repository</name>
+      <url>http://39.96.195.196:8081/repository/maven-public/</url>
+    </repository>
+  </repositories>
+
+
+
+
   <groupId>com.xsl</groupId>
   <artifactId>xsl_erp</artifactId>
     <packaging>pom</packaging>
@@ -19,6 +30,9 @@
     <name>xsl_erp</name>
   <!-- FIXME change it to the project's website -->
     <url>http://maven.apache.org</url>
+
+
+
 
   <properties>
     <junit.version>4.11</junit.version>
@@ -58,9 +72,17 @@
       <!-- 外部系统依赖 -->
       <dependency>
         <groupId>com.bh.xsl.task</groupId>
-        <artifactId>xsl-task-export</artifactId>
-        <version>1.1</version>
+        <artifactId>xsl_task_export</artifactId>
+        <version>1.6</version>
       </dependency>
+
+      <dependency>
+        <groupId>com.bh.xsl.user</groupId>
+        <artifactId>xsl-user-export</artifactId>
+        <version>1.2.1</version>
+      </dependency>
+
+
 
       <!-- 时间操作组件，时间操作简单，不用使用simpledataformat进行时间操控-->
       <dependency>
@@ -267,14 +289,6 @@
       </dependency>
     </dependencies>
   </dependencyManagement>
-
-  <repositories>
-    <repository>
-      <id>xsl_repos</id>
-      <name>xsl_interface_repository</name>
-      <url>http://39.96.195.196:8081/repository/maven-public/</url>
-    </repository>
-  </repositories>
 
   <build>
     <resources>

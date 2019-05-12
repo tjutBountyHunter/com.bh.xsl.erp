@@ -14,6 +14,9 @@
          }
 	    ]
 	},
+	{"id":"ddgl",iconCls: "fa fa-desktop", text: "订单管理", children :[
+	{"id": "ddzs", iconCls: "fa fa-leaf", text: "订单展示", url: "order/show"}
+	]},
     { "id": "xtgl", iconCls: "fa fa-desktop", text: "任务管理", children: [
         { "id": "xzgl", iconCls: "fa fa-leaf", text: "任务展示", url: "task/show" },
         { "id": "sjzd", iconCls: "fa fa-book", text: "任务审核", url: "task/approve" },

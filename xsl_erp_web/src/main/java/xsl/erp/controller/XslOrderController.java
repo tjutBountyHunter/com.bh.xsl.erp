@@ -9,6 +9,7 @@ import vo.OrderReqVo;
 import vo.PageObject;
 
 import javax.annotation.Resource;
+import java.util.List;
 
 @Controller
 @RequestMapping("/order/show")
@@ -22,5 +23,7 @@ public class XslOrderController {
      orderReqVo.setRows(pageSize);
      orderReqVo.setPage(pageIndex+1);
       return orderInfoResource.getList(orderReqVo);
+
+
     }
 }

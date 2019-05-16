@@ -80,7 +80,7 @@
 
             <!--ComboBox：远程数据,下面javascript的数组就是，因为不用改变，所以没有使用txt文件-->
             <div type="comboboxcolumn" field="state" width="40" headerAlign="center" align="center" headerAlign="center">状态
-                <input property="editor" class="mini-combobox" style="width:100%;" url="<%=basePath%>data/state.txt"/>
+                <input property="editor" class="mini-combobox" style="width:100%;" url="<%=basePath%>data/task_state.txt"/>
             </div>
 
             <div name="createdate" field="startDate" width="100" allowSort="true" valueType="String" dateFormat="yyyy-MM-dd" align="center" headerAlign="center">创建日期

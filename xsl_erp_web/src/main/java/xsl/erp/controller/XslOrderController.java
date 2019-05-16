@@ -15,12 +15,19 @@ import javax.annotation.Resource;
 public class XslOrderController {
     @Resource
     private OrderInfoResource orderInfoResource;
+
+
     @RequestMapping("/list")
     @ResponseBody
     public PageObject getOrderInfo(Integer pageIndex,Integer pageSize){
      OrderReqVo orderReqVo=new OrderReqVo();
      orderReqVo.setRows(pageSize);
      orderReqVo.setPage(pageIndex+1);
-      return orderInfoResource.getList(orderReqVo);
+     try {
+         PageObject list = orderInfoResource.getList(orderReqVo);
+         return list;
+     }catch (Exception e){
+         throw new RuntimeException(e);
+     }
     }
 }

@@ -72,8 +72,8 @@
       <!-- 外部系统依赖 -->
       <dependency>
         <groupId>com.bh.xsl.task</groupId>
-        <artifactId>xsl_task_export</artifactId>
-        <version>1.7</version>
+        <artifactId>xsl-task-export</artifactId>
+        <version>1.1.5</version>
       </dependency>
 
       <dependency>

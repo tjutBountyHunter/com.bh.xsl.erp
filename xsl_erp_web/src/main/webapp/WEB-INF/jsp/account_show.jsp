@@ -54,10 +54,7 @@
         <div property="columns">
             <div type="indexcolumn"></div>
             <div id="checked" type="checkcolumn"></div>
-            <div name="name" field="accountId" width="100" allowSort="true" align="center" headerAlign="center" >报表id
-                <!-- 添加编辑信息 -->
-                <input property="editor" class="mini-textbox" style="width:100%;" minWidth="200"/>
-            </div>
+
 
             <div name="phone" field="totalUser" width="100" allowSort="true" align="center" headerAlign="center">总用户数
                 <!-- 添加编辑信息 -->

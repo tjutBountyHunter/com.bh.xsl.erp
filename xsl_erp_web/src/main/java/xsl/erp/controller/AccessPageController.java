@@ -41,7 +41,10 @@ public class AccessPageController {
     public String accessOrderShow() {
         return "order_show";
     }
-
+    @RequestMapping("/account/show")
+    public String accessAccountShow() {
+        return "account_show";
+    }
     /**
      * user_approve页面访问（用户操作-用户审计）
      *

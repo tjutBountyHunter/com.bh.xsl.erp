@@ -20,10 +20,10 @@
 
     <dependencies>
 
-<!--        <dependency>-->
-<!--            <groupId>com.bh.xsl.user</groupId>-->
-<!--            <artifactId>xsl-user-export</artifactId>-->
-<!--        </dependency>-->
+        <dependency>
+            <groupId>com.bh.xsl.user</groupId>
+            <artifactId>xsl-user-export</artifactId>
+        </dependency>
 
 <!--        <dependency>-->
 <!--            <groupId>com.bh.xsl.task</groupId>-->
@@ -79,6 +79,10 @@
             <groupId>javax.servlet</groupId>
             <artifactId>servlet-api</artifactId>
             <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-test</artifactId>
         </dependency>
 
         <dependency>

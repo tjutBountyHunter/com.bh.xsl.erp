@@ -295,4 +295,12 @@ public class AccessPageController {
     public String accessThrowServiceLogLabel() {
         return "log_throwservice";
     }
+    @RequestMapping("/push/show")
+    public String accessPushShow() {
+        return "push_show";
+    }
+    @RequestMapping("/push/approve")
+    public String accessPushApprove() {
+        return "push_approve";
+    }
 }

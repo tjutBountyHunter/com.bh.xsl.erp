@@ -42,8 +42,8 @@
     },
 
     { "id": "xtgl", iconCls: "fa fa-android", text: "客户端通知管理", children: [
-            { "id": "xzgl", iconCls: "fa fa-leaf", text: "推送配置", url: "task/show" },
-            { "id": "sjzd", iconCls: "fa fa-book", text: "通知配置", url: "task/approve" }
+            { "id": "xzgl", iconCls: "fa fa-leaf", text: "推送配置", url: "push/show" },
+            { "id": "sjzd", iconCls: "fa fa-book", text: "通知配置", url: "push/approve" }
         ]
     },
 
